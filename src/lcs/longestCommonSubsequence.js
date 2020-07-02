@@ -1,4 +1,3 @@
-'use strict';
 /**
  * @param {string[]} set1
  * @param {string[]} set2
