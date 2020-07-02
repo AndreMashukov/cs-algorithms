@@ -1,0 +1,31 @@
+{
+  "name": "cs-algorithms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndreMashukov/cs-algorithms.git"
+  },
+  "author": "Andrey Mashukov (andre.mashukov@gmail.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndreMashukov/cs-algorithms/issues"
+  },
+  "homepage": "https://github.com/AndreMashukov/cs-algorithms#readme",
+  "dependencies": {
+    "eslint": "^7.3.1"
+  },
+  "devDependencies": {
+    "babel-jest": "^26.1.0",
+    "jest": "^26.1.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    }
+  }
+}
