@@ -1,5 +1,3 @@
-'use strict';
-
 const lcs = require('../../src/lcs/longestCommonSubsequence');
 
 const testCase1 = {
@@ -12,6 +10,12 @@ const testCase2 = {
   set1: 'AGGTAB',
   set2: 'GXTXAYB',
   expected: 'GTAB',
+};
+
+const testCase3 = {
+  set1: ['A', 'B', 'C', 'D', 'A', 'F'],
+  set2: ['A', 'C', 'B', 'C', 'F'],
+  expected: ['A', 'B', 'C', 'F'],
 };
 
 describe('longestCommonSubsequence test suite', () => {
@@ -27,5 +31,11 @@ describe('longestCommonSubsequence test suite', () => {
         lcs.longestCommonSubsequence(testCase2.set1, testCase2.set2) ===
         testCase2.expected,
     );
+  });
+
+  it('ABCDAF and ACBCF => ABCF of length 4', async () => {
+    expect(
+        lcs.longestCommonSubsequence(testCase3.set1, testCase3.set2))
+        .toEqual(testCase3.expected);
   });
 });
