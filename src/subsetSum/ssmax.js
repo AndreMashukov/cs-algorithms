@@ -23,7 +23,9 @@ const subsetSumMax = (array, sum) => {
     return accum;
   }, subsets[0].length);
 
-  return subsets.filter((s) => s.length === minLength);
+  const minLengthSubsets = subsets.filter((s) => s.length === minLength);
+  return minLengthSubsets
+      .map((s) => s.sort((a, b) => b - a));
 };
 
 module.exports.subsetSumMax = subsetSumMax;
