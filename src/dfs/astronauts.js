@@ -21,12 +21,12 @@ function journeyDfs(n, astronaut) {
   pairs.forEach((pair) => {
     if (!visited[pair[0]]) {
       const count = runDFS(pair[0]);
-      console.log(pair[0] + ' count is:  ' + count );
+      // console.log(pair[0] + ' count is:  ' + count );
       countryCounts.push(count);
     }
   });
 
-  console.log('Done with pairs, countryCounts is: '+countryCounts);
+  // console.log('Done with pairs, countryCounts is: '+countryCounts);
 
   // multiply countryCounts in one loop instead of two
   let sum = 0;
@@ -36,10 +36,10 @@ function journeyDfs(n, astronaut) {
     multiplier += countryCounts[j];
   }
 
-  console.log('Total Country pairs is '+sum);
+  // console.log('Total Country pairs is '+sum);
 
   const singles = n - totalVisited;
-  console.log('Num singles is ' + singles);
+  // console.log('Num singles is ' + singles);
 
   const sumOfCountryCounts = multiplier;
   // save for later
@@ -48,16 +48,16 @@ function journeyDfs(n, astronaut) {
     ((singles*(singles+1))/2)-singles;
     // factorial
 
-  console.log('Singles local pairs '+localSinglesPairs);
+  // console.log('Singles local pairs '+localSinglesPairs);
 
   const singlesToAdd = (sumOfCountryCounts * singles) +
     localSinglesPairs;
 
-  console.log('And Total singles contrib is  '+singlesToAdd);
+  // console.log('And Total singles contrib is  '+singlesToAdd);
 
   const totalPairs = sum + singlesToAdd;
 
-  console.log('The final TOTAL is  '+totalPairs);
+  // console.log('The final TOTAL is  '+totalPairs);
   return totalPairs;
 
   /**
