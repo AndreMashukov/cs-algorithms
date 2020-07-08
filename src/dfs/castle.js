@@ -1,7 +1,7 @@
 /** Class representing a POINT. */
 class Point {
   /**
-   * Find and print the number of cells
+   * Constructor for point
    * @param {number} x - matrix of integers
    * @param {number} y - matrix of integers
    */
@@ -44,6 +44,7 @@ function minimumMoves(grid, startRow, startCol, endRow, endCol) {
   const start = new Point(startX, startY);
   move.push(start);
   game[startX][startY] = 0;
+
   while (move.length > 0) {
     const current = move.pop();
     if (helper[current.x][current.y] === 0) {
@@ -55,7 +56,7 @@ function minimumMoves(grid, startRow, startCol, endRow, endCol) {
 }
 
 /**
- * Add new Point to move array
+ * Add a new Point to move array
  * @param {Point} p -point
  * @param {number} n - grid.length
  * @param {array} _move - array of points
