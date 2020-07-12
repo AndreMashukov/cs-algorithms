@@ -7,6 +7,20 @@
 // 3. [9, 7, 3]
 
 const ssp = require('./ssp');
+
+/**
+ * Compares values in array
+ * @param {number} a - first.
+ * @param {number} b - second.
+ * @param {number} index - index.
+ * @return {number} - integer that is greater/less than 0
+ */
+function comparator(a, b, index) {
+  if (a[1] < b[1]) return -1;
+  if (a[1] > b[1]) return 1;
+  return 0;
+}
+
 /**
  * Find subset of a that sums to n.
  * @param {array} array - array.
@@ -25,7 +39,8 @@ const subsetSumMax = (array, sum) => {
 
   const minLengthSubsets = subsets.filter((s) => s.length === minLength);
   return minLengthSubsets
-      .map((s) => s.sort((a, b) => b - a));
+      .map((s) => s.sort((a, b) => b - a))
+      .map((s) => s.sort(comparator))[0];
 };
 
 module.exports.subsetSumMax = subsetSumMax;
