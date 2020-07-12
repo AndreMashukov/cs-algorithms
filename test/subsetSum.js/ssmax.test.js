@@ -8,4 +8,12 @@ describe('subsetSumMax', () => {
       1,
     ]);
   });
+
+  it('should return [11, 10, 1]', async () => {
+    expect(ssmax.subsetSumMax([1, 2, 3, 4, 5, 9, 10, 11], 22)).toStrictEqual([
+      11,
+      10,
+      1,
+    ]);
+  });
 });
