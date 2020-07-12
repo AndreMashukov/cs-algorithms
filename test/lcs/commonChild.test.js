@@ -7,7 +7,7 @@ describe('commonChild', () => {
         .toEqual(2);
   });
 
-  it('SHINCHAN and SALLY => NHA of length 3', async () => {
+  it('SHINCHAN and NOHARAAA => NHA of length 3', async () => {
     expect(
         cc.commonChild('SHINCHAN', 'NOHARAAA'))
         .toEqual(3);
@@ -21,7 +21,7 @@ describe('commonChild reusing LCS', () => {
         .toEqual(2);
   });
 
-  it('SHINCHAN and SALLY => NHA of length 3', async () => {
+  it('SHINCHAN and NOHARAAA => NHA of length 3', async () => {
     expect(
         cc.commonChildLcs('SHINCHAN', 'NOHARAAA'))
         .toEqual(3);
