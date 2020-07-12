@@ -15,9 +15,9 @@ const ssp = require('./ssp');
  * @param {number} index - index.
  * @return {number} - integer that is greater/less than 0
  */
-function comparator(a, b, index) {
-  if (a[1] < b[1]) return -1;
-  if (a[1] > b[1]) return 1;
+function comparator(a, b, index ) {
+  if (a[index] < b[index]) return -1;
+  if (a[index] > b[index]) return 1;
   return 0;
 }
 
@@ -40,7 +40,7 @@ const subsetSumMax = (array, sum) => {
   const minLengthSubsets = subsets.filter((s) => s.length === minLength);
   return minLengthSubsets
       .map((s) => s.sort((a, b) => b - a))
-      .map((s) => s.sort(comparator))[0];
+      .map((s) => s.sort((a, b) => comparator(a, b, 0)))[0];
 };
 
 module.exports.subsetSumMax = subsetSumMax;
