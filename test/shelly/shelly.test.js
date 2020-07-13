@@ -38,16 +38,33 @@ describe('Knapsack problem', () => {
   // it('should return 25', async () => {
   //   const capacity = 6;
   //   const items = [
-  //     {w: 3, b: 10},
-  //     {w: 1, b: 3},
-  //     {w: 2, b: 9},
-  //     {w: 2, b: 5},
-  //     {w: 1, b: 6},
+  //     {w: 3, v: 10},
+  //     {w: 1, v: 3},
+  //     {w: 2, v: 9},
+  //     {w: 2, v: 5},
+  //     {w: 1, v: 6},
   //   ];
   //   expect(shelley.knapsack(items, capacity)).toStrictEqual({
   //     maxValue: 25,
   //     subset: [{w: 1, v: 6}, {w: 2, v: 9}, {w: 3, v: 10}]});
   // });
+
+  // Knapsack Max weight :  W = 10 (units)
+  // Total items              :       N = 4
+  // Values of items          :       v[] = {10, 40, 30, 50}
+  // Weight of items          :       w[] = {5, 4, 6, 3}
+  it('should return maxValue 90', async () => {
+    const capacity = 10;
+    const items = [
+      {w: 5, v: 10},
+      {w: 4, v: 40},
+      {w: 6, v: 30},
+      {w: 3, v: 50},
+    ];
+    expect(shelley.knapsack(items, capacity)).toStrictEqual({
+      maxValue: 90,
+      subset: [{w: 4, v: 40}, {w: 3, v: 50}]});
+  });
 });
 
 // Example:
