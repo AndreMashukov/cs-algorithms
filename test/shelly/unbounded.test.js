@@ -18,7 +18,7 @@ describe('Unbounded Knapsack problem', () => {
   // it('should return 13', async () => {
   //   const target = 13;
   //   const arr = [3, 7, 9, 11];
-
+  //  3+3+7 = 13
   //   expect(unb.unboundedKnapsack(target, arr)).toEqual(13);
   // });
 });
