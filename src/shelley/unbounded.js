@@ -1,6 +1,18 @@
 const cwr = require('../../src/sets/combWithRep');
 
 // eslint-disable-next-line require-jsdoc
+function sumUpPartials(arr, target) {
+  let result = 0;
+  for (let i = 1; i <= arr.length; i ++) {
+    const sum = sumUp(arr.slice(0, i));
+    if (sum > result && sum <= target) {
+      result = sum;
+    }
+  }
+  return result;
+}
+
+// eslint-disable-next-line require-jsdoc
 function sumUp(arr) {
   return arr.reduce((accum, value) => {
     accum += parseInt(value, 0);
@@ -14,15 +26,16 @@ function closestByCombos(array, target, times) {
   for (let i = 0; i < times; i++) {
     const repetitions = cwr.combineWithRepetitions(array, array.length + i);
     console.log(repetitions);
+    const sums = [];
     result = repetitions.reduce((sumToTarget, array) => {
-      const sum = sumUp(array);
+      const sum = sumUpPartials(array, target);
       if (sum <= target) {
         sumToTarget = sum;
+        sums.push(sumToTarget);
       }
-
-      return sumToTarget;
+      return Math.max(...sums);
     }, 0);
-    console.log(result);
+
     if (result > closest && result <= target) {
       closest = result;
       if (closest === target) {
@@ -58,7 +71,7 @@ function closestByCombos(array, target, times) {
 function unboundedKnapsack(target, arr) {
   const sorted = arr.sort((a, b) => a - b)
       .map((val) => `${val}`);
-  const accum = closestByCombos(sorted, target, 2);
+  const accum = closestByCombos(sorted, target, 1);
   return accum;
 }
 
