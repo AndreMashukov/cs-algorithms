@@ -25,9 +25,8 @@ function closestByCombos(array, target, times) {
   let closest = 0;
   for (let i = 0; i < times; i++) {
     const repetitions = cwr.combineWithRepetitions(array, array.length + i);
-    console.log(repetitions);
     const sums = [];
-    result = repetitions.reduce((sumToTarget, array) => {
+    const result = repetitions.reduce((sumToTarget, array) => {
       const sum = sumUpPartials(array, target);
       if (sum <= target) {
         sumToTarget = sum;
@@ -46,21 +45,6 @@ function closestByCombos(array, target, times) {
   return closest;
 }
 
-// eslint-disable-next-line require-jsdoc
-// function multiplyAtIndex(arr, index, times) {
-//   const newArr = [];
-//   newArr.push(arr[index]);
-//   arr.forEach((val, ind) => {
-//     if (ind === index) {
-//       for (let i = 0; i < times; i++) {
-//         newArr.push(val);
-//       }
-//     } else {
-//       // newArr.push(val);
-//     }
-//   });
-//   return newArr;
-// }
 /**
  * Print the maximum sum for each test case which is as near as possible,
  * but not exceeding, to the target sum on a separate line.
@@ -71,7 +55,7 @@ function closestByCombos(array, target, times) {
 function unboundedKnapsack(target, arr) {
   const sorted = arr.sort((a, b) => a - b)
       .map((val) => `${val}`);
-  const accum = closestByCombos(sorted, target, 1);
+  const accum = closestByCombos(sorted, target, 2);
   return accum;
 }
 

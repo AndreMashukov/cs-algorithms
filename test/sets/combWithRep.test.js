@@ -23,6 +23,22 @@ describe('combineWithRepetitions', () => {
       ['2', '2'],
     ]);
 
+    expect(cwr.combineWithRepetitions(['1', '2'], 1))
+        .toEqual([['1'], ['2']]);
+
+    expect(cwr.combineWithRepetitions(['1', '2', '3'], 1))
+        .toEqual([['1'], ['2'], ['3']]);
+
+    expect(cwr.combineWithRepetitions(['1', '2', '3'], 2))
+        .toEqual([
+          ['1', '1'],
+          ['1', '2'],
+          ['1', '3'],
+          ['2', '2'],
+          ['2', '3'],
+          ['3', '3'],
+        ]);
+
     expect(cwr.combineWithRepetitions(['A', 'B'], 3)).toEqual([
       ['A', 'A', 'A'],
       ['A', 'A', 'B'],

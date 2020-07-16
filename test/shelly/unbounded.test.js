@@ -8,17 +8,17 @@ describe('Unbounded Knapsack problem', () => {
     expect(unb.unboundedKnapsack(target, arr)).toEqual(12);
   });
 
-  // it('should return 9', async () => {
-  //   const target = 9;
-  //   const arr = [3, 4, 4, 4, 8];
+  it('should return 9', async () => {
+    const target = 9;
+    const arr = [3, 4, 4, 4, 8];
 
-  //   expect(unb.unboundedKnapsack(target, arr)).toEqual(9);
-  // });
+    expect(unb.unboundedKnapsack(target, arr)).toEqual(9);
+  });
 
-  // it('should return 13', async () => {
-  //   const target = 13;
-  //   const arr = [3, 7, 9, 11];
-  //  3+3+7 = 13
-  //   expect(unb.unboundedKnapsack(target, arr)).toEqual(13);
-  // });
+  it('should return 13', async () => {
+    const target = 13;
+    const arr = [3, 7, 9, 11];
+    //  3+3+7 = 13
+    expect(unb.unboundedKnapsack(target, arr)).toEqual(13);
+  });
 });
