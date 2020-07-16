@@ -17,6 +17,12 @@ describe('combineWithRepetitions', () => {
       ['B', 'B'],
     ]);
 
+    expect(cwr.combineWithRepetitions(['1', '2'], 2)).toEqual([
+      ['1', '1'],
+      ['1', '2'],
+      ['2', '2'],
+    ]);
+
     expect(cwr.combineWithRepetitions(['A', 'B'], 3)).toEqual([
       ['A', 'A', 'A'],
       ['A', 'A', 'B'],
