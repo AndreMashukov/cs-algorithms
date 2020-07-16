@@ -1,5 +1,12 @@
-const shelley = require('./shelley');
+// const shelley = require('./shelley');
 
+// eslint-disable-next-line require-jsdoc
+function sumUp(arr) {
+  return arr.reduce((accum, value) => {
+    accum += value;
+    return accum;
+  }, 0);
+}
 
 // eslint-disable-next-line require-jsdoc
 function multiplyAtIndex(arr, index, times) {
@@ -25,19 +32,14 @@ function multiplyAtIndex(arr, index, times) {
  */
 function unboundedKnapsack(target, arr) {
   const sorted = arr.sort((a, b) => a - b);
-  const items = sorted.map((val) => {
-    const item = {w: 1, v: val};
-    return item;
-  });
 
-  return items.reduce((accum, val, ind) => {
-    const numTimes = Math.floor(target/val.v);
+  return sorted.reduce((accum, val, ind) => {
+    const numTimes = Math.floor(target/val);
     let result;
     for (let i = 0; i < numTimes; i++) {
-      result = shelley.knapsack(
-          multiplyAtIndex(items, ind, i), target);
-      if (result.maxValue > accum && result.maxValue <= target) {
-        accum = result.maxValue;
+      result = sumUp(multiplyAtIndex(sorted, ind, i), target);
+      if (result > accum && result <= target) {
+        accum = result;
         if (accum === target) {
           return accum;
         }
