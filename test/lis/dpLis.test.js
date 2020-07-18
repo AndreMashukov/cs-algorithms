@@ -2,12 +2,6 @@ const dpLis = require('../../src/lis/dpLis');
 
 describe('dpLongestIncreasingSubsequence', () => {
   it('should find longest increasing subsequence length', () => {
-    // Should be:
-    // 9 or
-    // 8 or
-    // 7 or
-    // 6 or
-    // ...
     expect(dpLis.dpLongestIncreasingSubsequence([
       9, 8, 7, 6, 5, 4, 3, 2, 1, 0,
     ])).toBe(1);

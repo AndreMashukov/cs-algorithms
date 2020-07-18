@@ -20,7 +20,6 @@ const longestIncreasingPath = (matrix) => {
   while (deep) {
     dp.push(new Array(width).fill(0));
     // The initial length of each point is 0,
-    // The initial length of each point is 0,
     // and dfs traverses to a value other
     // than 0 to return her value directly
     // (because it has been obtained before)
@@ -29,7 +28,9 @@ const longestIncreasingPath = (matrix) => {
   deep = matrix.length;
 
   const dfs = function(i, j) {
-    if (dp[i][j]> 0) return dp[i][j];
+    if (dp[i][j] > 0) {
+      return dp[i][j];
+    }
     let mx = 1;
     for (let k = 0; k <direct.length; k++) {
       const x = i + direct[k][0];
