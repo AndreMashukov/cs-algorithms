@@ -45,11 +45,13 @@ function longestIncreasingSubsequence(array) {
           }
         }
       }
+      // console.log(longestIncreasingSubsequence);
     }
     return longestIncreasingSubsequence;
   };
 
   const sequencePositions = findSequence(array);
+  // console.log('sequencePositions', sequencePositions);
   const longestIncreasingSubsequence = createSequenceArray(
       array, sequencePositions);
 
