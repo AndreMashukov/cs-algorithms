@@ -1,5 +1,5 @@
-const LinkedListNode = require('./LinkedListNode');
-const Comparator = require('../comparator/Comparator');
+const lln = require('./LinkedListNode');
+const cc = require('../Comparator');
 
 /** Class representing a linked list */
 class LinkedList {
@@ -13,7 +13,7 @@ class LinkedList {
     /** @var LinkedListNode */
     this.tail = null;
 
-    this.compare = new Comparator(comparatorFunction);
+    this.compare = new cc.Comparator(comparatorFunction);
   }
 
   /**
@@ -22,7 +22,7 @@ class LinkedList {
    */
   prepend(value) {
     // Make new node to be a head.
-    const newNode = new LinkedListNode(value, this.head);
+    const newNode = new lln.LinkedListNode(value, this.head);
     this.head = newNode;
 
     // If there is no tail yet let's make new node a tail.
@@ -38,7 +38,7 @@ class LinkedList {
    * @return {LinkedList}
    */
   append(value) {
-    const newNode = new LinkedListNode(value);
+    const newNode = new lln.LinkedListNode(value);
 
     // If there is no head yet let's make new node a head.
     if (!this.head) {
