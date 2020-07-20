@@ -9,5 +9,11 @@ describe('longestIncreasingPath', () => {
       [6, 6, 8],
       [2, 1, 1],
     ])).toBe(4);
+
+    expect(lip.longestIncreasingPath([
+      [9, 10, 11],
+      [6, 6, 8],
+      [2, 1, 1],
+    ])).toBe(6);
   });
 });
