@@ -1,4 +1,4 @@
-const cc = require('../../src/dfs/connectedCells');
+const cc = require('../../src/floodFill/connectedCells');
 
 describe('DFS: connectedCell', () => {
   it('should return 5', async () => {
