@@ -4,7 +4,7 @@ const ast = require('../../src/dfs/astronauts');
 // numbered 0 through 3.
 // 1   2
 // 2   3
-// Astronauts by country are [0]  and [1,2,3].
+// Astronauts by country are [0] and [1,2,3].
 // There are 3 pairs to choose
 // from: [0,1], [0,2] and [0,3].
 describe('DFS astraunauts', () => {

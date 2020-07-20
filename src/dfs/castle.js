@@ -14,8 +14,8 @@ class Point {
  * Prints an integer denoting the minimum number of steps required
  * to move the castle to the goal position.
  * @param {array} grid - matrix of integers
- * @param {number} startRow - target cell X
- * @param {number} startCol - target cell X
+ * @param {number} startRow - start cell X
+ * @param {number} startCol - start cell Y
  * @param {number} endRow - target cell X
  * @param {number} endCol - target cell Y
  * @return {number} - the number of moves it will take
