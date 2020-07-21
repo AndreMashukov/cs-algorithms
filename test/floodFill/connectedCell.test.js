@@ -9,6 +9,7 @@ describe('DFS: connectedCell', () => {
       [1, 0, 0, 0],
     ])).toEqual(5);
   });
+
   it('should return 5', async () => {
     expect(cc.connectedCell([
       [1, 1, 0, 0, 0],

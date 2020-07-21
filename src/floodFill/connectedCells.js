@@ -6,31 +6,19 @@
  * region in the given matrix.
  */
 function connectedCell(matrix) {
-  let max = 0;
   const len = matrix.length;
   const regions = [];
-  const regions1 = [];
-  const visited = new Set;
-  const traverse = function(x, y, current = undefined) {
+  const visited = new Set();
+  const traverse = function(x, y, current = []) {
     if (!matrix[x]) return; // out of bounds
     const cell = matrix[x][y];
     if (cell) {
-      if (visited.has(x+'_'+y)) {
+      if (visited.has(x + '_' + y)) {
         return;
       }
-      // If is a new independent node and we are starting a region
-      if (current === undefined) {
-        current = regions.length;
-        regions.push(0);
-      }
-      // Track the amout of entries in this region
-      regions[current]++;
-      // Update max
-      if (regions[current] > max) {
-        max = regions[current];
-      }
       // Check all neighbours
-      visited.add(x+'_'+y);
+      visited.add(x + '_' + y);
+      current.push(x + '_' + y);
       traverse(x + 1, y + 1, current);
       traverse(x + 1, y, current);
       traverse(x + 1, y - 1, current);
@@ -39,7 +27,6 @@ function connectedCell(matrix) {
       traverse(x - 1, y + 1, current);
       traverse(x - 1, y, current);
       traverse(x - 1, y - 1, current);
-      console.log(visited);
       return current;
     }
   };
@@ -47,19 +34,16 @@ function connectedCell(matrix) {
   // Test this for all matrix nodes
   for (let y = 0; y < len; y++) {
     for (let x = 0; x < len; x++) {
-      if (visited.has(x+'_'+y)) {
-        continue;
-      }
       const region = traverse(x, y);
       if (region) {
-        regions1.push(region);
+        regions.push(region);
       }
     }
   }
 
-  console.log(regions1);
   // Return the global max
-  return max;
+  return regions.map((region) => region.length)
+      .sort((a, b) => b - a)[0];
 }
 
 module.exports.connectedCell = connectedCell;

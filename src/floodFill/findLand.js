@@ -1,17 +1,17 @@
 /**
  * It should return an array of lands
- * @param {matrix} arr - multi dimensional array.
+ * @param {matrix} matrix - multi dimensional array.
  * @return {array} - lands found
  */
-function findLand(arr) {
+function findLand(matrix) {
   const lands = [];
   // the current group
   const visited = new Set;
   // coords we've seen (set is quicker to lookup).
 
   // iterate the rows AND columns
-  for (let i=0; i<arr.length; i++) {
-    for (let j=0; j < arr[i].length; j++) {
+  for (let i=0; i<matrix.length; i++) {
+    for (let j=0; j < matrix[i].length; j++) {
       if (visited.has(i+'_'+j)) {
         continue;
       }
@@ -31,10 +31,10 @@ function findLand(arr) {
    * @return {array} - current cells
    */
   function traverse(x, y, current = []) { // keep current local
-    if (x<0 || y<0 || x > arr.length-1 || y > arr[0].length-1) {
+    if (x<0 || y<0 || x > matrix.length-1 || y > matrix[0].length-1) {
       return;
     }
-    if (arr[x][y]!=1 || visited.has(x+'_'+y)) {
+    if (matrix[x][y]!=1 || visited.has(x+'_'+y)) {
       return;
     }
     current.push(x+'_'+y);
