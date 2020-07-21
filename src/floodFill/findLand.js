@@ -12,14 +12,13 @@ function findLand(matrix) {
   // iterate the rows AND columns
   for (let i=0; i<matrix.length; i++) {
     for (let j=0; j < matrix[i].length; j++) {
-      if (visited.has(i+'_'+j)) {
-        continue;
-      }
-      // don't call function on visited coords
-      const land = traverse(i, j);
-      if (land) {
+      if (!visited.has(i+'_'+j)) {
+        // don't call function on visited coords
+        const land = traverse(i, j);
+        if (land) {
         // land will be undefined if traverse returns undefined
-        lands.push(land);
+          lands.push(land);
+        }
       }
     }
   }

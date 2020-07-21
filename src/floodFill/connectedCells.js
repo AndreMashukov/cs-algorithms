@@ -34,9 +34,11 @@ function connectedCell(matrix) {
   // Test this for all matrix nodes
   for (let y = 0; y < len; y++) {
     for (let x = 0; x < len; x++) {
-      const region = traverse(x, y);
-      if (region) {
-        regions.push(region);
+      if (!visited.has(x+'_'+y)) {
+        const region = traverse(x, y);
+        if (region) {
+          regions.push(region);
+        }
       }
     }
   }
