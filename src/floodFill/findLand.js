@@ -12,7 +12,9 @@ function findLand(arr) {
   // iterate the rows AND columns
   for (let i=0; i<arr.length; i++) {
     for (let j=0; j < arr[i].length; j++) {
-      if (visited.has(i+'_'+j)) continue;
+      if (visited.has(i+'_'+j)) {
+        continue;
+      }
       // don't call function on visited coords
       const land = traverse(i, j);
       if (land) {
