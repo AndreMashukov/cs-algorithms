@@ -9,36 +9,36 @@ function connectedCell(matrix) {
   let max = 0;
   const len = matrix.length;
   const regions = [];
-  const checkIfOnRegion = function(x, y, regionId = undefined) {
+  const traverse = function(x, y, current = undefined) {
     if (!matrix[x]) return; // out of bounds
-    const m = matrix[x][y];
-    if (m) {
+    const cell = matrix[x][y];
+    if (cell) {
       matrix[x][y] = 0; // Set it as visited
       // If is a new independent node and we are starting a region
-      if (undefined === regionId) {
-        regionId = regions.length;
+      if (current === undefined) {
+        current = regions.length;
         regions.push(0);
       }
       // Track the amout of entries in this region
-      regions[regionId]++;
+      regions[current]++;
       // Update max
-      if (regions[regionId] > max) max = regions[regionId];
+      if (regions[current] > max) max = regions[current];
       // Check all neighbours
-      checkIfOnRegion(x + 1, y + 1, regionId);
-      checkIfOnRegion(x + 1, y, regionId);
-      checkIfOnRegion(x + 1, y - 1, regionId);
-      checkIfOnRegion(x, y + 1, regionId);
-      checkIfOnRegion(x, y - 1, regionId);
-      checkIfOnRegion(x - 1, y + 1, regionId);
-      checkIfOnRegion(x - 1, y, regionId);
-      checkIfOnRegion(x - 1, y - 1, regionId);
+      traverse(x + 1, y + 1, current);
+      traverse(x + 1, y, current);
+      traverse(x + 1, y - 1, current);
+      traverse(x, y + 1, current);
+      traverse(x, y - 1, current);
+      traverse(x - 1, y + 1, current);
+      traverse(x - 1, y, current);
+      traverse(x - 1, y - 1, current);
     }
   };
 
   // Test this for all matrix nodes
   for (let y = 0; y < len; y++) {
     for (let x = 0; x < len; x++) {
-      checkIfOnRegion(x, y);
+      traverse(x, y);
     }
   }
   // Return the global max
