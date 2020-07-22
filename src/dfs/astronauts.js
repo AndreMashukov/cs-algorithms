@@ -1,3 +1,7 @@
+const gr = require('../../src/shared/Graph/Graph');
+const grv = require('../../src/shared/Graph/GraphVertex');
+const gre = require('../../src/shared/Graph/GraphEdge');
+const dfs = require('./depthFirstSearch');
 /**
  * It should return an integer that represents
  * the number of valid pairs that can be formed.
@@ -7,6 +11,9 @@
  *  from different coutries..
  */
 function journeyDfs(n, astronaut) {
+  const graph = new gr.Graph(true);
+  const vertexMap = new Map;
+  const visitedArray = [];
   const pairs = astronaut;
   const countryCounts = [];
   const visited = [];
@@ -15,8 +22,30 @@ function journeyDfs(n, astronaut) {
   // add opposite edges to pairs
   astronaut.forEach((pair) => {
     pairs.push([pair[1], pair[0]]);
+    vertexMap.set(pair[0], new grv.GraphVertex(`${pair[0]}`));
+    vertexMap.set(pair[1], new grv.GraphVertex(`${pair[1]}`));
   });
 
+  pairs.forEach((pair) => {
+    const edge = new gre.GraphEdge(vertexMap.get(pair[0]),
+        vertexMap.get(pair[1]));
+    graph.addEdge(edge);
+  });
+
+  const enterVertexCallback = (vertex) => {
+    console.log('enter vertex', vertex.currentVertex);
+    visitedArray.push(parseInt(vertex.currentVertex.value, 0));
+  };
+
+  vertexMap.forEach((value, key) => {
+    if (!visitedArray.includes(key)) {
+      dfs.depthFirstSearch(graph, vertexMap.get(key), {
+        enterVertex: enterVertexCallback,
+      });
+    }
+  });
+
+  console.log(visitedArray);
   // launch DFS from first non-visited pair
   pairs.forEach((pair) => {
     if (!visited[pair[0]]) {
