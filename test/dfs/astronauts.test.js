@@ -8,28 +8,28 @@ const ast = require('../../src/dfs/astronauts');
 // There are 3 pairs to choose
 // from: [0,1], [0,2] and [0,3].
 describe('DFS astraunauts', () => {
-  // it('should return 3 for set [1 , 2], [2, 3]', async () => {
-  //   // n = 4 the number of astronauts and
-  //   // the number of pairs = 2.
-  //   expect(
-  //       ast.journeyDfs(4, [
-  //         [1, 3],
-  //         [2, 3],
-  //       ]),
-  //   ).toEqual(3);
-  // });
+  it('should return 3 for set [1 , 2], [2, 3]', async () => {
+    // n = 4 the number of astronauts and
+    // the number of pairs = 2.
+    expect(
+        ast.journeyDfs(4, [
+          [1, 3],
+          [2, 3],
+        ]),
+    ).toEqual(3);
+  });
 
-  // it('should return 6', async () => {
-  //   // n = 5 the number of astronauts and
-  //   // the number of pairs = 3.
-  //   expect(
-  //       ast.journeyDfs(5, [
-  //         [0, 1],
-  //         [2, 3],
-  //         [0, 4],
-  //       ]),
-  //   ).toEqual(6);
-  // });
+  it('should return 6', async () => {
+    // n = 5 the number of astronauts and
+    // the number of pairs = 3.
+    expect(
+        ast.journeyDfs(5, [
+          [0, 1],
+          [2, 3],
+          [0, 4],
+        ]),
+    ).toEqual(6);
+  });
 
   it('should return 23', async () => {
     // n = 10 the number of astronauts and

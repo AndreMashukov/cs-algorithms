@@ -15,9 +15,7 @@ function journeyDfs(n, astronaut) {
   const vertexMap = new Map;
   const visitedArray = [];
   const pairs = astronaut;
-  const countryCounts = [];
   const countryCounts1 = [];
-  const visited = [];
   let totalVisited = 0;
   let count1 = 0;
 
@@ -35,9 +33,10 @@ function journeyDfs(n, astronaut) {
   });
 
   const enterVertexCallback = (vertex) => {
-    // console.log('enter vertex', vertex.currentVertex);
-    visitedArray.push(parseInt(vertex.currentVertex.value, 0));
+    const value = parseInt(vertex.currentVertex.value, 0);
+    visitedArray.push(value);
     count1++;
+    totalVisited++;
   };
 
   vertexMap.forEach((value, key) => {
@@ -47,19 +46,10 @@ function journeyDfs(n, astronaut) {
         enterVertex: enterVertexCallback,
       });
       countryCounts1.push(count1-1);
+      totalVisited--;
     }
   });
 
-
-  // launch DFS from first non-visited pair
-  pairs.forEach((pair) => {
-    if (!visited[pair[0]]) {
-      const count = runDFS(pair[0]);
-      // console.log(pair[0] + ' count is:  ' + count );
-      countryCounts.push(count);
-    }
-  });
-  // console.log(countryCounts1);
   console.log(countryCounts1);
 
   // console.log('Done with pairs, countryCounts is: '+countryCounts);
@@ -67,9 +57,9 @@ function journeyDfs(n, astronaut) {
   // multiply countryCounts in one loop instead of two
   let sum = 0;
   let multiplier = 0;
-  for (let j=0; j < countryCounts.length; j++) {
-    sum += multiplier * countryCounts[j];
-    multiplier += countryCounts[j];
+  for (let j=0; j < countryCounts1.length; j++) {
+    sum += multiplier * countryCounts1[j];
+    multiplier += countryCounts1[j];
   }
 
   // console.log('Total Country pairs is '+sum);
@@ -95,29 +85,6 @@ function journeyDfs(n, astronaut) {
 
   // console.log('The final TOTAL is  '+totalPairs);
   return totalPairs;
-
-  /**
- * DFS function
- * @param {object} node - node.
- * @return {number} - count
- */
-  function runDFS(node) {
-    let count = 1;
-    visited[node] = true;
-    totalVisited ++;
-
-    // get all value with this key
-    const myEdges = pairs.filter((pair) => {
-      return pair[0] === node;
-    });
-
-    myEdges.forEach((edge) => {
-      if (!visited[edge[1]]) {
-        count += runDFS(edge[1]);
-      }
-    });
-    return count;
-  }
 }
 
 module.exports.journeyDfs = journeyDfs;
