@@ -15,9 +15,9 @@ function journeyDfs(n, astronaut) {
   const vertexMap = new Map;
   const visitedArray = [];
   const pairs = astronaut;
-  const countryCounts1 = [];
+  const countryCounts = [];
   let totalVisited = 0;
-  let count1 = 0;
+  let count = 0;
 
   // add opposite edges to pairs
   astronaut.forEach((pair) => {
@@ -35,31 +35,29 @@ function journeyDfs(n, astronaut) {
   const enterVertexCallback = (vertex) => {
     const value = parseInt(vertex.currentVertex.value, 0);
     visitedArray.push(value);
-    count1++;
+    count++;
     totalVisited++;
   };
 
   vertexMap.forEach((value, key) => {
     if (!visitedArray.includes(key)) {
-      count1 = 0;
+      count = 0;
       dfs.depthFirstSearch(graph, vertexMap.get(key), {
         enterVertex: enterVertexCallback,
       });
-      countryCounts1.push(count1-1);
+      countryCounts.push(count-1);
       totalVisited--;
     }
   });
-
-  console.log(countryCounts1);
 
   // console.log('Done with pairs, countryCounts is: '+countryCounts);
 
   // multiply countryCounts in one loop instead of two
   let sum = 0;
   let multiplier = 0;
-  for (let j=0; j < countryCounts1.length; j++) {
-    sum += multiplier * countryCounts1[j];
-    multiplier += countryCounts1[j];
+  for (let j=0; j < countryCounts.length; j++) {
+    sum += multiplier * countryCounts[j];
+    multiplier += countryCounts[j];
   }
 
   // console.log('Total Country pairs is '+sum);
@@ -68,7 +66,6 @@ function journeyDfs(n, astronaut) {
   // console.log('Num singles is ' + singles);
 
   const sumOfCountryCounts = multiplier;
-  // save for later
 
   const localSinglesPairs =
     ((singles*(singles+1))/2)-singles;
