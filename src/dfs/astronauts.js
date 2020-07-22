@@ -21,7 +21,7 @@ function journeyDfs(n, astronaut) {
 
   // add opposite edges to pairs
   astronaut.forEach((pair) => {
-    pairs.push([pair[1], pair[0]]);
+    pairs.push([pair[1], pair[0]]); // !
     vertexMap.set(pair[0], new grv.GraphVertex(`${pair[0]}`));
     vertexMap.set(pair[1], new grv.GraphVertex(`${pair[1]}`));
   });
