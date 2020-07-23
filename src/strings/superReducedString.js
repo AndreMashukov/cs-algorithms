@@ -14,7 +14,8 @@ function reduceStr(s, index) {
   if (rightPart.length > 0 && s.charAt(index) === rightPart.charAt(0)) {
     return rightPart.slice(1);
   }
-
+  // console.log('s.charAt(index)', s.charAt(index));
+  // console.log('rightPart', rightPart);
   return s.charAt(index) + rightPart;
 }
 
