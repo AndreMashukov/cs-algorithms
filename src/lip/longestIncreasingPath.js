@@ -18,35 +18,44 @@ const longestIncreasingPath = (matrix) => {
   // save the maximum path length
   // of each point as a starting point
   const dp = Array(deep).fill(0).map((x) => Array(width).fill(0));
-  let finalMatrix;
 
   const dfs = function(i, j) {
     if (dp[i][j] > 0) {
       return dp[i][j];
     }
+
     let mx = 1;
+
+    // Traverse in 4 directions
     for (let k = 0; k < direct.length; k++) {
       const x = i + direct[k][0];
       const y = j + direct[k][1];
       if (x < 0 || x >= deep || y < 0 || y >= width) {
-        // skip over range
+        // if it's over the range
+        // then skip
         continue;
       }
       if (matrix[x][y] <= matrix[i][j]) {
-        // is not an incremental skip
+        // if it is not an incremental
+        // then skip
         continue;
       }
       const len = dfs(x, y) + 1;
       mx = Math.max(mx, len);
     }
+
     dp[i][j] = mx;
     return mx;
   };
+
+  // Applying dfs to each cell
   for (let i = 0; i < deep; i++) {
     for (let j = 0; j < width; j++) {
       max = Math.max(max, dfs(i, j));
     }
   }
+
+  // console.log(dp);
   return max;
 };
 
