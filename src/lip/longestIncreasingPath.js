@@ -55,6 +55,14 @@ const longestIncreasingPath = (matrix) => {
     }
   }
 
+  // const path = [];
+  // for (let i = 0; i < deep; i++) {
+  //   for (let j = 0; j < width; j++) {
+  //     if (dp[i][j] > 1) {
+  //       path.push(i + '_' + j);
+  //     }
+  //   }
+  // }
   // console.log(dp);
   return max;
 };
@@ -65,3 +73,8 @@ module.exports.longestIncreasingPath = longestIncreasingPath;
 // [3, 3, 3], =>
 // [ [ 4, 3, 2 ], [ 1, 1, 1 ] ] =>
 // ['0_0', '0_1', '0_2', '1_0']
+
+// [9, 9, 4],
+// [6, 6, 8],
+// [2, 1, 1], =>
+// [ [ 1, 1, 2 ], [ 2, 2, 1 ], [ 3, 4, 2 ] ]
