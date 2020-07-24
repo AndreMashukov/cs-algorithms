@@ -1,7 +1,7 @@
 
 /**
  * Compares values in array
- * @param {string} s - substring.
+ * @param {string} s - string.
  * @param {number} index - index.
  * @return {string} - reduced string
  */
@@ -18,7 +18,6 @@ function reduceStr(s, index) {
   // console.log('rightPart', rightPart);
   return s.charAt(index) + rightPart;
 }
-
 
 /**
  * Compares values in array
