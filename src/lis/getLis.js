@@ -36,7 +36,7 @@ function longestIncreasingSubsequence(array) {
       if (sequencePositions[i] < sequencePositions[i + 1]) {
         longestIncreasingSubsequence[i] = array[sequencePositions[i]];
       } else {
-        for (j = sequencePositions[i + 1] - 1; j >= 0; j--) {
+        for (let j = sequencePositions[i + 1] - 1; j >= 0; j--) {
           if (array[j] >= array[sequencePositions[i]] && array[j] <=
               array[sequencePositions[i + 1]]) {
             longestIncreasingSubsequence[i] = array[j];

@@ -11,7 +11,7 @@ function lowri(graph, startVertex) {
   const distances = {};
   const previous = {};
 
-  for (vertex in graph.vertices) {
+  for (const vertex in graph.vertices) {
     if (graph.vertices.hasOwnProperty(vertex)) {
       if (vertex === startVertex) {
         distances[vertex] = 0;
