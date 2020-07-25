@@ -198,4 +198,4 @@ class Graph {
   }
 }
 
-module.exports.Graph = Graph;
+exports.default = Graph;

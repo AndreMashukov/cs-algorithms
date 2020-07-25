@@ -1,11 +1,11 @@
-const gr = require('../../src/shared/Graph/Graph');
+const Graph = require('../../src/shared/Graph/Graph').default;
 const grv = require('../../src/shared/Graph/GraphVertex');
 const gre = require('../../src/shared/Graph/GraphEdge');
 const dfs = require('../../src/dfs/depthFirstSearch');
 
 describe('depthFirstSearch', () => {
   it('should perform DFS operation on graph', () => {
-    const graph = new gr.Graph(true);
+    const graph = new Graph(true);
 
     const vertexA = new grv.GraphVertex('A');
     const vertexB = new grv.GraphVertex('B');
@@ -93,7 +93,7 @@ describe('depthFirstSearch', () => {
   });
 
   it('allow users to redefine vertex visiting logic', () => {
-    const graph = new gr.Graph(true);
+    const graph = new Graph(true);
 
     const vertexA = new grv.GraphVertex('A');
     const vertexB = new grv.GraphVertex('B');

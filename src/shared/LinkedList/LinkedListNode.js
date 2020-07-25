@@ -12,4 +12,4 @@ class LinkedListNode {
   }
 }
 
-module.exports.LinkedListNode = LinkedListNode;
+exports.default = LinkedListNode;

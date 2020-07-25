@@ -1,4 +1,4 @@
-const ll = require('../LinkedList/LinkedList');
+const LinkedList = require('../LinkedList/LinkedList').default;
 
 /** Class representing a graph vertex. */
 class GraphVertex {
@@ -26,7 +26,7 @@ class GraphVertex {
     // Normally you would store string value like vertex name.
     // But generally it may be any object as well
     this.value = value;
-    this.edges = new ll.LinkedList(edgeComparator);
+    this.edges = new LinkedList(edgeComparator);
   }
 
   /**

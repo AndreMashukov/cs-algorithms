@@ -1,4 +1,4 @@
-const gr = require('../../src/shared/Graph/Graph');
+const Graph = require('../../src/shared/Graph/Graph').default;
 const grv = require('../../src/shared/Graph/GraphVertex');
 const gre = require('../../src/shared/Graph/GraphEdge');
 const dfs = require('./depthFirstSearch');
@@ -11,7 +11,7 @@ const dfs = require('./depthFirstSearch');
  *  from different coutries..
  */
 function journeyDfs(n, astronaut) {
-  const graph = new gr.Graph(true);
+  const graph = new Graph(true);
   const vertexMap = new Map;
   const visitedArray = [];
   const pairs = astronaut;

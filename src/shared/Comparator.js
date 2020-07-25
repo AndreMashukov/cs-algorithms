@@ -83,4 +83,4 @@ class Comparator {
   }
 }
 
-module.exports.Comparator = Comparator;
+exports.default = Comparator;
