@@ -144,4 +144,4 @@ class GraphVertex {
   }
 }
 
-module.exports.GraphVertex = GraphVertex;
+exports.default = GraphVertex;

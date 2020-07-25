@@ -40,4 +40,4 @@ class GraphEdge {
   }
 }
 
-module.exports.GraphEdge = GraphEdge;
+exports.default = GraphEdge;

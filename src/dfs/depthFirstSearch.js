@@ -73,4 +73,4 @@ function depthFirstSearch(graph, startVertex, callbacks) {
       previousVertex, initCallbacks(callbacks));
 }
 
-module.exports.depthFirstSearch = depthFirstSearch;
+exports.default = depthFirstSearch;

@@ -1,28 +1,28 @@
 const Graph = require('../../src/shared/Graph/Graph').default;
-const grv = require('../../src/shared/Graph/GraphVertex');
-const gre = require('../../src/shared/Graph/GraphEdge');
-const dfs = require('../../src/dfs/depthFirstSearch');
+const GraphVertex = require('../../src/shared/Graph/GraphVertex').default;
+const GraphEdge = require('../../src/shared/Graph/GraphEdge').default;
+const depthFirstSearch = require('../../src/dfs/depthFirstSearch').default;
 
 describe('depthFirstSearch', () => {
   it('should perform DFS operation on graph', () => {
     const graph = new Graph(true);
 
-    const vertexA = new grv.GraphVertex('A');
-    const vertexB = new grv.GraphVertex('B');
-    const vertexC = new grv.GraphVertex('C');
-    const vertexD = new grv.GraphVertex('D');
-    const vertexE = new grv.GraphVertex('E');
-    const vertexF = new grv.GraphVertex('F');
-    const vertexG = new grv.GraphVertex('G');
+    const vertexA = new GraphVertex('A');
+    const vertexB = new GraphVertex('B');
+    const vertexC = new GraphVertex('C');
+    const vertexD = new GraphVertex('D');
+    const vertexE = new GraphVertex('E');
+    const vertexF = new GraphVertex('F');
+    const vertexG = new GraphVertex('G');
 
-    const edgeAB = new gre.GraphEdge(vertexA, vertexB);
-    const edgeBC = new gre.GraphEdge(vertexB, vertexC);
-    const edgeCG = new gre.GraphEdge(vertexC, vertexG);
-    const edgeAD = new gre.GraphEdge(vertexA, vertexD);
-    const edgeAE = new gre.GraphEdge(vertexA, vertexE);
-    const edgeEF = new gre.GraphEdge(vertexE, vertexF);
-    const edgeFD = new gre.GraphEdge(vertexF, vertexD);
-    const edgeDG = new gre.GraphEdge(vertexD, vertexG);
+    const edgeAB = new GraphEdge(vertexA, vertexB);
+    const edgeBC = new GraphEdge(vertexB, vertexC);
+    const edgeCG = new GraphEdge(vertexC, vertexG);
+    const edgeAD = new GraphEdge(vertexA, vertexD);
+    const edgeAE = new GraphEdge(vertexA, vertexE);
+    const edgeEF = new GraphEdge(vertexE, vertexF);
+    const edgeFD = new GraphEdge(vertexF, vertexD);
+    const edgeDG = new GraphEdge(vertexD, vertexG);
 
     graph
         .addEdge(edgeAB)
@@ -40,10 +40,10 @@ describe('depthFirstSearch', () => {
     const leaveVertexCallback = jest.fn();
 
     // Traverse graphs without callbacks first to check default ones.
-    dfs.depthFirstSearch(graph, vertexA);
+    depthFirstSearch(graph, vertexA);
 
     // Traverse graph with enterVertex and leaveVertex callbacks.
-    dfs.depthFirstSearch(graph, vertexA, {
+    depthFirstSearch(graph, vertexA, {
       enterVertex: enterVertexCallback,
       leaveVertex: leaveVertexCallback,
     });
@@ -95,22 +95,22 @@ describe('depthFirstSearch', () => {
   it('allow users to redefine vertex visiting logic', () => {
     const graph = new Graph(true);
 
-    const vertexA = new grv.GraphVertex('A');
-    const vertexB = new grv.GraphVertex('B');
-    const vertexC = new grv.GraphVertex('C');
-    const vertexD = new grv.GraphVertex('D');
-    const vertexE = new grv.GraphVertex('E');
-    const vertexF = new grv.GraphVertex('F');
-    const vertexG = new grv.GraphVertex('G');
+    const vertexA = new GraphVertex('A');
+    const vertexB = new GraphVertex('B');
+    const vertexC = new GraphVertex('C');
+    const vertexD = new GraphVertex('D');
+    const vertexE = new GraphVertex('E');
+    const vertexF = new GraphVertex('F');
+    const vertexG = new GraphVertex('G');
 
-    const edgeAB = new gre.GraphEdge(vertexA, vertexB);
-    const edgeBC = new gre.GraphEdge(vertexB, vertexC);
-    const edgeCG = new gre.GraphEdge(vertexC, vertexG);
-    const edgeAD = new gre.GraphEdge(vertexA, vertexD);
-    const edgeAE = new gre.GraphEdge(vertexA, vertexE);
-    const edgeEF = new gre.GraphEdge(vertexE, vertexF);
-    const edgeFD = new gre.GraphEdge(vertexF, vertexD);
-    const edgeDG = new gre.GraphEdge(vertexD, vertexG);
+    const edgeAB = new GraphEdge(vertexA, vertexB);
+    const edgeBC = new GraphEdge(vertexB, vertexC);
+    const edgeCG = new GraphEdge(vertexC, vertexG);
+    const edgeAD = new GraphEdge(vertexA, vertexD);
+    const edgeAE = new GraphEdge(vertexA, vertexE);
+    const edgeEF = new GraphEdge(vertexE, vertexF);
+    const edgeFD = new GraphEdge(vertexF, vertexD);
+    const edgeDG = new GraphEdge(vertexD, vertexG);
 
     graph
         .addEdge(edgeAB)
@@ -127,7 +127,7 @@ describe('depthFirstSearch', () => {
     const enterVertexCallback = jest.fn();
     const leaveVertexCallback = jest.fn();
 
-    dfs.depthFirstSearch(graph, vertexA, {
+    depthFirstSearch(graph, vertexA, {
       enterVertex: enterVertexCallback,
       leaveVertex: leaveVertexCallback,
       allowTraversal: ({currentVertex, nextVertex}) => {
