@@ -1,8 +1,8 @@
 /** Class for solving KnightTour problem. */
 class KnightTour {
   /**
-   * Solves Knight’s Tour Problem for nxn matrix.
-   * @param {number} n - graph we're going to traverse.
+   * Constructs a nxn matrix.
+   * @param {number} n - dimension.
    */
   constructor(n) {
     this.solution = Array(n)
