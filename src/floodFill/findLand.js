@@ -48,4 +48,4 @@ function findLand(matrix) {
   return lands;
 }
 
-module.exports.findLand = findLand;
+exports.default = findLand;

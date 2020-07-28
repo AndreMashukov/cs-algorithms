@@ -100,7 +100,7 @@ function minimumMoves(grid, startRow, startCol, endRow, endCol) {
   }
 }
 
-module.exports.minimumMoves = minimumMoves;
+exports.default = minimumMoves;
 
 // You are given a square grid with
 // some cells open (.) and some blocked (X).
@@ -121,7 +121,7 @@ module.exports.minimumMoves = minimumMoves;
 // [ [ 100, -1, 100 ],
 //   [ 100, -1, 100 ],
 //   [ 100, 100, 100 ] ]
-// helper:
+// visited:
 // [ [ 1, 0, 1 ],
 //   [ 1, 0, 1 ],
 //   [ 1, 1, 1 ] ]

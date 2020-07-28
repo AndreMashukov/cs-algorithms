@@ -48,7 +48,7 @@ function connectedCell(matrix) {
       .sort((a, b) => b - a)[0];
 }
 
-module.exports.connectedCell = connectedCell;
+exports.default = connectedCell;
 
 // Consider a matrix where each cell contains either a 0 or a 1.
 // Any cell containing a 1 is called a filled cell.

@@ -1,8 +1,8 @@
-const cc = require('../../src/floodFill/connectedCells');
+const connectedCell = require('../../src/floodFill/connectedCells').default;
 
 describe('DFS: connectedCell', () => {
   it('should return 5', async () => {
-    expect(cc.connectedCell([
+    expect(connectedCell([
       [1, 1, 0, 0],
       [0, 1, 1, 0],
       [0, 0, 1, 0],
@@ -11,7 +11,7 @@ describe('DFS: connectedCell', () => {
   });
 
   it('should return 5', async () => {
-    expect(cc.connectedCell([
+    expect(connectedCell([
       [1, 1, 0, 0],
       [0, 1, 0, 0],
       [0, 0, 1, 0],
@@ -20,7 +20,7 @@ describe('DFS: connectedCell', () => {
   });
 
   it('should return 5', async () => {
-    expect(cc.connectedCell([
+    expect(connectedCell([
       [1, 1, 0, 0, 0],
       [0, 1, 1, 0, 0],
       [0, 0, 1, 0, 1],

@@ -1,8 +1,8 @@
-const castle = require('../../src/dfs/castle');
+const minimumMoves = require('../../src/dfs/castle').default;
 
 describe('DFS: Castle', () => {
   it('should return 3', async () => {
-    expect(castle.minimumMoves([
+    expect(minimumMoves([
       '.X.',
       '.X.',
       '...',
@@ -10,7 +10,7 @@ describe('DFS: Castle', () => {
   });
 
   it('should return 2', async () => {
-    expect(castle.minimumMoves([
+    expect(minimumMoves([
       '...',
       '.X.',
       '.X.',

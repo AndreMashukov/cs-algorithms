@@ -44,4 +44,4 @@ const editDistance = function(a, b) {
   return row[a.length];
 };
 
-module.exports.editDistanceLara = editDistance;
+exports.default = editDistance;
