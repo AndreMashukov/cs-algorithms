@@ -29,11 +29,15 @@ function minimumMoves(grid, startRow, startCol, endRow, endCol) {
   const goalY = endCol;
 
   const n = grid.length;
-  const game = Array(n).fill(0).map((x) => Array(n).fill(0));
+  const game = Array(n)
+      .fill(0)
+      .map((x) => Array(n).fill(0));
   // store 1 if that node has been visited, else 0.
-  const visited = Array(n).fill(0).map((x) => Array(n).fill(0));
-  for (let i=0; i<n; i++) {
-    for (let j=0; j<n; j++) {
+  const visited = Array(n)
+      .fill(0)
+      .map((x) => Array(n).fill(0));
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
       if (grid[i].charAt(j) === '.') {
         game[i][j] = 100;
       } else {
@@ -47,55 +51,57 @@ function minimumMoves(grid, startRow, startCol, endRow, endCol) {
   game[startX][startY] = 0;
 
   while (move.length > 0) {
-    const current = move.pop();
+    // const current = move.pop();
+    const current = move.shift();
     if (visited[current.x][current.y] === 0) {
       visited[current.x][current.y] = 1;
+      // Adds new moves
       moveGenerator(current, grid.length, move);
     }
   }
   return game[goalX][goalY];
 
   /**
- * Add a new Point to move array
- * @param {Point} p -point
- * @param {number} n - grid.length
- * @param {array} _move - array of points
- */
+   * Add a new Point to move array
+   * @param {Point} p -point
+   * @param {number} n - grid.length
+   * @param {array} _move - array of points
+   */
   function moveGenerator(p, n, _move) {
     const x = p.x;
     const y = p.y;
     const value = game[x][y];
-    // Iterate from p horizontaly until reach border.
-    for (let i=x; i<n && game[i][y]!=-1; i++) {
+    // Iterate from p horizontaly right until border or block.
+    for (let i = x; i < n && game[i][y] != -1; i++) {
       addStep(i, y, value);
       _move.push(new Point(i, y));
     }
-    // Iterate from p horizontaly until reach blocked cell.
-    for (let i=x; i>=0 && game[i][y]!=-1; i--) {
+    // Iterate from p horizontaly left.
+    for (let i = x; i >= 0 && game[i][y] != -1; i--) {
       addStep(i, y, value);
       _move.push(new Point(i, y));
     }
-    // Iterate from p vertically -> border.
-    for (let i=y; i<n && game[x][i]!=-1; i++) {
+    // Iterate from p vertically -> down.
+    for (let i = y; i < n && game[x][i] != -1; i++) {
       addStep(x, i, value);
       _move.push(new Point(x, i));
     }
-    // Iterate from p vertically -> blocked cell.
-    for (let i=y; i>=0 && game[x][i]!=-1; i--) {
+    // Iterate from p vertically -> up.
+    for (let i = y; i >= 0 && game[x][i] != -1; i--) {
       addStep(x, i, value);
       _move.push(new Point(x, i));
     }
   }
 
   /**
- * Puts the number of moves on the grid
- * @param {number} x - x
- * @param {number} y - y
- * @param {number} value - number of moves made.
- */
+   * Puts the number of moves on the grid
+   * @param {number} x - x
+   * @param {number} y - y
+   * @param {number} value - number of moves made.
+   */
   function addStep(x, y, value) {
-    if (game[x][y] > value+1) {
-      game[x][y] = value+1;
+    if (game[x][y] > value + 1) {
+      game[x][y] = value + 1;
     }
   }
 }
