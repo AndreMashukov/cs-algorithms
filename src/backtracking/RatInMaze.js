@@ -16,10 +16,10 @@ class RatInMaze {
    * @return {boolean}
    */
   solveMaze(maze, N) {
-    if (findPath(maze, 0, 0, N, 'down')) {
+    if (this.findPath(maze, 0, 0, N, 'down')) {
       return true;
     } else {
-      return true;
+      return false;
     }
   }
   /**
@@ -50,34 +50,42 @@ class RatInMaze {
     // check if maze[x][y] is feasible to move
     if (x === N - 1 && y === N - 1) {
       // we have reached
-      solution[x][y] = 1;
+      this.solution[x][y] = 1;
       return true;
     }
-    if (isSafeToGo(maze, x, y, N)) {
+    if (this.isSafeToGo(maze, x, y, N)) {
       // move to maze[x][y]
-      solution[x][y] = 1;
+      this.solution[x][y] = 1;
       // now rat has four options, either go right OR go down or left or go up
-      if (direction !== 'up' && findPath(maze, x + 1, y, N, 'down')) {
+      if (direction !== 'up' && this.findPath(maze, x + 1, y, N, 'down')) {
         // go down
         return true;
       }
-      if (direction !== 'left' && findPath(maze, x, y + 1, N, 'right')) {
+      if (direction !== 'left' && this.findPath(maze, x, y + 1, N, 'right')) {
         // go right
         return true;
       }
-      if (direction !== 'down' && findPath(maze, x - 1, y, N, 'up')) {
+      if (direction !== 'down' && this.findPath(maze, x - 1, y, N, 'up')) {
         // go up
         return true;
       }
-      if (direction !== 'right' && findPath(maze, x, y - 1, N, 'left')) {
+      if (direction !== 'right' && this.findPath(maze, x, y - 1, N, 'left')) {
         // go left
         return true;
       }
       // if none of the options work out BACKTRACK undo the move
-      solution[x][y] = 0;
+      this.solution[x][y] = 0;
       return false;
     }
     return false;
+  }
+  /**
+   * Get solution
+   * @return {[][]}
+   */
+  getSolution() {
+    console.log(this.solution);
+    return this.solution;
   }
 }
 

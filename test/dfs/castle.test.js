@@ -20,6 +20,17 @@ describe('DFS: Castle', () => {
 
     expect(minimumMoves(input, 34, 28, 16, 8)).toEqual(9);
   });
+
+  it('should return 4', async () => {
+    const input = [];
+    fs.readFileSync(__dirname + '/input/castle2.txt', 'utf-8')
+        .split(/\r?\n/)
+        .forEach((line) => {
+          input.push(line);
+        });
+
+    expect(minimumMoves(input, 0, 0, 0, 4)).toEqual(4);
+  });
 });
 
 // Sample Input
@@ -34,3 +45,11 @@ describe('DFS: Castle', () => {
 // Here is a path that one could follow in order to reach
 // the destination in 3 steps:
 // (0, 0) -> (2, 0) -> (2, 2) -> (0, 2)
+
+// Algorithm will fail to find path
+// from this test case.
+// SX...
+// ...X.
+// XXX..
+// XXX.X
+// XXX.E
