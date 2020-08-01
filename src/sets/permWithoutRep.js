@@ -38,3 +38,31 @@ function permutateWithoutRepetitions(permutationOptions) {
 }
 
 module.exports.permutateWithoutRepetitions = permutateWithoutRepetitions;
+module.exports.permuteNumbers = permuteNumbers;
+
+/**
+ * @param {[]} nums
+ * @return {[][]}
+ */
+function permuteNumbers(nums) {
+  const res = [];
+  permutations(nums, []);
+  return res;
+
+  /**
+   * @param {[]} nums
+   * @param {[][]} ans
+   */
+  function permutations(nums, ans) {
+    if (nums.length == 0) {
+      res.push(ans);
+      return;
+    }
+    for (let i = 0; i < nums.length; ++i) {
+      const k = nums[i];
+      nums.splice(i, 1);
+      permutations(nums, [...ans, k]);
+      nums.splice(i, 0, k);
+    }
+  }
+};

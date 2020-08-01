@@ -66,4 +66,26 @@ describe('permutateWithoutRepetitions', () => {
         ['A', 'B', 'C', 'D', 'E', 'F']);
     expect(permutations5.length).toBe(fac.factorial(6));
   });
+
+  it('should permutate numbers', () => {
+    const permutations1 = pwr.permutateWithoutRepetitions([1, 2, 3]);
+    expect(permutations1).toContainEqual([1, 2, 3]);
+    expect(permutations1).toContainEqual([2, 1, 3]);
+    expect(permutations1).toContainEqual([2, 3, 1]);
+    expect(permutations1).toContainEqual([1, 3, 2]);
+    expect(permutations1).toContainEqual([3, 2, 1]);
+    expect(permutations1).toContainEqual([3, 1, 2]);
+    expect(permutations1.length).toEqual(6);
+  });
+
+  it('should permutate numbers using permuteNumbers', () => {
+    const permutations1 = pwr.permuteNumbers([1, 2, 3]);
+    expect(permutations1).toContainEqual([1, 2, 3]);
+    expect(permutations1).toContainEqual([2, 1, 3]);
+    expect(permutations1).toContainEqual([2, 3, 1]);
+    expect(permutations1).toContainEqual([1, 3, 2]);
+    expect(permutations1).toContainEqual([3, 2, 1]);
+    expect(permutations1).toContainEqual([3, 1, 2]);
+    expect(permutations1.length).toEqual(6);
+  });
 });
