@@ -4,7 +4,7 @@ const GraphEdge = require('../../src/shared/Graph/GraphEdge').default;
 const depthFirstSearch = require('../../src/dfs/depthFirstSearch').default;
 
 describe('depthFirstSearch', () => {
-  it('allow users to redefine vertex visiting logic', () => {
+  it('Check the graph traversal', () => {
     const graph = new Graph(true);
 
     const vertex0 = new GraphVertex('0');

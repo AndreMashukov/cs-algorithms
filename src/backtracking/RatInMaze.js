@@ -90,3 +90,36 @@ class RatInMaze {
 }
 
 exports.default = RatInMaze;
+
+
+// Approach:
+// Create a solution matrix of the same structure as maze.
+// Whenever rat moves to cell in a maze,
+// mark that particular cell in solution matrix.
+// At the end print the solution matrix, follow
+// that 1’s from the top left corner,
+// it will be that path for the rat.
+
+// Algorithm:
+// 1. If rat reaches the destination
+//     1.1. print the solution matrix.
+//     1.2. Else
+//         @. Mark the current cell in solution matrix as 1
+//         @. If previous step is not in vertical direction (upwards)
+//             then move forward in the vertical direction(downwards)
+//             and recursively check if this movement leads to solution.
+//         @. If movement in above step doesn’t lead to the solution
+//             and If previous step is not
+//             in horizontal direction (towards left)
+//             then move forward in the horizontal direction(towards right)
+//             and recursively check if this movement leads to solution.
+// 2. If movement in above step doesn’t lead to the solution and
+//     If previous step is not in vertical direction (downwards)
+//     then move forward in the horizontal direction(upwards)
+//     and recursively check if this movement leads to solution.
+// 3. If movement in above step doesn’t lead to the solution
+//     and If previous step is not in horizontal direction (towards right)
+//     then move forward in the horizontal direction(towards left)
+//     and recursively check if this movement leads to solution.
+// 4. If none of the above solution works then BACKTRACK
+//    and mark the current cell as 0.
