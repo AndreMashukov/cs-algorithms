@@ -5,13 +5,13 @@ describe('Unique subsets with repeating digits', () => {
     const target = 6;
     const arr = [2, 4, 3];
 
-    expect(findSets(arr, target).length).toEqual(3);
+    expect(findSets(arr, target).result.length).toEqual(3);
   });
 
   it('should return 4 subsets', async () => {
     const target = 8;
     const arr = [2, 6, 3, 5];
 
-    expect(findSets(arr, target).length).toEqual(4);
+    expect(findSets(arr, target).result.length).toEqual(4);
   });
 });

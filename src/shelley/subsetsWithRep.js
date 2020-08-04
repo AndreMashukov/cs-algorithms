@@ -8,9 +8,10 @@
 function findSets(array, sum) {
   const sorted = array.sort((a, b) => a - b);
   const result = [];
+  let closestSum = 0;
   combinationUtil(sorted, sum, 0, 0, []);
 
-  return result;
+  return {result, closestSum};
 
   /**
  * Make a recursive call with startIndex (to process next elements)
@@ -22,7 +23,10 @@ function findSets(array, sum) {
  * @param {array} combinationList - combinationList
  */
   function combinationUtil(arrA, sum, currSum, startIndex, combinationList) {
-    console.log(combinationList);
+    console.log(currSum);
+    if (currSum > closestSum) {
+      closestSum = currSum;
+    }
     if (currSum === sum) {
       result.push(combinationList);
     }

@@ -1,4 +1,5 @@
 const unb = require('../../src/shelley/unbounded');
+const findSets = require('../../src/shelley/subsetsWithRep').default;
 
 describe('Unbounded Knapsack problem', () => {
   it('should return 12', async () => {
@@ -20,5 +21,17 @@ describe('Unbounded Knapsack problem', () => {
     const arr = [3, 7, 9, 11];
     //  3+3+7 = 13
     expect(unb.unboundedKnapsack(target, arr)).toEqual(13);
+  });
+
+  it('should return 10', async () => {
+    const target = 11;
+    const arr = [3, 7, 9];
+    expect(findSets(arr, target).closestSum).toEqual(10);
+  });
+
+  it('should return 13', async () => {
+    const target = 13;
+    const arr = [3, 7, 9, 11];
+    expect(findSets(arr, target).closestSum).toEqual(13);
   });
 });
