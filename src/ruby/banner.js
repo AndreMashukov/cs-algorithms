@@ -20,23 +20,21 @@ function calcBannerSize(h) {
       .filter((item) => item.length > 0)
       .filter((item) => diff(item).every((val) => val === 1));
 
-  const combos = cwr.combineWithoutRepetitions(sets, 2)
+  return cwr.combineWithoutRepetitions(sets, 2)
       .filter((pair) => {
         const intersect = pair[0].filter((value) => pair[1].includes(value));
         return (intersect.length === 0 &&
         (pair[0].length + pair[1].length === h.length));
-      });
-
-  const sizes = combos.map((pair) => {
-    // console.log(pair);
-    const obj = {
-      pair,
-      size: calcSize(pair[0]) + calcSize(pair[1]),
-    };
-    return obj;
-  });
-  // console.log(sizes);
-  return sizes.sort((a, b) => a.size - b.size)[0].size;
+      })
+      .map((pair) => {
+        // console.log(pair);
+        const obj = {
+          pair,
+          size: calcSize(pair[0]) + calcSize(pair[1]),
+        };
+        return obj;
+      })
+      .sort((a, b) => a.size - b.size)[0].size;
 
   /**
  * Sizes
