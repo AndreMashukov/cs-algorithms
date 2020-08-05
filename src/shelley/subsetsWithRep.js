@@ -23,7 +23,7 @@ function findSets(array, sum) {
  * @param {array} combinationList - combinationList
  */
   function combinationUtil(arrA, sum, currSum, startIndex, combinationList) {
-    console.log(currSum);
+    // console.log(currSum);
     if (currSum > closestSum) {
       closestSum = currSum;
     }

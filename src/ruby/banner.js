@@ -20,16 +20,14 @@ function calcBannerSize(h) {
       .filter((item) => item.length > 0)
       .filter((item) => diff(item).every((val) => val === 1));
 
-  const combos = cwr.combineWithoutRepetitions(sets, 2);
-  const pairs = [];
-  combos.forEach((pair) => {
-    const intersect = pair[0].filter((value) => pair[1].includes(value));
-    if (intersect.length === 0 &&
-      (pair[0].length + pair[1].length === h.length)) {
-      pairs.push(pair);
-    }
-  });
-  const sizes = pairs.map((pair) => {
+  const combos = cwr.combineWithoutRepetitions(sets, 2)
+      .filter((pair) => {
+        const intersect = pair[0].filter((value) => pair[1].includes(value));
+        return (intersect.length === 0 &&
+        (pair[0].length + pair[1].length === h.length));
+      });
+
+  const sizes = combos.map((pair) => {
     // console.log(pair);
     const obj = {
       pair,
