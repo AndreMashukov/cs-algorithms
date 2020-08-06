@@ -15,33 +15,26 @@ const depthFirstSearch = require('./depthFirstSearch').default;
  */
 function possibleVacationsNumber(T) {
   const pairs = [];
-  // let maxDays = T.length - 1;
   // Undirected graph
   const graph = new Graph(false);
-  const vertexMap = new Map;
+  const vertexMap = new Map();
   T.forEach((Tval, index) => {
     vertexMap.set(index, new GraphVertex(`${index}`));
   });
 
   T.forEach((Tval, index) => {
-    const edge = new GraphEdge(vertexMap.get(index),
-        vertexMap.get(Tval));
+    const edge = new GraphEdge(vertexMap.get(index), vertexMap.get(Tval));
     graph.addEdge(edge);
   });
 
-  let currentStart = 0;
-
   const enterVertexCallback = (vertex) => {
     const current = parseInt(vertex.currentVertex.value, 0);
+
     // All paths are possible for vertex 0
-    if (currentStart === 0) {
-      pairs.push([0, current].sort((a, b) => a - b));
-    }
+    pairs.push([0, current].sort((a, b) => a - b));
 
     // Pairs with same values are allowed.
-    if (currentStart === current) {
-      pairs.push([current, current].sort((a, b) => a - b));
-    }
+    pairs.push([current, current].sort((a, b) => a - b));
 
     // Pairs with neighbor values are allowed
     // if the difference between them is 1
@@ -51,19 +44,13 @@ function possibleVacationsNumber(T) {
         pairs.push([current, previuos].sort((a, b) => a - b));
       }
     }
-
-    // console.log('currentVertex', vertex);
   };
 
-  vertexMap.forEach((value, key) => {
-    currentStart = key;
-    depthFirstSearch(graph, vertexMap.get(key), {
-      enterVertex: enterVertexCallback,
-    });
+  depthFirstSearch(graph, vertexMap.get(0), {
+    enterVertex: enterVertexCallback,
   });
-  const uniquePairs = new Set(pairs.map((pair) =>
-    `${pair[0]}_${pair[1]}`,
-  ));
+
+  const uniquePairs = new Set(pairs.map((pair) => `${pair[0]}_${pair[1]}`));
 
   // console.log('pairs', uniquePairs);
   return uniquePairs.size;
