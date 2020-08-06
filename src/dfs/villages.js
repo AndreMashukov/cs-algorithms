@@ -44,13 +44,15 @@ function possibleVacationsNumber(T) {
     }
 
     // Pairs with neighbor values are allowed
+    // if the difference between them is 1
     if (vertex.previousVertex) {
       const previuos = parseInt(vertex.previousVertex.value, 0);
-      const pair = [current, previuos].sort((a, b) => a - b);
-      pairs.push(pair);
+      if (Math.abs(current - previuos) === 1) {
+        pairs.push([current, previuos].sort((a, b) => a - b));
+      }
     }
 
-    console.log('currentVertex', vertex);
+    // console.log('currentVertex', vertex);
   };
 
   vertexMap.forEach((value, key) => {
@@ -63,9 +65,8 @@ function possibleVacationsNumber(T) {
     `${pair[0]}_${pair[1]}`,
   ));
 
-  console.log('pairs', uniquePairs);
-
-  return 12;
+  // console.log('pairs', uniquePairs);
+  return uniquePairs.size;
 }
 
 exports.default = possibleVacationsNumber;
