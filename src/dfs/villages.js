@@ -14,7 +14,9 @@ const depthFirstSearch = require('./depthFirstSearch').default;
  * @return {number} - returns your number of possible vacations.
  */
 function possibleVacationsNumber(T) {
-  const visitedArray = [];
+  const pairs = [];
+  // let maxDays = T.length - 1;
+  // Undirected graph
   const graph = new Graph(false);
   const vertexMap = new Map;
   T.forEach((Tval, index) => {
@@ -27,19 +29,41 @@ function possibleVacationsNumber(T) {
     graph.addEdge(edge);
   });
 
-  console.log(graph);
+  let currentStart = 0;
 
   const enterVertexCallback = (vertex) => {
-    const value = parseInt(vertex.currentVertex.value, 0);
-    visitedArray.push(value);
-    console.log('enterVertexCallback', value);
+    const current = parseInt(vertex.currentVertex.value, 0);
+    // All paths are possible for vertex 0
+    if (currentStart === 0) {
+      pairs.push([0, current].sort((a, b) => a - b));
+    }
+
+    // Pairs with same values are allowed.
+    if (currentStart === current) {
+      pairs.push([current, current].sort((a, b) => a - b));
+    }
+
+    // Pairs with neighbor values are allowed
+    if (vertex.previousVertex) {
+      const previuos = parseInt(vertex.previousVertex.value, 0);
+      const pair = [current, previuos].sort((a, b) => a - b);
+      pairs.push(pair);
+    }
+
+    console.log('currentVertex', vertex);
   };
 
-  depthFirstSearch(graph, vertexMap.get(0), {
-    enterVertex: enterVertexCallback,
+  vertexMap.forEach((value, key) => {
+    currentStart = key;
+    depthFirstSearch(graph, vertexMap.get(key), {
+      enterVertex: enterVertexCallback,
+    });
   });
+  const uniquePairs = new Set(pairs.map((pair) =>
+    `${pair[0]}_${pair[1]}`,
+  ));
 
-  console.log('visitedArray', visitedArray);
+  console.log('pairs', uniquePairs);
 
   return 12;
 }

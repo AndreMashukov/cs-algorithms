@@ -20,6 +20,7 @@ function journeyDfs(n, astronaut) {
   let count = 0;
 
   // add opposite edges to pairs
+  // (it's because the graph is undirected)
   astronaut.forEach((pair) => {
     pairs.push([pair[1], pair[0]]); // !
     vertexMap.set(pair[0], new GraphVertex(`${pair[0]}`));
