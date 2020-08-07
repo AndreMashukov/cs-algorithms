@@ -23,15 +23,14 @@ function findSets(array, sum) {
  * @param {array} combinationList - combinationList
  */
   function combinationUtil(arrA, sum, currSum, startIndex, combinationList) {
-    // console.log(currSum);
     if (currSum > closestSum) {
       closestSum = currSum;
     }
     if (currSum === sum) {
-      result.push(combinationList);
+      result.push([...combinationList]);
     }
     for (let i = startIndex; i < arrA.length; i++) {
-    // array is sorted, no need to check further
+      // array is sorted, no need to check further
       if (currSum + arrA[i] > sum) {
         break;
       }
