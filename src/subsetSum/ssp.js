@@ -28,7 +28,24 @@ function getSubsets(array, sum) {
 
   const result = [];
   fork();
-  return result;
+
+  const objects = result.map((subarray) => {
+    const obj = {
+      subarray,
+      string: subarray.sort((a, b) => a - b)
+          .reduce((accum, val) => accum += `${val}`),
+    };
+
+    return obj;
+  });
+  const filteredArray = Object.values(objects.reduce((unique, o) => {
+    if (!unique[o.string]) {
+      unique[o.string] = o.subarray;
+    }
+    return unique;
+  }, {}));
+
+  return filteredArray;
 }
 
-module.exports.getSubsets = getSubsets;
+exports.default = getSubsets;
