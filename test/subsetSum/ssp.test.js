@@ -6,7 +6,7 @@ describe('subsetSum', () => {
     expect(sets).toContainEqual([1, 2, 7, 7]);
   });
 
-  it('should return [4, 5]', async () => {
+  it('should return [4, 5] & [2, 3, 4]', async () => {
     const sets = getSubsets([3, 34, 4, 12, 5, 2], 9);
     expect(sets).toContainEqual([4, 5]);
     expect(sets).toContainEqual([2, 3, 4]);

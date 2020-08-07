@@ -6,7 +6,7 @@
 // 2. [3, 5, 11]
 // 3. [9, 7, 3]
 
-const ssp = require('./ssp');
+const getSubsets = require('./ssp').default;
 
 /**
  * Compares values in array
@@ -15,9 +15,14 @@ const ssp = require('./ssp');
  * @param {number} index - index.
  * @return {number} - integer that is greater/less than 0
  */
-function comparator(a, b, index ) {
-  if (a[index] < b[index]) return -1;
-  if (a[index] > b[index]) return 1;
+function comparator(a, b) {
+  if (a[0] < b[0]) {
+    return 1;
+  } else if (a[0] > b[0]) {
+    return -1;
+  } else {
+    return b[1] - a[1];
+  }
   return 0;
 }
 
@@ -28,7 +33,9 @@ function comparator(a, b, index ) {
  * @return {array} - max subset.
  */
 const subsetSumMax = (array, sum) => {
-  const subsets = ssp.getSubsets(array, sum);
+  const subsets = getSubsets(array, sum).map((subarray) =>
+    subarray.sort((a, b) => b - a),
+  );
 
   const minLength = subsets.reduce((accum, valArray) => {
     if (accum > valArray.length) {
@@ -38,9 +45,7 @@ const subsetSumMax = (array, sum) => {
   }, subsets[0].length);
 
   const minLengthSubsets = subsets.filter((s) => s.length === minLength);
-  return minLengthSubsets
-      .map((s) => s.sort((a, b) => b - a))
-      .map((s) => s.sort((a, b) => comparator(a, b, 0)))[0];
+  return minLengthSubsets.sort((s1, s2) => comparator(s1, s2))[0];
 };
 
 module.exports.subsetSumMax = subsetSumMax;
