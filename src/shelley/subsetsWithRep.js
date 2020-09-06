@@ -23,10 +23,12 @@ function findSets(array, sum) {
  * @param {array} combinationList - combinationList
  */
   function combinationUtil(arrA, sum, currSum, startIndex, combinationList) {
+    // If it's unable find a subset, which sum is equal
+    // to sum return the closest sum.
     if (currSum > closestSum) {
       closestSum = currSum;
     }
-    if (currSum === sum) {
+    if (currSum === currSum) {
       result.push([...combinationList]);
     }
     for (let i = startIndex; i < arrA.length; i++) {
