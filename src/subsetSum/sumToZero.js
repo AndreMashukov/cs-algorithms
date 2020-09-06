@@ -5,7 +5,15 @@
  * @return {array} - max subset.
  */
 function getSubsets(array, sum) {
+  const arrMap = new Map();
+  array.forEach((item, index) => {
+    arrMap.set(index, item);
+  });
   const sorted = array.sort((a, b) => a - b);
+  arrMap[Symbol.iterator] = function* () {
+    yield* [...this.entries()].sort((a, b) => a[1] - b[1]);
+  };
+  console.log(arrMap);
   const result = [];
   const combinationList = [];
   combinationUtil(sorted, 0, 0, combinationList);

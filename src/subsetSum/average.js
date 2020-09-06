@@ -1,10 +1,10 @@
 const getSubsets = require('./sumToZero').default;
 
 /**
- * Find all subsets that has given sum
+ * Find all subsets that has given mean
  * @param {array} array - array.
- * @param {number} mean - target sum.
- * @return {array} - max subset.
+ * @param {number} mean - target mean.
+ * @return {array} - result subsets.
  */
 function getResult(array, mean) {
   let result = [];
