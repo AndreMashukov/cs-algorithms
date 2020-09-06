@@ -31,17 +31,16 @@ function getSubsets(array, sum) {
       result.push([...combinationList]);
       return;
     }
-
-    for (let i = start; i < arrA.length; i++) {
-      // array is sorted, no need to check further
-      if ((currSum + arrA[i]) > sum) {
-        break;
+    let j = start;
+    arrMap.forEach((value, key) => {
+      if ((j >= arrA.length) || (currSum + arrA[j]) > sum) {
+        return;
       }
-
-      combinationList.push(arrA[i]);
-      combinationUtil(arrA, currSum + arrA[i], i + 1, combinationList);
+      combinationList.push(arrA[j]);
+      combinationUtil(arrA, currSum + arrA[j], j + 1, combinationList);
       combinationList.splice(combinationList.length - 1, 1);
-    }
+      j++;
+    });
   }
 }
 
