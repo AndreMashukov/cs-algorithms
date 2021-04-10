@@ -11,7 +11,7 @@ function getResult(array, mean) {
   const helper = array.map((item) => item - mean);
 
   result = getSubsets(helper, 0);
-  console.log(result);
+  // console.log(result);
 
   return result;
 }
