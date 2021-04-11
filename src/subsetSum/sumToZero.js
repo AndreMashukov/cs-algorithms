@@ -1,7 +1,7 @@
 /**
  * consecutive
  * @param {array} array - array.
- * @return {boolean} - true if vconsecutive
+ * @return {boolean} - true if consecutive
  */
 function consecutive(array) {
   let min = Number.MAX_SAFE_INTEGER;
@@ -19,7 +19,7 @@ function consecutive(array) {
 
   // for an array to contain consecutive integers, the difference between
   // the maximum and minimum element in it should be exactly `n-1`
-  if (max - min != array.length - 1) {
+  if (max - min !== array.length - 1) {
     return false;
   }
 
@@ -71,9 +71,6 @@ function getSubsets(array, sum) {
     arrMap.set(index, item);
   });
   const sorted = array.sort((a, b) => a - b);
-  arrMap[Symbol.iterator] = function* () {
-    yield* [...this.entries()].sort((a, b) => a[1] - b[1]);
-  };
   const result = [];
   const combinationList = [];
   combinationUtil(sorted, 0, 0, combinationList);
