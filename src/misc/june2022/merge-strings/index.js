@@ -10,7 +10,7 @@ function customSort({ arrayToSort, arrayString1, arrayString2 }) {
     const countForA12 = countOccurencies(arrayString2, a1);
     const countForA21 = countOccurencies(arrayString1, a2);
     const countForA22 = countOccurencies(arrayString2, a2);
-    console.log({ a1, a2, countForA11, countForA12, countForA21, countForA22 });
+    // console.log({ a1, a2, countForA11, countForA12, countForA21, countForA22 });
     if (countForA11 + countForA12 === countForA21 + countForA22) {
       // console.log(a1 < a2);
       return a1 < a2;
