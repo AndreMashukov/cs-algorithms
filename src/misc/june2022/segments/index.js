@@ -4,6 +4,7 @@ function minPoints(points, n) {
   // their second element.
   points.sort((a, b) => a[1] - b[1]);
 
+  // console.log({ points });
   // To store the solution
   const coordinates = [];
   let i = 0;
@@ -11,9 +12,10 @@ function minPoints(points, n) {
   // Iterate over all the segments
   while (i < n) {
     const seg = points[i][1];
+
     coordinates.push(seg);
     let p = i + 1;
-
+    // console.log({ i, p, seg });
     if (p >= n) break;
 
     // Get the start point of next segment
