@@ -1,6 +1,6 @@
 const { makeIncrease } = require('../../../src/misc/july2022/make-increase');
 
-describe('misc.june2022.make-increase', () => {
+describe('misc.july2022.make-increase', () => {
   it('should return true', () => {
     const result = makeIncrease.naive([1, 5, 10, 20]);
     expect(result).toEqual(true);
