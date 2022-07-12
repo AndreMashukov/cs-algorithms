@@ -4,7 +4,6 @@ const naive = (matrix, x, y) => {
   const visited = [];
   const processPoint = (x, y) => {
     if (x < lenX && y < lenY && visited[x][y] === 0) {
-      console.log({ x, y, value: matrix[x][y] });
       // if (!matrix[x][y]) {
       let count = 0;
       // Above
@@ -45,13 +44,13 @@ const naive = (matrix, x, y) => {
       }
       // Bottom Left
       if (matrix[x + 1] !== undefined) {
-        if (matrix[x - 1][y - 1]) {
+        if (matrix[x + 1][y - 1]) {
           count++;
         }
       }
-      // Bottom Left
+      // Bottom Right
       if (matrix[x + 1] !== undefined) {
-        if (matrix[x - 1][y + 1]) {
+        if (matrix[x + 1][y + 1]) {
           count++;
         }
       }
@@ -81,7 +80,7 @@ const naive = (matrix, x, y) => {
     }
   }
   processPoint(x, y);
-  console.log('&&&&', board);
+  // console.log('&&&&', board);
   return board;
 };
 
