@@ -1,7 +1,9 @@
 /* eslint-disable require-jsdoc */
 function factorial(number) {
   let value = number;
-  for (let i = number; i > 1; i--) value *= i - 1;
+  for (let i = number; i > 1; i--) {
+    value *= i - 1;
+  }
   return value;
 }
 function combination(n, r) {
