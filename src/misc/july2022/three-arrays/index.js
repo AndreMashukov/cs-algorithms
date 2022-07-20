@@ -1,3 +1,4 @@
+// a = [2, 1, 7, 1, 1, 5, 3, 5, 2, 1, 1, 1], b = [1, 3, 5], and c = [2, 3],
 const processStep = (a, b, c) => {
   if (a.length === 0 || b.length === 0) {
     return [];
@@ -12,9 +13,11 @@ const processStep = (a, b, c) => {
     }
   }
 
-  // maxLen, start_i_max, start_i, (currLen = 0), 0, 0, 0;
+  // max length of a required subarray found so far.
   let maxLen = 0;
+  // index of where needed subarray begins.
   let startImax = 0;
+  // current
   let startI = 0;
   let currLen = 0;
 
@@ -22,22 +25,25 @@ const processStep = (a, b, c) => {
     if (sb.has(a[i])) {
       currLen += 1;
     } else {
+      // If a[i] doesn't exist in sb
       if (maxLen < currLen) {
         maxLen = currLen;
         startImax = startI;
       }
+      // If a[i] doesn't exist in sb.
+      // and reset currLen and define new start index.
       currLen = 0;
+      // record where a new subarray has started from.
       startI = i + 1;
     }
   }
 
   // # if we end on a a[i] in set sb:
-
   if (maxLen < currLen) {
+    // new maximum length has been found.
     maxLen = currLen;
     startImax = startI;
   }
-  // console.log({ tp });
 
   const copy = [...a];
   const stepResult = copy.splice(startImax, maxLen);
