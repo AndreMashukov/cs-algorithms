@@ -7,7 +7,7 @@ const getProdmulti = ({ cost1, cost2, qty1, qty2, mealK }) => {
       return mealK * cost1;
     }
     // if shop1 doesn't have enough qty.
-    // remainer is bought from shop2.
+    // remainder is bought from shop2.
     return qty1 * cost1 + cost2 * (mealK - qty1);
   }
   // shop2 is cheaper and it has enough qty.
@@ -23,10 +23,12 @@ const getCostsMulti = ({ meal, quantities, costs }) => {
     for (let j = i + 1; j < costs.length; j++) {
       let cost = 0;
       for (let k = 0; k < meal.length; k++) {
+        // there is not enough qty in both shops.
         if (quantities[i][k] + quantities[j][k] < meal[k]) {
           cost = 0;
           break;
         }
+        // both shops have enough qty
         const temp = getProdmulti({
           cost1: costs[i][k],
           cost2: costs[j][k],
