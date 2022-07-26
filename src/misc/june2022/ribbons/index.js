@@ -26,6 +26,7 @@ module.exports.ribbons = { naive };
 // https://www.tutorialspoint.com/program-to-find-maximum-length-of-k-ribbons-of-same-length-in-python
 // k is number of pieces.
 // Solution is largest length r such that we can have k ribbons of length r.
+// Assume that the answer is a number that is located insido of the array.
 // The solution is a value between left and right. which is a value of mid.
 // sumUp (ribbons, value) returns the number of pieces that we can get.
 // while (left < right) means that we have not tried all the cases.

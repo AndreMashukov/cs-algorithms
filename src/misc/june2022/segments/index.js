@@ -15,7 +15,7 @@ function minPoints(points, n) {
 
     coordinates.push(seg);
     let p = i + 1;
-    // console.log({ i, p, seg });
+    console.log({ i, p, seg });
     if (p >= n) break;
 
     // Get the start point of next segment
