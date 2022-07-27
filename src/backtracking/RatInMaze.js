@@ -6,8 +6,8 @@ class RatInMaze {
    */
   constructor(n) {
     this.solution = Array(n)
-        .fill(0)
-        .map((x) => Array(n).fill(0));
+      .fill(0)
+      .map((x) => Array(n).fill(0));
   }
   /**
    * solveMaze
@@ -38,7 +38,7 @@ class RatInMaze {
     return false;
   }
   /**
-   * isSafeToGo
+   * findPath
    * @param {[][]} maze
    * @param {number} x
    * @param {number} y
@@ -90,7 +90,6 @@ class RatInMaze {
 }
 
 exports.default = RatInMaze;
-
 
 // Approach:
 // Create a solution matrix of the same structure as maze.
