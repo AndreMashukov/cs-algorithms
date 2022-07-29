@@ -1,5 +1,4 @@
-
-const rs = require('../../src/recStaircase/recursiveStaircaseDP');
+const rs = require('../../../src/dp/recStaircase/recursiveStaircaseDP');
 
 describe('recursiveStaircaseDP', () => {
   it('should number of variants using Dynamic Programming solution', () => {
