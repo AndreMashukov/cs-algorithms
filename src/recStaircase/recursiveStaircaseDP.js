@@ -26,6 +26,7 @@ function recursiveStaircaseDP(stairsNum) {
 
   // Calculate every next step based on two previous ones.
   for (let currentStep = 3; currentStep <= stairsNum; currentStep += 1) {
+    // console.log(steps);
     steps[currentStep] = steps[currentStep - 1] + steps[currentStep - 2];
   }
 
@@ -35,3 +36,8 @@ function recursiveStaircaseDP(stairsNum) {
 }
 
 module.exports.recursiveStaircaseDP = recursiveStaircaseDP;
+
+// expect(rs.recursiveStaircaseDP(5)).toBe(8);
+// [ 0, 1, 2, 0, 0, 0 ]
+// [ 0, 1, 2, 3, 0, 0 ]
+// [ 0, 1, 2, 3, 5, 0 ]
