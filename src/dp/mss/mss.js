@@ -49,3 +49,38 @@ function dpMaximumSubarray(inputArray) {
 }
 
 module.exports.dpMaximumSubarray = dpMaximumSubarray;
+
+// https://backtobackswe.com/platform/content/max-contiguous-subarray-sum/video
+// Each cell tells asks a question.
+// What is the max subarray we can achieve
+//     with a subarray ending at each of these indicies.
+// Choices.
+//     1. Start a new subarray at a certain item.
+//         (cut the previous progress short)
+//         the best I can do is to start a new subarray.
+//     2. Continue the maximum subarray
+//         with the item we are sitting at.
+// max(choice1, choice2).
+// We are inspecting the item at index i.
+
+// We want to answer the question:
+// "What is the Max Contiguous Subarray Sum
+//     we can achieve ending at index i?".
+
+// We have 2 choices:
+// maxEndingHere + nums[i] (extend the previous
+//     subarray best whatever it was)
+// 1.) Let the item we are sitting at contribute
+//     to this best max we achieved
+//     ending at index i - 1.
+
+// nums[i] (start and end at this index)
+// 2.) Just take the item we are sitting at's value.
+
+// The max of these 2 choices will be the best answer
+//     to the Max Contiguous
+// Subarray Sum we can achieve
+//     for subarrays ending at index i.
+
+// All the contigous subarrays which end at index i.
+//     What is the best subarray we can achieve?
