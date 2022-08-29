@@ -19,6 +19,9 @@ function getSubsets(array, sum) {
     if (i === array.length) {
       return;
     }
+    // if (s + array[i] > sum) {
+    //   return;
+    // }
     if (s + array[i] <= sum) {
       // shout circuit for positive numbers only
       fork(i + 1, s + array[i], t.concat(array[i]));
@@ -32,18 +35,21 @@ function getSubsets(array, sum) {
   const objects = result.map((subarray) => {
     const obj = {
       subarray,
-      string: subarray.sort((a, b) => a - b)
-          .reduce((accum, val) => accum += `${val}`),
+      string: subarray
+        .sort((a, b) => a - b)
+        .reduce((accum, val) => (accum += `${val}`))
     };
 
     return obj;
   });
-  const filteredArray = Object.values(objects.reduce((unique, o) => {
-    if (!unique[o.string]) {
-      unique[o.string] = o.subarray;
-    }
-    return unique;
-  }, {}));
+  const filteredArray = Object.values(
+    objects.reduce((unique, o) => {
+      if (!unique[o.string]) {
+        unique[o.string] = o.subarray;
+      }
+      return unique;
+    }, {})
+  );
 
   return filteredArray;
 }
