@@ -33,3 +33,5 @@ describe('misc.feb2023.rotated-rect-sum', () => {
     expect(result).toEqual(10)
   })
 })
+
+// https://leetcode.com/discuss/interview-question/1482150/rotatedrectsum-codesignal-quora-two-sigma-oa
