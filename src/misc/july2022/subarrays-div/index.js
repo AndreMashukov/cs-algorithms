@@ -3,6 +3,7 @@ const solution = (nums, k) => {
   let answer = 0;
   const dict = { 0: 1 };
 
+  console.log({ nums, k });
   for (const num of nums) {
     partialSum += num;
     const key = partialSum % k;
@@ -12,7 +13,7 @@ const solution = (nums, k) => {
     } else {
       dict[key] = 1;
     }
-    console.log({ partialSum, dict });
+    console.log({ partialSum, key, dict, answer });
   }
   return answer;
 };
