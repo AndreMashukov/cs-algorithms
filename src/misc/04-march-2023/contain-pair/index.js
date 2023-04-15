@@ -1,19 +1,21 @@
 const solution = (a, m, k) => {
-  let num_subarray_with_sum_k = 0
-  const cnt_in_subarray = {}
-  const idx_subarray = {}
-  let last_index = -1
+  let numberOfSubarrays = 0
+  // track repeated values in each subarray
+  const countValues = {}
+  // The sliding window hashmap will be in the form {element: last_found_index}
+  const slidingWindow = {}
+  let lastIndex = -1
 
   for (let i = 0; i < m; i++) {
-    if (idx_subarray[a[i]]) {
-      num_subarray_with_sum_k = 1
-      last_index = idx_subarray[a[i]]
+    if (slidingWindow[a[i]]) {
+      numberOfSubarrays = 1
+      lastIndex = slidingWindow[a[i]]
     }
-    if (!cnt_in_subarray[a[i]]) {
-      cnt_in_subarray[a[i]] = 0
+    if (!countValues[a[i]]) {
+      countValues[a[i]] = 0
     }
-    cnt_in_subarray[a[i]] += 1
-    idx_subarray[k - a[i]] = i
+    countValues[a[i]] += 1
+    slidingWindow[k - a[i]] = i
   }
 
   // console.log({ idx_subarray })
@@ -22,32 +24,33 @@ const solution = (a, m, k) => {
   for (let i = m; i < a.length; i++) {
     // console.log({ caim: cnt_in_subarray[a[i - m]], cnt_in_subarray })
     // decrement count of first element of sliding window.
-    cnt_in_subarray[a[i - m]] -= 1
-    if (cnt_in_subarray[a[i - m]] === 0) {
-      delete idx_subarray[k - a[i - m]]
+    countValues[a[i - m]] -= 1
+    if (countValues[a[i - m]] === 0) {
+      delete slidingWindow[k - a[i - m]]
     }
 
+    // Check if the last found index's complement exists in the hashmap
     // if current element is a complement found in the sliding window
     // idx_subarray[a[i] - index of the complement
-    if (idx_subarray[a[i]]) {
-      num_subarray_with_sum_k += 1
+    if (slidingWindow[a[i]]) {
+      numberOfSubarrays += 1
       // make sure last_index is close to the end of the window
-      last_index = Math.max(idx_subarray[a[i]], last_index)
+      lastIndex = Math.max(slidingWindow[a[i]], lastIndex)
       // print 'compliment found 1' a[i], last_index
-      console.log('complement found 1: ', a[i], last_index)
-    } else if (last_index > i - m) {
+      console.log('complement found 1: ', a[i], lastIndex)
+    } else if (lastIndex > i - m) {
       // ???
-      num_subarray_with_sum_k += 1
-      console.log('complement found 2: ', a[i], last_index, i - m)
+      numberOfSubarrays += 1
+      console.log('complement found 2: ', a[i], lastIndex, i - m)
     }
-    if (!cnt_in_subarray[a[i]]) {
-      cnt_in_subarray[a[i]] = 0
+    if (!countValues[a[i]]) {
+      countValues[a[i]] = 0
     }
-    cnt_in_subarray[a[i]] += 1
-    idx_subarray[k - a[i]] = i
+    countValues[a[i]] += 1
+    slidingWindow[k - a[i]] = i
   }
 
-  return num_subarray_with_sum_k
+  return numberOfSubarrays
 }
 
 module.exports.containPair = { solution }
