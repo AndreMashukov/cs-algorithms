@@ -8,6 +8,7 @@ const solution = (a, m, k) => {
 
   for (let i = 0; i < m; i++) {
     if (slidingWindow[a[i]]) {
+      // if a pair is found in the first subarray.
       numberOfSubarrays = 1
       lastIndex = slidingWindow[a[i]]
     }
@@ -18,6 +19,7 @@ const solution = (a, m, k) => {
     slidingWindow[k - a[i]] = i
   }
 
+  // console.log({ numberOfSubarrays })
   // console.log({ idx_subarray })
   // console.log({ cnt_in_subarray })
 
@@ -26,6 +28,7 @@ const solution = (a, m, k) => {
     // decrement count of first element of sliding window.
     countValues[a[i - m]] -= 1
     if (countValues[a[i - m]] === 0) {
+      // if it's count is 0 then remove its compliment
       delete slidingWindow[k - a[i - m]]
     }
 
