@@ -1,3 +1,10 @@
+// a = [2, 4, 7, 5, 3, 5, 8, 5, 1, 7]
+// m = 4
+// k = 10
+
+// slidingWindow: defaultdict(<class 'int'>, {8: 0, 6: 1, 3: 2, 5: 3})
+// countValues: defaultdict(<class 'int'>, {2: 1, 4: 1, 7: 1, 5: 1})
+
 const solution = (a, m, k) => {
   let numberOfSubarrays = 0
   // track repeated values in each subarray
@@ -25,7 +32,7 @@ const solution = (a, m, k) => {
 
   for (let i = m; i < a.length; i++) {
     // console.log({ caim: cnt_in_subarray[a[i - m]], cnt_in_subarray })
-    // decrement count of first element of sliding window.
+    // decrement count of first element of sliding window. Moving the window to the loft.
     countValues[a[i - m]] -= 1
     if (countValues[a[i - m]] === 0) {
       // if it's count is 0 then remove its compliment
