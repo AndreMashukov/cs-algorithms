@@ -16,6 +16,7 @@ const solution = (a, m, k) => {
   for (let i = 0; i < m; i++) {
     if (slidingWindow[a[i]]) {
       // if a pair is found in the first subarray.
+      // Complement is found.
       numberOfSubarrays = 1
       lastIndex = slidingWindow[a[i]]
     }
@@ -32,7 +33,7 @@ const solution = (a, m, k) => {
 
   for (let i = m; i < a.length; i++) {
     // console.log({ caim: cnt_in_subarray[a[i - m]], cnt_in_subarray })
-    // decrement count of first element of sliding window. Moving the window to the loft.
+    // decrement count of first element of sliding window. Moving the window to the left.
     countValues[a[i - m]] -= 1
     if (countValues[a[i - m]] === 0) {
       // if it's count is 0 then remove its compliment
@@ -47,11 +48,10 @@ const solution = (a, m, k) => {
       // make sure last_index is close to the end of the window
       lastIndex = Math.max(slidingWindow[a[i]], lastIndex)
       // print 'compliment found 1' a[i], last_index
-      console.log('complement found 1: ', a[i], lastIndex)
     } else if (lastIndex > i - m) {
       // ???
       numberOfSubarrays += 1
-      console.log('complement found 2: ', a[i], lastIndex, i - m)
+      // console.log('complement found 2: ', a[i], lastIndex, i - m)
     }
     if (!countValues[a[i]]) {
       countValues[a[i]] = 0
@@ -64,6 +64,8 @@ const solution = (a, m, k) => {
 }
 
 module.exports.containPair = { solution }
+
+// slidingWindow[a[i]] - index of the complement
 
 // def add_to_k(a: List[int], m: int, k: int):
 //     num_subarray_with_sum_k = 0
