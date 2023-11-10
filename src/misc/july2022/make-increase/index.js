@@ -1,49 +1,4 @@
-/**
- * @param {*[]} permutationOptions
- * @return {*[]}
- */
-function permutateWithoutRepetitions (permutationOptions) {
-  if (permutationOptions.length === 1) {
-    return [permutationOptions]
-  }
-
-  // Init permutations array.
-  const permutations = []
-
-  // Get all permutations for permutationOptions
-  // excluding the first element.
-  const smallerPermutations = permutateWithoutRepetitions(
-    permutationOptions.slice(1)
-  )
-
-  // Insert first option into every possible position
-  // of every smaller permutation.
-  const firstOption = permutationOptions[0]
-
-  for (
-    let permIndex = 0;
-    permIndex < smallerPermutations.length;
-    permIndex += 1
-  ) {
-    const smallerPermutation = smallerPermutations[permIndex]
-
-    // Insert first option into every possible position
-    // of smallerPermutation.
-    for (
-      let positionIndex = 0;
-      positionIndex <= smallerPermutation.length;
-      positionIndex += 1
-    ) {
-      const permutationPrefix = smallerPermutation.slice(0, positionIndex)
-      const permutationSuffix = smallerPermutation.slice(positionIndex)
-      permutations.push(
-        permutationPrefix.concat([firstOption], permutationSuffix)
-      )
-    }
-  }
-
-  return permutations
-}
+const { permutateWithoutRepetitions } = require('../../../sets/permWithoutRep')
 
 /**
  * @param {[]} nums
@@ -61,7 +16,7 @@ function permuteNumbers (nums) {
   function permutations (nums, ans) {
     if (nums.length == 0) {
       res.push(ans)
-      return
+      return;
     }
     for (let i = 0; i < nums.length; ++i) {
       const k = nums[i]
@@ -82,7 +37,7 @@ const checkIfStrictIncr = (list) => {
     }
   }
   return true
-}
+};
 
 const swap = ({ element, next, prev }) => {
   // number = 900, target = 10
@@ -102,10 +57,14 @@ const swap = ({ element, next, prev }) => {
       }
     })
   // array = [0, 0, 9]
-  const perms = permuteNumbers(array).map((item) =>
+  // const perms = permuteNumbers(array).map((item) =>
+  //   parseInt(item.join(''), 10)
+  // )
+
+  const perms = permutateWithoutRepetitions(array).map((item) =>
     parseInt(item.join(''), 10)
   )
-  console.log(perms)
+  // console.log({ perms, perms1 })
   if (perms.length === 1) {
     return [element]
   } else {
