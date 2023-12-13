@@ -5,64 +5,76 @@
 // For str = "abdc" and pairs = [[1, 4], [3, 4]], the output should be
 // solution(str, pairs) = "dbca".
 
-function customSort (s, t) {
-  let i = 0
-  while (i < s.length && i < t.length) {
-    if (s[i] < t[i]) {
-      return -1 // s < t
-    } else if (s[i] > t[i]) {
-      return 1 // s > t
-    }
-    i++
-  }
-
-  // If one string is a prefix of the other, the shorter string is considered smaller
-  if (s.length < t.length) {
-    return -1
-  } else if (s.length > t.length) {
-    return 1
-  }
-
-  return 0 // s = t
-}
+// Basic idea: the sets of letters that can swap with
+//  each other form a decomposition of the string.
+// Since letters that cannot swap belong to unique pieces,
+//  they will always go back to their starting position.
+// Otherwise, we put pieces back in their sorted order.
+//
+// The complexity of this algorithm is O(n log n + m) worst case,
+//  where n is the length of str and m is the length of pairs.
 
 function solution (str, pairs) {
-  const pairsHash = pairs.reduce((acc, val) => {
-    const hash = val.join(',')
-    if (!acc[hash]) {
-      acc[hash] = {
-        checked: false,
-        value: val
+  // The given pairs are transformed into an edge list (graph)
+  // where each character index is a node,
+  // and pairs represent edges between nodes.
+  // This is achieved by iterating through the pairs and adding edges to the graph.
+  // Turn pairs into edge lists: O(n+m)
+  const graph = new Array(str.length).fill(0).map((e) => [])
+  for (const pair of pairs) {
+    graph[pair[0] - 1].push(pair[1] - 1)
+    graph[pair[1] - 1].push(pair[0] - 1)
+  }
+  // { '0': [ 3 ], '2': [ 3 ], '3': [ 0, 2 ] }
+  //  [ [ 3 ], [], [ 3 ], [ 0, 2 ] ]
+  // console.log(graph)
+
+  // Identify Connected Components (CCs) with Depth-First Search (DFS):
+  // Depth-First Search is used to identify connected components in the graph.
+  // Each connected component is assigned a unique identifier (ccnum).
+  // The ccs array is used to keep track of which connected component
+  // each character belongs to.
+  // DFS to Identify Connected Components:
+  //   - The code uses a **`for...in`** loop to iterate over
+  //       each character **`c`** in the input string **`str`**.
+  //   - If **`ccs[c]`** is truthy, it means that the character
+  //      **`c`** has already been assigned to a connected component,
+  //      and we can skip it. This check helps to avoid redundant computations for characters that have already been processed.
+  //  - If **`ccs[c]`** is falsy, it means that the character **`c`** has not been assigned to any connected component. In this case:
+  const ccs = []
+  let ccnum = 0
+  for (const c in str) {
+    // console.log({ c })
+    //  { c: '1'...'3' }
+    if (ccs[c]) {
+      continue
+    }
+    ccs[c] = ++ccnum
+    const dfs = [...graph[c]]
+    while (dfs.length) {
+      const d = dfs.shift()
+      if (ccs[d]) {
+        continue
       }
+      ccs[d] = ccnum
+      dfs.push(...graph[d])
     }
-    return acc
-  }, {})
-
-  const swap = (str, k, l) => {
-    const i = k - 1
-    const j = l - 1
-    const arr = str.split('')
-    const temp = arr[i]
-    arr[i] = arr[j]
-    arr[j] = temp
-    // console.log(str, arr.join(''), i, j)
-    return arr.join('')
+  }
+  // Group words by ccs: O(n)
+  const ccWords = new Array(ccnum).fill(0).map((e) => [])
+  for (const c in str) {
+    ccWords[ccs[c] - 1].push(str[c])
   }
 
-  const recurse = (str, pairs, index, max) => {
-    if (index === pairs.length) {
-      //   max = str > max ? str : max
-      max = customSort(str, max) === 1 ? str : max
-      return max
-    }
+  // Sort all words: O(n log n)
+  ccWords.map((e) => e.sort())
 
-    const [i, j] = pairs[index]
-    const swapped = swap(str, i, j)
-    console.log(pairs[index])
-    max = recurse(swapped, pairs, index + 1, max)
-    max = recurse(str, pairs, index + 1, max)
-    return max
+  // Build the new string: O(n)
+  let output = ''
+  for (const c in str) {
+    output += ccWords[ccs[c] - 1].pop()
   }
-
-  return recurse(str, pairs, 0, str)
+  return output
 }
+
+module.exports = solution
