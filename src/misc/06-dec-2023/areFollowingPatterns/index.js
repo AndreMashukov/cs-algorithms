@@ -1,4 +1,7 @@
-// Given an array strings, determine whether it follows the sequence given in the patterns array. In other words, there should be no i and j for which strings[i] = strings[j] and patterns[i] ≠ patterns[j] or for which strings[i] ≠ strings[j] and patterns[i] = patterns[j].
+// Given an array strings, determine whether it follows the sequence given in the patterns array.
+//  In other words, there should be no i and j for which
+// strings[i] = strings[j] and patterns[i] ≠ patterns[j]
+// or for which strings[i] ≠ strings[j] and patterns[i] = patterns[j].
 
 // Example
 
@@ -20,6 +23,7 @@ function solution (strings, patterns) {
         return false
       }
     } else {
+      // it means that two different strings correspond to the same pattern
       if (set.has(pattern)) {
         return false
       }
