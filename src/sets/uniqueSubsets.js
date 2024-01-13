@@ -15,12 +15,12 @@
  * @param {number} sum
  * @return {[][]}
  */
-function findSets(arrA, sum) {
-  const sorted = arrA.sort((a1, a2) => a1 - a2);
-  const combinationList = [];
-  const uniqueSets = [];
-  combinationUtil(sorted, sum, 0, 0, combinationList);
-  return uniqueSets;
+function findSets (arrA, sum) {
+  const sorted = arrA.sort((a1, a2) => a1 - a2)
+  const combinationList = []
+  const uniqueSets = []
+  combinationUtil(sorted, sum, 0, 0, combinationList)
+  return uniqueSets
 
   /**
  * @param {[]} arrA
@@ -29,31 +29,32 @@ function findSets(arrA, sum) {
  * @param {number} start
  * @param {[]} combinationList
  */
-  function combinationUtil(arrA, sum, currSum, start, combinationList) {
+  function combinationUtil (arrA, sum, currSum, start, combinationList) {
     if (currSum === sum) {
-      uniqueSets.push([...combinationList]);
-      return;
+      uniqueSets.push([...combinationList])
+      return
     }
 
-    let prevElement = -1;
+    let prevElement = -1
     for (let i = start; i < arrA.length; i++) {
       if (prevElement !== arrA[i]) {
+        // avoids duplicates by keeping track of the previous element in the sorted array and skipping the current element if it's the same as the previous one
         // array is sorted, no need to check further
         if (currSum + arrA[i] > sum) {
-          break;
+          break
         }
-        combinationList.push(arrA[i]);
-        combinationUtil(arrA, sum, currSum + arrA[i], i + 1, combinationList);
-        combinationList.splice(combinationList.length - 1, 1);
-        prevElement = arrA[i];
+        combinationList.push(arrA[i])
+        combinationUtil(arrA, sum, currSum + arrA[i], i + 1, combinationList)
+        //  backtrack and explore other subsets that do not include the current element.
+        combinationList.splice(combinationList.length - 1, 1)
+        prevElement = arrA[i]
       }
     }
     // console.log(combinationList);
   }
 }
 
-exports.default = findSets;
-
+exports.default = findSets
 
 // Given arrA[] and sum.
 // 1. Sort the arrA[] in ascending order.
