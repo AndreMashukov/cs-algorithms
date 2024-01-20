@@ -1,125 +1,86 @@
-/** Class for word search. */
-class WordMatrix {
-  /**
-   * Constructs a nxn matrix.
-   * @param {number} n - dimension.
-   */
-  constructor(n) {
-    this.solution = Array(n)
-        .fill(0)
-        .map((x) => Array(n).fill(0));
-    this.path = 1;
-  }
-  /**
-   * searchWord
-   * @param {[][]} matrix - matrix with letters.
-   * @param {string} word - word.
-   * @return {boolean}
-   */
-  searchWord(matrix, word) {
-    const N = matrix.length;
-    for (let i = 0; i < N; i++) {
-      for (let j = 0; j < N; j++) {
-        if (this.search(matrix, word, i, j, 0, N)) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-  /**
-   * search
-   * @param {[][]} matrix - matrix with letters.
-   * @param {string} word - word.
-   * @param {number} row - row.
-   * @param {number} col - col.
-   * @param {number} index
-   * @param {number} N
-   * @return {boolean}
-   */
-  search(matrix, word, row, col, index, N) {
-    // check if current cell not already used or character in it is not not
-    if (
-      this.solution[row][col] != 0 ||
-      word.charAt(index) != matrix[row][col]
-    ) {
-      return false;
-    }
-
-    if (index === word.length - 1) {
-      // word is found, return true
-      this.solution[row][col] = this.path++;
-      return true;
-    }
-
-    // mark the current cell as 1
-    this.solution[row][col] = this.path++;
-    // check if cell is already used
-    if (row + 1 < N && this.search(matrix, word, row + 1, col, index + 1, N)) {
-      // go
-      // down
-      return true;
-    }
-    if (row - 1 >= 0 && this.search(matrix, word, row - 1, col, index + 1, N)) {
-      // go
-      // up
-      return true;
-    }
-    if (col + 1 < N && this.search(matrix, word, row, col + 1, index + 1, N)) {
-      // go
-      // right
-      return true;
-    }
-    if (col - 1 >= 0 && this.search(matrix, word, row, col - 1, index + 1, N)) {
-      // go
-      // left
-      return true;
-    }
-    if (
-      row - 1 >= 0 &&
-      col + 1 < N &&
-      this.search(matrix, word, row - 1, col + 1, index + 1, N)
-    ) {
-      // go diagonally up right
-      return true;
-    }
-    if (
-      row - 1 >= 0 &&
-      col - 1 >= 0 &&
-      this.search(matrix, word, row - 1, col - 1, index + 1, N)
-    ) {
-      // go diagonally up left
-      return true;
-    }
-    if (
-      row + 1 < N &&
-      col - 1 >= 0 &&
-      this.search(matrix, word, row + 1, col - 1, index + 1, N)
-    ) {
-      // go diagonally down left
-      return true;
-    }
-    if (
-      row + 1 < N &&
-      col + 1 < N &&
-      this.search(matrix, word, row + 1, col + 1, index + 1, N)
-    ) {
-      // go diagonally down right
-      return true;
-    }
-
-    // if none of the option works out, BACKTRACK and return false
-    this.solution[row][col] = 0;
-    this.path--;
-    return false;
-  }
-  /**
-   * Get solution
-   * @return {[][]}
-   */
-  getSolution() {
-    return this.solution;
+class TrieNode {
+  constructor () {
+    this.children = new Map()
+    this.isEndOfWord = false
   }
 }
 
-exports.default = WordMatrix;
+class Trie {
+  constructor () {
+    this.root = new TrieNode()
+  }
+
+  insert (word) {
+    let node = this.root
+    for (const char of word) {
+      if (!node.children.has(char)) {
+        node.children.set(char, new TrieNode())
+      }
+      node = node.children.get(char)
+    }
+    node.isEndOfWord = true
+  }
+
+  searchPrefix (prefix) {
+    let node = this.root
+    for (const char of prefix) {
+      if (!node.children.has(char)) {
+        return null
+      }
+      node = node.children.get(char)
+    }
+    return node
+  }
+}
+
+// the output should be
+// solution(board, words) = ["CODE", "RULES"].
+
+function solution (board, words) {
+  const result = []
+  const trie = new Trie()
+
+  for (const word of words) {
+    trie.insert(word)
+  }
+
+  function backtrack (word, i, j, visited, trieNode) {
+    if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || visited[i][j]) {
+      return
+    }
+
+    const char = board[i][j]
+    const nextTrieNode = trieNode.children.get(char)
+
+    if (!nextTrieNode) {
+      return
+    }
+
+    word += char
+    visited[i][j] = true
+
+    if (nextTrieNode.isEndOfWord && !result.includes(word)) {
+      result.push(word)
+    }
+
+    for (let x = -1; x <= 1; x++) {
+      for (let y = -1; y <= 1; y++) {
+        if (x !== 0 || y !== 0) {
+          backtrack(word, i + x, j + y, [...visited.map(row => [...row])], nextTrieNode)
+        }
+      }
+    }
+  }
+
+  for (let i = 0; i < board.length; i++) {
+    for (let j = 0; j < board[0].length; j++) {
+      backtrack('', i, j, Array.from({ length: board.length }, () => Array(board[0].length).fill(false)), trie.root)
+    }
+  }
+
+  return result.sort()
+}
+
+module.exports = {
+  solution
+}
