@@ -76,3 +76,9 @@ exports.default = findSets
 // then the results would be [1, 4] and [1, 4]
 // if we use both the 1’s but it produces identical results,
 // so consider only one element.).
+
+// For example, consider an array [1, 1, 4] and a target sum of 5.
+// The subsets that add up to 5 are [1, 4] and [1, 4].
+// These subsets are identical, so we only need to consider one of them.
+// By skipping the second 1 in the array,
+// the algorithm ensures that it only generates unique subsets.

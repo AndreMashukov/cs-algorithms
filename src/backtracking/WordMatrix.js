@@ -82,5 +82,6 @@ function solution (board, words) {
 }
 
 module.exports = {
-  solution
+  solution,
+  Trie
 }
