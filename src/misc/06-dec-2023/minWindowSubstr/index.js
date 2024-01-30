@@ -1,10 +1,14 @@
-// You have two strings, s and t. The string t contains only unique elements. Find and return the minimum consecutive substring of s that contains all of the elements from t.
+// You have two strings, s and t. The string t contains only unique elements.
+//  Find and return the minimum consecutive substring of s
+// that contains all of the elements from t.
 
-// It's guaranteed that the answer exists. If there are several answers, return the one which starts from the smallest index.
+// It's guaranteed that the answer exists. If there are several answers,
+// return the one which starts from the smallest index.
 
 // https://www.youtube.com/watch?v=eS6PZLjoaq8
 
 function solution (s, t) {
+  // to store last occurence index of each character in t
   const map = new Map()
   const set = new Set(t)
   let min = Infinity
@@ -24,6 +28,7 @@ function solution (s, t) {
         const maxIndex = Math.max(...map.values())
         const length = maxIndex - minIndex + 1
 
+        // if the current substring being evaluated has a smaller length than the current minimum length
         if (length < min) {
           min = length
           result = s.slice(minIndex, maxIndex + 1)

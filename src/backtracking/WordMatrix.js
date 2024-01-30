@@ -22,6 +22,7 @@ class Trie {
   }
 
   searchPrefix (prefix) {
+    console.log(this)
     let node = this.root
     for (const char of prefix) {
       if (!node.children.has(char)) {
