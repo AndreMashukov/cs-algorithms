@@ -11,13 +11,17 @@
 // solution(strings, patterns) = false.
 
 function solution (strings, patterns) {
+  // store each string-pattern pair in a map
   const map = new Map()
+
+  // store each pattern in a set
   const set = new Set()
 
   for (let i = 0; i < strings.length; i++) {
     const string = strings[i]
     const pattern = patterns[i]
 
+    // if the string is already in the map and the pattern is different, return false
     if (map.has(string)) {
       if (map.get(string) !== pattern) {
         return false
