@@ -16,6 +16,7 @@ function solution (s, t) {
 
   for (let i = 1; i <= s.length; i++) {
     for (let j = 1; j <= t.length; j++) {
+      // if the characters are the same, increment the value of the previous diagonal cell by 1
       if (s[i - 1] === t[j - 1]) {
         dp[i][j] = dp[i - 1][j - 1] + 1
         max = Math.max(max, dp[i][j])

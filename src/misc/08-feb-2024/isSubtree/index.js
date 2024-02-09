@@ -8,6 +8,7 @@ const isSameTree = (t1, t2) => {
     return t1 === t2
   }
 
+  // root value is different: not same tree
   if (t1.value !== t2.value) {
     return false
   }

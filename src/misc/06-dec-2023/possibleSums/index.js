@@ -1,4 +1,6 @@
-// You have a collection of coins, and you know the values of the coins and the quantity of each type of coin in it. You want to know how many distinct sums you can make from non-empty groupings of these coins.
+// You have a collection of coins, and you know the values of the coins\
+// and the quantity of each type of coin in it.
+// You want to know how many distinct sums you can make from non-empty groupings of these coins.
 
 // Example
 
@@ -23,12 +25,14 @@
 const solution = (coins, quantity) => {
   const sums = new Set()
   const recurse = (index, sum) => {
+    // base case: if we've considered all the coins, add the sum to the set and return
     if (index === coins.length) {
       sums.add(sum)
       return
     }
 
     for (let i = 0; i <= quantity[index]; i++) {
+      // consider the next coin and a new sum that includes i copies of the current coin
       recurse(index + 1, sum + (i * coins[index]))
     }
   }
