@@ -11,11 +11,14 @@ const longestConsecutive = (nums) => {
   let max = 0
 
   for (const num of set) {
+    // check if the current number is the start of a sequence
     if (!set.has(num - 1)) {
       let current = num
       let currentStreak = 1
 
+      // check for consecutive numbers
       while (set.has(current + 1)) {
+        // move to the next number
         current++
         currentStreak++
       }
@@ -25,4 +28,4 @@ const longestConsecutive = (nums) => {
   }
 
   return max
-};
+}
