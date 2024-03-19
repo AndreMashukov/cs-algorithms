@@ -16,20 +16,21 @@ const solution = (s, k) => {
   let max = 0
   let start = 0
   let end = 0
-  const map = new Map()
+  // Initializes a map to store the frequency of each character in the string
+  const freqMap = new Map()
 
   // while-loop to iterate through the string
   while (end < s.length) {
     // Updates the frequency of the character at index end
-    map.set(s[end], (map.get(s[end]) || 0) + 1)
+    freqMap.set(s[end], (freqMap.get(s[end]) || 0) + 1)
     // Updates the max variable with the maximum frequency of any character
-    max = Math.max(max, map.get(s[end]))
+    max = Math.max(max, freqMap.get(s[end]))
 
     // if the number of operations needed to change the characters
     // in the substring s[start:end + 1] to the same character is greater than k
     if (end - start + 1 - max > k) {
       // Updates the frequency of the character at index start
-      map.set(s[start], map.get(s[start]) - 1)
+      freqMap.set(s[start], freqMap.get(s[start]) - 1)
       start++
     }
 

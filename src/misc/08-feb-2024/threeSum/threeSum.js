@@ -16,14 +16,17 @@ const solution = (nums) => {
       let high = nums.length - 1
       const sum = 0 - nums[i]
 
+      // The algorithm uses two pointers to traverse the array from left to right.
       while (low < high) {
         if (nums[low] + nums[high] === sum) {
           result.push([nums[i], nums[low], nums[high]])
 
+          // Skip duplicates to avoid adding duplicate triplets.
           while (low < high && nums[low] === nums[low + 1]) {
             low++
           }
 
+          // Skip duplicates to avoid adding duplicate triplets.
           while (low < high && nums[high] === nums[high - 1]) {
             high--
           }
