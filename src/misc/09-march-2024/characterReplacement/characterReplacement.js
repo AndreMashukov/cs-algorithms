@@ -31,6 +31,7 @@ const solution = (s, k) => {
     if (end - start + 1 - max > k) {
       // Updates the frequency of the character at index start
       freqMap.set(s[start], freqMap.get(s[start]) - 1)
+      // Moves the start pointer to the right
       start++
     }
 
