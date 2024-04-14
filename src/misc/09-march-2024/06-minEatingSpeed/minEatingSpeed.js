@@ -45,3 +45,12 @@ console.log(minEatingSpeed([3, 6, 7, 11], 8)) // 4
 // The total hours needed to eat all the bananas is 7.
 // If she eats 3 bananas per hour, she will need 8 hours to eat all the bananas.
 // So, Koko should eat 4 bananas per hour.
+
+// why do we return the value of the left pointer at the end?
+// This process continues until l and r converge to the same index, which is the index of the smallest element. Since l and r are the same at this point,
+//  we could return either nums[l] or nums[r] - they are the same.
+
+// Why we use "ceil" here?
+// For example, if pile is 7 and mid is 3, pile / mid is 2.33....
+// But Koko can't eat all the bananas in 2.33... hours - she needs 3 full hours.
+// So, we use Math.ceil to round up the result to 3.
