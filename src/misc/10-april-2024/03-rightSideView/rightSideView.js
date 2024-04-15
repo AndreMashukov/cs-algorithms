@@ -5,14 +5,17 @@ const rightSideView = (root) => {
   if (!root) return []
 
   const result = []
+  // initialize the queue with the root node
   const queue = [root]
 
   while (queue.length) {
     const size = queue.length
 
+    // iterate through the current level
     for (let i = 0; i < size; i++) {
+      // remove the first node from the queue
       const node = queue.shift()
-
+      // if we are at the last node of the level
       if (i === size - 1) {
         result.push(node.val)
       }
@@ -20,6 +23,11 @@ const rightSideView = (root) => {
       if (node.left) queue.push(node.left)
       if (node.right) queue.push(node.right)
     }
+    // move to the next level
+    console.log({
+      result,
+      queue
+    })
   }
 
   return result

@@ -17,6 +17,7 @@ const levelOrder = (root) => {
     const size = queue.length
 
     for (let i = 0; i < size; i++) {
+      // remove the first node from the queue
       const node = queue.shift()
       level.push(node.val)
 
@@ -33,7 +34,7 @@ const levelOrder = (root) => {
   }
 
   return result
-};
+}
 
 console.log(
   levelOrder({
