@@ -16,11 +16,13 @@ const levelOrder = (root) => {
     const level = []
     const size = queue.length
 
+    // iterate through the current level
     for (let i = 0; i < size; i++) {
       // remove the first node from the queue
       const node = queue.shift()
       level.push(node.val)
 
+      // add the left and right children of the node to the end of the queue
       if (node.left) queue.push(node.left)
       if (node.right) queue.push(node.right)
     }
