@@ -2,7 +2,8 @@
 // subsets
 //  (the power set).
 
-// The solution set must not contain duplicate subsets. Return the solution in any order.
+// The solution set must not contain duplicate subsets.
+// Return the solution in any order.
 
 // Example 1:
 
