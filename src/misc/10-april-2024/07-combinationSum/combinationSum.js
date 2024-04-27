@@ -44,9 +44,11 @@ const combinationSum = (candidates, target) => {
     }
 
     // include the current number
+    // why use same index i in the recursive call?
+    // because we can use the same number multiple times
     cur.push(candidates[i])
     dfs(i, cur, total + candidates[i])
-    // exclude the current number
+    // exclude the current number and move to the next number
     cur.pop()
     dfs(i + 1, cur, total)
   }

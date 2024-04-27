@@ -8,9 +8,12 @@ const permutations = (nums) => {
   const dfs = (cur) => {
     if (cur.length === nums.length) {
       res.push([...cur])
-      return
+      return;
     }
 
+    // start from the beginning of the array.
+    // because we want to  start with the first element in the array.
+    // if we start from the end
     for (let i = 0; i < nums.length; i++) {
       if (cur.includes(nums[i])) {
         continue
@@ -24,10 +27,8 @@ const permutations = (nums) => {
 
   dfs([])
   return res
-}
+};
 
-console.log(permutations(
-  [1, 2, 3]
-))
+console.log(permutations([1, 2, 3]))
 
 // Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]

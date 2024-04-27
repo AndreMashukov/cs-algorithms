@@ -15,6 +15,7 @@ const subsetsWithDup = (nums) => {
     res.push([...cur])
 
     for (let j = i; j < nums.length; j++) {
+      // if value is the same as the previous value, skip it
       if (j > i && nums[j] === nums[j - 1]) {
         continue
       }

@@ -19,6 +19,8 @@ const subsetSum = (nums) => {
     result.push(path)
     // console.log(index, result)
     for (let i = index; i < nums.length; i++) {
+      // include the current number in the path
+      // and call dfs recursively with the next index
       dfs(i + 1, [...path, nums[i]])
     }
   }
