@@ -23,6 +23,13 @@ const wordSearch = (board, word) => {
     // set the current character to a space
     board[i][j] = ' '
 
+    // const directions = [
+    //   [-1, 0], // up
+    //   [1, 0], // down
+    //   [0, -1], // left
+    //   [0, 1] // right
+    // ]
+
     const found =
       dfs(i + 1, j, index + 1) ||
       dfs(i - 1, j, index + 1) ||
