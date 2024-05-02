@@ -27,7 +27,10 @@ const palindromePartitioning = (s) => {
     return true
   }
 
+  // i - the current index in the string
+  // cur - the current partition that we are building
   const dfs = (i, cur) => {
+    // if we have reached the end of the string
     if (i === s.length) {
       res.push([...cur])
       return
@@ -56,3 +59,28 @@ const palindromePartitioning = (s) => {
 console.log(palindromePartitioning('aab'))
 
 // Output: [["a","a","b"],["aa","b"]]
+
+// The DFS starts at the root of the tree (the empty string)
+// and first explores the leftmost branch, which starts with "a".
+
+// It then continues down this branch, adding the next character "a"
+// to the current partition to form "aa". "aa" is a palindrome,
+// so it continues to the next character "b", forming "aab".
+// However, "aab" is not a palindrome.
+
+// The algorithm then backtracks, removing "b" from the current partition
+// to return to "aa".
+
+// It then explores the next branch, which starts with "aa, b".
+// "aa, b" is a valid partition because both
+// "aa" and "b" are palindromes.
+
+// The algorithm then backtracks to the beginning
+// and explores the next branch starting with "a".
+// It adds the next character "a" to the current
+//  partition to form "a, a".
+
+// It then continues down this branch,
+// adding the next character "b" to the current partition
+// to form "a, a, b".
+// "a, a, b" is a valid partition because "a", "a", and "b" are all palindromes.

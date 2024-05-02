@@ -42,6 +42,7 @@ const letterCombinations = (digits) => {
       // move to the next digit and add the current letter
       // to the current combination
       dfs(i + 1, cur + c)
+      // no backtracking needed because all the combinations are
     }
   }
 
