@@ -16,8 +16,8 @@ const climbStairs = (n) => {
 
   for (let i = 3; i <= n; i++) {
     const third = first + second
-    first = second
     second = third
+    first = second
   }
 
   return second

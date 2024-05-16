@@ -12,13 +12,16 @@ const minCostClimbingStairs = (cost) => {
   const dp = new Array(n + 1).fill(0)
 
   for (let i = 2; i <= n; i += 1) {
-    // Climb one step from the previous step or Climb two steps from the step before the previous one
+    // Climb one step from the previous step or Climb two steps
+    // from the step before the previous one
     dp[i] = Math.min(dp[i - 1] + cost[i - 1], dp[i - 2] + cost[i - 2])
-    // dp[i - 1] + cost[i - 1] is the cost of reaching the ith step from the (i - 1)th step
+    // dp[i - 1] + cost[i - 1] is the cost of reaching the ith step
+    // from the (i - 1)th step
+    console.log(dp)
   }
 
   return dp[n]
-}
+};
 
 // Input: cost = [10,15,20]
 // Output: 15
@@ -35,3 +38,13 @@ const minCostClimbingStairs = (cost) => {
 
 // 2 <= cost.length <= 1000
 // 0 <= cost[i] <= 999
+
+console.log(
+  minCostClimbingStairs([10, 15, 20]) // 15
+)
+
+// [ 0, 0, 10, 0 ]
+// [ 0, 0, 10, 15 ]
+// first two elements of the dp array are typically initialized to 0.
+// This is because you can start from either the first or the second step without any cost,
+// as per the problem statement.
