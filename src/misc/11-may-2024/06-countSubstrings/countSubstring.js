@@ -23,9 +23,15 @@ const countSubstrings = (s) => {
   let count = 0
 
   for (let i = 0; i < s.length; i += 1) {
-    count += expandAroundCenter(s, i, i)
-    count += expandAroundCenter(s, i, i + 1)
+    // why ceil?
+    count += Math.ceil(expandAroundCenter(s, i, i) / 2)
+    // why floor
+    count += Math.floor(expandAroundCenter(s, i, i + 1) / 2)
   }
 
   return count
 }
+
+console.log(
+  countSubstrings('aaa') // 6
+)

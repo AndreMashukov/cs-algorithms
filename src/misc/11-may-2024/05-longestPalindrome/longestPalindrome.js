@@ -31,6 +31,8 @@ const longestPalindrome = (s) => {
     // takes the maximum of these two lengths, as we're interested in the longest palindromic substring
     const len = Math.max(len1, len2)
 
+    // checking if the length of the current palindrome (len) is greater
+    // than the length of the longest palindrome found so far (end - start).
     if (len > end - start) {
       start = i - Math.floor((len - 1) / 2)
       end = i + Math.floor(len / 2)
@@ -44,3 +46,7 @@ const longestPalindrome = (s) => {
 console.log(
   longestPalindrome('babad') // 'bab'
 )
+
+// We subtract 1 from len because len includes the center character itself.
+// For example, if len is 3, then there is 1 character to the left
+// and right of the center, so (len - 1) / 2 is 1.
