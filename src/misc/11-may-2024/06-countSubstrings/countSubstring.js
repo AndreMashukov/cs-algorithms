@@ -23,9 +23,7 @@ const countSubstrings = (s) => {
   let count = 0
 
   for (let i = 0; i < s.length; i += 1) {
-    // why ceil?
     count += Math.ceil(expandAroundCenter(s, i, i) / 2)
-    // why floor
     count += Math.floor(expandAroundCenter(s, i, i + 1) / 2)
   }
 
@@ -35,3 +33,9 @@ const countSubstrings = (s) => {
 console.log(
   countSubstrings('aaa') // 6
 )
+
+// Dividing this length by 2 gives the number of characters to the left
+// or right of the center,
+// Math.ceil rounds this up to the nearest integer.
+// This is because when the length is odd, the center of the palindrome
+// is a character in the string, so we need to round up to count this character.
