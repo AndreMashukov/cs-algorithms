@@ -23,8 +23,10 @@ class Solution {
 
     for (let i = s.length - 1; i >= 0; i--) {
       for (const w of wordDict) {
-        // If this substring is equal to w, it means that w is a segment of s starting at position i
-        // i + w.length <= s.length: This checks if the length of the word w doesn't exceed the remaining length of the string s starting from index i.
+        // If this substring is equal to w, it means that w
+        // is a segment of s starting at position i
+        // i + w.length <= s.length: This checks if the length of the word w
+        // doesn't exceed the remaining length of the string s starting from index i.
         if (i + w.length <= s.length && s.slice(i, i + w.length) === w) {
           dp[i] = dp[i + w.length]
         }
