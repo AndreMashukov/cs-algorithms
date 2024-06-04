@@ -18,9 +18,16 @@ class Solution {
    * @return {boolean}
    */
   wordBreak (s, wordDict) {
+    // includes an extra space for the base case, which is an empty string.
     const dp = new Array(s.length + 1).fill(false)
+
+    // base case of the dynamic programming solution, which is an empty string.
+    // In the context of this problem, an empty string can always be segmented
+    // into a sequence of words from the dictionary (since no words are needed),
+    // so it's considered a valid segmentation
     dp[s.length] = true
 
+    // bottom up approach
     for (let i = s.length - 1; i >= 0; i--) {
       for (const w of wordDict) {
         // If this substring is equal to w, it means that w
@@ -30,12 +37,16 @@ class Solution {
         if (i + w.length <= s.length && s.slice(i, i + w.length) === w) {
           dp[i] = dp[i + w.length]
         }
+        // If dp[i] is true, it means that there exists a word in the dictionary
+        // that ends at index i, and the rest of the substring before
+        // this word can also be segmented into words from the dictionary.
         if (dp[i]) {
           break
         }
       }
     }
 
+    // The element dp[0] represents whether the entire string s can be segmented
     return dp[0]
   }
 }

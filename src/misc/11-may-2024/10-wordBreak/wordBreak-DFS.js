@@ -13,6 +13,7 @@ class Solution {
     while (stack.length) {
       const start = stack.pop()
 
+      // decisions are based on the words from wordDict
       if (!visited.has(start)) {
         for (let end = start + 1; end <= s.length; end++) {
           if (wordSet.has(s.slice(start, end))) {
