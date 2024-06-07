@@ -20,17 +20,22 @@ function solution (s, t) {
     // it's one of the characters we're looking for.
     if (set.has(char)) {
       // updates map with the current index i.
+      // char versus its index!
       map.set(char, i)
 
       // we have found a substring that contains all the characters in t
       if (map.size === set.size) {
+        // minIndex not min
         const minIndex = Math.min(...map.values())
         const maxIndex = Math.max(...map.values())
+        // maxIndex - minIndex + 1
         const length = maxIndex - minIndex + 1
 
-        // if the current substring being evaluated has a smaller length than the current minimum length
+        // if the current substring being evaluated has a smaller length
+        // than the current minimum length
         if (length < min) {
           min = length
+          // maxIndex + 1
           result = s.slice(minIndex, maxIndex + 1)
         }
       }

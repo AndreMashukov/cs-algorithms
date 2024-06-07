@@ -49,3 +49,30 @@ class Solution {
 }
 
 console.log(new Solution().canPartition([1, 2, 3, 4])) // true
+
+// [1, 2, 3, 4]:
+
+// i = 3 (nums[3] = 4):
+// nextDP = {0, 4}
+// (0 is from the initial dp set,
+// and 4 is from adding nums[3]
+// to each element in the dp set)
+
+// i = 2 (nums[2] = 3):
+// nextDP = {0, 3, 4, 7}
+// (0, 4 are from the previous dp set, and 3, 7 are from
+// adding nums[2] to each element in the previous dp set)
+
+// i = 1 (nums[1] = 2):
+// nextDP = {0, 2, 3, 4, 5, 6, 7, 9} (0, 3, 4, 7
+// are from the previous dp set, and 2, 5, 6, 9 are from adding nums[1]
+// to each element in the previous dp set)
+
+// i = 0 (nums[0] = 1):
+// nextDP = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+//  (0, 2, 3, 4, 5, 6, 7, 9 are from the previous dp set,
+//  and 1, 3, 4, 5, 6, 7, 8, 10 are from adding nums[0]
+// to each element in the previous dp set)
+
+// At the end of the last iteration, nextDP includes
+// the target sum (10 / 2 = 5), so the function returns true,
