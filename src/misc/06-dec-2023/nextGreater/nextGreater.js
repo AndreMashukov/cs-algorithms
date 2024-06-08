@@ -9,13 +9,20 @@
 // If there are no options for bi, put -1 in bi.
 
 function solution (a) {
+  // the top element of the stack is the index of the last element
+  // that doesn't have a greater element to its right.
   let stack = []
   const n = a.length
   const b = Array(n).fill(-1)
 
   // Forward pass
   for (let i = 0; i < n; i++) {
+    // Continues as long as the stack is not empty and the top element of the stack
+    // (which is an index) points to a value in array a
+    // that is less than the current element a[i].
     while (stack.length && a[stack[stack.length - 1]] < a[i]) {
+      // We've found a greater element for the element
+      // at the index popped from the stack
       b[stack.pop()] = i
     }
     stack.push(i)
@@ -46,4 +53,4 @@ module.exports = {
 // This checks if the value in array a at the index
 // at the top of the stack is less than the current element a[i].
 // If it is, it means we have found the next greater element
-//  for the value at the top of the stack, which is a[i].
+// for the value at the top of the stack, which is a[i].
