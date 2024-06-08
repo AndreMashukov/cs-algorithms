@@ -27,8 +27,6 @@ function solution (a) {
     }
     stack.push(i)
   }
-
-  console.log({ b })
   // Backward pass
   stack = []
   for (let i = n - 1; i >= 0; i--) {
