@@ -1,6 +1,7 @@
 // You have a collection of coins, and you know the values of the coins\
 // and the quantity of each type of coin in it.
-// You want to know how many distinct sums you can make from non-empty groupings of these coins.
+// You want to know how many distinct sums you can make
+// from non-empty groupings of these coins.
 
 // Example
 
@@ -28,16 +29,40 @@ const solution = (coins, quantity) => {
     // base case: if we've considered all the coins, add the sum to the set and return
     if (index === coins.length) {
       sums.add(sum)
+      // break the recursion
       return
     }
 
+    // consider all possible quantities of the current coin
+    // iterate up to quantity[index] inclusive
     for (let i = 0; i <= quantity[index]; i++) {
       // consider the next coin and a new sum that includes i copies of the current coin
-      recurse(index + 1, sum + (i * coins[index]))
+      recurse(index + 1, sum + i * coins[index])
     }
   }
 
   recurse(0, 0)
 
-  return sums.size
+  return sums.size - 1
 }
+
+// The recursive function is used here to explore
+// all possible combinations of coins.
+// This is a common approach in problems where you need to consider all subsets
+/// or combinations of a set of items, which is the case here.
+
+// In this problem, for each coin,
+// you have a certain quantity of that coin available.
+// For each coin, you can choose to include any number
+// of that coin from 0 up to the quantity available.
+//  This creates a tree of possibilities
+// where each level of the tree represents a coin
+// and each branch represents a choice of how many
+// of that coin to include.
+
+// A recursive function is a natural way to traverse this tree of possibilities.
+//  Starting with the first coin, the function calls itself
+// for each possible number of that coin to include,
+// each time moving on to the next coin and a new sum.
+//  When it has considered all coins,
+// it adds the sum to the set of sums.

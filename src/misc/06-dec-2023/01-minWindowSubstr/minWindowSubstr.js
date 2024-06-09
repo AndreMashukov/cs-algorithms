@@ -16,7 +16,7 @@ function solution (s, t) {
 
   for (let i = 0; i < s.length; i++) {
     const char = s[i]
-
+    // check if set has this chart in it.
     // it's one of the characters we're looking for.
     if (set.has(char)) {
       // updates map with the current index i.
