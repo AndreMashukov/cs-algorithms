@@ -35,7 +35,7 @@
 
 // When you decrypt "SEND", "MORE", and "MONEY"
 // using the mapping given in crypt, you get 9567 + 1085 = 10652
-// swhich is correct and a valid arithmetic equation.
+// which is correct and a valid arithmetic equation.
 
 const solution = (crypt, solution) => {
   const map = new Map(solution)
@@ -43,8 +43,12 @@ const solution = (crypt, solution) => {
     [...word].map((char) => map.get(char)).join('')
   )
   return +a + +b === +c
-}
+};
 
 module.exports = {
   solution
 }
+
+// [...word]: This uses the spread operator
+// to convert the string word into an array
+// of its individual characters.

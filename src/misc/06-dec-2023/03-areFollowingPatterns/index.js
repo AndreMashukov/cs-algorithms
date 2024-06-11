@@ -23,6 +23,8 @@ function solution (strings, patterns) {
 
     // if the string is already in the map and the pattern is different, return false
     if (map.has(string)) {
+      // f the current string-pattern pair violates the rule that
+      // no two strings can be associated with different patterns
       if (map.get(string) !== pattern) {
         return false
       }

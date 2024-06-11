@@ -28,6 +28,7 @@ const solution = (coins, quantity) => {
   const recurse = (index, sum) => {
     // base case: if we've considered all the coins, add the sum to the set and return
     if (index === coins.length) {
+      // add sum from the params
       sums.add(sum)
       // break the recursion
       return
@@ -35,6 +36,7 @@ const solution = (coins, quantity) => {
 
     // consider all possible quantities of the current coin
     // iterate up to quantity[index] inclusive
+    // quantity[index] and not quantity[i]
     for (let i = 0; i <= quantity[index]; i++) {
       // consider the next coin and a new sum that includes i copies of the current coin
       recurse(index + 1, sum + i * coins[index])
@@ -66,3 +68,28 @@ const solution = (coins, quantity) => {
 // each time moving on to the next coin and a new sum.
 //  When it has considered all coins,
 // it adds the sum to the set of sums.
+
+// coins: [10, 50, 100]
+// quantity: [1, 2, 1]
+// sum index
+// 0 0
+// 1 0
+// 2 0
+// 3 0
+// 3 100
+// 2 50
+// 3 50
+// 3 150
+// 2 100
+// 3 100
+// 3 200
+// 1 10
+// 2 10
+// 3 10
+// 3 110
+// 2 60
+// 3 60
+// 3 160
+// 2 110
+// 3 110
+// 3 210
