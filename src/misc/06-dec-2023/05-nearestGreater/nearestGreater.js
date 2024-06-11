@@ -52,3 +52,11 @@ module.exports = {
 // at the top of the stack is less than the current element a[i].
 // If it is, it means we have found the next greater element
 // for the value at the top of the stack, which is a[i].
+
+// b[j] - i > j - i:
+// This checks if the distance from j to the greater element
+// found during the forward pass (which is at index b[j])
+// is greater than the distance from j to the current element i.
+// If it is, it means that the current element i is closer to j
+//  and is also greater than a[j],
+// so it should be the new value at b[j].
