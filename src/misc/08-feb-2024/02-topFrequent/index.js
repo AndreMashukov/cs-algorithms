@@ -16,6 +16,9 @@ const solution = (nums, k) => {
   const result = []
 
   for (const num of nums) {
+    // map.get(num) + 1: This increments the count of num.
+    // If num is not yet in the map,
+    // this expression results in NaN because undefined + 1 is NaN.
     map.set(num, map.get(num) + 1 || 1)
   }
 
