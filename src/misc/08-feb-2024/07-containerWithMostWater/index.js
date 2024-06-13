@@ -13,7 +13,10 @@ const solution = (height) => {
   let right = height.length - 1
 
   while (left < right) {
-    maxArea = Math.max(maxArea, Math.min(height[left], height[right]) * (right - left))
+    maxArea = Math.max(
+      maxArea,
+      Math.min(height[left], height[right]) * (right - left)
+    )
 
     if (height[left] < height[right]) {
       left++
@@ -24,3 +27,11 @@ const solution = (height) => {
 
   return maxArea
 }
+
+// In each iteration of the loop,
+//  it calculates the area between the left and right lines.
+// The area is calculated as the distance between the lines
+//  (i.e., right - left) multiplied by the height of the shorter line
+//  (i.e., Math.min(height[left], height[right])).
+//  If this area is greater than maxArea,
+// it updates maxArea.

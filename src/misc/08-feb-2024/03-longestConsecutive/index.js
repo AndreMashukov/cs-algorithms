@@ -12,7 +12,7 @@ const longestConsecutive = (nums) => {
   const set = new Set(nums)
   let max = 0
 
-  // iterate through the set
+  // iterate through the set !!!
   for (const num of set) {
     // check if the current number is the start of a sequence
     if (!set.has(num - 1)) {
@@ -26,7 +26,7 @@ const longestConsecutive = (nums) => {
         currentStreak++
       }
 
-      // update the max streak
+      // update the max streak !!!
       max = Math.max(max, currentStreak)
     }
   }

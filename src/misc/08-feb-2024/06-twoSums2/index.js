@@ -20,3 +20,7 @@ const solution = (numbers, target) => {
     }
   }
 }
+
+// he key insight is that, since the array is sorted,
+// moving the left pointer to the right increases the sum,
+// and moving the right pointer to the left decreases the sum.
