@@ -28,29 +28,32 @@ const isValidSudoku = (board) => {
   }
 
   return true
-};
+}
 
-// Math.floor(i / 3) * 3:
-// This determines the starting row index of the box.
-// The Math.floor(i / 3) part divides the current row index i by 3
-// and rounds down to the nearest integer.
-// This maps rows 0-2 to 0, rows 3-5 to 1,
-// and rows 6-8 to 2. Multiplying by 3 scales it up
-// so that it maps to the first row of each box (0, 3, or 6).
+// Let's say we're checking the cell at row 4, column 5
+// (remember, indices start from 0).
+// Here's how we'd calculate the boxIndex:
+// Calculate Math.floor(i / 3) * 3:
+// This gives the starting row index of the box.
+// For i = 4, Math.floor(4 / 3) * 3 equals 1 * 3, which is 3.
 
-// Math.floor(j / 3): This determines the starting column index of the box.
-// It works similarly to the row calculation,
-// mapping columns 0-2 to 0, columns 3-5 to 1,
-// and columns 6-8 to 2.
+// Calculate Math.floor(j / 3): This gives the starting
+// column index of the box. For j = 5, Math.floor(5 / 3) equals 1.
 
-// Math.floor(i / 3) * 3 + Math.floor(j / 3):
-// This adds the row and column indices together to get the box index.
-// The boxes are numbered from 0 to 8,
-// starting from the top left box
-// and moving left to right, top to bottom.
+// Add the results together: 3 + 1 equals 4.
 
-// So, boxIndex is used to map each cell in the Sudoku board
-// to one of the 9 boxes.
-// This allows the function to check if a number
-// has already been used in the same box,
-/// which is one of the rules of Sudoku.
+// So, the cell at row 4, column 5 belongs to box 4.
+
+// 0 0 0 | 1 1 1 | 2 2 2
+// 0 0 0 | 1 1 1 | 2 2 2
+// 0 0 0 | 1 1 1 | 2 2 2
+// ------+-------+------
+// 3 3 3 | 4 4 4 | 5 5 5
+// 3 3 3 | 4 4 4 | 5 5 5
+// 3 3 3 | 4 4 4 | 5 5 5
+// ------+-------+------
+// 6 6 6 | 7 7 7 | 8 8 8
+// 6 6 6 | 7 7 7 | 8 8 8
+// 6 6 6 | 7 7 7 | 8 8 8
+
+// https://www.youtube.com/watch?v=TjFXEUCMqI8

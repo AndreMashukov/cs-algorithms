@@ -19,8 +19,11 @@ const solution = (height) => {
     )
 
     if (height[left] < height[right]) {
+      // Increments the left pointer
+      // in the hope of finding a taller line on the left side
       left++
     } else {
+      // Decrements the right pointer to find a taller line on the right side.
       right--
     }
   }

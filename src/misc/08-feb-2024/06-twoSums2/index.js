@@ -6,6 +6,7 @@
 
 const solution = (numbers, target) => {
   let left = 0
+  // the rigth pointer starts from the end 
   let right = numbers.length - 1
 
   while (left < right) {
@@ -21,6 +22,6 @@ const solution = (numbers, target) => {
   }
 }
 
-// he key insight is that, since the array is sorted,
+// The key insight is that, since the array is sorted,
 // moving the left pointer to the right increases the sum,
 // and moving the right pointer to the left decreases the sum.
