@@ -8,6 +8,8 @@
 // Output: true
 // Explanation: s2 contains one permutation of s1 ("ba").
 
+
+// TODO: Create a unit test for this
 const compareMaps = (map1, map2) => {
   if (map1.size !== map2.size) {
     return false
