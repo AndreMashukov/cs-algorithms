@@ -11,6 +11,8 @@ function lengthOfLongestSubstring (s) {
     // If the character is already in the set, remove the character
     // at index l from the set and increment l
     while (charSet.has(s[r])) {
+      // This shrinks the window from the left until 
+      // the repeating character is removed
       charSet.delete(s[l])
       l += 1
     }
