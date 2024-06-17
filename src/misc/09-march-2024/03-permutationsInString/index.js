@@ -25,6 +25,7 @@ const compareMaps = (map1, map2) => {
 const solution = (s1, s2) => {
   const s1Length = s1.length
   const s2Length = s2.length
+  // s1Map is static
   const s1Map = new Map()
   const s2Map = new Map()
 
