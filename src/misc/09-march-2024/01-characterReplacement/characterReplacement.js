@@ -22,14 +22,16 @@ const solution = (s, k) => {
   // while-loop to iterate through the string
   while (end < s.length) {
     // Updates the frequency of the character at index end
+    // (F || 0 ) + 1
     freqMap.set(s[end], (freqMap.get(s[end]) || 0) + 1);
     // Updates the max variable with the maximum frequency of any character
     max = Math.max(max, freqMap.get(s[end]));
 
     // if the number of operations needed to change the characters
-    // in the substring s[start:end + 1] to the same character is greater than k
+    // in the substring s[start:end + 1] to the same character is GREATER than k
     if (end - start + 1 - max > k) {
-      // Updates the frequency of the character at index start
+      // Updates the frequency of the character at index START
+      // Shrinking the window 
       freqMap.set(s[start], freqMap.get(s[start]) - 1);
       // Moves the start pointer to the right
       start++;
