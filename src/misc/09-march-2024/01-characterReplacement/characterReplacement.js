@@ -13,30 +13,38 @@
 // Explanation: Replace the two 'A's with two 'B's or vice versa.
 
 const solution = (s, k) => {
-  let max = 0
-  let start = 0
-  let end = 0
+  let max = 0;
+  let start = 0;
+  let end = 0;
   // Initializes a map to store the frequency of each character in the string
-  const freqMap = new Map()
+  const freqMap = new Map();
 
   // while-loop to iterate through the string
   while (end < s.length) {
     // Updates the frequency of the character at index end
-    freqMap.set(s[end], (freqMap.get(s[end]) || 0) + 1)
+    freqMap.set(s[end], (freqMap.get(s[end]) || 0) + 1);
     // Updates the max variable with the maximum frequency of any character
-    max = Math.max(max, freqMap.get(s[end]))
+    max = Math.max(max, freqMap.get(s[end]));
 
     // if the number of operations needed to change the characters
     // in the substring s[start:end + 1] to the same character is greater than k
     if (end - start + 1 - max > k) {
       // Updates the frequency of the character at index start
-      freqMap.set(s[start], freqMap.get(s[start]) - 1)
+      freqMap.set(s[start], freqMap.get(s[start]) - 1);
       // Moves the start pointer to the right
-      start++
+      start++;
     }
 
-    end++
+    end++;
   }
 
-  return end - start
-}
+  return end - start;
+};
+
+// k + max is the maximum length of a substring
+// that can be made of the same character
+// by changing k characters and keeping the max characters
+// that are already the same.
+// However, this doesn't mean that a substring of length
+// k + max always exists, because k + max might be greater
+// than the length of the string or the current window.
