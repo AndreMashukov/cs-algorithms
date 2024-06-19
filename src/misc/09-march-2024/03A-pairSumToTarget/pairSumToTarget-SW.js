@@ -36,7 +36,7 @@ const solution = (a, m, k) => {
     if (map.get(a[i - m]) === 0) {
       map.delete(a[i - m])
     } else {
-      map.set(a[i - m], map.get(a[i - m]) - 1)
+      map.set(a[i - m], (map.get(a[i - m]) || 0) - 1)
     }
 
     if (map.has(k - a[i])) {
