@@ -11,7 +11,7 @@ function lengthOfLongestSubstring (s) {
     // If the character is already in the set, remove the character
     // at index l from the set and increment l
     while (charSet.has(s[r])) {
-      // This shrinks the window from the left until 
+      // This shrinks the window from the left until
       // the repeating character is removed
       charSet.delete(s[l])
       l += 1
@@ -30,3 +30,6 @@ console.log(lengthOfLongestSubstring('pwwkew')) // Outputs: 3
 // It does this by removing the character at the start of the window (s[l])
 // from the charSet and moving the start of the window one character
 // to the right (l += 1).
+
+// It found a repeating char on the RIGHT but removing chars from the LEFT
+// until the repeating char is removed

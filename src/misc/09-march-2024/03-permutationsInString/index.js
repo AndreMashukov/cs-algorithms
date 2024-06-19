@@ -1,4 +1,5 @@
-// Given two strings s1 and s2, return true if s2 contains a permutation of s1, or false otherwise.
+// Given two strings s1 and s2, return true if s2 contains a permutation of s1,
+// or false otherwise.
 
 // In other words, return true if one of s1's permutations is the substring of s2.
 
@@ -20,7 +21,7 @@ const compareMaps = (map1, map2) => {
   }
 
   return true
-}
+};
 
 const solution = (s1, s2) => {
   const s1Length = s1.length
@@ -60,6 +61,6 @@ const solution = (s1, s2) => {
   }
 
   return compareMaps(s1Map, s2Map)
-}
+};
 
 module.exports = compareMaps

@@ -21,30 +21,32 @@
 // For a = [15, 8, 8, 2, 6, 4, 1, 7], m = 2, and k = 8, the output should be solution(a, m, k) = 2.
 
 const solution = (a, m, k) => {
-  let count = 0;
-  const map = new Map();
+  let count = 0
+  const map = new Map()
 
   for (let i = 0; i < m; i++) {
     if (map.has(k - a[i])) {
-      count += map.get(k - a[i]);
+      count += map.get(k - a[i])
     }
-    map.set(a[i], (map.get(a[i]) || 0) + 1);
+    map.set(a[i], (map.get(a[i]) || 0) + 1)
   }
 
   for (let i = m; i < a.length; i++) {
+    // a[i - m] represents the start of the sliding window
     if (map.get(a[i - m]) === 1) {
-      map.delete(a[i - m]);
+      map.delete(a[i - m])
     } else {
-      map.set(a[i - m], map.get(a[i - m]) - 1);
+      map.set(a[i - m], map.get(a[i - m]) - 1)
     }
 
     if (map.has(k - a[i])) {
-      count += map.get(k - a[i]);
+      count += map.get(k - a[i])
     }
-    map.set(a[i], (map.get(a[i]) || 0) + 1);
+    // setting the end of the SW
+    map.set(a[i], (map.get(a[i]) || 0) + 1)
   }
 
-  return count;
+  return count
 };
 
 // Initialize a hash map and a counter outside the loop.
@@ -53,3 +55,7 @@ const solution = (a, m, k) => {
 // remove the number that's sliding out of the window
 // from the map and the counter, and add the new number
 // that's sliding into the window to the map and the counter.
+
+// https://stackblitz.com/edit/vitejs-vite-cwxrah?file=counter.js
+
+console.log(solution([2, 4, 7, 5, 3, 5, 8, 5, 1, 7], 4, 10))
