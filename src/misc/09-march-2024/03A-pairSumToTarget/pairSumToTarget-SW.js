@@ -26,28 +26,28 @@ const solution = (a, m, k) => {
 
   for (let i = 0; i < m; i++) {
     if (map.has(k - a[i])) {
-      count += map.get(k - a[i])
+      count++
     }
     map.set(a[i], (map.get(a[i]) || 0) + 1)
   }
 
   for (let i = m; i < a.length; i++) {
     // a[i - m] represents the start of the sliding window
-    if (map.get(a[i - m]) === 1) {
+    if (map.get(a[i - m]) === 0) {
       map.delete(a[i - m])
     } else {
       map.set(a[i - m], map.get(a[i - m]) - 1)
     }
 
     if (map.has(k - a[i])) {
-      count += map.get(k - a[i])
+      count++
     }
     // setting the end of the SW
     map.set(a[i], (map.get(a[i]) || 0) + 1)
   }
 
   return count
-};
+}
 
 // Initialize a hash map and a counter outside the loop.
 // Start a loop from the 0th index to the m-1th index (the first window), and for each number, update the map and the counter.
@@ -56,6 +56,10 @@ const solution = (a, m, k) => {
 // from the map and the counter, and add the new number
 // that's sliding into the window to the map and the counter.
 
+// 1. Shrink the window from the LEFT
+// 2. Update the counter
+// 3. Expand the window to the RIGHT
+
 // https://stackblitz.com/edit/vitejs-vite-cwxrah?file=counter.js
 
-console.log(solution([2, 4, 7, 5, 3, 5, 8, 5, 1, 7], 4, 10))
+console.log(solution([2, 4, 7, 5, 3, 5, 8, 5, 1, 7], 4, 10)) // Should be 5 !!!
