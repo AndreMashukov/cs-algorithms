@@ -37,12 +37,12 @@ const minEatingSpeed = (piles, h) => {
   }
 
   return l
-}
+};
 
 // Example 1
 console.log(minEatingSpeed([3, 6, 7, 11], 8)) // 4
 // Explaination : Koko can eat 4 bananas per hour.
-// The total hours needed to eat all the bananas is 7.
+// The total hours needed to eat all the bananas is 7 (WHY?).
 // If she eats 3 bananas per hour, she will need 8 hours to eat all the bananas.
 // So, Koko should eat 4 bananas per hour.
 
@@ -54,3 +54,15 @@ console.log(minEatingSpeed([3, 6, 7, 11], 8)) // 4
 // For example, if pile is 7 and mid is 3, pile / mid is 2.33....
 // But Koko can't eat all the bananas in 2.33... hours - she needs 3 full hours.
 // So, we use Math.ceil to round up the result to 3.
+
+// If we used while (l <= r), then in the case
+// where l and r are equal and hours > h is false,
+// we would set r = mid, but since l and r are already equal,
+// mid would also be equal to l and r, and r would remain the same.
+// This would cause the loop to continue indefinitely.
+
+// When hours <= h, it means that the current eating speed (mid)
+// is sufficient to eat all the bananas within h hours.
+//  However, we don't know if it's the minimum speed yet,
+// so we continue the search in the lower half of the current search range,
+// which is from l to mid.

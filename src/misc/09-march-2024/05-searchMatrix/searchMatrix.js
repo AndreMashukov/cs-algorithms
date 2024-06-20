@@ -33,3 +33,8 @@ const solution = (matrix, target) => {
 
   return false
 }
+
+// matrix=[[1,2,4,8],[10,11,12,13],[14,20,30,40]]
+// target=10
+
+console.log(solution([[1, 2, 4, 8], [10, 11, 12, 13], [14, 20, 30, 40]], 10)) // Should be true

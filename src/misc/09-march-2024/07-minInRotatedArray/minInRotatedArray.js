@@ -20,7 +20,6 @@ const minInRotatedArray = (nums) => {
     const mid = Math.floor((l + r) / 2)
 
     // If the middle element is greater than the last element,
-    //
     if (nums[mid] > nums[r]) l = mid + 1
     else r = mid
   }
