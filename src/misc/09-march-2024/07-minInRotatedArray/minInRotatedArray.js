@@ -21,6 +21,7 @@ const minInRotatedArray = (nums) => {
 
     // If the middle element is greater than the last element,
     if (nums[mid] > nums[r]) l = mid + 1
+    // why not mid - 1?
     else r = mid
   }
 
@@ -29,3 +30,8 @@ const minInRotatedArray = (nums) => {
 
 // Example 1
 console.log(minInRotatedArray([3, 4, 5, 1, 2])) // 1
+
+// By setting r = mid, we ensure that the mid element remains in our search space.
+// This is crucial because in a rotated sorted array,
+// the pivot point (which is the minimum element) could be at any position,
+// including mid.

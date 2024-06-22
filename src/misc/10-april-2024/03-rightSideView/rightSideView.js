@@ -1,4 +1,6 @@
-// Given the root of a binary tree, imagine yourself standing on the right side of it, return the values of the nodes
+// Given the root of a binary tree,
+// imagine yourself standing on the right side of it,
+// return the values of the nodes
 // you can see ordered from top to bottom.
 
 const rightSideView = (root) => {
@@ -31,7 +33,7 @@ const rightSideView = (root) => {
   }
 
   return result
-}
+};
 
 console.log(
   rightSideView({

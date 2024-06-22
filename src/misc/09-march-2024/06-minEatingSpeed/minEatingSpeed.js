@@ -14,6 +14,7 @@
 // Return the minimum integer k such that
 // she can eat all the bananas within h hours.
 
+// USE ANOTHER SOLUTION
 const minEatingSpeed = (piles, h) => {
   let l = 1
   // Find the maximum number of bananas in a pile
@@ -37,12 +38,12 @@ const minEatingSpeed = (piles, h) => {
   }
 
   return l
-};
+}
 
 // Example 1
 console.log(minEatingSpeed([3, 6, 7, 11], 8)) // 4
 // Explaination : Koko can eat 4 bananas per hour.
-// The total hours needed to eat all the bananas is 7 (WHY?).
+// The total hours needed to eat all the bananas is 7.
 // If she eats 3 bananas per hour, she will need 8 hours to eat all the bananas.
 // So, Koko should eat 4 bananas per hour.
 
