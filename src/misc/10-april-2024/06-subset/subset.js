@@ -16,6 +16,7 @@ const subsetSum = (nums) => {
   // index - the current index in the nums array
   const dfs = (index, path) => {
     // push the path to the result
+    // not including the current number in the path
     result.push(path)
     // console.log(index, result)
     for (let i = index; i < nums.length; i++) {
