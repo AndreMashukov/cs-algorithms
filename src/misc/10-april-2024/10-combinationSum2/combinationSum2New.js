@@ -27,6 +27,7 @@ const combinationSum2 = (candidates, target) => {
       cur.push(candidates[j])
       backtrack(cur, j + 1, target - candidates[j])
       cur.pop()
+      // For the next iteration, where prev will be used to check for duplicates again.
       prev = candidates[j]
     }
   }
