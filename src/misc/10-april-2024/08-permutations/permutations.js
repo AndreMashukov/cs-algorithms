@@ -6,6 +6,7 @@ const permutations = (nums) => {
   const res = []
 
   const dfs = (cur) => {
+    // console.log(cur)
     if (cur.length === nums.length) {
       res.push([...cur])
       return;
@@ -21,6 +22,7 @@ const permutations = (nums) => {
 
       cur.push(nums[i])
       dfs(cur)
+      // backtracking step that allows to explore other permutations.
       cur.pop()
     }
   }
@@ -32,3 +34,11 @@ const permutations = (nums) => {
 console.log(permutations([1, 2, 3]))
 
 // Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+
+// If we called dfs(cur) after cur.pop(),
+// we would be exploring permutations
+// that do not include nums[i],
+// but we've already done that in previous
+// iterations of the loop. So, it would result
+// in duplicate permutations and wouldn't correctly
+// generate all unique permutations of nums.
