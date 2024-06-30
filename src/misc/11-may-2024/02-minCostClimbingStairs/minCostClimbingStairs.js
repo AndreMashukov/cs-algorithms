@@ -21,7 +21,7 @@ const minCostClimbingStairs = (cost) => {
   }
 
   return dp[n]
-};
+}
 
 // Input: cost = [10,15,20]
 // Output: 15
@@ -46,5 +46,6 @@ console.log(
 // [ 0, 0, 10, 0 ]
 // [ 0, 0, 10, 15 ]
 // first two elements of the dp array are typically initialized to 0.
-// This is because you can start from either the first or the second step without any cost,
+// This is because you can start
+// from either the first or the second step without any cost,
 // as per the problem statement.
