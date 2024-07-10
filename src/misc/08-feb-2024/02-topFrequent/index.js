@@ -29,4 +29,4 @@ const solution = (nums, k) => {
   }
 
   return result
-};
+}
