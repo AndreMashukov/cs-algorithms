@@ -16,7 +16,9 @@ class Solution {
 
     let matched = 0
     let start = 0
+    // Initialize the minimum length to be greater than the length of s
     let minLen = s.length + 1
+    // Store the start position of the minimum substring
     let subStr = 0
     for (let endWindow = 0; endWindow < s.length; endWindow++) {
       const right = s[endWindow]
@@ -34,6 +36,7 @@ class Solution {
           minLen = endWindow - start + 1
           subStr = start
         }
+        // s[start++] is the character going to be removed from the window
         const deleted = s[start++]
         // If the character removed is in t, adjust its count and matched count
         if (map.has(deleted)) {

@@ -36,6 +36,7 @@ const solution = (a, m, k) => {
     if (map.get(a[i - m]) === 0) {
       map.delete(a[i - m])
     } else {
+      // removing the start of the SW
       map.set(a[i - m], (map.get(a[i - m]) || 0) - 1)
     }
 
