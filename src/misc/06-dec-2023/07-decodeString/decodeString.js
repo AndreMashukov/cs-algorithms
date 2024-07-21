@@ -26,7 +26,7 @@ const solution = (s) => {
       stack.push([+num, str])
       num = ''
       str = ''
-      // f the character is a closing bracket ],
+      // If the character is a closing bracket ],
       // it pops the top element from the stack (which is an array [n, s]),
       // repeats the current str n times,
       // and prepends s to it.
