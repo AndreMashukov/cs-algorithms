@@ -17,10 +17,16 @@ const isSymmetric = (left, right) => {
   if (!left && !right) {
     return true
   }
+  // if one side is null and the other is not, then it's not symmetric
   if (!left || !right) {
     return false
   }
-  return left.value === right.value && isSymmetric(left.left, right.right) && isSymmetric(left.right, right.left)
+  return (
+    left.value === right.value &&
+    // compare left children on one side to right children on the other
+    isSymmetric(left.left, right.right) &&
+    isSymmetric(left.right, right.left)
+  )
 }
 
 function solution (t) {

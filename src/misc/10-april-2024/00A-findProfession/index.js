@@ -16,6 +16,7 @@ function solution (level, pos) {
   const parent = solution(level - 1, Math.ceil(pos / 2))
 
   if (parent === 'Engineer') {
+    // if parent is Engineer, then the position is Doctor if even, Engineer if odd
     if (pos % 2 === 0) {
       return 'Doctor'
     } else {
