@@ -11,6 +11,8 @@ function solution (t, k) {
       current = current.left
     }
 
+    console.log('stack:', stack)
+
     current = stack.pop()
     k--
 
@@ -41,3 +43,29 @@ function solution (t, k) {
 //   const sortedValues = inOrderTraversal(t);
 //   return sortedValues[k - 1];
 // }
+
+console.log(solution({
+  value: 3,
+  left: {
+    value: 1,
+    left: null,
+    right: {
+      value: 2,
+      left: null,
+      right: null
+    }
+  },
+  right: {
+    value: 5,
+    left: {
+      value: 4,
+      left: null,
+      right: null
+    },
+    right: {
+      value: 6,
+      left: null,
+      right: null
+    }
+  }
+}, 3)) // 3

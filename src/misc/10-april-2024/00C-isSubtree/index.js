@@ -5,6 +5,7 @@
 
 const isSameTree = (t1, t2) => {
   if (!t1 || !t2) {
+    // if both are null, they are the same tree (base case)
     return t1 === t2
   }
 
@@ -33,5 +34,6 @@ function solution (t1, t2) {
     return !t2
   }
 
+  // check if t2 is a subtree of t1 or if t2 is a subtree of t1's left or right subtree
   return isSubtree(t1, t2) || solution(t1.left, t2) || solution(t1.right, t2)
 }
