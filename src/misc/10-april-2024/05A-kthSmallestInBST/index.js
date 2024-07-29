@@ -1,11 +1,13 @@
 // Given a binary search tree t, find the kth smallest element in it.
 
 function solution (t, k) {
+  // top of the stack is the smallest element in the tree
   const stack = []
   let current = t
 
+  // in-order traversal of the tree
   while (current || stack.length) {
-    // goes down the left side of the tree
+    // goes down the left side of the tree and adds the nodes to the stack
     while (current) {
       stack.push(current)
       current = current.left
@@ -19,7 +21,7 @@ function solution (t, k) {
     if (k === 0) {
       return current.value
     }
-    // moves to the right child of the current node
+    // moves to the right child of the current node and then goes down the left side of the tree
     current = current.right
   }
 }
@@ -69,3 +71,17 @@ console.log(solution({
     }
   }
 }, 3)) // 3
+
+//   3
+//  /  \
+// 1    5
+//  \   / \
+//   2 4   6
+
+// stack: [3, 1]
+// stack: [3, 2]
+// stack: [3]
+
+//  current = current.right
+// The right subtree contains nodes that are greater than the current node
+// but still need to be visited to maintain the ascending order.

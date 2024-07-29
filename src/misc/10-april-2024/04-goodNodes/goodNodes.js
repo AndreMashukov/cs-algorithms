@@ -5,12 +5,17 @@
 
 // Example 1:
 // Input: root = [3,1,4,3,null,1,5]
+//  3
+// / \
+// 1  4
+//  /  \
+//  3   1
+// / \
+// 5
 // Output: 4
 // Explanation: Nodes in blue are good.
 // Root Node (3) is always a good node.
-// Node 4 -> (3,4) is the maximum value in the path starting from the root.
-// Node 5 -> (3,4,5) is the maximum value in the path
-// Node 3 -> (3,1,3) is the maximum value in the path.
+// Node 4 -> (3,4) - GOOD NODE. Is the maximum value in the path starting from the root
 
 const goodNodes = (root) => {
   let count = 0
@@ -18,6 +23,7 @@ const goodNodes = (root) => {
   const dfs = (node, max) => {
     if (!node) return
 
+    // if the current node value is greater than or equal to the max value
     if (node.val >= max) {
       count++
       max = node.val
@@ -36,7 +42,11 @@ const goodNodes = (root) => {
 console.log(
   goodNodes({
     val: 3,
-    left: { val: 1, left: { val: 3, left: null, right: null }, right: { val: 1, left: null, right: null } },
+    left: {
+      val: 1,
+      left: { val: 3, left: null, right: null },
+      right: { val: 1, left: null, right: null }
+    },
     right: { val: 4, left: null, right: { val: 5, left: null, right: null } }
   })
 )
