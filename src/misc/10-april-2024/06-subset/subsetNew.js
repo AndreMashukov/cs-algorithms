@@ -1,8 +1,7 @@
+// Given an array nums of unique integers,
+//  return all possible subsets of nums.
+
 class Solution {
-  /**
-   * @param {number[]} nums
-   * @return {number[][]}
-   */
   subsets (nums) {
     const res = []
     const subset = []
@@ -10,13 +9,6 @@ class Solution {
     return res
   }
 
-  /**
-   * @param {number[]} nums
-   * @param {number} i
-   * @param {number[]} subset
-   * @param {number[][]} res
-   * @return {void}
-   */
   dfs (nums, i, subset, res) {
     if (i >= nums.length) {
       res.push([...subset])

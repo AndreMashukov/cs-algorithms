@@ -9,6 +9,7 @@ function solution (t, k) {
   while (current || stack.length) {
     // goes down the left side of the tree and adds the nodes to the stack
     while (current) {
+      // current node is added to the stack (and not current.left)
       stack.push(current)
       current = current.left
     }
