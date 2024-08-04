@@ -21,6 +21,7 @@ const combinationSum2 = (candidates, target) => {
     if (target < 0) return
 
     let prev = -1
+    // iterate through the rest of the candidates array
     for (let j = i; j < candidates.length; j++) {
       if (prev === candidates[j]) continue
 
