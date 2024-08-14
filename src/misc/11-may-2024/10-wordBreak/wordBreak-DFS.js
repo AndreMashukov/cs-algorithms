@@ -31,13 +31,13 @@ class Solution {
       for (const word of wordDict) {
         if (s.startsWith(word, i)) {
           if (dfs(i + word.length)) {
-            return map[i] = true
+            return (map[i] = true)
           }
         }
       }
 
-      return map[i] = false
-    }
+      return (map[i] = false)
+    };
 
     return dfs(0)
   }
