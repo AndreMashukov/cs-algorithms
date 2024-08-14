@@ -20,15 +20,8 @@ const wordSearch = (board, word) => {
 
     // mark the current character as visited
     const temp = board[i][j]
-    // set the current character to a space
+    // set the current character to a space to mark it as visited
     board[i][j] = ' '
-
-    // const directions = [
-    //   [-1, 0], // up
-    //   [1, 0], // down
-    //   [0, -1], // left
-    //   [0, 1] // right
-    // ]
 
     const found =
       dfs(i + 1, j, index + 1) ||
@@ -64,5 +57,16 @@ console.log(
     'ABCCED'
   )
 )
-
 // Output: true
+
+console.log(
+  wordSearch(
+    [
+      ['A', 'B', 'C', 'D'],
+      ['S', 'A', 'A', 'T'],
+      ['A', 'C', 'A', 'E']
+    ],
+    'BAT'
+  )
+)
+// Output: false

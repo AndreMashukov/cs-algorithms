@@ -19,6 +19,8 @@ const subsetsWithDup = (nums) => {
 
     // All subsets that include nums[i]
     subset.push(nums[i])
+    // run dfs with i + 1 which is the next index in the array
+    // and the current subset array that includes nums[i]
     dfs(i + 1, subset)
     subset.pop()
 
@@ -26,6 +28,8 @@ const subsetsWithDup = (nums) => {
     while (i + 1 < nums.length && nums[i] === nums[i + 1]) {
       i++
     }
+    // run dfs with i + 1 which is the next index in the array
+    // and the current subset array that doesn't include nums[i]
     dfs(i + 1, subset)
   }
 
