@@ -18,28 +18,25 @@ class Solution {
    * @return {boolean}
    */
   wordBreak (s, wordDict) {
-    const map = {}
-    const dfs = (i) => {
-      if (i === s.length) {
-        return true
-      }
+    const words = new Set(wordDict)
+    const visited = new Set()
+    const stack = [0]
 
-      if (map[i] !== undefined) {
-        return map[i]
-      }
+    while (stack.length) {
+      const start = stack.pop()
 
-      for (const word of wordDict) {
-        if (s.startsWith(word, i)) {
-          if (dfs(i + word.length)) {
-            return map[i] = true
+      for (let end = start + 1; end < s.length + 1; end++) {
+        if (words.has(s.slice(start, end))) {
+          if (end === s.length) return true
+          // If the end index is not the last character in the string,
+          if (!visited.has(end)) {
+            stack.push(end)
+            visited.add(end)
           }
         }
       }
-
-      return map[i] = false
     }
-
-    return dfs(0)
+    return false
   }
 }
 
