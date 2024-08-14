@@ -18,28 +18,24 @@ class Solution {
    * @return {boolean}
    */
   wordBreak (s, wordDict) {
-    const wordSet = new Set(wordDict)
-    // keep track of the start indices that have been visited
+    const words = new Set(wordDict)
     const visited = new Set()
     const stack = [0]
 
     while (stack.length) {
       const start = stack.pop()
 
-      // decisions are based on the words from wordDict
-      if (!visited.has(start)) {
-        for (let end = start + 1; end <= s.length; end++) {
-          if (wordSet.has(s.slice(start, end))) {
-            if (end === s.length) {
-              return true
-            }
+      for (let end = start + 1; end < s.length + 1; end++) {
+        if (words.has(s.slice(start, end))) {
+          if (end === s.length) return true
+          // If the end index is not the last character in the string,
+          if (!visited.has(end)) {
             stack.push(end)
+            visited.add(end)
           }
         }
-        visited.add(start)
       }
     }
-
     return false
   }
 }
