@@ -31,10 +31,12 @@ class Solution {
       // processed so far in the current iteration
       const nextDP = new Set()
       for (const t of dp) {
+        // t + nums[i] is the sum of the subset that includes nums[i]
         if (t + nums[i] === target) {
           return true
         }
         // nums[i] is included in the subset.
+        // add nums[i] to each sum in the current dp set
         nextDP.add(t + nums[i])
         // the case where nums[i] is not included in the subset
         nextDP.add(t)
