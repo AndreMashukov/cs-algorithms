@@ -38,3 +38,8 @@
 
 // Example usage
 console.log(new Solution().change(5, [1, 2, 5])); // 4
+// Explanation: There are four ways to make up the amount:
+// 5 = 5
+// 5 = 2 + 2 + 1
+// 5 = 2 + 1 + 1 + 1
+// 5 = 1 + 1 + 1 + 1 + 1
