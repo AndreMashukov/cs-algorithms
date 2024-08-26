@@ -36,10 +36,11 @@ const maxProfit = (prices, k) => {
       // The maximum profit up to day j with at most i transactions
       // is the maximum of the previous maximum profit
       dp[i][j] = Math.max(dp[i][j - 1], prices[j] + maxSoFar)
+      // The maximum profit up to day j with at most i transactions
       maxSoFar = Math.max(maxSoFar, dp[i - 1][j] - prices[j])
     }
   }
   return dp[k][n - 1]
-};
+}
 
 console.log(maxProfit([3, 2, 6, 5, 0, 3], 2)) // Should be 7 !!!
