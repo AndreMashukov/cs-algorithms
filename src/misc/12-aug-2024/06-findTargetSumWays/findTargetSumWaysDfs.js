@@ -13,29 +13,29 @@ class Solution {
    * @param {number} target
    * @return {number}
    */
-  findTargetSumWays(nums, target) {
-    const dp = new Map();
+  findTargetSumWays (nums, target) {
+    const dp = new Map()
 
     const dfs = (index, total) => {
-      const key = `${index} - ${total}`;
+      const key = `${index} - ${total}`
       if (index === nums.length) {
-        return total === target ? 1 : 0;
+        return total === target ? 1 : 0
       }
 
       if (dp.has(key)) {
-        return dp.get(key);
+        return dp.get(key)
       }
 
       const ways =
         dfs(index + 1, total + nums[index]) +
-        dfs(index + 1, total - nums[index]);
-      dp.set(key, ways);
-      return ways;
-    };
+        dfs(index + 1, total - nums[index])
+      dp.set(key, ways)
+      return ways
+    }
 
-    return dfs(0, 0);
+    return dfs(0, 0)
   }
 }
 
 // Example usage
-console.log(new Solution().findTargetSumWays([1, 1, 1, 1, 1], 3)); // 5
+console.log(new Solution().findTargetSumWays([1, 1, 1, 1, 1], 3)) // 5
