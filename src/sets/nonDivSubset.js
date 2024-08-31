@@ -4,8 +4,8 @@
  * @param {array} s
  * @return {number}
  */
-function nonDivisibleSubset(k, s) {
-  const remainders = new Array(k).fill(0);
+function nonDivisibleSubset (k, s) {
+  const remainders = new Array(k).fill(0)
   // In maths. if (a + b) % k = 0 => then ((a % k) + (b % k)) % k = 0
   // Example: (5 + 7) % 6 = 0 => then (5 % 6) + (7 % 6) > (5 + 1) % 6 = 0
 
@@ -30,10 +30,10 @@ function nonDivisibleSubset(k, s) {
   // that there is 1 number whose remainder 2 after divided 4.
   // (10 % 4 = 2)
 
-  s.forEach( (val) => {
+  s.forEach((val) => {
     // console.log(val % k);
-    remainders[val % k] += 1;
-  });
+    remainders[val % k] += 1
+  })
 
   // After getting each remainder, index 0 (actually remainder 0)
   // is a special case
@@ -43,12 +43,12 @@ function nonDivisibleSubset(k, s) {
   //      2. If there are 2 elements in remainderArr[0],
   // we have to choose only 1, otherwise, we can sum up 2 or more
   //         zeros, then non-sub divisible set could be divisible by k.
-  const zeroRemainder = remainders[0];
+  const zeroRemainder = remainders[0]
 
   // That's why, our initial subset size is 1,
   // if there is a zero remainder,
   // otherwise it is 0
-  let maxNumberOfDivisibleSet = zeroRemainder > 0 ? 1 : 0;
+  let maxNumberOfDivisibleSet = zeroRemainder > 0 ? 1 : 0
 
   // Another thing is that pair which is itself.
   // That's means, let's say k = 4, therefore pair of remainderArr[2]
@@ -59,38 +59,16 @@ function nonDivisibleSubset(k, s) {
   // if condition "i != k - i" will handle this situation.
   for (let i = 1; i <= (k / 2); i++) {
     if (i != k - i) {
-      maxNumberOfDivisibleSet += Math.max(remainders[i], remainders[k - i]);
+      maxNumberOfDivisibleSet += Math.max(remainders[i], remainders[k - i])
     } else {
-      maxNumberOfDivisibleSet ++;
+      maxNumberOfDivisibleSet++
     }
   }
   // console.log(remainders);
   // [ 0, 3, 1 ]
-  return maxNumberOfDivisibleSet;
+  return maxNumberOfDivisibleSet
 }
-
-// /**
-//  * @param {number} k
-//  * @param {array} s
-//  * @return {number}
-//  */
-// function nonDivisibleSubset(k, s) {
-//   // Write your code here
-//   const set = [...new Set(s)];
-//   const combos = cwb.combineWithoutRepetitions(set, 2)
-//       .filter((array) => array.reduce((a, v) => a + v, 0) % k !== 0);
-//   console.log(combos);
-//   // eslint-disable-next-line prefer-spread
-//   const processed = [...new Set([].concat.apply([], combos))];
-//   console.log(processed);
-//   if (set.length === processed.length) {
-//     return processed.length / 2;
-//   }
-//   return processed.length;
-// }
-
-module.exports.nonDivisibleSubset = nonDivisibleSubset;
-
+module.exports.nonDivisibleSubset = nonDivisibleSubset
 
 // Example: with K of 5, remainder pairs are 1+4 & 2+3.
 // Given the numbers with a remainder of 1,
