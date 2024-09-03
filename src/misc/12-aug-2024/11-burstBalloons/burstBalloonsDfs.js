@@ -50,3 +50,38 @@ const maxCoinsDfs = (nums) => {
 
 console.log(maxCoinsDfs([3, 1, 5, 8])) // 167
 console.log(maxCoinsDfs([1, 5])) // 5
+
+// Initial Call:
+
+// 1. dfs(0, 5) is called.
+// left = 0, right = 5.
+// 2. First Iteration:
+// The loop iterates with i from left + 1 to right - 1, i.e., i from 1 to 4.
+// For i = 1, the function calls dfs(0, 1) and dfs(1, 5).
+
+// dfs(0, 1): No balloons to burst between indices 0 and 1, returns 0.
+// dfs(1, 5): Calculates the maximum coins for bursting balloons between indices 1 and 5.
+
+// nums=[4,2,3,7]
+// stdout:
+
+// 0 5 1
+// 1 5 2
+// 2 5 3
+// 3 5 4
+// 2 5 4
+// 2 4 3
+// 1 5 3
+// 1 3 2
+// 1 5 4
+// 1 4 2
+// 1 4 3
+// 0 5 2
+// 0 2 1
+// 0 5 3
+// 0 3 1
+// 0 3 2
+// 0 5 4
+// 0 4 1
+// 0 4 2
+// 0 4 3
