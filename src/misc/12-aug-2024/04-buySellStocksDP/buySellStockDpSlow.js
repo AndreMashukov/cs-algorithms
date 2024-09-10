@@ -26,6 +26,7 @@ const maxProfit = (prices, k) => {
         // The maximum profit up to day j with at most i transactions
         maxVal = Math.max(maxVal, prices[j] - prices[m] + dp[i - 1][m])
       }
+      dp[i][j] = Math.max(dp[i][j - 1], maxVal)
     }
   }
   return dp[k][n - 1]
