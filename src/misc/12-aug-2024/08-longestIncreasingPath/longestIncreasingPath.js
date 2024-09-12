@@ -54,3 +54,8 @@ console.log(
     [2, 1, 1]
   ])
 ) // 4
+
+// When making recursive calls to explore the neighboring cells,
+// the current cell's value matrix[r][c] is passed as the new prev value.
+// This ensures that the next cell in the path must have a value greater
+// than the current cell's value.

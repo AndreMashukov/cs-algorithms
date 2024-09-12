@@ -41,3 +41,5 @@ class Solution {
     return dp[0]
   }
 }
+
+console.log(new Solution().numDecodings('11')) // Output: 2
