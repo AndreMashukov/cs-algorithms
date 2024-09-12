@@ -60,13 +60,12 @@ console.log(new Solution().topKFrequent([1, 1, 1, 2, 2, 3], 2)) // [1, 2]
 //   ]
 // }
 
-
-// Frequency Count: Use a hash map (count) to count the frequency 
+// Frequency Count: Use a hash map (count) to count the frequency
 // of each element in the array.
-// Bucket Sort: Create an array of buckets (freq), 
-// where the index represents the frequency, 
+// Bucket Sort: Create an array of buckets (freq),
+// where the index represents the frequency,
 // and each bucket contains elements with that frequency.
-// Collect Results: Iterate through the buckets from highest to lowest frequency, 
+// Collect Results: Iterate through the buckets from highest to lowest frequency,
 // collecting elements until k elements are gathered.
 
 // Frequency count: { '1': 3, '2': 2, '3': 1 }
