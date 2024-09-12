@@ -6,31 +6,31 @@
 // result = [24, 12, 8, 6].
 
 const productExceptSelf = (nums) => {
-  const n = nums.length;
-  const result = Array(n).fill(1);
+  const n = nums.length
+  const result = Array(n).fill(1)
 
   // the product of all elements to the left
   // of the current element
-  let left = 1;
+  let left = 1
   for (let i = 0; i < n; i++) {
-    result[i] = left;
+    result[i] = left
     // we update left to include nums[i] for the next iteration.
-    left *= nums[i];
+    left *= nums[i]
   }
 
   // Now result is [1, 1, 2, 6].
 
-  let right = 1;
+  let right = 1
   for (let i = n - 1; i >= 0; i--) {
     // include the product of the numbers to the right of nums[i] in result[i].
-    result[i] *= right;
-    right *= nums[i];
+    result[i] *= right
+    right *= nums[i]
   }
 
-  return result;
-};
+  return result
+}
 
-// he left variable accumulates the product
+// The left variable accumulates the product
 // of all elements to the left of the current element.
 // It starts at 1 (since there are no elements
 // to the left of the first element)

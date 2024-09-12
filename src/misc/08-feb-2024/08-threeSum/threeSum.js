@@ -45,7 +45,13 @@ const solution = (nums) => {
   return result
 }
 
-// Sure, let's consider a simple example with the array
+// Sort the Array: Sort the input array to facilitate the two-pointer technique.
+// Iterate with a Fixed Element: Iterate through the array, fixing one element at a time.
+// Two-Pointer Technique: For each fixed element, use two pointers (low and high) to find pairs that sum up to the negative of the fixed element.
+// Avoid Duplicates: Skip duplicate elements to avoid adding duplicate triplets to the result.
+// Collect Results: Add valid triplets to the result list.
+
+// let's consider a simple example with the array
 // nums = [-1, 0, 1, 2, -1, -4]
 // and we want to find all unique triplets that sum up to zero.
 
