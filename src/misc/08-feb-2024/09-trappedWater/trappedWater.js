@@ -25,6 +25,7 @@ class Solution {
       if (leftMax < rightMax) {
         l++
         leftMax = Math.max(leftMax, height[l])
+        // res = res + min(leftMax, rightMax) - height[l]
         res += leftMax - height[l]
       } else {
         r--
