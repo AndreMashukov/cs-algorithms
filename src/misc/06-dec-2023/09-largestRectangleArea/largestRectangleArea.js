@@ -18,7 +18,8 @@ class Solution {
 
     for (let i = 0; i < heights.length; i++) {
       let start = i
-      // Pop elements from the stack while the current element is less than the last element in the stack
+      // Pop elements from the stack while the current element
+      // is less than the last element in the stack
       while (stack.length > 0 && stack[stack.length - 1][1] > heights[i]) {
         const [index, height] = stack.pop()
         maxArea = Math.max(maxArea, height * (i - index))
