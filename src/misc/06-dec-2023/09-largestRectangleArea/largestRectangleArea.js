@@ -36,3 +36,8 @@ class Solution {
     return maxArea
   }
 }
+
+console.log(new Solution().largestRectangleArea([7, 1, 7, 2, 2, 4])) // 8
+
+// [ [ 0, 7 ] ]
+// [ [ 0, 1 ], [ 2, 7 ] ]

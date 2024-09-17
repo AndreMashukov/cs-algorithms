@@ -34,12 +34,17 @@ const solution = (s) => {
       // and prepends s to it.
     } else if (char === ']') {
       const [n, s] = stack.pop()
+      // str = s + str.repeat(n)
+      // str = s + str.repeat(n)
+      // str = s + str.repeat(n)
+      // str = s + str.repeat(n)
       str = s + str.repeat(n)
     } else if (isNaN(char)) {
       str += char
     } else {
       num += char
     }
+    // console.log(stack, num, str)
   }
 
   return str

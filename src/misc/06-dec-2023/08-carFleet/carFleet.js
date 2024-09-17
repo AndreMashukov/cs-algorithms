@@ -18,14 +18,17 @@ class Solution {
     pairs.sort((a, b) => b[0] - a[0])
 
     let fleetCount = 0
+    // The time it takes to reach the target
     const timeToReach = new Array(n)
     for (let i = 0; i < n; i++) {
       timeToReach[i] = (target - pairs[i][0]) / pairs[i][1]
-      // If the time to reach the destination is less than the time to reach the previous car
+      // If the time to reach the destination is less than the time
+      // to reach the previous car
       if (i >= 1 && timeToReach[i] <= timeToReach[i - 1]) {
         // The time to reach the destination is the same as the previous car
         timeToReach[i] = timeToReach[i - 1]
       } else {
+        // It starts a new fleet
         fleetCount++
       }
     }
