@@ -67,3 +67,4 @@ function solution (s, t) {
 }
 
 console.log(solution('ADOBECODEBANC', 'ABC')) // BANC
+console.log(solution('OUZODYXAZV', 'XYZ')) // YXAZ
