@@ -14,21 +14,31 @@ class Solution {
    * @param {TreeNode} root
    * @return {number}
    */
-  maxPathSum(root) {
-      let max = -Infinity
+  maxPathSum (root) {
+    // Initialize max to the smallest possible value
+    let max = -Infinity
 
-      const preorder = (root) => {
-          if (!root) return 0;
+    // Helper function to perform a preorder traversal
+    const preorder = (root) => {
+      // Base case: if the node is null, return 0
+      if (!root) return 0
 
-          const left = Math.max(preorder(root.left), 0);
-          const right = Math.max(preorder(root.right), 0);
-          max = Math.max(max, left + right + root.val);
+      // Recursively find the maximum path sum of the left and right subtrees
+      // If the path sum is negative, consider it as 0 (ignore the path)
+      const left = Math.max(preorder(root.left), 0)
+      const right = Math.max(preorder(root.right), 0)
 
-          return Math.max(left, right) + root.val
-      } 
+      // Update the global maximum path sum if the current path sum is greater
+      max = Math.max(max, left + right + root.val)
 
-      preorder(root)
+      // Return the maximum path sum that can be extended to the parent node
+      return Math.max(left, right) + root.val
+    };
 
-      return max      
+    // Start the preorder traversal from the root
+    preorder(root)
+
+    // Return the maximum path sum found
+    return max
   }
 }
