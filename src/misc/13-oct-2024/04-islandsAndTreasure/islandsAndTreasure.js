@@ -61,3 +61,22 @@ class Solution {
     }
   }
 }
+
+// Example usage
+const grid = [
+  [2147483647, -1, 0, 2147483647],
+  [2147483647, 2147483647, 2147483647, -1],
+  [2147483647, -1, 2147483647, -1],
+  [0, -1, 2147483647, 2147483647]
+]
+
+new Solution().islandsAndTreasure(grid) // result in grid
+
+// The grid after the function call will look like this:
+// [
+//   [3, -1, 0, 1],
+//   [2, 2, 1, -1],
+//   [1, -1, 2, -1],
+//   [0, -1, 3, 4]
+
+console.log(grid)
