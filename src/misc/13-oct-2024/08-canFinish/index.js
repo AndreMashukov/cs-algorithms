@@ -66,3 +66,19 @@ class Solution {
     return true
   }
 }
+
+// Populate preMap:
+
+// Initialize preMap with an empty array for each course.
+// Populate preMap with the given prerequisites.
+// DFS Closure Function:
+
+// Check for cycles by marking courses as visiting.
+// If a cycle is detected (course revisited), return false.
+// If a course has no prerequisites, return true.
+// Recursively visit all prerequisites of the course.
+// Mark the course's prerequisites as processed.
+// Check All Courses:
+
+// Perform DFS for each course.
+// If any course cannot be completed due to a cycle, return false.
