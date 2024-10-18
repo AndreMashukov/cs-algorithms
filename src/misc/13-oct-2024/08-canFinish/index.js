@@ -67,6 +67,11 @@ class Solution {
   }
 }
 
+// build adjacentcy_list with edges,
+// run dfs on each V, if while dfs on V we see V again,
+// then loop exists, otherwise V isnt in a loop,
+// 3 states= not visited, visited, still visiting
+
 // Populate preMap:
 
 // Initialize preMap with an empty array for each course.
