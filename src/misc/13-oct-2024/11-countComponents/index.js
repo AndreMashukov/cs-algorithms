@@ -71,6 +71,7 @@ class Solution {
 // the algorithm flattens the structure of the tree, ensuring
 // that each node points directly to the root.
 // This speeds up future operations.
+
 // Union by Rank:
 // During the union operation, the algorithm attaches
 // the smaller tree under the root of the larger tree,
