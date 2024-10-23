@@ -57,3 +57,9 @@ console.log(new Solution().cloneGraph(new Node(1, [new Node(2), new Node(3)])))
 // If a node has already been copied, return the copy from the map.
 // Create a copy of the current node and store it in the map.
 // Recursively clone all neighbors and add them to the neighbors list of the copy.
+
+// 1: [2, 3]
+// 2: [1, 4]
+// 3: [1, 4]
+// 4: [2, 3]
+// We are given a very first node
