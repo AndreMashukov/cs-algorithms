@@ -55,6 +55,9 @@ const numIslands = (grid) => {
   return count
 }
 
+// foreach cell, if cell is 1 and unvisited run dfs,
+// increment cound and marking each contigous 1 as visited
+
 // Example usage
 console.log(numIslands([
   ['1', '1', '0', '0', '0'],

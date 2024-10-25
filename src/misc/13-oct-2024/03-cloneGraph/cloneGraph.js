@@ -53,6 +53,8 @@ class Solution {
 
 // Example usage
 console.log(new Solution().cloneGraph(new Node(1, [new Node(2), new Node(3)])))
+
+// recursive dfs, hashmap for visited nodes
 // If a node is null, return null.
 // If a node has already been copied, return the copy from the map.
 // Create a copy of the current node and store it in the map.
