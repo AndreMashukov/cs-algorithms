@@ -49,7 +49,7 @@ class Solution {
       visit.add(course) // Mark the course as visited
       output.push(course) // Add the course to the output array
       return true
-    };
+    }
 
     // Check all courses
     for (let c = 0; c < numCourses; c++) {
@@ -61,3 +61,22 @@ class Solution {
     return output // Return the valid course order
   }
 }
+
+// cycle Set:
+// Purpose: Detect cycles during the DFS traversal.
+// Usage: This set keeps track of the courses
+// that are currently being visited in the current DFS path.
+// If a course is encountered that is already in the cycle set,
+// it indicates a cycle, meaning that the course depends on itself
+// either directly or indirectly.
+// Behavior: Courses are added to the cycle set when they are first visited and removed once all their prerequisites have been processed.
+
+// visit Set:
+// Purpose: Track courses that have been fully processed.
+// Usage: This set keeps track of the courses
+// that have been completely visited,
+// meaning all their prerequisites have been checked
+// and no cycles were found. Once a course is added to the visit set,
+// it will not be revisited in future DFS calls.
+// Behavior: Courses are added to the visit set after
+// they have been fully processed and removed from the cycle set.
