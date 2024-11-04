@@ -13,20 +13,26 @@
  * @return {number}
  */
 const findMaxLength = function(nums) {
+  // Initialize a map to store the count and its corresponding index
   const map = new Map()
+  // Add a base case to handle the situation when the subarray starts from index 0
   map.set(0, -1)
-  let max = 0
-  let count = 0
+  let max = 0 // Variable to store the maximum length of the subarray
+  let count = 0 // Variable to store the count of 1s and 0s
 
   for (let i = 0; i < nums.length; i++) {
+    // Increment count by 1 if nums[i] is 1, otherwise decrement by 1
     count += nums[i] === 0 ? -1 : 1
 
+    // If the count has been seen before, it means there is a subarray with equal number of 0s and 1s
     if (map.has(count)) {
+      // Update the maximum length of the subarray
       max = Math.max(max, i - map.get(count))
     } else {
+      // Otherwise, store the count with its corresponding index
       map.set(count, i)
     }
   }
 
-  return max
+  return max // Return the maximum length of the subarray
 };
