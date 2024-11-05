@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/sort-colors/
-// youtube.com/watch?v=BOt1DAvR0zI
+// http://youtube.com/watch?v=BOt1DAvR0zI
 // Given an array nums with n objects colored red, white, or blue,
 // sort them in-place so that objects of the same color are adjacent,
 // with the colors in the order red, white, and blue.
@@ -48,3 +48,13 @@ const sortColors = (nums) => {
 // while 1s remain in the middle.
 // This approach ensures that the array is sorted in a single pass
 // with a time complexity of O(n).
+
+// When nums[i] === 2, we swap the current element
+// with the element at the right pointer and then decrement the right pointer. 
+// We do not increment i in this case because the element 
+// that was swapped from the right pointer 
+// to the current position i has not been processed yet. 
+// By not incrementing i, we ensure that this new element is checked
+// in the next iteration of the loop. This is necessary because 
+// the new element could be a 0, 1, or another 2, 
+// and we need to handle it accordingly.

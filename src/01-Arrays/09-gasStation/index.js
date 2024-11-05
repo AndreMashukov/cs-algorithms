@@ -38,3 +38,11 @@ const canCompleteCircuit = function(gas, cost) {
   // If total gas is less than total cost, return -1, otherwise return start index
   return totalGas < totalCost ? -1 : start
 };
+
+// It iterates through each station, 
+// keeping track of the total gas and total cost. 
+// If at any point the gas in the tank becomes negative, 
+// it resets the starting position to the next station. 
+// Finally, it checks if the total gas is less than the total cost; 
+// if so, it returns -1, indicating the journey is not possible. 
+// Otherwise, it returns the starting station index.
