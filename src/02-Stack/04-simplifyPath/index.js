@@ -1,3 +1,4 @@
+// Source: https://leetcode.com/problems/simplify-path/
 // You are given an absolute path for a Unix-style file system,
 // which always begins with a slash '/'.
 // Your task is to transform this absolute path into its simplified canonical path.
