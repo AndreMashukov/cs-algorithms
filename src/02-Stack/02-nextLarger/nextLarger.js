@@ -1,5 +1,3 @@
-// leetcode: No. 503 Next Greater Element II 
-// https://leetcode.com/problems/next-greater-element-ii/
 // Given an array a composed of distinct elements,
 // find the next larger element for each element of the array,
 // i.e. the first element to the right that is greater than this element,
