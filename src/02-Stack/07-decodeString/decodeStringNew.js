@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/decode-string/description/
+// https://www.youtube.com/watch?v=qB0zZpBJlh8
 // Given an encoded string, return its corresponding decoded string.
 // The encoding rule is: k[encoded_string], where the encoded_string
 // inside the square brackets is repeated exactly k times.
