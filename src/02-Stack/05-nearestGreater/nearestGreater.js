@@ -1,5 +1,3 @@
-// leetcode: No. 503 Next Greater Element II 
-// https://leetcode.com/problems/next-greater-element-ii/
 // Given an array of integers a, return a new array b
 // using the following guidelines:
 
