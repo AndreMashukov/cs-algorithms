@@ -34,7 +34,7 @@ const calculate = function(s) {
 
   for (let i = 0; i < s.length; i++) {
     const char = s[i];
-    if (!isNaN(char)) {
+    if (!isNaN(char) && char !== ' ') {
       // If the character is a digit, build the current number
       num = num * 10 + Number(char);
     } else if (char === '+') {
