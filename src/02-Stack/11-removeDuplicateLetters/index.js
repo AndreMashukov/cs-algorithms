@@ -1,5 +1,6 @@
 // 316. Remove Duplicate Letters
 // https://leetcode.com/problems/remove-duplicate-letters/
+// https://www.lintcode.com/problem/834/
 // https://www.youtube.com/watch?v=j313ttNJjo0
 
 // Given a string s, remove duplicate letters so that every letter appears once  
