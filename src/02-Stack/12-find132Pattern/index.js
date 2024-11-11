@@ -1,5 +1,6 @@
 // 456. 132 Pattern
 // http://www.lintcode.com/problem/132-pattern
+// https://www.youtube.com/watch?v=q5ANAl8Z458
 
 // Given an array of n integers nums, a 132 pattern is a subsequence 
 // of three integers nums[i], nums[j] and nums[k] such that i < j < k 
