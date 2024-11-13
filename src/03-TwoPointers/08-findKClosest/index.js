@@ -9,8 +9,8 @@
 export class Solution {
   /**
    * @param a: an integer array
-   * @param target: An integer
    * @param k: An integer
+   * @param x: An integer
    * @return: an integer array
    */
   kClosestNumbers (a, k, x) {
@@ -32,3 +32,18 @@ export class Solution {
     return a.slice(l, l + k)
   }
 }
+
+// Binary Search:
+
+// Perform binary search to find the starting index of the k
+// closest numbers.
+// Compare the differences between
+// x and the middle elements.
+// Adjust the pointers l and r based on the comparison.
+
+// The condition if (x - a[m] > a[m + k] - x)
+// is used to determine which half of the array
+// to search next in the binary search.
+//  It compares the differences between
+// the target value x and the elements
+// at indices m and m + k.
