@@ -1,3 +1,5 @@
+// https://www.lintcode.com/problem/460/
+// https://www.youtube.com/watch?v=o-YDQzHoaKM&t=198s
 // Given target, a non-negative integer k
 // and an integer array A sorted in ascending order,
 // find the k closest numbers to target in A, sorted
