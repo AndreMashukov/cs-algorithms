@@ -9,41 +9,49 @@
 export class Solution {
   /**
    * @param a: an integer array
+   * @param target: An integer
    * @param k: An integer
-   * @param x: An integer
    * @return: an integer array
    */
-  kClosestNumbers (a, k, x) {
+  kClosestNumbers (a, target, k) {
     let l = 0 // Left pointer
-    let r = a.length - k // Right pointer
+    let r = a.length - 1 // Right pointer
 
-    // Binary search to find the starting index of the k closest numbers
+    // Find the closest element to the target
     while (l < r) {
-      const m = Math.floor(l + (r - l) / 2) // Middle index
-      // Compare the differences between the target and the middle elements
-      if (x - a[m] > a[m + k] - x) {
-        l = m + 1 // Move the left pointer to the right
+      const m = Math.floor((l + r) / 2)
+      if (a[m] < target) {
+        l = m + 1
       } else {
-        r = m // Move the right pointer to the left
+        r = m
       }
     }
 
-    // Return the k closest numbers starting from index l
-    return a.slice(l, l + k)
+    // Initialize two pointers for the closest elements
+    l = r - 1
+    r = r
+
+    const result = []
+    // Find the k closest elements
+    while (k > 0) {
+      if (l < 0) {
+        result.push(a[r])
+        r++
+      } else if (r >= a.length) {
+        result.push(a[l])
+        l--
+      } else if (Math.abs(a[l] - target) <= Math.abs(a[r] - target)) {
+        result.push(a[l])
+        l--
+      } else {
+        result.push(a[r])
+        r++
+      }
+      k--
+    }
+
+    return result
   }
 }
 
-// Binary Search:
-
-// Perform binary search to find the starting index of the k
-// closest numbers.
-// Compare the differences between
-// x and the middle elements.
-// Adjust the pointers l and r based on the comparison.
-
-// The condition if (x - a[m] > a[m + k] - x)
-// is used to determine which half of the array
-// to search next in the binary search.
-//  It compares the differences between
-// the target value x and the elements
-// at indices m and m + k.
+console.log(new Solution().kClosestNumbers([1, 2, 3], 3, 2)) // Expected [2, 1, 3]
