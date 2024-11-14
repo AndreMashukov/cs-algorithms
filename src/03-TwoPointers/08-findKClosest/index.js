@@ -1,24 +1,10 @@
-// https://www.lintcode.com/problem/460/
+// https://leetcode.com/problems/find-k-closest-elements/
 // https://www.youtube.com/watch?v=o-YDQzHoaKM&t=198s
 // Given target, a non-negative integer k
 // and an integer array A sorted in ascending order,
 // find the k closest numbers to target in A, sorted
 // in ascending order by the difference between the number and target.
 // Otherwise, sorted in ascending order by number if the difference is same.
-
-// class Solution:
-//     def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
-//       l, r = 0, len(arr) - k
-
-//       while l < r:
-//         m = (l + r) // 2
-//         if x - arr[m] > arr[m + k] - x:
-//           l = m + 1
-//         else:
-//           r = m
-//       return arr[l:l + k] 
-
-
 
 class Solution {
   /**
