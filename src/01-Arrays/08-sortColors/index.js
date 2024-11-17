@@ -50,11 +50,11 @@ const sortColors = (nums) => {
 // with a time complexity of O(n).
 
 // When nums[i] === 2, we swap the current element
-// with the element at the right pointer and then decrement the right pointer. 
-// We do not increment i in this case because the element 
-// that was swapped from the right pointer 
-// to the current position i has not been processed yet. 
+// with the element at the right pointer and then decrement the right pointer.
+// We do not increment i in this case because the element
+// that was swapped from the right pointer
+// to the current position i has not been processed yet.
 // By not incrementing i, we ensure that this new element is checked
-// in the next iteration of the loop. This is necessary because 
-// the new element could be a 0, 1, or another 2, 
+// in the next iteration of the loop. This is necessary because
+// the new element could be a 0, 1, or another 2,
 // and we need to handle it accordingly.
