@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/contiguous-array/description/
+// https://www.youtube.com/watch?v=nSEO5zOwP7g&t=62s
 // Given a binary array nums, return the maximum length of a contiguous subarray
 // with an equal number of 0 and 1.
 
