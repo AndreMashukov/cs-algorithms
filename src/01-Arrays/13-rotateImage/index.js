@@ -17,7 +17,7 @@ const rotate = function (matrix) {
 
   // Iterate through the layers of the matrix
   while (l < r) {
-    for (let i = 0; i < r - l; i++) {
+    for (let i = 0; i < r - l; i++) { // r - l represents the current layer's width
       // Save the top-left value in a temporary variable
       const temp = matrix[l][l + i]
       // Move the bottom-left value to the top-left
