@@ -41,7 +41,8 @@ const findMaxLength = function (nums) {
 
 // We start traversing the array from left to right.
 // If at any moment, the count becomes zero,
-// it implies that we've encountered equal number of zeros and ones from the beginning till the current index of the array.
+// it implies that we've encountered equal number of zeros and ones 
+// from the beginning till the current index of the array.
 // Not only this, another point to be noted is that
 // if we find the same count twice,
 // it means that the number of zeros and ones are equal
