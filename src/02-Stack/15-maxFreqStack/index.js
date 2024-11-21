@@ -18,7 +18,9 @@
 // [null, null, null, null, null, null, null, 5, 7, 5, 4]
 
 const FreqStack = function () {
-
+  this.cnt = {}
+  this.maxCnt = 0;
+  this.stacks = {}
 }
 
 /**
@@ -26,13 +28,26 @@ const FreqStack = function () {
  * @return {void}
  */
 FreqStack.prototype.push = function (val) {
+  let valCnt = 1 + this.cnt[val] || 0
+  this.cnt[val] = valCnt
+  if (valCnt > this.maxCnt) {
+    this.maxCnt = valCnt
+    this.stacks[valCnt] = []
+  }
+  this.stacks[valCnt].push(val)
 }
 
 /**
  * @return {number}
  */
 FreqStack.prototype.pop = function () {
-
+  const stack = this.stacks[this.maxCnt]
+  const val = stack.pop()
+  if (!stack.length) {
+    this.maxCnt--
+  }
+  this.cnt[val]--
+  return val
 }
 
 /**
