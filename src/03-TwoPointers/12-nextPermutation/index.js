@@ -72,3 +72,21 @@ const nextPermutation = function (nums) {
 
   return nums
 }
+
+// 1 2 3 4 5  - minimum
+// 5 4 3 2 1  - maximum
+
+// 1 3 5 4 3 2 1
+// 5 4 3 2 1 - longest decreasing suffix
+// 3 - pivot
+// 4 - first element larger than pivot
+// swap 3 and 4
+// 1 4 5 3 3 2 1
+// sort the suffix
+// 5 3 3 2 1 -> 1 2 3 3 5
+// 1 4 1 3 3 5 - next permutation
+
+// 1. find the pivot
+// 2. find the first element larger than pivot
+// 3. swap pivot and the first element larger than pivot
+// 4. reverse the suffix
