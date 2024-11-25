@@ -6,6 +6,7 @@ class Solution {
    * @return {number[]} - An integer array of the k closest numbers
    */
   kClosestNumbers (arr, k, x) {
+    // O(N)
     let l = 0 // Left pointer
     let r = arr.length - 1 // Right pointer
 

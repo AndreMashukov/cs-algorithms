@@ -34,6 +34,14 @@ class Solution {
 }
 console.log(new Solution().kClosestNumbers([1, 2, 3], 3, 2)) // Expected [2, 1, 3]
 
+// Why arr.length - k:
+// If the right pointer were initialized to arr.length - 1, it would allow subarrays
+// that extend beyond the end of the array.
+// By setting the right pointer to arr.length - k, we ensure
+// that the subarray of length k stays within the bounds of the array.
+// This way, the binary search will only consider valid starting
+// indices for the subarray.
+
 // Example:
 // Input:
 // Array: [1, 2, 3, 4, 5]
