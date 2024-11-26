@@ -23,9 +23,9 @@ class Solution {
       const m = Math.floor((l + r) / 2)
       // If the left element is closer to the target
       if (x - arr[m] > arr[m + k] - x) { // tie breaker
-        l = m + 1
+        l = m + 1 // eliminate the left half
       } else {
-        r = m
+        r = m // eliminate the right half
       }
     }
 
@@ -77,3 +77,9 @@ console.log(new Solution().kClosestNumbers([1, 2, 3], 3, 2)) // Expected [2, 1, 
 
 // The binary search ends with l = 1.
 // The 2 closest numbers starting from index 1 are [2, 3].
+
+// the window is more important than the target value
+// Not searching for the target value, but the window of k elements
+// we search for a better window of k elements
+// m is a left bound of the window
+// that's why we compare arr[m] and arr[m + k] and initialize r to arr.length - k
