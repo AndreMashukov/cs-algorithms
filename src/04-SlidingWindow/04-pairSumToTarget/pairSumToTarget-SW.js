@@ -1,3 +1,4 @@
+// https://stackblitz.com/edit/vitejs-vite-cwxrah?file=counter.js
 // Given an array of integers a, your task is to find how many
 // of its contiguous subarrays of length m contain a pair
 // of integers with a sum equal to k.
@@ -60,7 +61,5 @@ const solution = (a, m, k) => {
 // 1. Shrink the window from the LEFT
 // 2. Update the counter
 // 3. Expand the window to the RIGHT
-
-// https://stackblitz.com/edit/vitejs-vite-cwxrah?file=counter.js
 
 console.log(solution([2, 4, 7, 5, 3, 5, 8, 5, 1, 7], 4, 10)) // Should be 5 !!!
