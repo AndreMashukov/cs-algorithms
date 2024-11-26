@@ -48,25 +48,29 @@ const reverse = (nums, start) => {
   }
 }
 
+// nums = [1, 3, 5, 4, 3, 2, 1]
 const nextPermutation = function (nums) {
   let i = nums.length - 2
 
   // Find the first decreasing element from the end
-  while (i >= 0 && nums[i] >= nums[i + 1]) {
+  while (i >= 0 && nums[i] >= nums[i + 1]) { // 3 < 5 => stop
     i--
   }
+  // i = 1 - pivot nums[i] = 3
 
   // If i is not the first element, swap the element with the next larger element.
   if (i >= 0) {
     let j = nums.length - 1
 
     // Find the element just larger than nums[i]
-    while (j >= 0 && nums[j] <= nums[i]) {
+    while (j >= 0 && nums[j] <= nums[i]) { // 4 <= 5
       j--
     }
+    // j = 3, nums[j] = 4
+    console.log(i, j)
 
     // Swap the elements at i and j
-    swap(nums, i, j)
+    swap(nums, i, j) // swap 3 and 4
   }
 
   // Reverse the elements from i + 1 to the end of the array
@@ -92,3 +96,5 @@ const nextPermutation = function (nums) {
 // 2. find the first element larger than pivot
 // 3. swap pivot and the first element larger than pivot
 // 4. reverse the suffix
+
+console.log(nextPermutation([1, 3, 5, 4, 3, 2, 1])) // [1, 4, 1, 3, 3, 5]

@@ -22,7 +22,7 @@ class Solution {
     while (l < r) {
       const m = Math.floor((l + r) / 2)
       // If the left element is closer to the target
-      if (x - arr[m] > arr[m + k] - x) {
+      if (x - arr[m] > arr[m + k] - x) { // tie breaker
         l = m + 1
       } else {
         r = m
