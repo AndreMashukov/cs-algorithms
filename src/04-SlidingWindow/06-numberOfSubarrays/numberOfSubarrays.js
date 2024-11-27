@@ -21,6 +21,7 @@ const numOfSubarrays = (arr, k, threshold) => {
   }
 
   // Iterate through the array starting from the k-th element
+  // i <= arr.length; because we need one more iteration to check sum calculated in the last window
   for (let i = k; i <= arr.length; i++) {
     // Check if the average of the current window is greater than or equal to the threshold
     if (sum / k >= threshold) {
