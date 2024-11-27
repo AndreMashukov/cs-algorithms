@@ -34,6 +34,7 @@ class Solution {
       }
 
       // If the window has reached size k, record the maximum element in the output
+      // so that we don't record the maximums until the window reaches size k
       if (r + 1 >= k) {
         output[l] = nums[q[0]]
         // Move the left pointer to the right
@@ -52,3 +53,15 @@ class Solution {
 console.log(new Solution().maxSlidingWindow([1, 3, -1, -3, 5, 3, 6, 7], 3)) // [3, 3, 5, 5, 6, 7]
 console.log(new Solution().maxSlidingWindow([1], 1)) // [1]
 console.log(new Solution().maxSlidingWindow([1, -1], 1)) // [1, -1]
+
+// nums=[1,2,1,0,4,2,6]
+// k=3
+// stdout:
+// q
+// []
+// [ 0 ]
+// [ 1 ]
+// [ 1, 2 ]
+// [ 1, 2, 3 ]
+// [ 4 ]
+// [ 4, 5 ]
