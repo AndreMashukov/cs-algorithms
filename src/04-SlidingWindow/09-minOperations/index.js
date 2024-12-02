@@ -1,5 +1,6 @@
 // 1658. Minimum Operations to Reduce X to Zero
 // https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/
+// https://www.youtube.com/watch?v=iPqrN6Bb-NI
 // You are given an integer array nums and an integer x.
 // In one operation, you can either remove the leftmost or the rightmost element
 // from the array nums and subtract its value from x.
@@ -19,7 +20,9 @@
  * @return {number}
  */
 const minOperations = function (nums, x) {
+  // [1, 1, 4, 2, 3], x = 5
   const n = nums.length
+  // [1, 1, 4] => 6 which is the total sum of the array minus x
   const target = nums.reduce((acc, val) => acc + val, 0) - x // Calculate the target sum we need to find
   let max = -1 // Initialize the maximum length of subarray with sum equal to target
   let start = 0 // Initialize the start pointer
@@ -47,6 +50,7 @@ const minOperations = function (nums, x) {
   // If max is -1, it means no valid subarray was found, return -1
   // Otherwise, return the minimum number of operations, which is the total length minus the length of the subarray
   return max === -1 ? -1 : n - max
+  // number of operations is basically the number of elements in the array minus the length of the subarray
 }
 
 // Example usage:

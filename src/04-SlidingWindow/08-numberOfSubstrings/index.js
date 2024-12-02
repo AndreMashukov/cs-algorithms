@@ -1,5 +1,6 @@
 // 1358. Number of Substrings Containing All Three Characters
 // https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/
+// https://www.youtube.com/watch?v=sadDk3AsFEw&t=141s
 // Given a string s consisting only of characters a, b and c.
 // Return the number of substrings containing at least one occurrence
 // of all these characters a, b and c.
