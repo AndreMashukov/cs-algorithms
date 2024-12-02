@@ -28,24 +28,26 @@ const totalFruit = function (fruits) {
   const count = new Map() // Map to store the frequency of fruits in the current window
   let l = 0 // Initialize the left pointer
   let res = 0 // Initialize the result
-  let total = 0 // Initialize the total number of fruits in the current window
 
   for (let r = 0; r < fruits.length; r++) {
     // Add the current fruit to the count map
     count.set(fruits[r], (count.get(fruits[r]) || 0) + 1)
-    total += 1
 
     // Shrink the window from the left until the total number of fruits is less than or equal to 2
-    while (total > 2) {
+    while (count.size > 2) {
       count.set(fruits[l], count.get(fruits[l]) - 1)
       if (count.get(fruits[l]) === 0) {
         count.delete(fruits[l])
       }
       l += 1
-      total -= 1
     }
 
     // Update the result with the maximum number of fruits in the current window
     res = Math.max(res, r - l + 1)
   }
+
+  return res // Return the maximum number of fruits you can pick
 }
+
+// fruits = [1,2,1] => 3
+console.log(totalFruit([1, 2, 1])) // Expected output: 3
