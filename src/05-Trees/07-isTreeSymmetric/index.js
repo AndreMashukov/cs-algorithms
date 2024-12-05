@@ -1,4 +1,7 @@
-// Given a binary tree t, determine whether it is symmetric around its center, i.e. each side mirrors the other.
+// 101. Symmetric Tree
+// https://leetcode.com/problems/symmetric-tree/description/
+// Given a binary tree t, determine whether it is symmetric around its center,
+// i.e. each side mirrors the other.
 
 //
 // Binary trees are already defined with this interface:
