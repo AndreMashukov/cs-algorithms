@@ -43,10 +43,10 @@ class Solution {
     const rightMax = Math.max(this.dfs(root.right, res), 0)
 
     // Update the result with the maximum path sum that includes the current node
-    res[0] = Math.max(res[0], root.val + leftMax + rightMax)
+    res[0] = Math.max(res[0], root.val + leftMax + rightMax) // when we split the path
 
     // Return the maximum path sum that can be extended to the parent node
-    return root.val + Math.max(leftMax, rightMax)
+    return root.val + Math.max(leftMax, rightMax) // when we don't split the path
   }
 }
 
