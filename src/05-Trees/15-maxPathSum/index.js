@@ -1,5 +1,6 @@
 // https://www.youtube.com/watch?v=6cA_NDtpyz8
-// Given the root of a non-empty binary tree, return the maximum path sum of any non-empty path.
+// Given the root of a non-empty binary tree, return the maximum path sum
+// of any non-empty path.
 
 /**
  * Definition for a binary tree node.
@@ -53,6 +54,12 @@ class Solution {
 // Calculate Path Sums: For each node, calculate the maximum path sum
 // of its left and right subtrees. If a subtree path sum is negative,
 //  treat it as zero (ignore the path).
-// Left and Right Subtrees: Recursively calculate the maximum path sums for the left and right subtrees.
-// Update Global Maximum: Update the global maximum path sum if the current path sum is greater.
-// Return to Parent: Return the maximum path sum that can be extended to the parent node.
+
+// Left and Right Subtrees: Recursively calculate the maximum path sums
+// for the left and right subtrees.
+
+// Update Global Maximum: Update the global maximum path sum
+// if the current path sum is greater.
+
+// Return to Parent: Return the maximum path sum that can be extended
+// to the parent node.
