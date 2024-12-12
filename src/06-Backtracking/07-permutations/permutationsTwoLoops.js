@@ -3,18 +3,18 @@
 // You can return the answer in any order.
 
 const permutationsTwoLoops = (nums) => {
-  const res = []
+  const res = [] // Initialize the result array
 
   const dfs = (i) => {
     if (i === nums.length) {
-      return [[]]
+      return [[]] // Base case: return an array with an empty array
     }
 
-    const result = []
-    const perms = dfs(i + 1)
+    const result = [] // Initialize the result array for this level of recursion
+    const perms = dfs(i + 1) // Recursively get permutations of the remaining elements
     for (const perm of perms) {
       for (let j = 0; j <= perm.length; j++) {
-        const newPerm = [...perm]
+        const newPerm = [...perm] // Create a copy of the current permutation
         // Insert the current number at index j
         newPerm.splice(j, 0, nums[i])
         result.push(newPerm) // Push the new permutation into the result array
@@ -25,7 +25,7 @@ const permutationsTwoLoops = (nums) => {
   }
 
   res.push(...dfs(0)) // Collect all permutations from the dfs call
-  return res
+  return res // Return the final result array
 }
 
 // Example usage:

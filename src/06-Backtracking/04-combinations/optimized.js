@@ -39,7 +39,8 @@ const combine = function (n, k) {
 
 // Time complexity O(k * C(n, k))
 // C(n, k) = n! / (k! * (n - k)!)
-// Instead of choose which elements to include or exclude, we can simply choose which elements to include.
+// Instead of choose which elements to include or exclude,
+// we can simply choose which elements to include.
 
 // For the first element, we can choose from
 // 1 to n
