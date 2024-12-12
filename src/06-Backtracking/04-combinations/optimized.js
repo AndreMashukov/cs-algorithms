@@ -1,5 +1,5 @@
 // 77. Combinations
-
+// https://leetcode.com/problems/combinations/description/
 // Given two integers n and k, return all possible combinations of k numbers
 // chosen from the range [1, n].
 // You may return the answer in any order.
@@ -14,27 +14,27 @@
  * @return {number[][]}
  */
 const combine = function (n, k) {
-  const result = []
+  const result = [] // Initialize the result array to store combinations
 
   const backtrack = (i, cur) => {
-    if (cur.length === k) {
-      result.push(cur.slice())
-      return
+    if (cur.length === k) { // If the current combination is of length k
+      result.push(cur.slice()) // Add a copy of the current combination to the result
+      return // Backtrack
     }
 
-    if (i > n) {
-      return
+    if (i > n) { // If the current index exceeds n
+      return // Backtrack
     }
 
-    for (let j = i; j <= n; j++) {
-      cur.push(j)
-      backtrack(j + 1, cur)
-      cur.pop()
+    for (let j = i; j <= n; j++) { // Iterate from the current index to n
+      cur.push(j) // Add the current number to the combination
+      backtrack(j + 1, cur) // Recurse with the next number
+      cur.pop() // Remove the last number to try the next possibility
     }
   }
 
-  backtrack(1, [])
-  return result
+  backtrack(1, []) // Start backtracking from 1 with an empty combination
+  return result // Return the result array containing all combinations
 }
 
 // Time complexity O(k * C(n, k))
