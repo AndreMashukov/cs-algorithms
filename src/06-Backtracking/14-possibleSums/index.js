@@ -48,6 +48,23 @@ const solution = (coins, quantity) => {
 
   return sums.size - 1
 }
+// Let's consider a simple example with coins [1, 2]
+// and quantities [1, 1]. This means we have one coin
+// of value 1 and one coin of value 2.
+// We want to find all possible sums
+// we can make with these coins.
+
+// Start (sum = 0)
+// |
+// |-- Include 0 coins of 1 (sum = 0)
+// |   |
+// |   |-- Include 0 coins of 2 (sum = 0)
+// |   |-- Include 1 coin of 2 (sum = 2)
+// |
+// |-- Include 1 coin of 1 (sum = 1)
+//     |
+//     |-- Include 0 coins of 2 (sum = 1)
+//     |-- Include 1 coin of 2 (sum = 3)
 
 // The recursive function is used here to explore
 // all possible combinations of coins.
