@@ -31,6 +31,7 @@ const numberOfSubstrings = function (s) {
     // Check if the current window contains all three characters 'a', 'b', and 'c'
     while (freqMap.size === 3) {
       // If it does, add the number of valid substrings ending at 'end' to the count
+      // Meaning that we adding the rest of the characters to the valid string.
       count += s.length - end
       // Decrease the frequency of the character at the start pointer
       freqMap.set(s[start], freqMap.get(s[start]) - 1)
