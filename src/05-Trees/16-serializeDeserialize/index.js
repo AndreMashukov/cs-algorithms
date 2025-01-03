@@ -56,6 +56,8 @@ class Codec {
     const nodes = data.split(',')
 
     const buildTree = () => {
+      // Get next node value from the array
+      // Take the first element from the array
       const val = nodes.shift()
 
       if (val === 'null') {
