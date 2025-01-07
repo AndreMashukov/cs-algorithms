@@ -9,6 +9,9 @@
 
 // You may return the answer in any order.
 
+// nQueen II
+// https://leetcode.com/problems/n-queens-ii/description/
+
 class Solution {
   /**
    * Solves the n-queens problem.
@@ -33,7 +36,7 @@ class Solution {
       // If we've placed queens in all n rows, add the current board to results
       if (r === n) {
         res.push(board.map((row) => row.join('')))
-        return;
+        return
       }
 
       // Attempt to place a queen in every column of the current row

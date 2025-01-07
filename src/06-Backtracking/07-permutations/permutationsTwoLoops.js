@@ -2,9 +2,6 @@
 // return all the possible permutations.
 // You can return the answer in any order.
 
-// nQueen II
-// https://leetcode.com/problems/n-queens-ii/description/
-
 const permutationsTwoLoops = (nums) => {
   const res = [] // Initialize the result array
 
