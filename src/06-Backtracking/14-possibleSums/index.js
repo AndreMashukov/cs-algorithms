@@ -22,31 +22,46 @@
 // 10 = 10;
 // 100 = 100;
 // 10 + 100 = 110.
-// As you can see, there are 9 distinct sums that can be created from non-empty groupings of your coins.
+// As you can see, there are 9 distinct sums that can be created
+// from non-empty groupings of your coins.
 
-const solution = (coins, quantity) => {
+const main = (input) => {
   const sums = new Set()
-  const recurse = (index, sum) => {
-    // base case: if we've considered all the coins, add the sum to the set and return
-    if (index === coins.length) {
-      // add sum from the params
+  const coins = input[0]
+  const quantities = input[1]
+
+  const dfs = (i, sum) => {
+    if (i === coins.length) {
       sums.add(sum)
-      // break the recursion
       return
     }
 
-    // consider all possible quantities of the current coin
-    // iterate up to quantity[index] inclusive
-    // quantity[index] and not quantity[i]
-    for (let i = 0; i <= quantity[index]; i++) {
-      // consider the next coin and a new sum that includes i copies of the current coin
-      recurse(index + 1, sum + i * coins[index])
+    for (let j = 0; j <= quantities[i]; j++) {
+      dfs(i + 1, sum + j * coins[i])
     }
   }
 
-  recurse(0, 0)
-
+  dfs(0, 0)
+  console.log(sums.size - 1)
   return sums.size - 1
+}
+
+if (require.main === module) {
+  const readline = require('readline')
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  })
+
+  const lines = []
+  rl.on('line', (line) => lines.push(line.trim()))
+  rl.on('close', () => {
+    // Parse input lines
+    const coins = lines[0].split(' ').map(Number)
+    const quantities = lines[1].split(' ').map(Number)
+    const answer = main([coins, quantities])
+    // console.log(answer); // prints with newline
+  })
 }
 // Let's consider a simple example with coins [1, 2]
 // and quantities [1, 1]. This means we have one coin
