@@ -9,4 +9,4 @@ const houseRobber = (nums) => {
   }
 
   return rob2
-};
+}

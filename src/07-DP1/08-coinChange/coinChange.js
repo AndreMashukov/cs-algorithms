@@ -1,3 +1,4 @@
+// https://www.youtube.com/watch?v=jgiZlGzXMBw&t=842s
 // You are given an integer array coins representing coins
 // of different denominations and an integer amount representing
 // a total amount of money.
@@ -40,7 +41,8 @@ console.log(coinChange([1, 2, 5], 11))
 
 // [(0, 1, 1, 2, 2, 1, 2, 2, 3, 3, 2, 3)];
 
-// To make up the amount 1, the only choice is to use the coin of denomination 1. So, the minimum number of coins needed is 1.
+// To make up the amount 1, the only choice is to use the coin of denomination 1.
+//  So, the minimum number of coins needed is 1.
 // To make up the amount 2, there are two choices:
 // Use two coins of denomination 1.
 // Use one coin of denomination 2.
