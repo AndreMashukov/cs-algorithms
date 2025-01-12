@@ -1,54 +1,49 @@
 class Solution {
   /**
-   * @param {number[]} nums
-   * @return {boolean}
+   * Determines if array can be partitioned into two equal sum subsets
+   * @param {number[]} nums Input array of positive integers
+   * @return {boolean} True if equal partition possible, false otherwise
    */
   canPartition (nums) {
+    // Calculate total sum to determine target for each subset
     const sum = nums.reduce((acc, num) => acc + num, 0)
     if (sum % 2 !== 0) {
-      return false
+      return false // Odd sum cannot be partitioned equally
     }
 
-    const target = sum / 2
-    // include larger numbers in the subset first
-    nums.sort((a, b) => b - a)
-
-    // Memoization cache
+    // Memoization cache to store results of subproblems
+    // Key: [index][target] -> Value: boolean result
     const memo = new Map()
 
-    // keep track of the remaining sum needed to reach half of the total sum.
-    const dfs = (target, index) => {
-      const key = `${target},${index}`
+    /**
+     * DFS helper to find valid partition
+     * @param {number} i Current index in nums array
+     * @param {number} target Remaining sum needed for current partition
+     * @returns {boolean} True if valid partition found from this state
+     */
+    const dfs = (i, target) => {
+      // Base cases
+      if (i === nums.length) {
+        return target === 0 // Valid partition found if target reached exactly
+      }
+      if (target < 0) {
+        return false // Invalid path if target goes negative
+      }
+
+      // Check memoized result
+      const key = `${i},${target}`
       if (memo.has(key)) {
         return memo.get(key)
       }
 
-      if (target === 0) {
-        return true
-      }
-
-      if (target < 0 || index === nums.length) {
-        return false
-      }
-
-      // include the current number (nums[index]) in the first subset.
-      if (dfs(target - nums[index], index + 1)) {
-        memo.set(key, true)
-        return true
-      }
-
-      let nextIndex = index + 1
-      while (nextIndex < nums.length && nums[nextIndex] === nums[index]) {
-        nextIndex++
-      }
-
-      // not include the current number in the first subset,
-      // which means it goes into the second subset
-      const result = dfs(target, nextIndex)
+      // Try both options:
+      // 1. Skip current number
+      // 2. Include current number in partition
+      const result = dfs(i + 1, target) || dfs(i + 1, target - nums[i])
       memo.set(key, result)
       return result
     }
 
-    return dfs(target, 0)
+    return dfs(0, sum / 2)
   }
 }
