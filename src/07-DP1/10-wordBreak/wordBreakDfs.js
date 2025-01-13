@@ -19,7 +19,7 @@ class Solution {
    */
   wordBreak (s, wordDict) {
     // Memoization map to store results of subproblems
-    const map = {}
+    const map = new Map()
 
     // Depth-First Search function to check if s[i:] can be segmented
     const dfs = (i) => {
@@ -29,8 +29,8 @@ class Solution {
       }
 
       // If the result is already computed, return it
-      if (map[i] !== undefined) {
-        return map[i]
+      if (map.has(i)) {
+        return map.get(i)
       }
 
       // Iterate over each word in the dictionary
@@ -39,14 +39,16 @@ class Solution {
         if (s.startsWith(word, i)) {
           // Recursively check the remaining substring
           if (dfs(i + word.length)) {
-            return (map[i] = true)
+            map.set(i, true)
+            return true
           }
         }
       }
 
       // If no valid segmentation is found, store and return false
-      return (map[i] = false)
-    };
+      map.set(i, false)
+      return false
+    }
 
     // Start the DFS from the beginning of the string
     return dfs(0)
