@@ -53,4 +53,4 @@ class Solution {
 
     // Return the result
     return dp[n - 1][capacity]
-  }                  c
+  }        

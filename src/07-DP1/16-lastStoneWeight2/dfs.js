@@ -1,5 +1,6 @@
 // 1049. Last Stone Weight II
 // https://leetcode.com/problems/last-stone-weight-ii/
+// https://www.youtube.com/watch?v=gdXkkmzvR3c
 
 // You are given an array of integers stones
 // where stones[i] is the weight of the ith stone.
@@ -33,36 +34,36 @@
 const lastStoneWeightIIDfs = function (stones) {
   // Initialize the memoization cache
   const memo = new Map()
+  const stoneSum = stones.reduce((acc, stone) => acc + stone, 0)
+  const target = stoneSum / 2
 
-  /**
-   * DFS helper function to explore all possible stone combinations
-   * @param {number} index - Current stone index being considered
-   * @param {number} total - Current total weight of stones
-   * @return {number} Smallest possible weight of the left stone
-   */
-  const dfs = (index, total) => {
-    // Base case: No more stones left
-    if (index === stones.length) {
-      return total
+  const dfs = (i, total) => {
+    // Base case: If we have reached the end of the stones array
+    if (i === stones.length) {
+      // If the total weight is less than or equal to the target weight,
+      // return the remaining weight (which is the weight of the last stone)
+      // Otherwise, return the total weight (which is the weight of the last stone)
+      return total <= target ? total : total - target
     }
 
-    // Check memoized result
-    if (memo.has(`${index}-${total}`)) {
-      return memo.get(`${index}-${total}`)
+    // Check if the current state has been memoized
+    const key = `${i}-${total}`
+    if (memo.has(key)) {
+      return memo.get(key)
     }
 
-    // Option 1: Smash the stone
-    const smash1 = dfs(index + 1, Math.abs(total - stones[index]))
+    // Recursive cases:
+    // 1. Skip the current stone
+    const skip = dfs(i + 1, total)
+    // 2. Use the current stone
+    const use = dfs(i + 1, total + stones[i])
 
-    // Option 2: Keep the stone
-    const smash2 = dfs(index + 1, total + stones[index])
+    // Memoize the minimum weight of the remaining stones
+    const res = Math.min(skip, use)
+    memo.set(key, res)
 
-    // Take the smallest option
-    const minWeight = Math.min(smash1, smash2)
-    memo.set(`${index}-${total}`, minWeight)
-    return minWeight
+    return res
   }
 
-  // Start DFS from the first stone with total weight 0
   return dfs(0, 0)
 }
