@@ -15,15 +15,17 @@ class Solution {
     // Initialize the first row with 1s
     let row = new Array(n).fill(1)
 
-    // Iterate over each row starting from the second row
+    // Going from bottom to top
     for (let i = 0; i < m - 1; i++) {
       // newRow represents the number of unique paths to reach each cell in the current row
       const newRow = new Array(n).fill(1)
       // Iterate over each cell in the current row from right to left
       for (let j = n - 2; j >= 0; j--) {
-        // Recurrence relation: newRow[j] = newRow[j + 1] + row[j]
+        // row[j] - cell to the down
+        // newRow[j + 1] - cell to the right
         newRow[j] = newRow[j + 1] + row[j]
       }
+      console.log(newRow)
       // Update the row to the current row
       row = newRow
     }
@@ -31,3 +33,5 @@ class Solution {
     return row[0]
   }
 }
+
+console.log(new Solution().uniquePaths(3, 7)) // Expected output: 28

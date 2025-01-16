@@ -23,6 +23,7 @@ class Solution {
         if (text1[i] === text2[j]) {
           dp[i][j] = 1 + dp[i + 1][j + 1]
         } else {
+          // Max(down, right)
           dp[i][j] = Math.max(dp[i][j + 1], dp[i + 1][j])
         }
       }
