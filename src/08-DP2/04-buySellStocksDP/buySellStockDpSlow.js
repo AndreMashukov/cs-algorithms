@@ -1,3 +1,5 @@
+// 188. Best Time to Buy and Sell Stock IV
+// https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/description/
 // We need to find the maximum profit
 // that can be achieved with at most k transactions
 // on a given list of stock prices.
@@ -21,11 +23,16 @@ const maxProfit = (prices, k) => {
   for (let i = 1; i <= k; i++) {
     // Iterate over the days
     for (let j = 1; j < n; j++) {
-      let maxVal = 0;
+      let maxVal = 0
+      // `m` represents the day before the current day `j`
       for (let m = 0; m < j; m++) {
         // The maximum profit up to day j with at most i transactions
+        // here we are trying to maximize the profit by buying on day `m` and selling on day `j`
         maxVal = Math.max(maxVal, prices[j] - prices[m] + dp[i - 1][m])
+        // dp[i - 1][m] represents the maximum profit up to day m with at most i - 1 transactions
       }
+      // dp[i][j - 1] represents the maximum profit up to day j - 1 with at most i transactions
+      // means we are not doing any transaction on day j
       dp[i][j] = Math.max(dp[i][j - 1], maxVal)
     }
   }
