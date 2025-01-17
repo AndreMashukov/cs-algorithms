@@ -1,3 +1,6 @@
+// 188. Best Time to Buy and Sell Stock IV
+// https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/description/
+// https://www.youtube.com/watch?v=lJxuwClVN2w
 // We need to find the maximum profit
 // that can be achieved with at most k transactions
 // on a given list of stock prices.
@@ -15,32 +18,34 @@
 const maxProfit = (prices, k) => {
   if (!prices.length) return 0
   const n = prices.length
-  // If k is large enough, we can make every possible profitable transaction
-  if (k >= n / 2) {
+  const dp = Array(n).fill(0)
+
+  for (let i = 1; i <= k; i++) {
+    let pos = -prices[0]
     let profit = 0
-    for (let i = 1; i < n; i++) {
-      if (prices[i] > prices[i - 1]) {
-        profit += prices[i] - prices[i - 1]
-      }
+    for (let j = 1; j < n; j++) {
+      pos = Math.max(pos, dp[j] - prices[j])
+      profit = Math.max(profit, pos + prices[j])
+      dp[j] = profit
     }
-    return profit
   }
 
-  // dp[i][j] represents the maximum profit up to day j with at most i transactions
-  const dp = Array.from({ length: k + 1 }, () => Array(n).fill(0))
-  // Iterate over the transactions and days to fill the dp array with the maximum profit
-  for (let i = 1; i <= k; i++) {
-    let maxSoFar = -prices[0]
-    // Iterate over the days
-    for (let j = 1; j < n; j++) {
-      // The maximum profit up to day j with at most i transactions
-      // is the maximum of the previous maximum profit
-      dp[i][j] = Math.max(dp[i][j - 1], prices[j] + maxSoFar)
-      // The maximum profit up to day j with at most i transactions
-      maxSoFar = Math.max(maxSoFar, dp[i - 1][j] - prices[j])
-    }
-  }
-  return dp[k][n - 1]
+  return dp[n - 1]
 }
 
-console.log(maxProfit([3, 2, 6, 5, 0, 3], 2)) // Should be 7 !!!
+console.log(maxProfit([3, 2, 6, 7, 4, 7], 2)) // Should be 8
+
+// // Transaction = 0
+// [0, 0, 0, 0, 0, 0]
+// // Transaction = 1
+// [0, 0, 4, 5, 5, 5]
+// // Transaction = 2
+// [0, 0, 4, 5, 5, 8]
+
+// profit keeps track of the maximum profit for the current
+// transaction up to the current day.
+
+// The dp array is overwritten for each transaction.
+// This is efficient because each element in the dp array
+// only needs to store the maximum profit up to the current day
+// for the current transaction.
