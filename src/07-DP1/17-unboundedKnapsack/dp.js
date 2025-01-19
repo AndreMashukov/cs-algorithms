@@ -54,3 +54,15 @@ class Solution {
     // Return the result
     return dp[n - 1][capacity]
   }        
+
+//   weights = [1, 3, 4]
+// profits = [15, 50, 60]
+
+// Item/Capacity	
+//    0	1	  2	  3	  4	   5
+// 0	0	15	30	45	60	75
+// 1	0	15	30	50	65	80
+// 2	0	15	30	50	65	90
+
+// For capacity = 1, the maximum profit is 15 (using item 0).
+// For capacity = 2, the maximum profit is 30 (using item 0 twice).
