@@ -21,14 +21,14 @@ const coinChange = (coins, amount) => {
   dp[0] = 0
 
   // i is current amount
-  for (let i = 1; i <= amount; i += 1) {
+  for (let a = 1; a <= amount; a += 1) {
     for (let j = 0; j < coins.length; j += 1) {
       // if the current coin denomination coins[j]
       // is less than or equal to the current amount i
-      if (coins[j] <= i) {
+      if (coins[j] <= a) {
         // dp[i - coins[j]] + 1 represents the number of coins needed
         // to make up the amount i if we use one coin of denomination coins[j]
-        dp[i] = Math.min(dp[i], dp[i - coins[j]] + 1)
+        dp[a] = Math.min(dp[a], dp[a - coins[j]] + 1)
       }
     }
     // console.log(dp)

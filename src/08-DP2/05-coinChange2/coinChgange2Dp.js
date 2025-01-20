@@ -43,3 +43,12 @@ console.log(new Solution().change(5, [1, 2, 5])) // 4
 // 5 = 2 + 2 + 1
 // 5 = 2 + 1 + 1 + 1
 // 5 = 1 + 1 + 1 + 1 + 1
+
+// Let's take a simple example to illustrate how the dp array evolves.
+// Suppose we have coins = [1, 2] and amount = 4.
+// dp = [1, 0, 0, 0, 0]
+// First iteration with coin = 2:
+// dp = [1, 0, 1, 0, 1]
+// Second iteration with coin = 1:
+// dp = [1, 1, 2, 2, 3]
+// The final answer is dp[4] = 3.
