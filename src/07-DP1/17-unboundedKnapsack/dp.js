@@ -31,6 +31,7 @@ class Solution {
     const dp = Array.from({ length: n }, () => Array(capacity + 1).fill(0))
 
     // Initialize first row
+    // we will overwrite this row in the next loop
     for (let c = 1; c <= capacity; c++) {
       dp[0][c] = (weight[0] <= c) ? profit[0] : 0
     }
@@ -55,8 +56,9 @@ class Solution {
     return dp[n - 1][capacity]
   }        
 
-//   weights = [1, 3, 4]
+// weights = [1, 3, 4]
 // profits = [15, 50, 60]
+// capacity = 5
 
 // Item/Capacity	
 //    0	1	  2	  3	  4	   5
@@ -66,3 +68,6 @@ class Solution {
 
 // For capacity = 1, the maximum profit is 15 (using item 0).
 // For capacity = 2, the maximum profit is 30 (using item 0 twice).
+// For capacity = 3, the maximum profit is 50 (using item 1).
+// For capacity = 4, the maximum profit is 65 (using item 1 and item 0).
+// For capacity = 5, the maximum profit is 90 (using item 2 and item 0).
