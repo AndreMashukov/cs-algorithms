@@ -1,4 +1,5 @@
 // https://www.geeksforgeeks.org/problems/0-1-knapsack-problem0945/1
+// https://neetcode.io/problems/zeroOneKnapsack
 // You are given the weights and values of items,
 // and you need to put these items in a knapsack of capacity capacity
 // to achieve the maximum total value in the knapsack.

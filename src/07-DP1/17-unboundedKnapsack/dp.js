@@ -33,7 +33,7 @@ class Solution {
     // Initialize first row
     // we will overwrite this row in the next loop
     for (let c = 1; c <= capacity; c++) {
-      dp[0][c] = (weight[0] <= c) ? profit[0] : 0
+      dp[0][c] = weight[0] <= c ? profit[0] * Math.floor(c / weight[0]) : 0;
     }
 
     // Fill the dp table
