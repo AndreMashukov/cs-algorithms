@@ -27,14 +27,15 @@ const isInterleaveDfs = (s1, s2, s3) => {
     }
 
     let result = false
-    // Check if the current character of s1 matches the current character of s3
+    // Check if the current character of s1 matches
+    // the current character of s3.
     if (i < s1.length && s1[i] === s3[k]) {
       // Recursively check the next state
       result = dfs(i + 1, j)
     }
 
     // If the result is still false, check if the current character
-    // of s2 matches the current character of s3
+    // of s2 matches the current character of s3.
     if (!result && j < s2.length && s2[j] === s3[k]) {
       // Recursively check the next state
       result = dfs(i, j + 1)
