@@ -16,12 +16,12 @@ class Solution {
       const nextDp = new Map()
       // Iterate over each sum and its count in the current dp map
       for (const [total, count] of dp) {
+        console.log(total, count)
         // Update the nextDp map with the new sums
         // by adding and subtracting the current number
         nextDp.set(total + num, (nextDp.get(total + num) || 0) + count)
         nextDp.set(total - num, (nextDp.get(total - num) || 0) + count)
       }
-      console.log(nextDp)
       // Update dp to be the nextDp for the next iteration
       dp = nextDp
     }
