@@ -48,7 +48,7 @@ class Solution {
       // Store the result in the map
       dp.set(key, result)
       return result
-    };
+    }
 
     // Start the DFS from the beginning of both strings
     return dfs(0, 0)
