@@ -37,8 +37,8 @@ const isMatchDfs = (s, p) => {
     // If the next character in the pattern is '*'
     if (j + 1 < p.length && p[j + 1] === '*') {
       // Two possibilities:
-      // 1. Skip the '*' and the preceding element
-      // 2. Use the '*' to match the current character in the string
+      // 1. Skip the '*' and the preceding element, move to the next character in the pattern
+      // 2. Use the '*' to match the current character in the string, move to the next character in the string
       ans = dfs(i, j + 2) || (firstMatch && dfs(i + 1, j))
     } else {
       // If the next character is not '*', move to the next characters in both the string and the pattern
@@ -48,11 +48,11 @@ const isMatchDfs = (s, p) => {
     // Store the result in the memoization map
     memo.set(`${i},${j}`, ans)
     return ans
-  };
+  }
 
   // Start the DFS from the beginning of both the string and the pattern
   return dfs(0, 0)
-};
+}
 
 // Test cases
 console.log(isMatchDfs('aa', '.b')) // false
