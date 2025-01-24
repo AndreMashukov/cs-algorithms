@@ -35,6 +35,7 @@ const isMatchDfs = (s, p) => {
 
     let ans
     // If the next character in the pattern is '*'
+    // j + 1 is because '*' can only be the second character in a pair
     if (j + 1 < p.length && p[j + 1] === '*') {
       // Two possibilities:
       // 1. Skip the '*' and the preceding element, move to the next character in the pattern
