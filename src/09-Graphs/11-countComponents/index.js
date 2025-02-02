@@ -17,14 +17,14 @@ class Solution {
 
     // Initialize parent and rank arrays
     for (let i = 0; i < n; i++) {
-      parent[i] = i
+      parent[i] = i // parent[i] points to itself
       rank[i] = 1
     }
 
     // Find function to find the root of a node
     const find = (node) => {
       let result = node
-      while (parent[result] !== result) {
+      while (parent[result] !== result) { // until we reach the root
         parent[result] = parent[parent[result]] // Path compression
         result = parent[result]
       }

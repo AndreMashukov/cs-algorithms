@@ -11,8 +11,12 @@ class Solution {
   validTree (n, edges) {
     const adjacencyList = new Map() // Move adjacencyList into validTree function
 
+    // A single node with no edges is considered a valid tree.
+    // If there's exactly one node, it must have zero edges.
     if (n === 1) return edges.length === 0
 
+    // If there are multiple nodes and no edges,
+    // the graph is disconnected
     if (edges.length === 0) return false
 
     // Populate the adjacency list with the given edges
@@ -41,7 +45,7 @@ class Solution {
       }
 
       return true
-    };
+    }
 
     // Start DFS from node 0 with -1 as the previous node
     if (!dfs(0, -1)) return false
