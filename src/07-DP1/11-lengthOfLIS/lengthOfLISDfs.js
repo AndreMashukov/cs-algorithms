@@ -4,10 +4,10 @@ class Solution {
    * @return {number}
    */
   lengthOfLIS (nums) {
-    const cache = new Map()
+    const map = new Map()
 
     const dfs = (i) => {
-      if (cache.has(i)) return cache.get(i)
+      if (map.has(i)) return map.get(i)
 
       // Find longest sequence starting at index i
       let max = 1
@@ -21,9 +21,9 @@ class Solution {
         }
       }
 
-      cache.set(i, max)
+      map.set(i, max)
       return max
-    };
+    }
 
     // Try each index as start of sequence
     let maxLen = 0

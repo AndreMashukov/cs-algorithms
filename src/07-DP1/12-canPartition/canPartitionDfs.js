@@ -13,7 +13,7 @@ class Solution {
 
     // Memoization cache to store results of subproblems
     // Key: [index][target] -> Value: boolean result
-    const memo = new Map()
+    const map = new Map()
 
     /**
      * DFS helper to find valid partition
@@ -32,15 +32,15 @@ class Solution {
 
       // Check memoized result
       const key = `${i},${target}`
-      if (memo.has(key)) {
-        return memo.get(key)
+      if (map.has(key)) {
+        return map.get(key)
       }
 
       // Try both options:
       // 1. Skip current number
       // 2. Include current number in partition
       const result = dfs(i + 1, target) || dfs(i + 1, target - nums[i])
-      memo.set(key, result)
+      map.set(key, result)
       return result
     }
 

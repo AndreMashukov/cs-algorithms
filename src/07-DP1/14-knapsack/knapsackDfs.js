@@ -21,7 +21,7 @@ const knapsackDfs = (weights, values, capacity) => {
 
   // Memoization cache to avoid recalculating same subproblems
   // Key format: 'index,remainingCapacity' -> Value: max value possible
-  const memo = new Map()
+  const map = new Map()
 
   /**
    * DFS helper function to explore item combinations
@@ -39,14 +39,14 @@ const knapsackDfs = (weights, values, capacity) => {
 
     // Check if this subproblem was already solved
     const key = `${index},${remainingCapacity}`
-    if (memo.has(key)) {
-      return memo.get(key)
+    if (map.has(key)) {
+      return map.get(key)
     }
 
     // If current item is too heavy, skip it
     if (weights[index] > remainingCapacity) {
       const result = dfs(index + 1, remainingCapacity)
-      memo.set(key, result)
+      map.set(key, result)
       return result
     }
 
@@ -59,7 +59,7 @@ const knapsackDfs = (weights, values, capacity) => {
 
     // Store and return the better of the two choices
     const result = Math.max(includeItem, excludeItem)
-    memo.set(key, result)
+    map.set(key, result)
     return result
   }
 
