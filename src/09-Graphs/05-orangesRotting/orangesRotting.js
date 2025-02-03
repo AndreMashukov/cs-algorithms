@@ -35,12 +35,12 @@ class Solution {
     while (fresh > 0 && q.length > 0) {
       const length = q.length
       for (let i = 0; i < length; i++) {
-        const [currR, currC] = q.shift()
+        const [r, c] = q.shift()
 
         // Check all four directions
         for (const [dr, dc] of directions) {
-          const row = currR + dr
-          const col = currC + dc
+          const row = r + dr
+          const col = c + dc
           // If the adjacent cell is a fresh orange, rot it and enqueue it
           if (
             row >= 0 &&
