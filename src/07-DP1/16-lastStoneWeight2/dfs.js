@@ -33,7 +33,7 @@
  */
 const lastStoneWeightIIDfs = function (stones) {
   // Initialize the memoization cache
-  const memo = new Map()
+  const map = new Map()
   const stoneSum = stones.reduce((acc, stone) => acc + stone, 0)
   const target = stoneSum / 2
 
@@ -48,8 +48,8 @@ const lastStoneWeightIIDfs = function (stones) {
 
     // Check if the current state has been memoized
     const key = `${i}-${total}`
-    if (memo.has(key)) {
-      return memo.get(key)
+    if (map.has(key)) {
+      return map.get(key)
     }
 
     // Recursive cases:
@@ -60,7 +60,7 @@ const lastStoneWeightIIDfs = function (stones) {
 
     // Memoize the minimum weight of the remaining stones
     const res = Math.min(skip, use)
-    memo.set(key, res)
+    map.set(key, res)
 
     return res
   }

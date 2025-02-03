@@ -62,9 +62,6 @@ class Solution {
     return result
   }
 }
-// dfs on each node that hasn’t been visited,
-// increment component count,
-//  adjacency list; bfs and union find are possible;
 
 // Union-Find Data Structure:
 // The algorithm uses the Union-Find data structure to efficiently manage

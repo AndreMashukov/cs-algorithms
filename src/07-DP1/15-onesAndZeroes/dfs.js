@@ -49,34 +49,34 @@ const findMaxFormDfs = function (strs, m, n) {
 
   // Memoization cache to avoid recalculating same subproblems
   // Key format: 'index,mRemaining,nRemaining' -> Value: max subset size
-  const memo = new Map()
+  const map = new Map()
 
   /**
    * DFS helper function to explore string combinations
-   * @param {number} index - Current string index being considered
-   * @param {number} mRemaining - Remaining 0's allowed
-   * @param {number} nRemaining - Remaining 1's allowed
+   * @param {number} i - Current string index being considered
+   * @param {number} mRem - Remaining 0's allowed
+   * @param {number} nRem - Remaining 1's allowed
    * @return {number} Maximum subset size achievable from this state
    */
-  const dfs = (index, mRemaining, nRemaining) => {
+  const dfs = (i, mRem, nRem) => {
     // Base case: Processed all strings
-    if (index === strs.length) {
+    if (i === strs.length) {
       return 0
     }
 
     // Check if this subproblem was already solved
-    const key = `${index},${mRemaining},${nRemaining}`
-    if (memo.has(key)) {
-      return memo.get(key)
+    const key = `${i},${mRem},${nRem}`
+    if (map.has(key)) {
+      return map.get(key)
     }
 
     // Count 0's and 1's in current string
-    const [zeros, ones] = countZerosOnes(strs[index])
+    const [zeros, ones] = countZerosOnes(strs[i])
 
     // If current string is too large, skip it
-    if (zeros > mRemaining || ones > nRemaining) {
-      const result = dfs(index + 1, mRemaining, nRemaining)
-      memo.set(key, result)
+    if (zeros > mRem || ones > nRem) {
+      const result = dfs(i + 1, mRem, nRem)
+      map.set(key, result)
       return result
     }
 
@@ -84,15 +84,15 @@ const findMaxFormDfs = function (strs, m, n) {
     // 1. Include: Add its size and recurse with reduced 0's and 1's
     // 2. Exclude: Skip it and keep same 0's and 1's
     const includeString = 1 + dfs(
-      index + 1,
-      mRemaining - zeros,
-      nRemaining - ones
+      i + 1,
+      mRem - zeros,
+      nRem - ones
     )
-    const excludeString = dfs(index + 1, mRemaining, nRemaining)
+    const excludeString = dfs(i + 1, mRem, nRem)
 
     // Store and return the better of the two choices
     const result = Math.max(includeString, excludeString)
-    memo.set(key, result)
+    map.set(key, result)
     return result
   }
 
