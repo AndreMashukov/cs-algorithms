@@ -3,7 +3,8 @@
 // For each number in the array, you can choose to
 // either add or subtract it to a total sum.
 
-// For example, if nums = [1, 2], one possible sum would be "+1-2=-1".
+// For example, if nums = [1, 2] and target = 0,
+// one possible sum would be "+1-2=-1".
 // If nums=[1,1], there are two different ways to sum
 //  the input numbers to get a sum of 0: "+1-1" and "-1+1".
 
@@ -19,9 +20,9 @@ class Solution {
   findTargetSumWays (nums, target) {
     const dp = new Map()
 
-    const dfs = (index, total) => {
-      const key = `${index} - ${total}`
-      if (index === nums.length) {
+    const dfs = (i, total) => {
+      const key = `${i} - ${total}`
+      if (i === nums.length) {
         return total === target ? 1 : 0
       }
 
@@ -30,8 +31,8 @@ class Solution {
       }
 
       const ways =
-        dfs(index + 1, total + nums[index]) +
-        dfs(index + 1, total - nums[index])
+        dfs(i + 1, total + nums[i]) +
+        dfs(i + 1, total - nums[i])
       dp.set(key, ways)
       return ways
     }
