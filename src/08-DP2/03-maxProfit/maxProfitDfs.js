@@ -2,8 +2,10 @@
  * This function calculates the maximum profit that can be achieved from buying and selling stocks,
  * given an array of prices where prices[i] is the price of a given stock on the ith day.
  * You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times)
- * with the constraint that you may not engage in multiple transactions at the same time (i.e., you must sell the stock before you buy again).
- * Additionally, after you sell your stock, you cannot buy stock on the next day (i.e., cooldown one day).
+ * with the constraint that you may not engage in multiple transactions at the same time
+ * (i.e., you must sell the stock before you buy again).
+ * Additionally, after you sell your stock,
+ * you cannot buy stock on the next day (i.e., cooldown one day).
  *
  * @param {number[]} prices - An array of stock prices.
  * @return {number} - The maximum profit.

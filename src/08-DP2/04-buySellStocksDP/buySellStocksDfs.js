@@ -18,29 +18,29 @@ const maxProfit = (prices, k) => {
   const n = prices.length
   const dp = new Map()
 
-  const dfs = (day, transactionsRemaining, holding) => {
-    if (transactionsRemaining === 0 || day === n) return 0
-    const key = `${day}-${transactionsRemaining}-${holding}`
+  const dfs = (day, tRem, hold) => {
+    if (tRem === 0 || day === n) return 0
+    const key = `${day}-${tRem}-${hold}`
     if (dp.has(key)) return dp.get(key)
 
-    const doNothing = dfs(day + 1, transactionsRemaining, holding)
+    const doNothing = dfs(day + 1, tRem, hold)
     let doSomething
 
-    if (holding) {
+    if (hold) {
       // Sell the stock
-      doSomething = prices[day] + dfs(day + 1, transactionsRemaining - 1, 0)
+      doSomething = prices[day] + dfs(day + 1, tRem - 1, 0)
     } else {
       // Buy the stock
-      doSomething = -prices[day] + dfs(day + 1, transactionsRemaining, 1)
+      doSomething = -prices[day] + dfs(day + 1, tRem, 1)
     }
 
     const result = Math.max(doNothing, doSomething)
     dp.set(key, result)
     return result
-  };
+  }
 
   return dfs(0, k, 0)
-};
+}
 
 console.log(maxProfit([3, 2, 6, 5, 0, 3], 2)) // Should be 7
 console.log(maxProfit([1, 2, 3, 4, 5], 1)) // Should be 4
