@@ -15,13 +15,13 @@
 
 const isMatchDfs = (s, p) => {
   // Memoization map to store results of subproblems
-  const memo = new Map()
+  const map = new Map()
 
   // Depth-First Search function to check if s[i:] matches p[j:]
   const dfs = (i, j) => {
     // Check if the result is already computed
-    if (memo.has(`${i},${j}`)) {
-      return memo.get(`${i},${j}`)
+    if (map.has(`${i},${j}`)) {
+      return map.get(`${i},${j}`)
     }
 
     // If we have reached the end of the pattern
@@ -47,7 +47,7 @@ const isMatchDfs = (s, p) => {
     }
 
     // Store the result in the memoization map
-    memo.set(`${i},${j}`, ans)
+    map.set(`${i},${j}`, ans)
     return ans
   }
 
