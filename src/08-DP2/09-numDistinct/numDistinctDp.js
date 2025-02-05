@@ -6,13 +6,13 @@ class Solution {
    */
   numDistinct (s, t) {
     // Initialize a 2D array (cache) with dimensions (s.length + 1) x (t.length + 1)
-    const cache = new Array(s.length + 1)
+    const dp = new Array(s.length + 1)
       .fill(0)
       .map(() => new Array(t.length + 1).fill(0))
 
     // Fill the last column with 1s because an empty t can be formed by any substring of s
     for (let i = 0; i <= s.length; i++) {
-      cache[i][t.length] = 1
+      dp[i][t.length] = 1
     }
 
     // Iterate over the strings in reverse order to fill the cache
@@ -20,15 +20,15 @@ class Solution {
       for (let j = t.length - 1; j >= 0; j--) {
         // If characters match, add the results of the two subproblems
         if (s[i] === t[j]) {
-          cache[i][j] = cache[i + 1][j + 1] + cache[i + 1][j]
+          dp[i][j] = dp[i + 1][j + 1] + dp[i + 1][j]
         } else {
           // If characters don't match, carry forward the result from the next character in s
-          cache[i][j] = cache[i + 1][j]
+          dp[i][j] = dp[i + 1][j]
         }
       }
     }
     // The result is stored in cache[0][0]
-    return cache[0][0]
+    return dp[0][0]
   }
 }
 

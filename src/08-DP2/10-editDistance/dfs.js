@@ -12,20 +12,22 @@ class Solution {
   minDistance (word1, word2) {
     const m = word1.length
     const n = word2.length
-    // Create memoization array filled with -1
-    const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(-1))
+    // Create memoization Map
+    const dp = new Map()
 
     const dfs = (i, j) => {
       // Base cases: if either string is exhausted,
       // return remaining length of other string
       if (i === m) return n - j // Insert remaining chars from word2
       if (j === n) return m - i // Delete remaining chars from word1
+
+      const key = `${i},${j}`
       // Return cached result if available
-      if (dp[i][j] !== -1) return dp[i][j]
+      if (dp.has(key)) return dp.get(key)
 
       // If characters match, no operation needed
       if (word1[i] === word2[j]) {
-        dp[i][j] = dfs(i + 1, j + 1)
+        dp.set(key, dfs(i + 1, j + 1))
       } else {
         // Try all operations and take minimum:
         // 1. Delete char from word1 (i+1, j)
@@ -33,11 +35,10 @@ class Solution {
         // 3. Replace char in word1 (i+1, j+1)
         let res = Math.min(dfs(i + 1, j), dfs(i, j + 1))
         res = Math.min(res, dfs(i + 1, j + 1))
-        dp[i][j] = res + 1 // Add 1 for the operation performed
+        dp.set(key, res + 1) // Add 1 for the operation performed
       }
-      return dp[i][j]
+      return dp.get(key)
     }
 
     return dfs(0, 0)
   }
-}
