@@ -52,9 +52,9 @@ const shortestPath = (grid) => {
         [1, 0],
         [-1, 0]
       ]
-      for (const neighbor of neighbors) {
-        const dr = neighbor[0]
-        const dc = neighbor[1]
+      for (const nei of neighbors) {
+        const dr = nei[0]
+        const dc = nei[1]
         if (
           Math.min(r + dr, c + dc) < 0 ||
           r + dr === ROWS ||

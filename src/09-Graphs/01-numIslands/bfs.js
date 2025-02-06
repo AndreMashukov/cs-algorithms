@@ -15,10 +15,10 @@ const numIslands = (grid) => {
 
   // Breadth-First Search (BFS) function to traverse the island
   const bfs = (i, j) => {
-    const queue = [[i, j]]
+    const q = [[i, j]]
 
-    while (queue.length) {
-      const [row, col] = queue.shift()
+    while (q.length) {
+      const [row, col] = q.shift()
       // Check if the current cell is out of bounds, is water, or has been visited
       if (
         row < 0 ||
@@ -33,10 +33,10 @@ const numIslands = (grid) => {
       // Mark the current cell as visited
       visited.add(`${row},${col}`)
       // Add all adjacent cells (up, down, left, right) to the queue
-      queue.push([row + 1, col])
-      queue.push([row, col + 1])
-      queue.push([row - 1, col])
-      queue.push([row, col - 1])
+      q.push([row + 1, col])
+      q.push([row, col + 1])
+      q.push([row - 1, col])
+      q.push([row, col - 1])
     }
   }
 
