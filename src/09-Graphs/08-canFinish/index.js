@@ -67,6 +67,8 @@ class Solution {
   }
 }
 
+console.log(new Solution().canFinish(2, [[1, 0]])) // true
+
 // build adjacentcy_list with edges,
 // run dfs on each V, if while dfs on V we see V again,
 // then loop exists, otherwise V isnt in a loop,

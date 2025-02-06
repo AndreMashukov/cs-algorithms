@@ -63,6 +63,8 @@ class Solution {
   }
 }
 
+console.log(new Solution().countComponents(5, [[0, 1], [1, 2], [3, 4]])) // Expected output: 2
+
 // Union-Find Data Structure:
 // The algorithm uses the Union-Find data structure to efficiently manage
 // and merge disjoint sets.

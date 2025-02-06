@@ -21,27 +21,27 @@ class Solution {
 
     // Populate the adjacency list with the given edges
     for (const edge of edges) {
-      const node1 = edge[0]
-      const node2 = edge[1]
-      if (!adjacencyList.has(node1)) adjacencyList.set(node1, [])
-      if (!adjacencyList.has(node2)) adjacencyList.set(node2, [])
-      adjacencyList.get(node1).push(node2)
-      adjacencyList.get(node2).push(node1)
+      const n1 = edge[0]
+      const n2 = edge[1]
+      if (!adjacencyList.has(n1)) adjacencyList.set(n1, [])
+      if (!adjacencyList.has(n2)) adjacencyList.set(n2, [])
+      adjacencyList.get(n1).push(n2)
+      adjacencyList.get(n2).push(n1)
     }
 
     const visited = new Set()
 
     // Closure function for DFS
-    const dfs = (node, previous) => {
+    const dfs = (node, prev) => {
       if (visited.has(node)) return false // Cycle detected
 
       visited.add(node) // Mark the node as visited
 
       // Recursively visit all neighbors of the node
-      for (const neighbor of adjacencyList.get(node)) {
-        if (neighbor === previous) continue // Skip the previous node to avoid backtracking
+      for (const nei of adjacencyList.get(node)) {
+        if (nei === prev) continue // Skip the previous node to avoid backtracking
 
-        if (!dfs(neighbor, node)) return false // Cycle detected in neighbors
+        if (!dfs(nei, node)) return false // Cycle detected in neighbors
       }
 
       return true

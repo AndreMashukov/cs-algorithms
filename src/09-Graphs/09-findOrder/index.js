@@ -31,23 +31,23 @@ class Solution {
     const cycle = new Set() // Set to detect cycles
 
     // Closure function for DFS
-    const dfs = (course) => {
-      if (cycle.has(course)) {
+    const dfs = (crs) => {
+      if (cycle.has(crs)) {
         return false // Cycle detected
       }
-      if (visit.has(course)) {
+      if (visit.has(crs)) {
         return true // Course already visited
       }
 
-      cycle.add(course) // Mark the course as being visited
-      for (const pre of prereq.get(course) || []) {
+      cycle.add(crs) // Mark the course as being visited
+      for (const pre of prereq.get(crs) || []) {
         if (!dfs(pre)) {
           return false // Cycle detected in prerequisites
         }
       }
-      cycle.delete(course) // Unmark the course as being visited
-      visit.add(course) // Mark the course as visited
-      output.push(course) // Add the course to the output array
+      cycle.delete(crs) // Unmark the course as being visited
+      visit.add(crs) // Mark the course as visited
+      output.push(crs) // Add the course to the output array
       return true
     }
 
@@ -61,6 +61,8 @@ class Solution {
     return output // Return the valid course order
   }
 }
+
+console.log(new Solution().findOrder(2, [[1, 0]])) // [0, 1]
 
 // cycle Set:
 // Purpose: Detect cycles during the DFS traversal.
