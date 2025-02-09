@@ -17,17 +17,17 @@
 
 class Solution {
   /**
-   * @param {string} beginWord - The starting word
-   * @param {string} endWord - The target word
+   * @param {string} begin - The starting word
+   * @param {string} end - The target word
    * @param {string[]} wordList - List of available words for transformation
    * @return {number} - The minimum number of transformations needed to reach endWord from beginWord
    */
-  ladderLength (beginWord, endWord, wordList) {
+  ladderLength (begin, end, wordList) {
     // Convert wordList to a set for O(1) lookups
     const words = new Set(wordList)
 
     // If endWord is not in wordList or beginWord is the same as endWord, return 0
-    if (!words.has(endWord) || beginWord === endWord) {
+    if (!words.has(end) || begin === end) {
       return 0
     }
 
@@ -35,7 +35,7 @@ class Solution {
     let res = 0
 
     // Initialize the queue with the beginWord
-    const q = [beginWord]
+    const q = [begin]
 
     // Perform BFS
     while (q.length) {
@@ -51,7 +51,7 @@ class Solution {
         const node = q.shift()
 
         // If the node is the endWord, return the result
-        if (node === endWord) return res
+        if (node === end) return res
 
         // Try changing each character of the node
         for (let j = 0; j < node.length; j++) {
