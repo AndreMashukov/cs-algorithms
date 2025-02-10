@@ -25,14 +25,15 @@ const gameOfLife = function (board) {
       for (let j = c - 1; j <= c + 1; j++) {
         // Check if the neighboring cell is within bounds
         if (i >= 0 && i < ROWS && j >= 0 && j < COLS) {
-          // Use bitwise AND to get the least significant bit (current state)
-          count += board[i][j] & 1
+          if (board[i][j] === 1 || board[i][j] === 3) {
+            count++
+          }
         }
       }
     }
 
     // Subtract the cell itself from the count
-    count -= board[r][c] & 1
+    count -= board[r][c] === 1 || board[r][c] === 3 ? 1 : 0
     return count
   }
 

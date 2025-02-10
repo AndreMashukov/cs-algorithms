@@ -1,4 +1,4 @@
-// leetcode: No. 503 Next Greater Element II 
+// leetcode: No. 503 Next Greater Element II
 // https://leetcode.com/problems/next-greater-element-ii/
 
 // Given a circular integer array nums
@@ -20,20 +20,20 @@
 // Output: [2,3,4,-1,4]
 
 const nextGreaterElements = (nums) => {
-  const n = nums.length; // Get the length of the input array
-  const stack = []; // Initialize an empty stack to keep track of indices
-  const res = Array(n).fill(-1); // Initialize the result array with -1
+  const n = nums.length // Get the length of the input array
+  const stack = [] // Initialize an empty stack to keep track of indices
+  const res = Array(n).fill(-1) // Initialize the result array with -1
 
   // Iterate through the array twice to handle the circular nature
   for (let i = 0; i < n * 2; i++) {
     // While the stack is not empty and the current element is greater than the element at the index stored at the top of the stack
     while (stack.length && nums[stack[stack.length - 1]] < nums[i % n]) {
       // Update the result for the index at the top of the stack with the current element
-      res[stack.pop()] = nums[i % n];
+      res[stack.pop()] = nums[i % n]
     }
     // Push the current index (mod n) onto the stack
-    stack.push(i % n);
+    stack.push(i % n)
   }
 
-  return res; // Return the result array
+  return res // Return the result array
 }
