@@ -46,3 +46,10 @@ const canCompleteCircuit = function (gas, cost) {
 // Finally, it checks if the total gas is less than the total cost;
 // if so, it returns -1, indicating the journey is not possible.
 // Otherwise, it returns the starting station index.
+
+console.log(
+  canCompleteCircuit([1, 2, 3, 4, 5], [3, 4, 5, 1, 2]) // Expected output: 3
+)
+console.log(
+  canCompleteCircuit([2, 3, 4], [3, 4, 3]) // Expected output: -1
+)

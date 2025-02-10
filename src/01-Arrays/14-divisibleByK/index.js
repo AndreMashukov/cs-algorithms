@@ -1,5 +1,6 @@
 // 974. Subarray Sums Divisible by K
 // https://leetcode.com/problems/subarray-sums-divisible-by-k/description/
+// https://www.youtube.com/watch?v=bcXy-T4Sc3E
 // Given an integer array nums and an integer k,
 //  return the number of non-empty subarrays
 // that have a sum divisible by k.

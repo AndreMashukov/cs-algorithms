@@ -29,6 +29,7 @@ const findMaxLength = function (nums) {
     // it means there is a subarray with equal number of 0s and 1s
     if (map.has(count)) {
       // Update the maximum length of the subarray
+      //  i - map.get(count) - current index - index where the same count was first encountered
       max = Math.max(max, i - map.get(count))
     } else {
       // Otherwise, store the count with its corresponding index
@@ -59,3 +60,13 @@ const findMaxLength = function (nums) {
 // where the same cumulative count was first encountered.
 // The difference between these two indices gives the length
 // of the subarray that has an equal number of 0s and 1s.
+
+console.log(
+  findMaxLength([0, 1]), // 2
+  findMaxLength([0, 1, 0]), // 2
+  findMaxLength([0, 1, 0, 1, 0, 1]), // 6
+  findMaxLength([0, 1, 0, 1, 0, 1, 0, 1]), // 8
+  findMaxLength([0, 1, 0, 1, 0, 1, 0, 1, 0, 1]), // 10
+  findMaxLength([0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1]), // 12
+  findMaxLength([
+)

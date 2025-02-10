@@ -33,3 +33,5 @@ const reverse = function (nums, start, end) {
     end--
   }
 }
+
+console.log(rotate([1, 2, 3, 4, 5, 6, 7], 3)) // Expected output: [5,6,7,1,2,3,4]
