@@ -31,3 +31,8 @@ const find132pattern = (nums) => {
   // If no 132 pattern is found, return false
   return false
 };
+
+console.log(
+  find132pattern([1, 2, 3, 4]), // false
+  find132pattern([3, 1, 4, 2]) // true
+)

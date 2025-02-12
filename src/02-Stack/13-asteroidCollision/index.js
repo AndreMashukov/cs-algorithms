@@ -1,4 +1,5 @@
 // 735. Asteroid Collision
+// https://www.youtube.com/watch?v=LN7KjRszjk4
 // We are given an array asteroids of integers representing asteroids in a row.
 // For each asteroid, the absolute value represents its size,
 // and the sign represents its direction (positive meaning right,
@@ -41,12 +42,12 @@ const asteroidCollision = function (asteroids) {
       } else if (diff > 0) {
         // The top of the stack destroys the current asteroid
         destroyed = true
-        break;
+        break
       } else {
         // Both asteroids destroy each other
         stack.pop()
         destroyed = true
-        break;
+        break
       }
     }
 
