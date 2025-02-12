@@ -1,4 +1,6 @@
 // 895. Maximum Frequency Stack
+// https://leetcode.com/problems/maximum-frequency-stack/
+// https://www.youtube.com/watch?v=Z6idIicFDOE&t=623s
 // Design a stack-like data structure to push elements
 // to the stack and pop the most frequent element from the stack.
 
@@ -19,8 +21,8 @@
 
 const FreqStack = function () {
   this.cnt = {}
-  this.maxCnt = 0;
-  this.stacks = {}
+  this.maxCnt = 0
+  this.st = {}
 }
 
 /**
@@ -28,20 +30,20 @@ const FreqStack = function () {
  * @return {void}
  */
 FreqStack.prototype.push = function (val) {
-  let valCnt = 1 + this.cnt[val] || 0
+  const valCnt = 1 + this.cnt[val] || 0
   this.cnt[val] = valCnt
   if (valCnt > this.maxCnt) {
     this.maxCnt = valCnt
-    this.stacks[valCnt] = []
+    this.st[valCnt] = []
   }
-  this.stacks[valCnt].push(val)
+  this.st[valCnt].push(val)
 }
 
 /**
  * @return {number}
  */
 FreqStack.prototype.pop = function () {
-  const stack = this.stacks[this.maxCnt]
+  const stack = this.st[this.maxCnt]
   const val = stack.pop()
   if (!stack.length) {
     this.maxCnt--
@@ -56,3 +58,10 @@ FreqStack.prototype.pop = function () {
  * obj.push(val)
  * var param_2 = obj.pop()
  */
+
+// 5 7 5 7 4 5
+// st = {1: [4], 2: [7], 3: [5]}
+// cnt = {4: 1, 7: 2, 5: 3}
+// maxCnt = 3
+
+module.exports = FreqStack
