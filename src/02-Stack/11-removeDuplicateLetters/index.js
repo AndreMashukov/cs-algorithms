@@ -41,7 +41,7 @@ const removeDuplicateLetters = function (s) {
       while (
         stack.length > 0 &&
         char < stack[stack.length - 1] &&
-        i < lastOcc[stack[stack.length - 1]]
+        i < lastOcc[stack[stack.length - 1]] // not the last occurrence
       ) {
         seen.delete(stack.pop()) // Remove the top character from the stack and the seen set
       }
@@ -51,4 +51,4 @@ const removeDuplicateLetters = function (s) {
   }
 
   return stack.join('') // Join the characters in the stack to form the result string
-};
+}
