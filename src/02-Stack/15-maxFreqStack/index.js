@@ -30,12 +30,15 @@ const FreqStack = function () {
  * @return {void}
  */
 FreqStack.prototype.push = function (val) {
+  // Calculate new count for this value
   const valCnt = 1 + this.cnt[val] || 0
   this.cnt[val] = valCnt
+  // Update maxCnt if needed
   if (valCnt > this.maxCnt) {
     this.maxCnt = valCnt
     this.st[valCnt] = []
   }
+  // Push the value onto the correct frequency stack
   this.st[valCnt].push(val)
 }
 
@@ -43,11 +46,14 @@ FreqStack.prototype.push = function (val) {
  * @return {number}
  */
 FreqStack.prototype.pop = function () {
+  // Retrieve the stack for the current max frequency
   const stack = this.st[this.maxCnt]
   const val = stack.pop()
+  // If empty, lower the max frequency
   if (!stack.length) {
     this.maxCnt--
   }
+  // Decrement the count for the popped value
   this.cnt[val]--
   return val
 }
