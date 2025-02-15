@@ -5,7 +5,7 @@
 // Note: This chart is known as a histogram.
 // Example 1:
 // Input: heights = [7,1,7,2,2,4]
-// Output: 8
+// Output: 8 - from index 2 to 5
 
 class Solution {
   /**
