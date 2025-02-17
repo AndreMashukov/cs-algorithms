@@ -14,12 +14,12 @@
 // Return k.
 
 const removeDuplicates = (nums) => {
-  let i = 0
-  for (let j = 1; j < nums.length; j++) {
-    if (nums[j] !== nums[i]) {
-      i++
-      nums[i] = nums[j]
+  let l = 0
+  for (let r = 1; r < nums.length; r++) {
+    if (nums[r] !== nums[l]) {
+      l++
+      nums[l] = nums[r]
     }
   }
-  return i + 1
+  return l + 1
 }

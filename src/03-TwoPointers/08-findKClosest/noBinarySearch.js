@@ -12,6 +12,7 @@ class Solution {
 
     // Reduce the window size to k elements
     while (r - l >= k) {
+      // If the left element is closer to x than the right element
       if (Math.abs(arr[l] - x) > Math.abs(arr[r] - x)) {
         l++
       } else {
