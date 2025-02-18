@@ -33,9 +33,10 @@
 // Output: [1,2,3]
 
 const swap = (nums, i, j) => {
-  const temp = nums[i]
-  nums[i] = nums[j]
-  nums[j] = temp
+  // const temp = nums[i]
+  // nums[i] = nums[j]
+  // nums[j] = temp
+  [nums[i], nums[j]] = [nums[j], nums[i]]
 }
 
 const reverse = (nums, start) => {

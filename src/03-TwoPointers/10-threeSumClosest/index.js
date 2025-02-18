@@ -22,12 +22,12 @@ const threeSumClosest = function (nums, target) {
     // Skip duplicate elements to avoid redundant calculations
     if (i > 0 && nums[i] === nums[i - 1]) continue
 
-    let lo = i + 1 // Left pointer
-    let hi = n - 1 // Right pointer
+    let l = i + 1 // Left pointer
+    let r = n - 1 // Right pointer
 
     // Use the two-pointer technique to find the closest sum
-    while (lo < hi) {
-      const curSum = nums[i] + nums[lo] + nums[hi] // Calculate the current sum
+    while (l < r) {
+      const curSum = nums[i] + nums[l] + nums[r] // Calculate the current sum
 
       // Update the closest sum if the current sum is closer to the target
       if (Math.abs(curSum - target) < Math.abs(closestSum - target)) {
@@ -38,9 +38,9 @@ const threeSumClosest = function (nums, target) {
       if (curSum === target) {
         return curSum
       } else if (curSum < target) {
-        lo++ // Move the left pointer to the right to increase the sum
+        l++ // Move the left pointer to the right to increase the sum
       } else {
-        hi-- // Move the right pointer to the left to decrease the sum
+        r-- // Move the right pointer to the left to decrease the sum
       }
     }
   }
