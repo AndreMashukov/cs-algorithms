@@ -65,8 +65,8 @@ console.log(new Solution().kClosestNumbers([1, 2, 3], 3, 2)) // Expected [2, 1, 
 // arr[m + k] - x = arr[1 + 2] - 3 = arr[3] - 3 = 4 - 3 = 1
 // Since 1 is not greater than 1, move the right pointer:
 // r = m = 1
-// Second Iteration:
 
+// Second Iteration:
 // Calculate middle index (m): Math.floor((0 + 1) / 2) = 0
 // Compare differences:
 // x - arr[m] = 3 - 1 = 2
