@@ -18,6 +18,7 @@ const isSubsequence = function (s, t) {
   let i = 0
   let j = 0
 
+  // Move through t, advancing i only when characters match
   while (i < s.length && j < t.length) {
     if (s[i] === t[j]) {
       i++
@@ -27,3 +28,5 @@ const isSubsequence = function (s, t) {
 
   return i === s.length
 }
+
+console.log(isSubsequence('abc', 'ahbgdc')) // Expected output: true
