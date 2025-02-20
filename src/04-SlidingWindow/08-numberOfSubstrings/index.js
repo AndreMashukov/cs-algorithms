@@ -21,23 +21,23 @@ const numberOfSubstrings = function (s) {
   let count = 0 // Initialize the count of substrings
   let start = 0 // Initialize the start pointer
   let end = 0 // Initialize the end pointer
-  const freqMap = new Map() // Map to store the frequency of characters in the current window
+  const fMap = new Map() // Map to store the frequency of characters in the current window
 
   // Iterate through the string with the end pointer
   while (end < s.length) {
     // Add the current character to the frequency map
-    freqMap.set(s[end], (freqMap.get(s[end]) || 0) + 1)
+    fMap.set(s[end], (fMap.get(s[end]) || 0) + 1)
 
     // Check if the current window contains all three characters 'a', 'b', and 'c'
-    while (freqMap.size === 3) {
+    while (fMap.size === 3) {
       // If it does, add the number of valid substrings ending at 'end' to the count
       // Meaning that we adding the rest of the characters to the valid string.
       count += s.length - end
       // Decrease the frequency of the character at the start pointer
-      freqMap.set(s[start], freqMap.get(s[start]) - 1)
+      fMap.set(s[start], fMap.get(s[start]) - 1)
       // If the frequency becomes zero, remove the character from the map
-      if (freqMap.get(s[start]) === 0) {
-        freqMap.delete(s[start])
+      if (fMap.get(s[start]) === 0) {
+        fMap.delete(s[start])
       }
       // Move the start pointer to the right
       start++
