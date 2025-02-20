@@ -3,20 +3,20 @@
 
 // For s ="pwwkew" the answer should be 3
 function lengthOfLongestSubstring (s) {
-  const charSet = new Set()
+  const set = new Set()
   let l = 0
   let res = 0
 
   for (let r = 0; r < s.length; r++) {
     // If the character is already in the set, remove the character
     // at index l from the set and increment l
-    while (charSet.has(s[r])) {
+    while (set.has(s[r])) {
       // This shrinks the window from the left until
       // the repeating character is removed
-      charSet.delete(s[l])
+      set.delete(s[l])
       l += 1
     }
-    charSet.add(s[r])
+    set.add(s[r])
     res = Math.max(res, r - l + 1)
   }
   return res
