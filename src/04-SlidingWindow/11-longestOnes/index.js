@@ -20,28 +20,28 @@
  * @return {number}
  */
 const longestOnes = function (nums, k) {
-  let left = 0 // Initialize the left pointer of the sliding window
-  let right = 0 // Initialize the right pointer of the sliding window
+  let l = 0 // Initialize the left pointer of the sliding window
+  let r = 0 // Initialize the right pointer of the sliding window
   let max = 0 // Variable to store the maximum number of consecutive 1's
   let zeroCount = 0 // Counter for the number of 0's in the current window
 
   // Iterate through the array using the right pointer
-  while (right < nums.length) {
-    if (nums[right] === 0) {
+  while (r < nums.length) {
+    if (nums[r] === 0) {
       zeroCount++ // Increment zeroCount if the current element is 0
     }
 
     // If the number of 0's exceeds k, shrink the window from the left
     while (zeroCount > k) {
-      if (nums[left] === 0) {
+      if (nums[l] === 0) {
         zeroCount-- // Decrement zeroCount if the element being removed is 0
       }
-      left++ // Move the left pointer to the right
+      l++ // Move the left pointer to the right
     }
 
     // Update the maximum length if the current window is larger
-    max = Math.max(max, right - left + 1)
-    right++ // Expand the window by moving the right pointer to the right
+    max = Math.max(max, r - l + 1)
+    r++ // Expand the window by moving the right pointer to the right
   }
 
   return max // Return the maximum number of consecutive 1's found

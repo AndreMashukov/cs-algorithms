@@ -28,19 +28,20 @@
 
 const findSubstring = (s, words) => {
   // Create a frequency map to count occurrences of each word in words
-  const freqMap = new Map()
+  const fMap = new Map()
   words.forEach((word) => {
-    freqMap.set(word, (freqMap.get(word) || 0) + 1)
+    fMap.set(word, (fMap.get(word) || 0) + 1)
   })
 
   // Length of each word (all words are of the same length)
-  const wordLength = words[0].length
+  const wLen = words[0].length
 
   // Result array to store starting indices of concatenated substrings
   const res = []
 
-  // Iterate over the string s
-  for (let i = 0; i < s.length - wordLength * words.length + 1; i++) {
+  // Iterate over the string s, wLen * words.length is the maximum length
+  // of the substring that can be a concatenation of all words
+  for (let i = 0; i < s.length - wLen * words.length + 1; i++) {
     // Map to keep track of seen words in the current window
     const seen = new Map()
     let j = 0
@@ -48,15 +49,15 @@ const findSubstring = (s, words) => {
     // Check if the substring starting at index i is a concatenation of all words
     while (j < words.length) {
       // Extract a substring of length wordLength
-      const word = s.substr(i + j * wordLength, wordLength)
+      const word = s.substr(i + j * wLen, wLen)
 
       // If the word is in the frequency map
-      if (freqMap.has(word)) {
+      if (fMap.has(word)) {
         // Increment the count of the word in the seen map
         seen.set(word, (seen.get(word) || 0) + 1)
 
         // If the word count exceeds the frequency in the original words array, break
-        if (seen.get(word) > freqMap.get(word)) {
+        if (seen.get(word) > fMap.get(word)) {
           break
         }
       } else {
