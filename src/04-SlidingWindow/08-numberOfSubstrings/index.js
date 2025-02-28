@@ -64,10 +64,11 @@ console.log(numberOfSubstrings('abcabc')) // Expected output: 10
 // Input: s = "abcabc"
 // Current Window: start = 0, end = 2 (window contains "abc")
 // Valid Substrings:
-// Substrings ending at end = 2: "abc"
-// Substrings ending at end = 3: "abca", "bca"
-// Substrings ending at end = 4: "abcab", "bcab", "cab"
-// Substrings ending at end = 5: "abcabc", "bcabc", "cabc", "abc"
+// Substrings ending at end = 2: "abc" (s.length - end = 6 - 2 = 4)
+// Substrings ending at end = 3: "abca", "bca" (s.length - end = 6 - 3 = 3)
+// Substrings ending at end = 4: "abcab", "bcab", "cab" (s.length - end = 6 - 4 = 2)
+// Substrings ending at end = 5: "abcabc", "bcabc", "cabc", "abc" (s.length - end = 6 - 5 = 1)
+// Total: 4 + 3 + 2 + 1 = 10
 // Count Calculation:
 
 // For end = 2, the number of valid substrings is s.length - end = 6 - 2 = 4.
