@@ -47,8 +47,9 @@ const findSubstring = (s, words) => {
     let j = 0
 
     // Check if the substring starting at index i is a concatenation of all words
+    // j counts through the words in the window
     while (j < words.length) {
-      // Extract a substring of length wordLength
+      // Extract a substring of length wLen
       const word = s.substr(i + j * wLen, wLen)
 
       // If the word is in the frequency map
