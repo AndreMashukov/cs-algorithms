@@ -20,24 +20,24 @@ const maxVowels = function (s, k) {
   let l = 0 // Initialize the left pointer of the sliding window
   let r = 0 // Initialize the right pointer of the sliding window
   let max = 0 // Variable to store the maximum number of vowels
-  let vwCnt = 0 // Counter for the number of vowels in the current window
+  let cnt = 0 // Counter for the number of vowels in the current window
 
   // Iterate through the string using the right pointer
   while (r < s.length) {
     if (vowels.has(s[r])) {
-      vwCnt++ // Increment vwCnt if the current element is a vowel
+      cnt++ // Increment cnt if the current element is a vowel
     }
 
     // If the window size exceeds k, shrink the window from the left
     if (r - l + 1 > k) {
       if (vowels.has(s[l])) {
-        vwCnt-- // Decrement vwCnt if the element being removed is a vowel
+        cnt-- // Decrement cnt if the element being removed is a vowel
       }
       l++ // Move the left pointer to the right
     }
 
     // Update the maximum count if the current window is larger
-    max = Math.max(max, vwCnt)
+    max = Math.max(max, cnt)
     r++ // Expand the window by moving the right pointer to the right
   }
 
