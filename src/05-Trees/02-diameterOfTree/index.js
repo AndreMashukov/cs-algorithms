@@ -1,5 +1,6 @@
 // The diameter of a binary tree is defined as the length of the longest path
-// between any two nodes within the tree. The path does not necessarily have to pass through the root.
+// between any two nodes within the tree.
+// The path does not necessarily have to pass through the root.
 
 // The length of a path between two nodes in a binary tree
 // is the number of edges between the nodes.
