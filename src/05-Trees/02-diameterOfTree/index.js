@@ -42,6 +42,7 @@ class Solution {
       res = Math.max(res, left + right)
 
       // Return the height of the current node
+      // length is basically the number of edges
       return 1 + Math.max(left, right)
     }
 
