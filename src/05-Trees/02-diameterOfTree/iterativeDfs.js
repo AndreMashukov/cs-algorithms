@@ -22,6 +22,7 @@ class Solution {
     // Base case: null nodes have height 0 and diameter 0
     mp.set(null, [0, 0])
 
+    // posto-order traversal: root node is processed last
     while (stack.length > 0) {
       // Get the top node without popping (we may need to process children first)
       let node = stack[stack.length - 1]
