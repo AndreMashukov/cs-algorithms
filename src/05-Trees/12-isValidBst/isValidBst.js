@@ -2,6 +2,7 @@
 // determine if it is a valid binary search tree (BST).
 
 const isValidBst = (root) => {
+  // preorder traversal (node → left → right)
   const dfs = (node, min, max) => {
     // if the current node is null, return true because it is a valid BST
     if (!node) return true
