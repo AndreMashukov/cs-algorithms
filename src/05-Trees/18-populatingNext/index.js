@@ -77,6 +77,13 @@ const connect = function (root) {
   return root
 }
 
+// First, leftmost = root (node 1)
+// Then we set head = leftmost (so head = 1)
+// We process node 1 in the inner while loop
+// Since node 1 has no siblings, the inner while loop ends after processing node 1
+// Then we move to the next level with leftmost = leftmost.left (leftmost becomes node 2)
+// In the next iteration of the outer loop, head = leftmost (head = 2)
+
 // The key is that when we're at node 2,
 // we can access node 3 through head.next
 // because the parent level's connections

@@ -27,6 +27,12 @@ function solution (t, k) {
   }
 }
 
+// The algorithm follows the classic iterative in-order traversal pattern:
+
+// Go as far left as possible, pushing nodes onto a stack
+// Process the node at the top of the stack (visiting it)
+// Move to the right child and repeat
+
 // function solution(t, k) {
 //   function inOrderTraversal(node) {
 //       const values = [];
