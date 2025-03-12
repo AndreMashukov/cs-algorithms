@@ -55,10 +55,13 @@ const pathSum = function (root, targetSum) {
     // Backtracking: remove the current sum from path when going up
     // This ensures we only count paths going downward
     map.set(sum, map.get(sum) - 1)
-  }
+  };
 
   // Start DFS from root with initial sum of 0
   dfs(root, 0)
 
   return count
-}
+};
+
+// With proper backtracking, we remove sum entries when leaving a branch,
+// ensuring we only count valid downward paths.
