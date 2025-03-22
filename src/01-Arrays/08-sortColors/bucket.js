@@ -23,8 +23,9 @@ const solution = (nums) => {
   }
 
   // Overwrite nums based on the count of each color
-  let i = 0
+  let i = 0 // tracks the index in the original array
   for (let n = 0; n < counts.length; n++) {
+    // For each value (0, 1, 2), place it in the array counts[n] times
     for (let j = 0; j < counts[n]; j++) {
       nums[i] = n
       i++
