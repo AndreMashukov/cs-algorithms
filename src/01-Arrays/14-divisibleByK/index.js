@@ -20,17 +20,32 @@
  * @return {number}
  */
 const subarraysDivByK = function (nums, k) {
+  // Create a map to store the frequency of remainders
   const map = new Map()
+  // Initialize the sum and count variables
   let sum = 0
   let count = 0
+  // Add the initial remainder of 0 to the map with a frequency of 1
   map.set(0, 1)
+  // Iterate over the numbers in the input array
   for (const num of nums) {
+    // Update the sum by adding the current number and taking the modulo with k
     sum = (sum + num) % k
+    // If the sum is negative, add k to make it positive
     if (sum < 0) sum += k
+    // If the map contains the current sum, increment the count by the frequency of that sum
     if (map.has(sum)) {
       count += map.get(sum)
     }
+    // Update the frequency of the current sum in the map
     map.set(sum, (map.get(sum) || 0) + 1)
   }
+  // Return the total count of subarrays divisible by k
   return count
 }
+
+// if the sum is negative, add k to make it positive
+// The purpose of this step is to ensure that
+// the remainder is always a non-negative value
+// between 0 and k-1, which is necessary
+// for correctly using the remainder as a key in the map.
