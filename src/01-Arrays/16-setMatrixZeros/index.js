@@ -5,6 +5,11 @@
 // if an element is 0, set its entire row and column to 0's.
 // You must do it in place.
 
+// Initial Matrix:
+// 1 2 3
+// 4 0 6
+// 7 8 9
+
 const setZeroes = function (matrix) {
   const ROWS = matrix.length
   const COLS = matrix[0].length
@@ -24,6 +29,11 @@ const setZeroes = function (matrix) {
     }
   }
 
+  // matrix after first pass
+  // 1 0 3
+  // 0 0 6
+  // 7 8 9
+
   // Iterate over the matrix and use the first row and first column to mark the zeros
   for (let i = 1; i < ROWS; i++) {
     for (let j = 1; j < COLS; j++) {
@@ -32,6 +42,11 @@ const setZeroes = function (matrix) {
       }
     }
   }
+
+  // matrix after second pass
+  // 1 0 3
+  // 0 0 0
+  // 7 0 9
 
   // If the first row had a zero, set all elements in the first row to zero
   if (rowZero) {
@@ -71,3 +86,5 @@ const setZeroes = function (matrix) {
 // 1 0 3
 // 0 0 0
 // 7 0 9
+
+console.log(setZeroes([[1, 2, 3], [4, 0, 6], [7, 8, 9]])) // [[1, 0, 3], [0, 0, 0], [7, 0, 9]]
