@@ -11,8 +11,8 @@
 // Input: nums = [1,2,3,4], k = 5
 // Output: 2
 // Explanation: Starting with nums = [1,2,3,4]:
-// - Remove numbers 1 and 4, then nums = [2,3]
-// - Remove numbers 2 and 3, then nums = []
+// - Remove numbers 1 and 4, then nums = [2,3] // 1 + 4 = 5 (k)
+// - Remove numbers 2 and 3, then nums = [] // 2 + 3 = 5 (k)
 // There are no more pairs that sum up to 5, hence a total of 2 operations.
 
 /**
