@@ -31,26 +31,64 @@
 // the exclusive time for the function with ID i.
 
 const exclusiveTime = (n, logs) => {
+  // Initialize an array for the exclusive times of each function
   const res = Array(n).fill(0)
+  // Stack to track the currently running function ID
   const st = []
+  // Keep track of the previous timestamp to calculate intervals
   let prevTime = 0
 
   for (const log of logs) {
+    // Each log is in the format "id:type:time"
     const [id, type, time] = log.split(':')
     const fnId = parseInt(id)
     const fnTime = parseInt(time)
 
     if (type === 'start') {
+      // If there's a function running, add to its time the gap since prevTime
       if (st.length) {
         res[st[st.length - 1]] += fnTime - prevTime
       }
+      // Push the new function onto the stack
       st.push(fnId)
+      // Update the reference for the next interval
       prevTime = fnTime
     } else {
+      // When a function ends, pop it and add the total execution time
       res[st.pop()] += fnTime - prevTime + 1
+      // Update prevTime so the next function can measure correctly
       prevTime = fnTime + 1
     }
   }
 
   return res
 }
+
+console.log(
+  exclusiveTime(2, ['0:start:0', '1:start:2', '1:end:5', '0:end:6'])
+) // Output: [3, 4]
+
+// Explanation using the logs ['0:start:0', '1:start:2', '1:end:5', '0:end:6']:
+
+// 0:start:0
+
+// Function 0 starts.
+// prevTime is set to 0. Stack: [0].
+// 1:start:2
+
+// Function 0 runs from time 0 to 2 → 2 units for function 0.
+// Then function 1 starts at time 2.
+// prevTime is set to 2. Stack: [0, 1].
+// 1:end:5
+
+// Function 1 runs from time 2 to 5 → 4 units (5 − 2 + 1).
+// prevTime is set to 6 (5 + 1). Stack: [0].
+// 0:end:6
+
+// Function 0 resumes at time 5 (right after function 1 ended) until time 6 → 1 unit.
+// prevTime becomes 7 (6 + 1). Stack becomes empty.
+// Totals:
+
+// Function 0: 3 units (2 + 1).
+// Function 1: 4 units.
+// Hence, the output is [3, 4].
