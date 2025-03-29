@@ -14,12 +14,18 @@
 // Return k.
 
 const removeDuplicates = (nums) => {
+  // We'll use two pointers: 'l' will track the position of the last unique element,
+  // and 'r' will move through each element in the array.
   let l = 0
+  // Iterate with 'r' from the second element to the end
   for (let r = 1; r < nums.length; r++) {
+    // If we find a new unique element (nums[r] != nums[l]),
+    // move 'l' forward and copy the new element into nums[l].
     if (nums[r] !== nums[l]) {
       l++
       nums[l] = nums[r]
     }
   }
+  // The number of unique elements is 'l + 1'
   return l + 1
 }
