@@ -57,7 +57,7 @@ const nextPermutation = function (nums) {
   while (i >= 0 && nums[i] >= nums[i + 1]) { // 3 < 5 => stop
     i--
   }
-  // i = 1 - pivot nums[i] = 3
+  // i = 1 - pivot nums[i] = 5
 
   // If i is not the first element, swap the element with the next larger element.
   if (i >= 0) {
@@ -68,7 +68,7 @@ const nextPermutation = function (nums) {
       j--
     }
     // j = 3, nums[j] = 4
-    console.log(i, j)
+    // console.log(i, j)
 
     // Swap the elements at i and j
     swap(nums, i, j) // swap 3 and 4
