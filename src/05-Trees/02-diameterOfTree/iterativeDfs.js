@@ -63,3 +63,22 @@ class Solution {
     return mp.get(root)[1]
   }
 }
+
+
+// root=[1,null,2,3,4,5]
+// stdout:
+// n h d
+// 5 1 0
+// 3 2 1
+// 4 1 0
+// 2 3 3
+// 1 4 3
+
+// draw the tree
+// 1
+//  \
+//   2
+//  / \
+// 3   4
+//      \
+//       5
