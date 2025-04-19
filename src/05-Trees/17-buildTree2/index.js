@@ -1,6 +1,6 @@
 // 106. Construct Binary Tree from Inorder and Postorder Traversal
-// https://www.youtube.com/watch?v=vm63HuIU7kw
 // https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/
+// https://www.youtube.com/watch?v=vm63HuIU7kw
 // Medium
 // Topics
 // Companies

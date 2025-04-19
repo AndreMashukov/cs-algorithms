@@ -20,27 +20,40 @@
  * }
  */
 /**
- * @param {TreeNode} root
- * @return {number}
+ * @param {TreeNode} root - The root node of the binary tree
+ * @return {number} - The sum of all root-to-leaf numbers
  */
 const sumNumbers = function (root) {
+  // Helper function to perform depth-first search
+  // @param {TreeNode} node - Current node being processed
+  // @param {number} sum - Current accumulated sum from root to current node
+  // @return {number} - Sum of all paths from current node to leaves
   const dfs = (node, sum) => {
+    // Base case: if node is null, return 0 (no contribution to sum)
     if (!node) {
       return 0
     }
 
+    // Update the current sum by appending current node's value
+    // This is equivalent to shifting left and adding the new digit
     sum = sum * 10 + node.val
 
+    // If we've reached a leaf node, return the current sum
+    // This represents one complete path from root to leaf
     if (!node.left && !node.right) {
       return sum
     }
 
+    // Recursively process left and right subtrees and sum their results
+    // This accumulates all possible paths from the current node
     return dfs(node.left, sum) + dfs(node.right, sum)
   }
 
+  // Start DFS from root with initial sum of 0
   return dfs(root, 0)
 }
 
+// Test case
 console.log(sumNumbers({
   val: 1,
   left: {
