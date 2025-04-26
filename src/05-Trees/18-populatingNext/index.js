@@ -56,13 +56,13 @@ const connect = function (root) {
 
     // Process all nodes at the current level
     while (head) { // head is node 2
-      // Connect the left child to right child of current node
-      head.left.next = head.right // connects 4->5
-
-      // If there's a next node at current level,
-      // connect current node's right child to next node's left child
-      if (head.next) { // head.next is node 3
-        head.right.next = head.next.left // connects 5->6
+      // Add null checks for left and right children
+      if (head.left) {
+        head.left.next = head.right
+      }
+      
+      if (head.right && head.next) {
+        head.right.next = head.next.left
       }
 
       // Move to next node at same level using next pointer

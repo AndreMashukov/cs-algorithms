@@ -26,7 +26,7 @@
 //         dfs(0, [], 0)
 //         return res
 
-const combinationSum = (candidates, target) => {
+const combinationSum = (nums, target) => {
   const res = []
 
   // cur - the current combination of numbers
@@ -39,16 +39,16 @@ const combinationSum = (candidates, target) => {
     }
 
     // if the current index is greater than the length of the candidates list
-    if (i >= candidates.length || total > target) {
+    if (i >= nums.length || total > target) {
       return
     }
 
     // include the current number
     // why use same index i in the recursive call?
     // because we can use the same number multiple times
-    cur.push(candidates[i])
+    cur.push(nums[i])
     // i instead of i + 1 because this problem allows for the same number to be used multiple times in the combination
-    dfs(i, cur, total + candidates[i])
+    dfs(i, cur, total + nums[i])
     // exclude the current number and move to the next number
     cur.pop()
     dfs(i + 1, cur, total)

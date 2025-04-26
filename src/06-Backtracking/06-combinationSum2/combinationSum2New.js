@@ -7,33 +7,33 @@
 
 // Note: The solution set must not contain duplicate combinations.
 
-const combinationSum2 = (candidates, target) => {
+const combinationSum2 = (nums, target) => {
   const res = []
 
   // sort the candidates array to avoid duplicates
-  candidates.sort((a, b) => a - b)
+  nums.sort((a, b) => a - b)
 
-  const backtrack = (cur, i, target) => {
-    if (target === 0) {
+  const dfs = (i, cur, sum) => {
+    if (sum === 0) {
       res.push([...cur])
       return
     }
-    if (target < 0) return
+    if (sum < 0) return
 
     let prev = -1
     // iterate through the rest of the candidates array
-    for (let j = i; j < candidates.length; j++) {
-      if (prev === candidates[j]) continue
+    for (let j = i; j < nums.length; j++) {
+      if (prev === nums[j]) continue
 
-      cur.push(candidates[j])
-      backtrack(cur, j + 1, target - candidates[j])
+      cur.push(nums[j])
+      dfs(j + 1, cur, sum - nums[j])
       cur.pop()
       // For the next iteration, where prev will be used to check for duplicates again.
-      prev = candidates[j]
+      prev = nums[j]
     }
   }
 
-  backtrack([], 0, target)
+  dfs(0, [], target)
   return res
 }
 

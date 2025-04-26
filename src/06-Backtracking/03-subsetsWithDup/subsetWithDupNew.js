@@ -11,18 +11,18 @@ const subsetsWithDup = (nums) => {
 
   nums.sort((a, b) => a - b)
 
-  const dfs = (i, subset) => {
+  const dfs = (i, cur) => {
     if (i === nums.length) {
-      res.push([...subset])
+      res.push([...cur])
       return
     }
 
     // All subsets that include nums[i]
-    subset.push(nums[i])
+    cur.push(nums[i])
     // run dfs with i + 1 which is the next index in the array
     // and the current subset array that includes nums[i]
-    dfs(i + 1, subset)
-    subset.pop()
+    dfs(i + 1, cur)
+    cur.pop()
 
     // All subsets that doesn't include nums[i]
     while (i + 1 < nums.length && nums[i] === nums[i + 1]) {
@@ -30,7 +30,7 @@ const subsetsWithDup = (nums) => {
     }
     // run dfs with i + 1 which is the next index in the array
     // and the current subset array that doesn't include nums[i]
-    dfs(i + 1, subset)
+    dfs(i + 1, cur)
   }
 
   dfs(0, [])

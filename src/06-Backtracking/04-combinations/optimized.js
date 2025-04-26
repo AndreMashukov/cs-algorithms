@@ -14,11 +14,11 @@
  * @return {number[][]}
  */
 const combine = function (n, k) {
-  const result = [] // Initialize the result array to store combinations
+  const res = [] // Initialize the result array to store combinations
 
   const backtrack = (i, cur) => {
     if (cur.length === k) { // If the current combination is of length k
-      result.push(cur.slice()) // Add a copy of the current combination to the result
+      res.push(cur.slice()) // Add a copy of the current combination to the result
       return // Backtrack
     }
 
@@ -34,7 +34,7 @@ const combine = function (n, k) {
   }
 
   backtrack(1, []) // Start backtracking from 1 with an empty combination
-  return result // Return the result array containing all combinations
+  return res // Return the result array containing all combinations
 }
 
 // Time complexity O(k * C(n, k))
