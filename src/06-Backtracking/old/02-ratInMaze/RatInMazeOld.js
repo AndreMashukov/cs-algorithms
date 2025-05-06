@@ -1,3 +1,11 @@
+// Problem:
+// Given a maze, find a path from the top left corner to the bottom right corner.
+// The maze is represented as a 2D array of integers.
+// The integers are 0 or 1.
+// 0 represents a blocked cell.
+// 1 represents a cell that can be traversed.
+
+
 /** Class for rat in maze algorithm. */
 class RatInMaze {
   /**

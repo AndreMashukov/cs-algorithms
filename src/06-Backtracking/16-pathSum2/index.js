@@ -29,7 +29,7 @@
  * @return {number[][]}
  */
 const pathSum = function (root, targetSum) {
-  const result = []
+  const res = []
   const path = []
 
   const dfs = (node, sum) => {
@@ -40,7 +40,7 @@ const pathSum = function (root, targetSum) {
     path.push(node.val)
 
     if (!node.left && !node.right && sum === node.val) {
-      result.push([...path])
+      res.push([...path])
     }
 
     dfs(node.left, sum - node.val)
@@ -51,5 +51,5 @@ const pathSum = function (root, targetSum) {
 
   dfs(root, targetSum)
 
-  return result
+  return res
 };

@@ -86,3 +86,18 @@ module.exports = {
   solution,
   Trie
 }
+
+
+// example usage
+const board = [
+  ['C', 'O', 'D', 'E'],
+  ['R', 'U', 'L', 'E'],
+  ['S', 'E', 'R', 'E']
+]
+
+const words = ['CODE', 'RULES']
+
+console.log(solution(board, words))
+
+// output:
+// [ 'CODE', 'RULES' ]  

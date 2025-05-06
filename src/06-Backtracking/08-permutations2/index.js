@@ -26,7 +26,7 @@ const permuteUnique = function (nums) {
   const res = [] // Initialize the result array to store unique permutations
 
   // Backtracking function to generate permutations
-  const backtrack = (cur) => {
+  const dfs = (cur) => {
     // If the current permutation is of the same length as nums, add it to the result
     if (cur.length === nums.length) {
       res.push([...cur])
@@ -38,14 +38,14 @@ const permuteUnique = function (nums) {
       if (freq[num] > 0) { // If the current number is available
         cur.push(+num) // Add the current number to the current permutation
         freq[num]-- // Decrease the frequency of the current number
-        backtrack(cur) // Recursively generate permutations with the current number included
+        dfs(cur) // Recursively generate permutations with the current number included
         cur.pop() // Remove the current number from the current permutation (backtrack)
         freq[num]++ // Restore the frequency of the current number
       }
     }
   }
 
-  backtrack([]) // Start the backtracking with an empty permutation
+  dfs([]) // Start the backtracking with an empty permutation
 
   return res // Return the result array containing all unique permutations
 };
