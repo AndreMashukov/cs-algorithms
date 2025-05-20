@@ -41,6 +41,7 @@ class Solution {
         // that ends at index i, and the rest of the substring before
         // this word can also be segmented into words from the dictionary.
         if (dp[i]) {
+          // To ensure we don't overwrite a successful segmentation with a failed one
           break
         }
       }

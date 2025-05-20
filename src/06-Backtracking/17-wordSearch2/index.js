@@ -92,6 +92,7 @@ class Solution {
       // If we've found a complete word, add it to results
       if (node.isWord) {
         res.add(word);
+        node.isWord = false
       }
 
       // Explore all four directions (up, down, left, right)

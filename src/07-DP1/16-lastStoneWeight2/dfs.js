@@ -40,10 +40,8 @@ const lastStoneWeightIIDfs = function (stones) {
   const dfs = (i, total) => {
     // Base case: If we have reached the end of the stones array
     if (i === stones.length) {
-      // If the total weight is less than or equal to the target weight,
-      // return the remaining weight (which is the weight of the last stone)
-      // Otherwise, return the total weight (which is the weight of the last stone)
-      return total <= target ? total : total - target
+      // calculate the difference between the sum of the stones and the total weight
+      return Math.abs(stoneSum - 2 * total)
     }
 
     // Check if the current state has been memoized
