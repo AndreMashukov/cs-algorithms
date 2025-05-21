@@ -33,31 +33,31 @@ class Solution {
     /**
      * DFS helper function for unbounded knapsack
      * @param {number} i - current index of item
-     * @param {number} cap - remaining capacity
+     * @param {number} rem - remaining capacity
      * @returns {number} - max profit from this state
      */
-    const dfs = (i, cap) => {
+    const dfs = (i, rem) => {
       // Base case: no more items or capacity
-      if (i === n || cap === 0) {
+      if (i === n || rem === 0) {
         return 0
       }
 
       // Check memoized result
-      if (map.has(`${i}-${cap}`)) {
-        return map.get(`${i}-${cap}`)
+      if (map.has(`${i}-${rem}`)) {
+        return map.get(`${i}-${rem}`)
       }
 
       let profit1 = 0
       // If current item can fit, choose to stay on same index (unbounded)
-      if (weight[i] <= cap) {
-        profit1 = profit[i] + dfs(i, cap - weight[i])
+      if (weight[i] <= rem) {
+        profit1 = profit[i] + dfs(i, rem - weight[i])
       }
       // Option: move to next item without including current
-      const profit2 = dfs(i + 1, cap)
+      const profit2 = dfs(i + 1, rem)
 
       // Take the best option
       const maxProfit = Math.max(profit1, profit2)
-      map.set(`${i}-${cap}`, maxProfit)
+      map.set(`${i}-${rem}`, maxProfit)
       return maxProfit
     }
 
