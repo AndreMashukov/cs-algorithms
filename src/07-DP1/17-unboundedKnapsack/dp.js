@@ -36,6 +36,21 @@ class Solution {
       dp[0][c] = weight[0] <= c ? profit[0] * Math.floor(c / weight[0]) : 0;
     }
 
+    // console.log(dp)
+    // [                | <- capacity = 5 = weight[0]
+    //  [0, 0, 0, 0, 0, 4, 4, 4, 4]
+    //  [0, 0, 0, 0, 0, 0, 0, 0, 0]
+    //  [0, 0, 0, 0, 0, 0, 0, 0, 0]
+    //  [0, 0, 0, 0, 0, 0, 0, 0, 0]
+    // ]
+    // first row is filled with the profit of the first item
+    // if the weight of the first item is less than the capacity,
+    // then the profit is the profit of the first item
+    // times the number of times the first item can fit in the capacity
+    // if the weight of the first item is greater than the capacity,
+    // then the profit is 0
+    
+
     // Fill the dp table
     for (let i = 1; i < n; i++) {
       for (let c = 1; c <= capacity; c++) {
@@ -54,13 +69,22 @@ class Solution {
 
     // Return the result
     return dp[n - 1][capacity]
-  }        
+  }
+}
+
+const solution = new Solution()
+
+const profit = [4, 4, 7, 1]
+const weight = [5, 2, 3, 1]
+const capacity = 8
+
+console.log(solution.maximumProfitDp(profit, weight, capacity))
 
 // weights = [1, 3, 4]
 // profits = [15, 50, 60]
 // capacity = 5
 
-// Item/Capacity	
+// Item/Capacity
 //    0	1	  2	  3	  4	   5
 // 0	0	15	30	45	60	75
 // 1	0	15	30	50	65	80
