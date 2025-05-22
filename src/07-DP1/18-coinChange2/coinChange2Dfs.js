@@ -17,20 +17,20 @@ class Solution {
   change (amount, coins) {
     const cache = {}
 
-    const dfs = (i, a) => {
-      if (i === coins.length || a < 0) {
+    const dfs = (i, rem) => {
+      if (i === coins.length || rem < 0) {
         return 0
       }
 
-      if (a === 0) {
+      if (rem === 0) {
         return 1
       }
-      const key = `${i} - ${a}`
+      const key = `${i} - ${rem}`
       if (cache[key] !== undefined) {
         return cache[key]
       }
 
-      cache[key] = dfs(i, a - coins[i]) + dfs(i + 1, a)
+      cache[key] = dfs(i, rem - coins[i]) + dfs(i + 1, rem)
 
       return cache[key]
     }
