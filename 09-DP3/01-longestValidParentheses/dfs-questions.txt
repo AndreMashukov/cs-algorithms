@@ -1,0 +1,43 @@
+Problem: Longest Valid Parentheses (DFS approach)
+
+Q1: In the `isValid` helper function, what is the primary purpose of the `balance` variable?
+1. To count the total number of parentheses in the substring.
+2. To ensure that for every opening parenthesis there is a corresponding closing parenthesis appearing later, and that closing parentheses do not appear before an unmatched opening one.
+3. To count the number of valid pairs found.
+4. To track the depth of nested parentheses.
+
+Q2: The main `longestValidParentheses_dfs` function iterates with two nested loops (i and j). What do these loops define in the context of the problem?
+1. They define the start and end of recursive calls for a DFS traversal.
+2. They systematically generate all possible substrings of the input string `s`.
+3. They are used to build a graph representation of the parentheses string.
+4. They implement a stack-based validation for each character.
+
+Q3: If the `isValid` function encounters `balance < 0` at any point while checking a substring, what does this signify?
+1. The substring is likely valid but needs further checking.
+2. A closing parenthesis has appeared without a preceding unmatched opening parenthesis.
+3. An opening parenthesis has appeared without a succeeding closing parenthesis.
+4. The substring has an equal number of opening and closing parentheses.
+
+Q4: How is the `maxLength` variable updated in the `longestValidParentheses_dfs` function?
+1. It is incremented each time a `(` is found.
+2. It is updated only at the very end of the function, after all substrings are checked.
+3. It is updated whenever a substring `sub` is determined to be valid by `isValid(sub)`, by comparing `sub.length` with the current `maxLength`.
+4. It is set to the length of the first valid substring found.
+
+Q5: What is the role of `s.substring(i, j + 1)`?
+1. It creates a copy of the original string `s` for modification.
+2. It extracts a portion of the string `s` starting from index `i` up to, but not including, index `j+1`.
+3. It validates the substring between `i` and `j`.
+4. It splits the string `s` into two parts at index `i`.
+
+Q6: In the provided `longestValidParentheses_dfs` code, the `findLongest` recursive function is defined but not explicitly called within the main loops. Why might this be the case for this particular implementation strategy?
+1. The `findLongest` function is intended for a different, more complex version of DFS not fully implemented here.
+2. The generation and checking of all substrings via nested loops itself constitutes the "exploration" process, making explicit recursive calls for substring generation redundant in this specific brute-force approach.
+3. The `findLongest` function is called implicitly by the JavaScript runtime.
+4. It was meant to be used with the `isValid` function directly.
+
+Q7: If `s = "()(()"`, which of the following substrings will be passed to `isValid` and result in `maxLength` being updated (assume `maxLength` starts at 0)?
+1. "(", ")", "(", "(", ")"
+2. "()" (from index 0), and then again "()" (from index 2)
+3. "()(()"
+4. Only "(()" 
