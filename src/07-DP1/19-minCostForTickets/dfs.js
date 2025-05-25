@@ -80,3 +80,9 @@ const minCostTickets = (days, costs) => {
 };
 
 console.log(minCostTickets([1,4,6,7,8,20], [2,7,15]));
+
+
+// The nextDay variable is used to find the next day index 
+// that is NOT covered by the current pass we're considering purchasing. 
+// This tells us where to continue our search 
+// after buying the current pass.
