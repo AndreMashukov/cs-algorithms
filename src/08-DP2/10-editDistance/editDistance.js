@@ -13,24 +13,37 @@ class Solution {
    * @return {number}
    */
   minDistance (word1, word2) {
+    const m = word1.length
+    const n = word2.length
     // Initialize a 2D array (dp) with dimensions (word1.length + 1) x (word2.length + 1)
-    const dp = new Array(word1.length + 1)
+    const dp = new Array(m + 1)
       .fill(0)
-      .map(() => new Array(word2.length + 1).fill(0))
+      .map(() => new Array(n + 1).fill(0))
 
     // Fill the last row with the number of deletions needed to convert word1 to an empty string
-    for (let j = 0; j <= word2.length; j++) {
-      dp[word1.length][j] = word2.length - j
+    for (let j = 0; j <= n; j++) {
+      dp[m][j] = n - j
     }
 
     // Fill the last column with the number of deletions needed to convert word2 to an empty string
-    for (let i = 0; i <= word1.length; i++) {
-      dp[i][word2.length] = word1.length - i
+    for (let i = 0; i <= m; i++) {
+      dp[i][n] = m - i
     }
 
+    // console.log(dp)
+    // horse -> ros
+    // [
+    //   [ 0, 0, 0, 5 ],
+    //   [ 0, 0, 0, 4 ],
+    //   [ 0, 0, 0, 3 ],
+    //   [ 0, 0, 0, 2 ],
+    //   [ 0, 0, 0, 1 ],
+    //   [ 3, 2, 1, 0 ]
+    // ]
+
     // Iterate over the strings in reverse order to fill the dp table
-    for (let i = word1.length - 1; i >= 0; i--) {
-      for (let j = word2.length - 1; j >= 0; j--) {
+    for (let i = m - 1; i >= 0; i--) {
+      for (let j = n - 1; j >= 0; j--) {
         if (word1[i] === word2[j]) {
           // If characters match, no operation is needed
           dp[i][j] = dp[i + 1][j + 1]

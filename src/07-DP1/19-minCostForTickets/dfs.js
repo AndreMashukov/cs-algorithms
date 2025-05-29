@@ -70,7 +70,7 @@ const minCostTickets = (days, costs) => {
       res = Math.min(res, costs[j] + dfs(nextDay));
     }
 
-    // Cache the result
+    // Cache the resulta
     map.set(i, res);
     return res;
   };

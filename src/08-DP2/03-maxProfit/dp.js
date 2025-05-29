@@ -27,8 +27,10 @@ class Solution {
         }
       }
     }
+    // console.log(dp)
+    // [ [ 4, 3 ], [ 4, 2 ], [ 3, 2 ], [ 2, 2 ], [ 2, 0 ], [ 0, 0 ] ]
     // Return max profit starting from day 0 in buying state
-    return dp[0][1]
+    return dp[0][1]   // 3
   }
 }
 
