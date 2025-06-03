@@ -42,3 +42,10 @@ class Solution {
 
     return dfs(0, 0)
   }
+
+
+// For "monkeys" and "money", let's trace what should happen:
+// At position (0,0): Both strings start with "mon", so we move to (3,3) without any operations
+// At (3,3): We have "keys" vs "ey"
+// We need to delete 'k' and 's' to transform "keys" to "ey"
+// Therefore, the final answer should be 2

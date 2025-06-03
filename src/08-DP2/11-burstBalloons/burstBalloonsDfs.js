@@ -11,22 +11,24 @@
 // you can receive by bursting all of the balloons.
 
 const maxCoinsDfs = (nums) => {
-  const n = nums.length
-  const memo = new Map()
+  const n = nums.length;
+  const memo = new Map();
+  // Add 1 to both ends of the nums array to handle edge cases
+  const newNums = [1, ...nums, 1];
 
   // Helper function to perform depth-first search
   const dfs = (left, right) => {
     // Base case: no balloons to burst between left and right
     if (left + 1 === right) {
-      return 0
+      return 0;
     }
 
     // Check if the result is already computed and stored in memo
     if (memo.has(`${left},${right}`)) {
-      return memo.get(`${left},${right}`)
+      return memo.get(`${left},${right}`);
     }
 
-    let ans = 0
+    let ans = 0;
     // Iterate through all possible balloons to burst between left and right
     for (let i = left + 1; i < right; i++) {
       // console.log({
@@ -44,23 +46,20 @@ const maxCoinsDfs = (nums) => {
         newNums[left] * newNums[i] * newNums[right] +
           dfs(left, i) +
           dfs(i, right)
-      )
+      );
     }
 
     // Store the result in memo
-    memo.set(`${left},${right}`, ans)
-    return ans
+    memo.set(`${left},${right}`, ans);
+    return ans;
   };
 
-  // Add 1 to both ends of the nums array to handle edge cases
-  const newNums = [1, ...nums, 1]
-
   // Start the DFS from the full range of the newNums array
-  return dfs(0, n + 1)
+  return dfs(0, n + 1);
 };
 
-console.log(maxCoinsDfs([3, 1, 5, 8])) // 167
-console.log(maxCoinsDfs([1, 5])) // 5
+console.log(maxCoinsDfs([3, 1, 5, 8])); // 167
+console.log(maxCoinsDfs([1, 5])); // 5
 
 //   0 1 2 3
 // 1 3 1 5 8 1
