@@ -1,0 +1,35 @@
+Problem: Longest Valid Parentheses (DP approach, advanced case)
+
+Q1: What does the condition `i - dp[i - 1] > 0 && s[i - dp[i - 1] - 1] === '('` 
+check for?
+1. If the previous character is an opening parenthesis.
+2. If the character before the previous valid segment 
+is an opening parenthesis 
+that can pair with the current closing parenthesis.
+3. If the current character is an opening parenthesis.
+4. If the substring so far is valid.
+
+Q2: Why do we add `dp[i - dp[i - 1] - 2]` to `dp[i]` in this case?
+1. To count unmatched opening parentheses.
+2. To include the length of any valid substring 
+before the current matching pair.
+3. To reset the count for a new valid substring.
+4. To ignore previous valid substrings.
+
+Q3: What does `dp[i - 1]` represent in this context?
+1. The number of opening parentheses so far.
+2. The length of the longest valid substring ending at the previous character.
+3. The index of the last unmatched parenthesis.
+4. The total number of valid pairs in the string.
+
+Q4: Why do we add 2 to the result in this case?
+1. To account for the newly matched pair of parentheses.
+2. To skip unmatched parentheses.
+3. To double the previous valid substring length.
+4. To handle edge cases only.
+
+Q5: What happens if `i - dp[i - 1] < 2`?
+1. We add the previous dp value only.
+2. We do not add any previous dp value and only count the current pair.
+3. We reset the dp array.
+4. We skip this index entirely. 

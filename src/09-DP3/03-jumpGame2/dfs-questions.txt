@@ -1,0 +1,43 @@
+Problem: Jump Game II (DFS with Memoization)
+
+Q1: In the `dfs(i)` function, what does the parameter `i` represent?
+1. The number of jumps taken so far.
+2. The current index/position in the nums array.
+3. The maximum jump length from the current position.
+4. The target index we're trying to reach.
+
+Q2: What is the base case in the `dfs(i)` function?
+1. When `i === 0` (reached the starting position).
+2. When `i >= n - 1` (reached or passed the last index).
+3. When `nums[i] === 0` (can't jump further).
+4. When the memoization table is full.
+
+Q3: In the inner loop `for (let jump = 1; jump <= nums[i]; jump++)`, what does this loop accomplish?
+1. It finds the maximum possible jump from position i.
+2. It explores all possible jump lengths from position i (from 1 to nums[i] steps).
+3. It calculates the sum of all possible jumps.
+4. It validates whether each jump is legal.
+
+Q4: How does memoization improve the efficiency of the DFS solution?
+1. It reduces the space complexity to O(1).
+2. It stores previously computed results for each index to avoid redundant calculations.
+3. It sorts the results for faster lookup.
+4. It changes the algorithm from DFS to BFS.
+
+Q5: What does `minJumps = Math.min(minJumps, 1 + jumpsFromNext)` calculate?
+1. The maximum jumps among all possible paths.
+2. The minimum jumps needed: 1 (current jump) plus minimum jumps from the next position.
+3. The average number of jumps across all paths.
+4. The total number of possible paths.
+
+Q6: If `nums = [2,3,1,1,4]` and we call `dfs(0)`, which positions will be explored in the first recursive call?
+1. Only position 1 (since nums[0] = 2, we can jump 1 or 2 steps).
+2. Positions 1 and 2 (since nums[0] = 2, we can jump 1 or 2 steps).
+3. Positions 0, 1, and 2.
+4. All positions in the array.
+
+Q7: Why do we initialize `minJumps = Infinity` at the beginning of the `dfs(i)` function?
+1. To handle the case when nums[i] is 0.
+2. To ensure we find the true minimum by starting with a value larger than any possible result.
+3. To prevent integer overflow.
+4. To mark invalid positions. 

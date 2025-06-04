@@ -22,11 +22,21 @@
   "devDependencies": {
     "babel-jest": "^26.1.0",
     "eslint-config-google": "^0.14.0",
-    "jest": "^26.1.0"
+    "jest": "^26.1.0",
+    "standard": "^17.0.0"
   },
   "jest": {
     "transform": {
       "^.+\\.js$": "babel-jest"
     }
+  },
+  "standard.options": {
+    "ignore": [
+      "node_modules/**"
+    ],
+    "plugins": [
+      "html"
+    ],
+    "parser": "babel-eslint"
   }
 }
