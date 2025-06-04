@@ -12,7 +12,7 @@
 
 const maxCoinsDfs = (nums) => {
   const n = nums.length;
-  const memo = new Map();
+  const map = new Map();
   // Add 1 to both ends of the nums array to handle edge cases
   const newNums = [1, ...nums, 1];
 
@@ -23,9 +23,10 @@ const maxCoinsDfs = (nums) => {
       return 0;
     }
 
+    const key = `${left},${right}`;
     // Check if the result is already computed and stored in memo
-    if (memo.has(`${left},${right}`)) {
-      return memo.get(`${left},${right}`);
+    if (map.has(key)) {
+      return map.get(key);
     }
 
     let coins = 0;
@@ -41,7 +42,7 @@ const maxCoinsDfs = (nums) => {
     }
 
     // Store the result in memo
-    memo.set(`${left},${right}`, coins);
+    map.set(key, coins);
     return coins;
   };
 
