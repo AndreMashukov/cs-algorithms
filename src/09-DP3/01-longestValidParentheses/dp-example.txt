@@ -1,0 +1,66 @@
+I'll explain how this dynamic programming algorithm works using a simple example: `"()(())"`.
+
+Let's go through it step by step:
+
+1. First, we create a DP array of the same length as the input string, initialized with zeros:
+```
+String: ( ) ( ( ) )
+Index:  0 1 2 3 4 5
+DP:     0 0 0 0 0 0
+```
+
+2. We iterate through the string starting from index 1, 
+and we only do something when we encounter a closing parenthesis `)`. 
+For each `)`, we have two cases:
+
+Case 1: When current `)` matches with an immediate preceding `(`
+Case 2: When current `)` matches with an earlier `(` beyond the immediate previous position
+
+Let's see how the DP array gets filled:
+
+```
+String: ( ) ( ( ) )
+Index:  0 1 2 3 4 5
+```
+
+Step 1 (i=1): Looking at ')'
+- Previous char is '(' (Case 1)
+- dp[1] = 2 (forms valid "()")
+```
+DP: 0 2 0 0 0 0
+```
+
+Step 2 (i=4): Looking at ')'
+- Previous char is '(' (Case 1)
+- dp[4] = 2 (forms valid "()")
+```
+DP: 0 2 0 0 2 0
+```
+
+Step 3 (i=5): Looking at ')'
+- Previous char is ')' (Case 2)
+- We look back dp[4]=2 positions from i=5
+- Check if char at (5-2-1=2) is '('
+- Yes, it is! So we combine:
+  * dp[4] (=2) for the inner "()"
+  * 2 for the outer pair
+  * dp[1] (=2) for any valid sequence before
+- dp[5] = 2 + 2 + 2 = 6
+```
+DP: 0 2 0 0 2 6
+```
+
+Final DP array: `[0,2,0,0,2,6]`
+
+The maximum value in the DP array is 6, which corresponds to the entire string "()(())" being valid.
+
+To break down what the 6 represents:
+- The outer valid pair: "(....)"
+- The nested valid pair: "(())"
+- The separate valid pair at the start: "()"
+All together making "()(())" with length 6.
+
+This is why dynamic programming is powerful here - i
+t builds up the solution by keeping track of previous 
+valid subsequences and combining 
+them when possible to find longer valid sequences.

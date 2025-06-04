@@ -1,0 +1,18 @@
+{
+    "appService.defaultWebAppToDeploy": "None",
+    "appService.deploySubpath": ".",
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "javascript.format.enable": false,
+    "javascript.validate.enable": false,
+    "standard.enable": true,
+    "standard.autoFixOnSave": true,
+    "standard.validate": [
+        "javascriptreact"
+    ],
+    "files.associations": {
+        "*.js": "javascriptreact"
+    }
+}

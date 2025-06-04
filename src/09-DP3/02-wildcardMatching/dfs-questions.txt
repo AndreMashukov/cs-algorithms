@@ -1,0 +1,51 @@
+Problem: Wildcard Matching (DFS with Memoization)
+
+Q1: In the `dfs(i, j)` function, what does the state `(i, j)` represent?
+1. `i` is the count of matched characters, `j` is the count of wildcards used.
+2. `i` is the current index in the input string `s`, and `j` is the current index in the pattern `p`.
+3. `i` represents the length of `s`, and `j` represents the length of `p`.
+4. `i` is the start index and `j` is the end index of a substring in `s`.
+
+Q2: What is the purpose of the `memo` Map in the `isMatchWildcard_dfs` function?
+1. To store the characters of the pattern `p`.
+2. To count the occurrences of '*' and '?'.
+3. To store the results of previously computed subproblems `dfs(i, j)` to avoid redundant calculations.
+4. To keep track of the current path in the DFS traversal.
+
+Q3: If `p[j]` is '*', the function makes two recursive calls: 
+  `dfs(i, j + 1)` and `dfs(i + 1, j)`. 
+  What do these two calls represent?
+1. `dfs(i, j + 1)`: '*' matches the current character `s[i]`; 
+  `dfs(i + 1, j)`: '*' matches an empty sequence.
+2. `dfs(i, j + 1)`: '*' matches an empty sequence (skipping '*' in pattern);
+   `dfs(i + 1, j)`: '*' matches `s[i]` 
+   (consuming `s[i]` and '*' potentially matches more).
+3. `dfs(i, j + 1)`: Try matching `p[j+1]` with `s[i]`; 
+  `dfs(i + 1, j)`: Try matching `p[j]` with `s[i+1]`.
+4. Both calls explore matching `s[i]` with `p[j]` in different ways.
+
+Q4: What is the base case when the pattern `p` is exhausted (i.e., `j === pLen`)?
+1. Always returns true, as the pattern is empty.
+2. Returns true if and only if the input string `s` is also exhausted (i.e., `i === sLen`).
+3. Returns false, because the string `s` might still have characters.
+4. Checks if the remaining characters in `s` are all wildcards.
+
+Q5: What is the base case when the string `s` is exhausted 
+  (i.e., `i === sLen`), but the pattern `p` is not?
+1. Always returns false, as the string is empty but pattern remains.
+2. Returns true if all remaining characters in the pattern `p` 
+  (from index `j` onwards) are '*'.
+3. Returns true if the next character `p[j]` is '*'.
+4. Returns true if the pattern `p` has only one character left and it's '*'.
+
+Q6: If `s = "a"` and `p = "a*"`, trace the first few important `dfs` calls. What would `dfs(0,1)` (s_idx=0, p_idx=1 where p[1]='*') evaluate?
+1. It would call `dfs(0, 2)` (match empty) and `dfs(1, 1)` (match 'a').
+2. It would call `dfs(1, 2)` only.
+3. It would immediately return true because '*' can match anything.
+4. It would immediately return false because 'a' is already matched by `p[0]`.
+
+Q7: How does the use of memoization affect the processing of states like `(i, j)` that might be reached through different paths in the recursion tree?
+1. It forces the DFS to explore each path independently, even if states overlap.
+2. It ensures that once `dfs(i, j)` is computed and its result stored, subsequent calls with the same `(i, j)` retrieve the stored result directly, significantly reducing computation.
+3. It prioritizes paths that use fewer wildcard characters.
+4. It converts the DFS into a breadth-first search (BFS). 
