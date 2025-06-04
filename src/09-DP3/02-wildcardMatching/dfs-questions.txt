@@ -12,10 +12,16 @@ Q2: What is the purpose of the `memo` Map in the `isMatchWildcard_dfs` function?
 3. To store the results of previously computed subproblems `dfs(i, j)` to avoid redundant calculations.
 4. To keep track of the current path in the DFS traversal.
 
-Q3: If `p[j]` is '*', the function makes two recursive calls: `dfs(i, j + 1)` and `dfs(i + 1, j)`. What do these two calls represent?
-1. `dfs(i, j + 1)`: '*' matches the current character `s[i]`; `dfs(i + 1, j)`: '*' matches an empty sequence.
-2. `dfs(i, j + 1)`: '*' matches an empty sequence (skipping '*' in pattern); `dfs(i + 1, j)`: '*' matches `s[i]` (consuming `s[i]` and '*' potentially matches more).
-3. `dfs(i, j + 1)`: Try matching `p[j+1]` with `s[i]`; `dfs(i + 1, j)`: Try matching `p[j]` with `s[i+1]`.
+Q3: If `p[j]` is '*', the function makes two recursive calls: 
+  `dfs(i, j + 1)` and `dfs(i + 1, j)`. 
+  What do these two calls represent?
+1. `dfs(i, j + 1)`: '*' matches the current character `s[i]`; 
+  `dfs(i + 1, j)`: '*' matches an empty sequence.
+2. `dfs(i, j + 1)`: '*' matches an empty sequence (skipping '*' in pattern);
+   `dfs(i + 1, j)`: '*' matches `s[i]` 
+   (consuming `s[i]` and '*' potentially matches more).
+3. `dfs(i, j + 1)`: Try matching `p[j+1]` with `s[i]`; 
+  `dfs(i + 1, j)`: Try matching `p[j]` with `s[i+1]`.
 4. Both calls explore matching `s[i]` with `p[j]` in different ways.
 
 Q4: What is the base case when the pattern `p` is exhausted (i.e., `j === pLen`)?
@@ -24,9 +30,11 @@ Q4: What is the base case when the pattern `p` is exhausted (i.e., `j === pLen`)
 3. Returns false, because the string `s` might still have characters.
 4. Checks if the remaining characters in `s` are all wildcards.
 
-Q5: What is the base case when the string `s` is exhausted (i.e., `i === sLen`), but the pattern `p` is not?
+Q5: What is the base case when the string `s` is exhausted 
+  (i.e., `i === sLen`), but the pattern `p` is not?
 1. Always returns false, as the string is empty but pattern remains.
-2. Returns true if all remaining characters in the pattern `p` (from index `j` onwards) are '*'.
+2. Returns true if all remaining characters in the pattern `p` 
+  (from index `j` onwards) are '*'.
 3. Returns true if the next character `p[j]` is '*'.
 4. Returns true if the pattern `p` has only one character left and it's '*'.
 

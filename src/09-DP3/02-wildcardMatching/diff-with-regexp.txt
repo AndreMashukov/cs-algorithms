@@ -1,0 +1,60 @@
+Great question! Both problems—**Wildcard Matching** (`dfs.js`) and **Regular Expression Matching** (`regexpMatchingDfs.js`)—involve matching a string against a pattern, but the rules for the pattern syntax are different. Here’s a clear comparison:
+
+---
+
+### 1. Wildcard Matching (LeetCode 44, your `dfs.js`)
+
+**Pattern Syntax:**
+- `?` matches **any single character**.
+- `*` matches **any sequence of characters** (including the empty sequence).
+
+**Example:**
+- Pattern: `a*?b`
+- String: `axxxxb`
+- Match: Yes (`*` matches `xxxx`, `?` matches `b`)
+
+**Key Points:**
+- `*` can match zero or more of **any** character.
+- `?` is a single-character wildcard.
+
+---
+
+### 2. Regular Expression Matching (LeetCode 10, your `regexpMatchingDfs.js`)
+
+**Pattern Syntax:**
+- `.` matches **any single character**.
+- `*` matches **zero or more of the preceding element** (not any character, but the one before `*`).
+
+**Example:**
+- Pattern: `a*b`
+- String: `aaab`
+- Match: Yes (`a*` matches `aaa`, then `b` matches `b`)
+
+**Key Points:**
+- `*` is always tied to the character (or `.`) before it, and means "zero or more of that".
+- `.` is a single-character wildcard.
+
+---
+
+### **Summary Table**
+
+| Feature         | Wildcard Matching (`?`, `*`) | Regexp Matching (`.`, `*`)         |
+|-----------------|------------------------------|------------------------------------|
+| Single wildcard | `?` (any char)               | `.` (any char)                     |
+| Star meaning    | `*` (any sequence, any char) | `*` (zero/more of prev char/dot)   |
+| Example         | `a*?b`                       | `a*b`                              |
+| Pattern power   | Simpler, more "glob" style   | More like real regex, more precise |
+
+---
+
+### **In Code**
+
+- In **Wildcard Matching**, `*` can match any number of any characters, and `?` matches one character.
+- In **Regexp Matching**, `*` only applies to the character before it (including `.`), and `.` matches any single character.
+
+---
+
+**In short:**  
+- Wildcard Matching is like shell globbing (`*`, `?`).
+- Regexp Matching is like simplified regular expressions (`.`, `*`).
+

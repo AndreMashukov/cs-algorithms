@@ -1,4 +1,4 @@
-// Problem: Wildcard Matching
+// Problem: 44. Wildcard Matching
 // LeetCode URL: https://leetcode.com/problems/wildcard-matching/description/?envType=problem-list-v2&envId=dynamic-programming
 // Problem Description:
 // Given an input string (s) and a pattern (p), implement wildcard pattern matching with support for 'ానా' and '*'.
@@ -72,8 +72,12 @@ function isMatchWildcard_dfs(s, p) {
 
     // If current pattern character is '*'
     if (p[j] === '*') {
-      // Option 1: '*' matches an empty sequence in s. So, move to the next pattern character (j+1), string index i remains.
-      // Option 2: '*' matches one or more characters in s. So, move to the next string character (i+1), pattern index j remains (as '*' can match multiple).
+      // Option 1: '*' matches an empty sequence in s.
+      //  So, move to the next pattern character (j+1),
+      //  string index i remains.
+      // Option 2: '*' matches one or more characters in s.
+      //  So, move to the next string character (i+1),
+      //  pattern index j remains (as '*' can match multiple).
       ans = dfs(i, j + 1) || dfs(i + 1, j);
     }
     // If current pattern character is '?' or matches the current string character
