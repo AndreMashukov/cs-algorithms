@@ -1,4 +1,4 @@
-Problem: Longest Valid Parentheses (DFS approach)
+Problem: Longest Valid Parentheses (Brute force approach)
 
 Q1: In the `isValid` helper function, what is the primary purpose of the `balance` variable?
 1. To count the total number of parentheses in the substring.
