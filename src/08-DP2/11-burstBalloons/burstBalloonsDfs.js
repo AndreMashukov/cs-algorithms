@@ -28,21 +28,12 @@ const maxCoinsDfs = (nums) => {
       return memo.get(`${left},${right}`);
     }
 
-    let ans = 0;
+    let coins = 0;
     // Iterate through all possible balloons to burst between left and right
     for (let i = left + 1; i < right; i++) {
-      // console.log({
-      //   left,
-      //   right,
-      //   i,
-      //   ans,
-      //   newNumsLeft: newNums[left],
-      //   newNumsI: newNums[i],
-      //   newNumsRight: newNums[right]
-      // })
       // Calculate the maximum coins by bursting the ith balloon last
-      ans = Math.max(
-        ans,
+      coins = Math.max(
+        coins,
         newNums[left] * newNums[i] * newNums[right] +
           dfs(left, i) +
           dfs(i, right)
@@ -50,8 +41,8 @@ const maxCoinsDfs = (nums) => {
     }
 
     // Store the result in memo
-    memo.set(`${left},${right}`, ans);
-    return ans;
+    memo.set(`${left},${right}`, coins);
+    return coins;
   };
 
   // Start the DFS from the full range of the newNums array
@@ -59,17 +50,17 @@ const maxCoinsDfs = (nums) => {
 };
 
 console.log(maxCoinsDfs([3, 1, 5, 8])); // 167
-console.log(maxCoinsDfs([1, 5])); // 5
+console.log(maxCoinsDfs([1, 5])); // 10
 
 //   0 1 2 3
 // 1 3 1 5 8 1
-// opt(END) = max (
-//  1 * 3 * 1 + 0 + opt(1, 3),
-//  1 * 1 * 1 + opt(0, 0) + opt(2, 3),
-//  1 * 5 * 1 + opt(0, 1) + opt(3, 3),
-//  1 * 8 * 1 + opt(0, 2)
+// dfs(END) = max (
+//  1 * 3 * 1 + 0 + dfs(1, 3),
+//  1 * 1 * 1 + dfs(0, 0) + dfs(2, 3),
+//  1 * 5 * 1 + dfs(0, 1) + dfs(3, 3),
+//  1 * 8 * 1 + dfs(0, 2)
 // )
-// opt(1, 3) = max (
-//  3 * 1 * 1 + opt(2, 3),
-//  3 * 5 * 1 + opt(1, 2) + opt(3, 3),
-//  3 * 8 * 1 + opt(1, 2)
+// dfs(1, 3) = max (
+//  3 * 1 * 1 + dfs(2, 3),
+//  3 * 5 * 1 + dfs(1, 2) + dfs(3, 3),
+//  3 * 8 * 1 + dfs(1, 2)

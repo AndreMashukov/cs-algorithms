@@ -1,9 +1,10 @@
-// 85. Maximal Rectangle
+// 221. Maximal Square
+// https://leetcode.com/problems/maximal-square/
+// https://www.youtube.com/watch?v=6X7Ha2PrDmM 
 // Given a rows x cols binary matrix filled with 0's and 1's,
 // find the largest rectangle containing only 1's and return its area.
 
-// IT'S NOT WORKING
-const maximalRectangle = (matrix) => {
+const maximalSquare = (matrix) => {
   const ROWS = matrix.length
   const COLS = matrix[0].length
   const map = new Map()
@@ -13,7 +14,7 @@ const maximalRectangle = (matrix) => {
 
     const key = `${r}-${c}`
     if (!map.has(key)) {
-      const right = helper(r, c d + 1)
+      const right = helper(r, c + 1)
       const down = helper(r + 1, c)
       const diagonal = helper(r + 1, c + 1)
       if (matrix[r][c] === '1') {
