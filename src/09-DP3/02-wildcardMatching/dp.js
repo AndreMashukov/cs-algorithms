@@ -1,5 +1,5 @@
 // Problem: Wildcard Matching
-// LeetCode URL: https://leetcode.com/problems/wildcard-matching/description/?envType=problem-list-v2&envId=dynamic-programming
+// https://leetcode.com/problems/wildcard-matching/description/?envType=problem-list-v2&envId=dynamic-programming
 // Problem Description:
 // Given an input string (s) and a pattern (p), implement wildcard pattern matching with support for '?' and '*'.
 // '?' Matches any single character.
@@ -52,6 +52,12 @@ function isMatchWildcard_dp(s, p) {
     }
   }
 
+  // console.log(dp);
+  //        ""      "*"
+  // ""   [[true,  true ],  
+  // "a"  [ false, false ], 
+  // "a"  [ false, false ] ]
+
   // Fill the DP table.
   for (let i = 1; i <= sLen; i++) {
     // Iterate through the string s.
@@ -81,7 +87,7 @@ function isMatchWildcard_dp(s, p) {
 
 // Example Usage:
 // console.log(isMatchWildcard_dp("aa", "a"));       // Output: false
-// console.log(isMatchWildcard_dp("aa", "*"));        // Output: true
+console.log(isMatchWildcard_dp("aa", "*"));        // Output: true
 // console.log(isMatchWildcard_dp("cb", "?a"));      // Output: false
 // console.log(isMatchWildcard_dp("adceb", "*a*b")); // Output: true
 // console.log(isMatchWildcard_dp("acdcb", "a*c?b")); // Output: false

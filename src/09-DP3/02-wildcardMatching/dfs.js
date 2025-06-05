@@ -1,5 +1,5 @@
 // Problem: 44. Wildcard Matching
-// LeetCode URL: https://leetcode.com/problems/wildcard-matching/description/?envType=problem-list-v2&envId=dynamic-programming
+// https://leetcode.com/problems/wildcard-matching/description/?envType=problem-list-v2&envId=dynamic-programming
 // Problem Description:
 // Given an input string (s) and a pattern (p), implement wildcard pattern matching with support for 'ానా' and '*'.
 // '?' Matches any single character.

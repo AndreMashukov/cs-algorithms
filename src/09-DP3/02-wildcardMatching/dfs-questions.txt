@@ -2,14 +2,16 @@ Problem: Wildcard Matching (DFS with Memoization)
 
 Q1: In the `dfs(i, j)` function, what does the state `(i, j)` represent?
 1. `i` is the count of matched characters, `j` is the count of wildcards used.
-2. `i` is the current index in the input string `s`, and `j` is the current index in the pattern `p`.
+2. `i` is the current index in the input string `s`, and `j` 
+  is the current index in the pattern `p`.
 3. `i` represents the length of `s`, and `j` represents the length of `p`.
 4. `i` is the start index and `j` is the end index of a substring in `s`.
 
 Q2: What is the purpose of the `memo` Map in the `isMatchWildcard_dfs` function?
 1. To store the characters of the pattern `p`.
 2. To count the occurrences of '*' and '?'.
-3. To store the results of previously computed subproblems `dfs(i, j)` to avoid redundant calculations.
+3. To store the results of previously computed subproblems `dfs(i, j)` 
+  to avoid redundant calculations.
 4. To keep track of the current path in the DFS traversal.
 
 Q3: If `p[j]` is '*', the function makes two recursive calls: 
