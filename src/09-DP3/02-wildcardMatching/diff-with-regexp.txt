@@ -1,4 +1,8 @@
-Great question! Both problems—**Wildcard Matching** (`dfs.js`) and **Regular Expression Matching** (`regexpMatchingDfs.js`)—involve matching a string against a pattern, but the rules for the pattern syntax are different. Here’s a clear comparison:
+Both problems—**Wildcard Matching** (`dfs.js`) 
+and **Regular Expression Matching** (`regexpMatchingDfs.js`)
+—involve matching a string against a pattern, 
+but the rules for the pattern syntax are different. 
+Here’s a clear comparison:
 
 ---
 

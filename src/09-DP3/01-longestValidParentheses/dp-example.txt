@@ -40,11 +40,13 @@ DP: 0 2 0 0 2 0
 Step 3 (i=5): Looking at ')'
 - Previous char is ')' (Case 2)
 - We look back dp[4]=2 positions from i=5
+   dp[i - 1] = dp[4] = 2
 - Check if char at (5-2-1=2) is '('
+  s[i - dp[i - 1] - 1] = s[2] = "("
 - Yes, it is! So we combine:
-  * dp[4] (=2) for the inner "()"
-  * 2 for the outer pair
-  * dp[1] (=2) for any valid sequence before
+  * dp[4] (=2) for the inner "()" >> dp[i - 1] 
+  * 2 for the outer pair >> dp[i - dp[i - 1] - 2] 
+  * dp[1] (=2) for any valid sequence before >> XX
 - dp[5] = 2 + 2 + 2 = 6
 ```
 DP: 0 2 0 0 2 6

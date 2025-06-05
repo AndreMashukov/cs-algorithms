@@ -50,6 +50,7 @@ function longestValidParentheses_dp(s) {
         // We look for a matching '(' for the current ')'.
         // dp[i-1] is the length of the valid parentheses ending at s[i-1].
         // So, s[i - dp[i-1] - 1] is the character before that valid segment.
+        // dp[i - dp[i-1] - 2] = dp[5 - 2 - 2] = dp[1] = 2
         // If s[i - dp[i-1] - 1] is '(', it matches the current s[i] = ')'.
         // The length is dp[i-1] (for the inner valid segment) + 2 (for the outer matching pair "())".
         // Plus, if there were valid parentheses before this entire new segment, add their length.

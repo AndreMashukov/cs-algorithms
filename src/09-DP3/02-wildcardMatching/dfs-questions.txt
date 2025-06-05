@@ -38,14 +38,18 @@ Q5: What is the base case when the string `s` is exhausted
 3. Returns true if the next character `p[j]` is '*'.
 4. Returns true if the pattern `p` has only one character left and it's '*'.
 
-Q6: If `s = "a"` and `p = "a*"`, trace the first few important `dfs` calls. What would `dfs(0,1)` (s_idx=0, p_idx=1 where p[1]='*') evaluate?
+Q6: If `s = "a"` and `p = "a*"`, trace the first few important `dfs` calls. 
+  What would `dfs(0,1)` (s_idx=0, p_idx=1 where p[1]='*') evaluate?
 1. It would call `dfs(0, 2)` (match empty) and `dfs(1, 1)` (match 'a').
 2. It would call `dfs(1, 2)` only.
 3. It would immediately return true because '*' can match anything.
 4. It would immediately return false because 'a' is already matched by `p[0]`.
 
-Q7: How does the use of memoization affect the processing of states like `(i, j)` that might be reached through different paths in the recursion tree?
+Q7: How does the use of memoization affect the processing of states like `(i, j)` 
+  that might be reached through different paths in the recursion tree?
 1. It forces the DFS to explore each path independently, even if states overlap.
-2. It ensures that once `dfs(i, j)` is computed and its result stored, subsequent calls with the same `(i, j)` retrieve the stored result directly, significantly reducing computation.
+2. It ensures that once `dfs(i, j)` is computed and its result stored, 
+  subsequent calls with the same `(i, j)` retrieve the stored result directly,
+  significantly reducing computation.
 3. It prioritizes paths that use fewer wildcard characters.
 4. It converts the DFS into a breadth-first search (BFS). 
