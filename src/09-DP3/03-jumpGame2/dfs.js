@@ -1,5 +1,5 @@
-// Problem: Jump Game II
-// LeetCode URL: https://leetcode.com/problems/jump-game-ii/description/?envType=problem-list-v2&envId=dynamic-programming
+// 45. Jump Game II
+// https://leetcode.com/problems/jump-game-ii/description/?envType=problem-list-v2&envId=dynamic-programming
 // Problem Description:
 // You are given a 0-indexed array of integers nums of length n.
 // You are initially positioned at nums[0].
