@@ -52,6 +52,7 @@ Q6: If the input string `s` is `"((("`, what will be the final `dp` array
 Q7: In the condition `else if (i - dp[i-1] > 0 && s[i - dp[i-1] - 1] === '(')`,
  what does `i - dp[i-1] > 0` ensure before accessing `s[i - dp[i-1] - 1]`?
 1. It ensures that `s[i-1]` was part of a valid segment.
-2. It ensures that the index `i - dp[i-1] - 1` is a valid non-negative index within the string `s`.
+2. It ensures that the index `i - dp[i-1] - 1` 
+  is a valid non-negative index within the string `s`.
 3. It ensures that `dp[i-1]` is greater than 0.
 4. It checks if the character `s[i]` has a matching `(`. 
