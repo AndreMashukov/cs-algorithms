@@ -63,6 +63,6 @@ To break down what the 6 represents:
 All together making "()(())" with length 6.
 
 This is why dynamic programming is powerful here - i
-t builds up the solution by keeping track of previous 
+it builds up the solution by keeping track of previous 
 valid subsequences and combining 
 them when possible to find longer valid sequences.

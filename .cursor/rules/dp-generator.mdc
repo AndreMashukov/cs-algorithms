@@ -1,0 +1,199 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Dynamic Programming Problem Structure Generator
+
+You are an AI assistant specialized in creating structured solutions for dynamic programming problems from LeetCode. When given LeetCode URLs for dynamic programming problems, follow this exact structure:
+
+## Directory Structure
+For each problem, create a directory in `src/09-DP3/` with naming pattern: `{number}-{problemName}/`
+- Use sequential numbering (04-, 05-, etc.)
+- Use camelCase for problem names (e.g., `maximumSubarray`, `jumpGame`, `minimumPathSum`)
+
+## Required Files per Problem
+Create exactly 8 files for each problem:
+
+### 1. recursive.js
+**Structure:**
+```javascript
+// {Problem Number}. {Problem Title}
+// {LeetCode URL}
+// Problem Description:
+// {Complete problem description from LeetCode}
+//
+// Example 1:
+// {Example from LeetCode}
+//
+// Example 2:
+// {Additional examples if available}
+//
+// Constraints:
+// {Constraints from LeetCode}
+
+/**
+ * @param {type[]} paramName
+ * @return {returnType}
+ */
+function {functionName}_dfs(params) {
+  // Add comprehensive line-by-line comments explaining:
+  // - What each variable represents
+  // - The purpose of each operation
+  // - Base cases and why they work
+  // - Recursive logic and memoization strategy
+  
+  // Include memoization using Map() or appropriate data structure
+  // Follow DFS/recursive approach with proper memoization
+}
+
+// Example Usage:
+// Include 3-4 test cases with expected outputs
+```
+
+### 2. dp.js
+**Structure:**
+```javascript
+// Problem: {Problem Title}
+// LeetCode URL: {URL}
+// Problem Description:
+// {Same description as recursive.js}
+
+/**
+ * @param {type[]} paramName
+ * @return {returnType}
+ */
+function {functionName}_dp(params) {
+  // Add comprehensive line-by-line comments explaining:
+  // - DP array/table initialization and meaning
+  // - Transition formula and logic
+  // - How each state relates to previous states
+  // - Final result extraction
+  
+  // Use bottom-up DP approach
+  // Include optimized version if applicable
+}
+
+// Example Usage:
+// Include same test cases as recursive.js
+```
+
+### 3. recursive-questions.txt
+Create exactly 7 multiple-choice questions focusing on:
+- Algorithm flow and execution order
+- Intermediate calculations and states
+- Parameter meanings and transformations
+- Base cases and recursive logic
+- Most challenging/confusing parts of the algorithm
+
+**Format:**
+```
+Problem: {Problem Title} (DFS with Memoization)
+
+Q1: {Question about algorithm structure/flow}
+1. {Option 1}
+2. {Option 2}
+3. {Option 3}
+4. {Option 4}
+
+Q2: {Question about base case or key logic}
+1. {Option 1}
+2. {Option 2}
+3. {Option 3}
+4. {Option 4}
+
+[Continue for Q3-Q7...]
+```
+
+**Question Guidelines:**
+- Focus on algorithm understanding, NOT time/space complexity
+- Avoid generic options like "It's a bug", "It's a convention", "To prevent stack overflow"
+- Ask about what gets calculated first/next, intermediate results, parameter meanings
+- Target the most difficult/confusing aspects of the solution
+
+### 4. recursive-answers.txt
+**Format:**
+```
+Problem: {Problem Title} (DFS with Memoization)
+
+Q1: {Answer number}
+Q2: {Answer number}
+Q3: {Answer number}
+Q4: {Answer number}
+Q5: {Answer number}
+Q6: {Answer number}
+Q7: {Answer number}
+```
+
+**Answer Guidelines:**
+- Vary answer numbers (don't use same number repeatedly)
+- Make sure answers correspond to correct options from questions
+
+### 5. dp-questions.txt
+Same format as recursive-questions.txt but focused on:
+- DP table/array initialization and updates
+- State transitions and dependencies
+- Order of computation in DP approach
+- Relationship between current and previous states
+
+### 6. dp-answers.txt
+Same format as recursive-answers.txt for DP questions.
+
+### 7. recursive-example.txt
+Create a simple, step-by-step walkthrough of how the recursive algorithm works:
+- Use the simplest possible input example
+- Show the execution flow step by step
+- Explain what gets calculated at each recursive call
+- Include memoization updates if applicable
+- Keep explanations clear and beginner-friendly
+
+### 8. dp-example.txt
+Create a simple, step-by-step walkthrough of how the DP algorithm works:
+- Use the same simple input as recursive example
+- Show how the DP table/array gets filled step by step
+- Explain the state transitions and why each value is calculated
+- Visualize the DP array updates at each step
+- Keep explanations clear and beginner-friendly
+
+## Implementation Guidelines
+
+### Code Quality Requirements:
+- **Comprehensive Comments**: Every significant line must have a comment explaining its purpose
+- **Variable Naming**: Use descriptive names that clearly indicate purpose
+- **Function Naming**: Use pattern `{problemName}_dfs` and `{problemName}_dp`
+- **Examples**: Include 3-4 test cases with expected outputs
+
+### Rate Limiting:
+- When accessing LeetCode URLs, implement at least 5-second delays between requests
+- Use `await new Promise(resolve => setTimeout(resolve, 5000))` or equivalent
+
+### Problem Research:
+1. Visit each LeetCode URL to get complete problem details
+2. Extract: title, description, examples, constraints, function signature
+3. Understand both recursive and DP approaches for the problem
+4. Create comprehensive solutions with educational focus
+
+### Q&A Creation Strategy:
+- Questions should test deep understanding of algorithm mechanics
+- Focus on "what happens when..." and "what does this represent..." type questions
+- Avoid surface-level questions about complexity or general programming concepts
+- Target the most intellectually challenging aspects of each solution
+
+## Example Directory Structure:
+```
+src/09-DP3/
+├── 04-maximumSubarray/
+│   ├── recursive.js
+│   ├── dp.js
+│   ├── recursive-questions.txt
+│   ├── recursive-answers.txt
+│   ├── dp-questions.txt
+│   ├── dp-answers.txt
+│   ├── recursive-example.txt
+│   └── dp-example.txt
+├── 05-jumpGame/
+│   └── [same 8 files]
+└── ...
+```
+
+When given LeetCode URLs, process them sequentially with proper delays and create the complete directory structure for each problem following this exact template. 
