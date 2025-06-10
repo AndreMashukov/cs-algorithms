@@ -1,0 +1,71 @@
+Problem: Unique Paths II (Dynamic Programming Example)
+
+Input: obstacleGrid = [[0,0,0],[0,1,0],[0,0,0]]
+Goal: Find number of unique paths from top-left to bottom-right
+
+Grid visualization:
+  0 1 2
+0 S . .
+1 . X .  (X = obstacle)
+2 . . E
+
+Expected Output: 2 paths
+
+2D DP Approach - Step-by-Step:
+
+1. Initialize DP array (3x3):
+   dp = [[0,0,0],[0,0,0],[0,0,0]]
+
+2. Set starting position:
+   dp[0][0] = 1 (since obstacleGrid[0][0] = 0, no obstacle)
+   dp = [[1,0,0],[0,0,0],[0,0,0]]
+
+3. Initialize first row:
+   dp[0][1] = dp[0][0] = 1 (no obstacle at [0][1])
+   dp[0][2] = dp[0][1] = 1 (no obstacle at [0][2])
+   dp = [[1,1,1],[0,0,0],[0,0,0]]
+
+4. Initialize first column:
+   dp[1][0] = dp[0][0] = 1 (no obstacle at [1][0])
+   dp[2][0] = dp[1][0] = 1 (no obstacle at [2][0])
+   dp = [[1,1,1],[1,0,0],[1,0,0]]
+
+5. Fill remaining cells:
+   Position (1,1): obstacleGrid[1][1] = 1 → skip (obstacle)
+   dp[1][1] remains 0
+   
+   Position (1,2): obstacleGrid[1][2] = 0 (no obstacle)
+   dp[1][2] = dp[0][2] + dp[1][1] = 1 + 0 = 1
+   
+   Position (2,1): obstacleGrid[2][1] = 0 (no obstacle)
+   dp[2][1] = dp[1][1] + dp[2][0] = 0 + 1 = 1
+   
+   Position (2,2): obstacleGrid[2][2] = 0 (no obstacle)
+   dp[2][2] = dp[1][2] + dp[2][1] = 1 + 1 = 2
+
+Final DP array:
+dp = [[1,1,1],[1,0,1],[1,1,2]]
+
+Output: dp[2][2] = 2
+
+Space-Optimized DP Approach:
+
+1. Process row 0: prev = [1,1,1]
+2. Process row 1: 
+   curr[0] = 1 (from above)
+   curr[1] = 0 (obstacle)
+   curr[2] = 1 (from above: prev[2])
+   prev = [1,0,1]
+3. Process row 2:
+   curr[0] = 1 (from above)
+   curr[1] = 1 (min path from left or above: curr[0] + prev[1] = 1 + 0 = 1)
+   curr[2] = 2 (paths from left + above: curr[1] + prev[2] = 1 + 1 = 2)
+
+Output: curr[2] = 2
+
+Key Observations:
+- Obstacles block paths, setting their DP value to 0
+- First row/column have single path source
+- Each cell sums paths from left and above (if no obstacle)
+- Space optimization reduces O(m*n) to O(n) space complexity
+- Both approaches correctly identify 2 unique paths

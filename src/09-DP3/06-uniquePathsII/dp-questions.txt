@@ -1,0 +1,43 @@
+Problem: Unique Paths II (Dynamic Programming)
+
+Q1: How is the DP array initialized for uniquePathsWithObstacles?
+a) All cells set to 1
+b) All cells set to 0, then dp[0][0] = 1 if no obstacle
+c) Random values based on grid
+d) Copy values directly from obstacle grid
+
+Q2: How are obstacles handled when filling the DP array?
+a) Convert obstacles to maximum path values
+b) Skip cells with obstacles, leaving them as 0
+c) Replace obstacles with neighboring cell values
+d) Store obstacles in a separate data structure
+
+Q3: What is the recurrence relation for the DP solution?
+a) dp[i][j] = dp[i-1][j] * dp[i][j-1]
+b) dp[i][j] = max(dp[i-1][j], dp[i][j-1])
+c) dp[i][j] = dp[i-1][j] + dp[i][j-1] (if no obstacle)
+d) dp[i][j] = min(dp[i-1][j], dp[i][j-1])
+
+Q4: In the space-optimized DP approach, what data structure is used?
+a) Single 1D array representing current row
+b) Two 1D arrays for current and previous rows
+c) Hash map for sparse representation
+d) Stack to store intermediate results
+
+Q5: How is the first row initialized in the DP approach?
+a) All cells set to 1
+b) Accumulate paths from left, stopping at obstacles
+c) Copy values from obstacle grid
+d) Set all cells to 0
+
+Q6: What is the space complexity of the in-place DP approach?
+a) O(m * n)
+b) O(m + n)
+c) O(1)
+d) O(n)
+
+Q7: How does an obstacle in the first row affect subsequent cells in that row?
+a) No effect on subsequent cells
+b) All subsequent cells in that row become unreachable
+c) Subsequent cells can still be reached from below
+d) Obstacle is ignored for first row calculations
