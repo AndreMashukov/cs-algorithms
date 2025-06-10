@@ -26,40 +26,40 @@
  * @return {boolean} - True if last index is reachable, false otherwise
  */
 function canJump(nums) {
-    // Create DP array where dp[i] represents if position i is reachable
-    const dp = new Array(nums.length).fill(false);
-    
-    // Base case: starting position is always reachable
-    dp[0] = true;
-    
-    // Process each position from left to right
-    for (let i = 0; i < nums.length; i++) {
-        // Skip if current position is not reachable
-        if (!dp[i]) {
-            continue;
-        }
-        
-        // Get maximum jump length from current position
-        const maxJump = nums[i];
-        
-        // Mark all positions reachable from current position
-        for (let jump = 1; jump <= maxJump; jump++) {
-            const nextPosition = i + jump;
-            
-            // Check bounds and mark position as reachable
-            if (nextPosition < nums.length) {
-                dp[nextPosition] = true;
-                
-                // Early termination: if we can reach the last index, return true
-                if (nextPosition === nums.length - 1) {
-                    return true;
-                }
-            }
-        }
+  // Create DP array where dp[i] represents if position i is reachable
+  const dp = new Array(nums.length).fill(false);
+
+  // Base case: starting position is always reachable
+  dp[0] = true;
+
+  // Process each position from left to right
+  for (let i = 0; i < nums.length; i++) {
+    // Skip if current position is not reachable
+    if (!dp[i]) {
+      continue;
     }
-    
-    // Return whether the last position is reachable
-    return dp[nums.length - 1];
+
+    // Get maximum jump length from current position
+    const maxJump = nums[i];
+
+    // Mark all positions reachable from current position
+    for (let jump = 1; jump <= maxJump; jump++) {
+      const nextPosition = i + jump;
+
+      // Check bounds and mark position as reachable
+      if (nextPosition < nums.length) {
+        dp[nextPosition] = true;
+
+        // Early termination: if we can reach the last index, return true
+        if (nextPosition === nums.length - 1) {
+          return true;
+        }
+      }
+    }
+  }
+
+  // Return whether the last position is reachable
+  return dp[nums.length - 1];
 }
 
 /**
@@ -70,27 +70,27 @@ function canJump(nums) {
  * @return {boolean} - True if last index is reachable
  */
 function canJumpGreedy(nums) {
-    // Track the farthest position we can reach so far
-    let farthest = 0;
-    
-    // Iterate through array (no need to check last position)
-    for (let i = 0; i < nums.length - 1; i++) {
-        // If current position is beyond farthest reachable, we're stuck
-        if (i > farthest) {
-            return false;
-        }
-        
-        // Update farthest reachable position from current position
-        farthest = Math.max(farthest, i + nums[i]);
-        
-        // Early termination: if we can already reach the end, return true
-        if (farthest >= nums.length - 1) {
-            return true;
-        }
+  // Track the farthest position we can reach so far
+  let farthest = 0;
+
+  // Iterate through array (no need to check last position)
+  for (let i = 0; i < nums.length - 1; i++) {
+    // If current position is beyond farthest reachable, we're stuck
+    if (i > farthest) {
+      return false;
     }
-    
-    // Check if we can reach the last position
-    return farthest >= nums.length - 1;
+
+    // Update farthest reachable position from current position
+    farthest = Math.max(farthest, i + nums[i]);
+
+    // Early termination: if we can already reach the end, return true
+    if (farthest >= nums.length - 1) {
+      return true;
+    }
+  }
+
+  // Check if we can reach the last position
+  return farthest >= nums.length - 1;
 }
 
 /**
@@ -100,20 +100,20 @@ function canJumpGreedy(nums) {
  * @return {boolean} - True if last index is reachable
  */
 function canJumpBottomUp(nums) {
-    // Start from the last position (which is always reachable from itself)
-    let lastGoodPosition = nums.length - 1;
-    
-    // Work backwards through the array
-    for (let i = nums.length - 2; i >= 0; i--) {
-        // Check if we can reach the last known good position from current position
-        if (i + nums[i] >= lastGoodPosition) {
-            // Update the last good position to current position
-            lastGoodPosition = i;
-        }
+  // Start from the last position (which is always reachable from itself)
+  let lastGoodPosition = nums.length - 1;
+
+  // Work backwards through the array
+  for (let i = nums.length - 2; i >= 0; i--) {
+    // Check if we can reach the last known good position from current position
+    if (i + nums[i] >= lastGoodPosition) {
+      // Update the last good position to current position
+      lastGoodPosition = i;
     }
-    
-    // If the last good position is the start, then we can reach the end
-    return lastGoodPosition === 0;
+  }
+
+  // If the last good position is the start, then we can reach the end
+  return lastGoodPosition === 0;
 }
 
 /**
@@ -123,33 +123,33 @@ function canJumpBottomUp(nums) {
  * @return {boolean} - True if last index is reachable
  */
 function canJumpDPExplicit(nums) {
-    const n = nums.length;
-    
-    // Handle edge case: single element array
-    if (n <= 1) return true;
-    
-    // DP array: dp[i] = true if we can reach position i
-    const dp = Array(n).fill(false);
-    dp[0] = true; // Starting position is reachable
-    
-    // Fill DP table
-    for (let i = 0; i < n; i++) {
-        // Skip unreachable positions
-        if (!dp[i]) continue;
-        
-        // From position i, we can reach i+1, i+2, ..., i+nums[i]
-        const maxReach = Math.min(i + nums[i], n - 1);
-        
-        // Mark all reachable positions
-        for (let j = i + 1; j <= maxReach; j++) {
-            dp[j] = true;
-        }
-        
-        // Early exit if we've reached the end
-        if (dp[n - 1]) return true;
+  const n = nums.length;
+
+  // Handle edge case: single element array
+  if (n <= 1) return true;
+
+  // DP array: dp[i] = true if we can reach position i
+  const dp = Array(n).fill(false);
+  dp[0] = true; // Starting position is reachable
+
+  // Fill DP table
+  for (let i = 0; i < n; i++) {
+    // Skip unreachable positions
+    if (!dp[i]) continue;
+
+    // From position i, we can reach i+1, i+2, ..., i+nums[i]
+    const maxReach = Math.min(i + nums[i], n - 1);
+
+    // Mark all reachable positions
+    for (let j = i + 1; j <= maxReach; j++) {
+      dp[j] = true;
     }
-    
-    return dp[n - 1];
+
+    // Early exit if we've reached the end
+    if (dp[n - 1]) return true;
+  }
+
+  return dp[n - 1];
 }
 
 // Example usage:

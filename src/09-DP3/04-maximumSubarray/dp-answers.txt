@@ -19,4 +19,8 @@ A6: b) By only keeping track of the previous dp value instead of the entire arra
 Explanation: Since dp[i] only depends on dp[i-1], we can optimize space by maintaining just two variables (current and previous) instead of storing the entire DP array, reducing space complexity from O(n) to O(1).
 
 A7: b) Negative prefixes should be discarded when building subarrays
-Explanation: The key insight is that if the sum of elements before the current position is negative, it's better to start a new subarray from the current position rather than carry the negative "baggage" from previous elements.
+Explanation: The key insight is that if the sum of elements 
+before the current position is negative, 
+it's better to start a new subarray from the current position 
+rather than carry the negative "baggage" 
+from previous elements.

@@ -26,57 +26,57 @@
  * @return {boolean} - True if last index is reachable, false otherwise
  */
 function canJump(nums) {
-    // Create memoization cache to store results for each position
-    const memo = new Map();
-    
-    // Target position is the last index
-    const target = nums.length - 1;
-    
-    /**
-     * Recursive helper function to check if target is reachable from current position
-     * @param {number} position - Current position in the array
-     * @return {boolean} - True if target is reachable from this position
-     */
-    function canReachTarget(position) {
-        // Base case: if we've reached or passed the target, return true
-        if (position >= target) {
-            return true;
-        }
-        
-        // Check if result for this position is already computed and cached
-        if (memo.has(position)) {
-            return memo.get(position);
-        }
-        
-        // Get maximum jump length from current position
-        const maxJump = nums[position];
-        
-        // If maximum jump is 0, we're stuck and cannot proceed
-        if (maxJump === 0) {
-            memo.set(position, false);
-            return false;
-        }
-        
-        // Try all possible jumps from 1 to maxJump
-        for (let jump = 1; jump <= maxJump; jump++) {
-            // Calculate next position after making this jump
-            const nextPosition = position + jump;
-            
-            // Recursively check if target is reachable from next position
-            if (canReachTarget(nextPosition)) {
-                // If any path leads to target, cache the result and return true
-                memo.set(position, true);
-                return true;
-            }
-        }
-        
-        // If no jump from current position leads to target, cache false result
-        memo.set(position, false);
-        return false;
+  // Create memoization cache to store results for each position
+  const memo = new Map();
+
+  // Target position is the last index
+  const target = nums.length - 1;
+
+  /**
+   * Recursive helper function to check if target is reachable from current position
+   * @param {number} position - Current position in the array
+   * @return {boolean} - True if target is reachable from this position
+   */
+  function canReachTarget(position) {
+    // Base case: if we've reached or passed the target, return true
+    if (position >= target) {
+      return true;
     }
-    
-    // Start the recursive search from position 0
-    return canReachTarget(0);
+
+    // Check if result for this position is already computed and cached
+    if (memo.has(position)) {
+      return memo.get(position);
+    }
+
+    // Get maximum jump length from current position
+    const maxJump = nums[position];
+
+    // If maximum jump is 0, we're stuck and cannot proceed
+    if (maxJump === 0) {
+      memo.set(position, false);
+      return false;
+    }
+
+    // Try all possible jumps from 1 to maxJump
+    for (let jump = 1; jump <= maxJump; jump++) {
+      // Calculate next position after making this jump
+      const nextPosition = position + jump;
+
+      // Recursively check if target is reachable from next position
+      if (canReachTarget(nextPosition)) {
+        // If any path leads to target, cache the result and return true
+        memo.set(position, true);
+        return true;
+      }
+    }
+
+    // If no jump from current position leads to target, cache false result
+    memo.set(position, false);
+    return false;
+  }
+
+  // Start the recursive search from position 0
+  return canReachTarget(0);
 }
 
 /**
@@ -86,53 +86,53 @@ function canJump(nums) {
  * @return {boolean} - True if last index is reachable
  */
 function canJumpWithPath(nums) {
-    // Memoization for position reachability
-    const memo = new Map();
-    
-    // Target is the last index
-    const target = nums.length - 1;
-    
-    /**
-     * Helper function that also tracks the path taken
-     * @param {number} position - Current position
-     * @param {number[]} path - Array tracking positions visited
-     * @return {boolean} - True if target reachable
-     */
-    function solve(position, path = []) {
-        // Base case: reached or exceeded target
-        if (position >= target) {
-            return true;
-        }
-        
-        // Check memoization cache
-        if (memo.has(position)) {
-            return memo.get(position);
-        }
-        
-        // Add current position to path
-        path.push(position);
-        
-        // Get maximum jump length from current position
-        const maxJump = nums[position];
-        
-        // Try each possible jump length
-        for (let jump = 1; jump <= maxJump; jump++) {
-            const nextPos = position + jump;
-            
-            // Recursively explore this path
-            if (solve(nextPos, [...path])) {
-                memo.set(position, true);
-                return true;
-            }
-        }
-        
-        // No successful path found from this position
-        memo.set(position, false);
-        return false;
+  // Memoization for position reachability
+  const memo = new Map();
+
+  // Target is the last index
+  const target = nums.length - 1;
+
+  /**
+   * Helper function that also tracks the path taken
+   * @param {number} position - Current position
+   * @param {number[]} path - Array tracking positions visited
+   * @return {boolean} - True if target reachable
+   */
+  function solve(position, path = []) {
+    // Base case: reached or exceeded target
+    if (position >= target) {
+      return true;
     }
-    
-    // Start recursion from position 0
-    return solve(0);
+
+    // Check memoization cache
+    if (memo.has(position)) {
+      return memo.get(position);
+    }
+
+    // Add current position to path
+    path.push(position);
+
+    // Get maximum jump length from current position
+    const maxJump = nums[position];
+
+    // Try each possible jump length
+    for (let jump = 1; jump <= maxJump; jump++) {
+      const nextPos = position + jump;
+
+      // Recursively explore this path
+      if (solve(nextPos, [...path])) {
+        memo.set(position, true);
+        return true;
+      }
+    }
+
+    // No successful path found from this position
+    memo.set(position, false);
+    return false;
+  }
+
+  // Start recursion from position 0
+  return solve(0);
 }
 
 // Example usage:
