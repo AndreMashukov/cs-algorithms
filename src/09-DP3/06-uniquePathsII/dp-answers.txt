@@ -1,0 +1,22 @@
+Problem: Unique Paths II (Dynamic Programming)
+
+A1: b) All cells set to 0, then dp[0][0] = 1 if no obstacle
+Explanation: Initialize DP array with zeros, then set dp[0][0] = 1 only if the starting position has no obstacle, since there's one way to reach the starting position.
+
+A2: b) Skip cells with obstacles, leaving them as 0
+Explanation: When obstacleGrid[i][j] === 1, we skip processing that cell, leaving dp[i][j] = 0 to indicate no paths through obstacles.
+
+A3: c) dp[i][j] = dp[i-1][j] + dp[i][j-1] (if no obstacle)
+Explanation: For non-obstacle cells, the number of paths equals the sum of paths from above and from left, representing all possible ways to reach the current cell.
+
+A4: b) Two 1D arrays for current and previous rows
+Explanation: Space optimization uses prev[] for the previous row and curr[] for current row being computed, reducing space from O(m*n) to O(n).
+
+A5: b) Accumulate paths from left, stopping at obstacles
+Explanation: First row cells can only be reached from the left, so we accumulate: dp[0][j] = dp[0][j-1] if no obstacle, but any obstacle blocks all subsequent cells in that row.
+
+A6: c) O(1)
+Explanation: In-place DP modifies the original obstacleGrid directly without additional space, achieving constant space complexity (not counting input space).
+
+A7: b) All subsequent cells in that row become unreachable
+Explanation: Since the first row can only be reached from the left, any obstacle blocks all cells to its right in that row, making them unreachable from the starting position.
