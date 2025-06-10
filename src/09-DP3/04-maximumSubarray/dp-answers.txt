@@ -1,0 +1,22 @@
+Problem: Maximum Subarray (Dynamic Programming - Kadane's Algorithm)
+
+A1: b) The maximum sum of subarray ending at the current position
+Explanation: maxEndingHere represents the maximum sum of any subarray that ends exactly at the current position. It tracks the best sum we can achieve by including the current element as the last element of a subarray.
+
+A2: b) Whether to extend the previous subarray or start a new one
+Explanation: At each position, the algorithm decides between two options: extend the existing subarray by adding the current element, or start a fresh subarray from the current element. This choice is made by comparing nums[i] vs (maxEndingHere + nums[i]).
+
+A3: c) When extending the previous subarray yields a smaller sum than starting fresh
+Explanation: We start a new subarray when nums[i] > maxEndingHere + nums[i], which happens when maxEndingHere is negative. This means the previous subarray sum is dragging down the total, so it's better to start fresh.
+
+A4: c) maxSoFar tracks the best maxEndingHere value seen so far
+Explanation: maxSoFar maintains the global maximum across all positions processed so far. It gets updated whenever maxEndingHere (the local maximum at current position) exceeds the previous global maximum.
+
+A5: c) The maximum subarray sum ending exactly at position i
+Explanation: dp[i] stores the maximum sum of any subarray that ends at index i. This follows the DP state definition where we track the optimal solution for subarrays ending at each specific position.
+
+A6: b) By only keeping track of the previous dp value instead of the entire array
+Explanation: Since dp[i] only depends on dp[i-1], we can optimize space by maintaining just two variables (current and previous) instead of storing the entire DP array, reducing space complexity from O(n) to O(1).
+
+A7: b) Negative prefixes should be discarded when building subarrays
+Explanation: The key insight is that if the sum of elements before the current position is negative, it's better to start a new subarray from the current position rather than carry the negative "baggage" from previous elements.

@@ -1,0 +1,43 @@
+Problem: Jump Game (Dynamic Programming)
+
+Q1: What does dp[i] represent in the DP array solution?
+a) The maximum jump length from position i
+b) Whether position i is reachable from the start
+c) The minimum jumps needed to reach position i
+d) The furthest position reachable from position i
+
+Q2: How is the DP array initialized in the solution?
+a) All positions set to true
+b) Only dp[0] set to true, others false
+c) All positions set to false
+d) Random initialization
+
+Q3: In the greedy approach, what does the 'farthest' variable track?
+a) The current position being processed
+b) The maximum element value in the array
+c) The farthest position reachable so far
+d) The target position to reach
+
+Q4: When does the greedy algorithm determine it's impossible to reach the end?
+a) When farthest equals the array length
+b) When the current position is greater than farthest
+c) When a zero value is encountered
+d) When the loop completes
+
+Q5: In the bottom-up DP approach, what direction does the algorithm process positions?
+a) From start to end (left to right)
+b) From end to start (right to left)
+c) Random order
+d) Middle outward
+
+Q6: What determines if we can reach the end in the bottom-up approach?
+a) If the DP array is all true
+b) If lastGoodPosition equals 0
+c) If the last element is non-zero
+d) If farthest exceeds array length
+
+Q7: What is the key insight that makes the greedy approach work for this problem?
+a) Sorting improves efficiency
+b) We only need to track the maximum reachable position
+c) Recursive calls are unnecessary
+d) The DP table provides optimal substructure
