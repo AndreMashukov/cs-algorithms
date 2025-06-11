@@ -27,54 +27,54 @@
  * @return {number} - Minimum sum from top-left to bottom-right
  */
 function minPathSum(grid) {
-    // Get grid dimensions
-    const m = grid.length;
-    const n = grid[0].length;
-    
-    // Create memoization cache to store computed minimum sums
-    const memo = new Map();
-    
-    /**
-     * Recursive helper function to find minimum path sum from current position to target
-     * @param {number} row - Current row position
-     * @param {number} col - Current column position
-     * @return {number} - Minimum sum from current position to bottom-right
-     */
-    function findMinSum(row, col) {
-        // Base case: reached the target (bottom-right corner)
-        if (row === m - 1 && col === n - 1) {
-            return grid[row][col];
-        }
-        
-        // Base case: out of bounds (return large value to avoid this path)
-        if (row >= m || col >= n) {
-            return Infinity;
-        }
-        
-        // Create unique key for memoization
-        const key = `${row}-${col}`;
-        
-        // Check if result already computed and cached
-        if (memo.has(key)) {
-            return memo.get(key);
-        }
-        
-        // Calculate minimum sum by exploring right and down moves
-        const rightPath = findMinSum(row, col + 1);
-        const downPath = findMinSum(row + 1, col);
-        
-        // Current cell cost + minimum of right and down paths
-        const minSum = grid[row][col] + Math.min(rightPath, downPath);
-        
-        // Cache the result for future use
-        memo.set(key, minSum);
-        
-        // Return minimum sum from current position
-        return minSum;
+  // Get grid dimensions
+  const m = grid.length;
+  const n = grid[0].length;
+
+  // Create memoization cache to store computed minimum sums
+  const memo = new Map();
+
+  /**
+   * Recursive helper function to find minimum path sum from current position to target
+   * @param {number} row - Current row position
+   * @param {number} col - Current column position
+   * @return {number} - Minimum sum from current position to bottom-right
+   */
+  function findMinSum(row, col) {
+    // Base case: reached the target (bottom-right corner)
+    if (row === m - 1 && col === n - 1) {
+      return grid[row][col];
     }
-    
-    // Start the recursive search from top-left corner (0, 0)
-    return findMinSum(0, 0);
+
+    // Base case: out of bounds (return large value to avoid this path)
+    if (row >= m || col >= n) {
+      return Infinity;
+    }
+
+    // Create unique key for memoization
+    const key = `${row}-${col}`;
+
+    // Check if result already computed and cached
+    if (memo.has(key)) {
+      return memo.get(key);
+    }
+
+    // Calculate minimum sum by exploring right and down moves
+    const rightPath = findMinSum(row, col + 1);
+    const downPath = findMinSum(row + 1, col);
+
+    // Current cell cost + minimum of right and down paths
+    const minSum = grid[row][col] + Math.min(rightPath, downPath);
+
+    // Cache the result for future use
+    memo.set(key, minSum);
+
+    // Return minimum sum from current position
+    return minSum;
+  }
+
+  // Start the recursive search from top-left corner (0, 0)
+  return findMinSum(0, 0);
 }
 
 /**
@@ -83,42 +83,42 @@ function minPathSum(grid) {
  * @return {number} - Minimum path sum
  */
 function minPathSumAlt(grid) {
-    const m = grid.length;
-    const n = grid[0].length;
-    const memo = {};
-    
-    /**
-     * Helper function with bounds validation
-     * @param {number} i - Row index
-     * @param {number} j - Column index
-     * @return {number} - Minimum sum from (i,j) to destination
-     */
-    function solve(i, j) {
-        // Bounds check
-        if (i < 0 || i >= m || j < 0 || j >= n) {
-            return Infinity;
-        }
-        
-        // Target reached
-        if (i === m - 1 && j === n - 1) {
-            return grid[i][j];
-        }
-        
-        // Memoization check
-        const key = i + ',' + j;
-        if (memo[key] !== undefined) {
-            return memo[key];
-        }
-        
-        // Compute minimum sum: current cell + min(right, down)
-        const right = solve(i, j + 1);
-        const down = solve(i + 1, j);
-        memo[key] = grid[i][j] + Math.min(right, down);
-        
-        return memo[key];
+  const m = grid.length;
+  const n = grid[0].length;
+  const memo = {};
+
+  /**
+   * Helper function with bounds validation
+   * @param {number} i - Row index
+   * @param {number} j - Column index
+   * @return {number} - Minimum sum from (i,j) to destination
+   */
+  function solve(i, j) {
+    // Bounds check
+    if (i < 0 || i >= m || j < 0 || j >= n) {
+      return Infinity;
     }
-    
-    return solve(0, 0);
+
+    // Target reached
+    if (i === m - 1 && j === n - 1) {
+      return grid[i][j];
+    }
+
+    // Memoization check
+    const key = i + ',' + j;
+    if (memo[key] !== undefined) {
+      return memo[key];
+    }
+
+    // Compute minimum sum: current cell + min(right, down)
+    const right = solve(i, j + 1);
+    const down = solve(i + 1, j);
+    memo[key] = grid[i][j] + Math.min(right, down);
+
+    return memo[key];
+  }
+
+  return solve(0, 0);
 }
 
 /**
@@ -127,45 +127,45 @@ function minPathSumAlt(grid) {
  * @return {object} - Object containing minimum sum and path
  */
 function minPathSumWithPath(grid) {
-    const m = grid.length;
-    const n = grid[0].length;
-    const memo = new Map();
-    
-    function solve(row, col) {
-        if (row === m - 1 && col === n - 1) {
-            return { sum: grid[row][col], path: [[row, col]] };
-        }
-        
-        if (row >= m || col >= n) {
-            return { sum: Infinity, path: [] };
-        }
-        
-        const key = `${row}-${col}`;
-        if (memo.has(key)) {
-            return memo.get(key);
-        }
-        
-        const rightResult = solve(row, col + 1);
-        const downResult = solve(row + 1, col);
-        
-        let result;
-        if (rightResult.sum <= downResult.sum) {
-            result = {
-                sum: grid[row][col] + rightResult.sum,
-                path: [[row, col], ...rightResult.path]
-            };
-        } else {
-            result = {
-                sum: grid[row][col] + downResult.sum,
-                path: [[row, col], ...downResult.path]
-            };
-        }
-        
-        memo.set(key, result);
-        return result;
+  const m = grid.length;
+  const n = grid[0].length;
+  const memo = new Map();
+
+  function solve(row, col) {
+    if (row === m - 1 && col === n - 1) {
+      return { sum: grid[row][col], path: [[row, col]] };
     }
-    
-    return solve(0, 0);
+
+    if (row >= m || col >= n) {
+      return { sum: Infinity, path: [] };
+    }
+
+    const key = `${row}-${col}`;
+    if (memo.has(key)) {
+      return memo.get(key);
+    }
+
+    const rightResult = solve(row, col + 1);
+    const downResult = solve(row + 1, col);
+
+    let result;
+    if (rightResult.sum <= downResult.sum) {
+      result = {
+        sum: grid[row][col] + rightResult.sum,
+        path: [[row, col], ...rightResult.path]
+      };
+    } else {
+      result = {
+        sum: grid[row][col] + downResult.sum,
+        path: [[row, col], ...downResult.path]
+      };
+    }
+
+    memo.set(key, result);
+    return result;
+  }
+
+  return solve(0, 0);
 }
 
 // Example usage:
