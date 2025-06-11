@@ -111,48 +111,6 @@ function uniquePathsWithObstaclesOptimized(obstacleGrid) {
     return dp[n - 1];
 }
 
-/**
- * In-place DP solution modifying the input grid
- * This approach reuses the input grid as DP table to save space
- * @param {number[][]} obstacleGrid - 2D grid (will be modified)
- * @return {number} - Number of unique paths
- */
-function uniquePathsWithObstaclesInPlace(obstacleGrid) {
-    const m = obstacleGrid.length;
-    const n = obstacleGrid[0].length;
-    
-    // Check start and end
-    if (obstacleGrid[0][0] === 1 || obstacleGrid[m - 1][n - 1] === 1) {
-        return 0;
-    }
-    
-    // Transform grid: 0 -> paths count, 1 -> remains 0 (obstacle)
-    obstacleGrid[0][0] = 1; // Starting point has 1 path
-    
-    // Fill first row
-    for (let j = 1; j < n; j++) {
-        obstacleGrid[0][j] = (obstacleGrid[0][j] === 0 && obstacleGrid[0][j - 1] === 1) ? 1 : 0;
-    }
-    
-    // Fill first column
-    for (let i = 1; i < m; i++) {
-        obstacleGrid[i][0] = (obstacleGrid[i][0] === 0 && obstacleGrid[i - 1][0] === 1) ? 1 : 0;
-    }
-    
-    // Fill rest of grid
-    for (let i = 1; i < m; i++) {
-        for (let j = 1; j < n; j++) {
-            if (obstacleGrid[i][j] === 0) {
-                obstacleGrid[i][j] = obstacleGrid[i - 1][j] + obstacleGrid[i][j - 1];
-            } else {
-                obstacleGrid[i][j] = 0; // Obstacle
-            }
-        }
-    }
-    
-    return obstacleGrid[m - 1][n - 1];
-}
-
 // Example usage:
 // console.log(uniquePathsWithObstacles([[0,0,0],[0,1,0],[0,0,0]])); // Output: 2
 // console.log(uniquePathsWithObstaclesOptimized([[0,1],[0,0]])); // Output: 1
