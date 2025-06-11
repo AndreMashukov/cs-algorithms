@@ -1,22 +1,22 @@
-Problem: Unique Paths II (Dynamic Programming)
+Problem: Unique Paths II (Space-Optimized Dynamic Programming)
 
-A1: b) All cells set to 0, then dp[0][0] = 1 if no obstacle
-Explanation: Initialize DP array with zeros, then set dp[0][0] = 1 only if the starting position has no obstacle, since there's one way to reach the starting position.
+A1: b) To reduce space complexity from O(m*n) to O(n)
+Explanation: The space-optimized solution uses a single 1D array of size n instead of a 2D array of size m*n, significantly reducing memory usage while maintaining correctness.
 
-A2: b) Skip cells with obstacles, leaving them as 0
-Explanation: When obstacleGrid[i][j] === 1, we skip processing that cell, leaving dp[i][j] = 0 to indicate no paths through obstacles.
+A2: b) All elements set to 0, with dp[0] = 1
+Explanation: The DP array is initialized with zeros using Array(n).fill(0), then dp[0] is set to 1 to represent one way to reach the starting position (if it's not an obstacle).
 
-A3: c) dp[i][j] = dp[i-1][j] + dp[i][j-1] (if no obstacle)
-Explanation: For non-obstacle cells, the number of paths equals the sum of paths from above and from left, representing all possible ways to reach the current cell.
+A3: b) Number of paths from the cell above
+Explanation: Before updating dp[j] in each iteration, its value represents the number of paths from the cell above in the previous row, since we reuse the same array across rows.
 
-A4: b) Two 1D arrays for current and previous rows
-Explanation: Space optimization uses prev[] for the previous row and curr[] for current row being computed, reducing space from O(m*n) to O(n).
+A4: b) It's set to 0
+Explanation: When an obstacle is encountered (obstacleGrid[i][j] === 1), dp[j] is set to 0 because no paths can go through an obstacle cell.
 
-A5: b) Accumulate paths from left, stopping at obstacles
-Explanation: First row cells can only be reached from the left, so we accumulate: dp[0][j] = dp[0][j-1] if no obstacle, but any obstacle blocks all subsequent cells in that row.
+A5: c) dp[j] = dp[j] + dp[j-1]
+Explanation: For non-obstacle cells after the first column, we add paths from the left (dp[j-1]) to paths from above (current dp[j]) to get total possible paths to this cell.
 
-A6: c) O(1)
-Explanation: In-place DP modifies the original obstacleGrid directly without additional space, achieving constant space complexity (not counting input space).
+A6: b) It can only be reached from above
+Explanation: The first column cells (j=0) can only be reached by moving downward from cells above them, so we only need to preserve the existing dp[j] value (or set to 0 if obstacle).
 
-A7: b) All subsequent cells in that row become unreachable
-Explanation: Since the first row can only be reached from the left, any obstacle blocks all cells to its right in that row, making them unreachable from the starting position.
+A7: b) O(m * n)
+Explanation: Despite using O(n) space, we still need to process each cell in the grid once, requiring m*n operations for an m×n grid.

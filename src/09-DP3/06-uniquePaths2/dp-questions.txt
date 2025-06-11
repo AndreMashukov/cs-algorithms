@@ -1,43 +1,43 @@
-Problem: Unique Paths II (Dynamic Programming)
+Problem: Unique Paths II (Space-Optimized Dynamic Programming)
 
-Q1: How is the DP array initialized for uniquePathsWithObstacles?
-a) All cells set to 1
-b) All cells set to 0, then dp[0][0] = 1 if no obstacle
-c) Random values based on grid
-d) Copy values directly from obstacle grid
+Q1: In the space-optimized solution uniquePathsWithObstaclesOptimized, what is the purpose of using a 1D DP array?
+a) To increase time complexity
+b) To reduce space complexity from O(m*n) to O(n)
+c) To make the code more readable
+d) To handle more edge cases
 
-Q2: How are obstacles handled when filling the DP array?
-a) Convert obstacles to maximum path values
-b) Skip cells with obstacles, leaving them as 0
-c) Replace obstacles with neighboring cell values
-d) Store obstacles in a separate data structure
+Q2: How is the 1D DP array initialized in uniquePathsWithObstaclesOptimized?
+a) All elements set to 1
+b) All elements set to 0, with dp[0] = 1
+c) Random initialization
+d) Copy from first row of obstacleGrid
 
-Q3: What is the recurrence relation for the DP solution?
-a) dp[i][j] = dp[i-1][j] * dp[i][j-1]
-b) dp[i][j] = max(dp[i-1][j], dp[i][j-1])
-c) dp[i][j] = dp[i-1][j] + dp[i][j-1] (if no obstacle)
-d) dp[i][j] = min(dp[i-1][j], dp[i][j-1])
+Q3: In the inner loop of uniquePathsWithObstaclesOptimized, what does dp[j] represent before updating?
+a) Number of paths from the start
+b) Number of paths from the cell above
+c) Number of paths from the left
+d) Total obstacles encountered
 
-Q4: In the space-optimized DP approach, what data structure is used?
-a) Single 1D array representing current row
-b) Two 1D arrays for current and previous rows
-c) Hash map for sparse representation
-d) Stack to store intermediate results
+Q4: What happens to dp[j] when an obstacle is encountered in uniquePathsWithObstaclesOptimized?
+a) It's incremented by 1
+b) It's set to 0
+c) It keeps its previous value
+d) It's set to infinity
 
-Q5: How is the first row initialized in the DP approach?
-a) All cells set to 1
-b) Accumulate paths from left, stopping at obstacles
-c) Copy values from obstacle grid
-d) Set all cells to 0
+Q5: For non-obstacle cells (except first column), how is dp[j] updated?
+a) dp[j] = dp[j-1]
+b) dp[j] = dp[j] + 1
+c) dp[j] = dp[j] + dp[j-1]
+d) dp[j] = max(dp[j], dp[j-1])
 
-Q6: What is the space complexity of the in-place DP approach?
-a) O(m * n)
-b) O(m + n)
-c) O(1)
-d) O(n)
+Q6: Why doesn't the first column (j=0) need the dp[j-1] term in its update?
+a) It's always unreachable
+b) It can only be reached from above
+c) It's always an obstacle
+d) It's always 1
 
-Q7: How does an obstacle in the first row affect subsequent cells in that row?
-a) No effect on subsequent cells
-b) All subsequent cells in that row become unreachable
-c) Subsequent cells can still be reached from below
-d) Obstacle is ignored for first row calculations
+Q7: What is the time complexity of uniquePathsWithObstaclesOptimized?
+a) O(m + n)
+b) O(m * n)
+c) O(n)
+d) O(1)
