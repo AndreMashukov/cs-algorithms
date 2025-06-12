@@ -1,0 +1,43 @@
+Problem: Scramble String (Dynamic Programming)
+
+Q1: What does dp[len][i][j] represent in the 3D DP table?
+1. Whether s1[i] equals s2[j] for length len
+2. Whether s1.substring(i, i+len) can be scrambled to form s2.substring(j, j+len)
+3. The number of ways to scramble s1[i:i+len] into s2[j:j+len]
+4. The minimum operations to transform s1[i:i+len] into s2[j:j+len]
+
+Q2: How is the base case dp[1][i][j] initialized?
+1. Always set to true for valid indices
+2. Set to true if s1[i] == s2[j], false otherwise
+3. Set to false for all positions initially
+4. Set based on character frequency comparison
+
+Q3: In the DP approach, for length len=3, split point k=1, what represents the "no swap" case?
+1. dp[1][i][j] && dp[2][i+1][j+1]
+2. dp[1][i][j+2] && dp[2][i+1][j]
+3. dp[3][i][j] = dp[1][i][j] || dp[2][i+1][j+1]
+4. dp[1][i][j] && dp[2][i+1][j+2]
+
+Q4: For the swap case with split point k, what indices are used for the right part comparison?
+1. dp[len-k][i+k][j]
+2. dp[len-k][i+k][j+k]
+3. dp[len-k][i][j+len-k]
+4. dp[len-k][i+len-k][j]
+
+Q5: What is the order of filling the DP table?
+1. Fill all lengths from 1 to n, for each length fill all valid (i,j) pairs
+2. Fill all (i,j) pairs first, then process each length
+3. Fill diagonally from top-left to bottom-right
+4. Fill randomly as all states are independent
+
+Q6: Why does the algorithm check both swap and no-swap cases for each split point?
+1. To optimize time complexity
+2. Because the original scrambling algorithm allows both operations
+3. To handle edge cases with single characters
+4. To ensure the DP table is completely filled
+
+Q7: What value is returned as the final answer?
+1. dp[n][0][n-1]
+2. dp[n-1][0][0]
+3. dp[n][0][0]
+4. The maximum value in dp[n]
