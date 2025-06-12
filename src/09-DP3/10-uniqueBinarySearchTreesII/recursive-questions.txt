@@ -1,0 +1,43 @@
+Problem: Unique Binary Search Trees II (DFS with Memoization)
+
+Q1: What does the DFS function return when called with dfs(1, 3)?
+1. The number of unique BSTs using values 1 to 3
+2. An array of all unique BST root nodes using values 1 to 3
+3. The height of the tallest BST using values 1 to 3
+4. A single optimal BST using values 1 to 3
+
+Q2: When start > end in the DFS function, what is returned?
+1. An empty array []
+2. An array containing null [null]
+3. An array containing a single node [new TreeNode(0)]
+4. The function throws an error
+
+Q3: For range [2, 4] with root = 3, what recursive calls are made?
+1. dfs(2, 2) and dfs(4, 4)
+2. dfs(1, 2) and dfs(4, 5)
+3. dfs(2, 3) and dfs(3, 4)
+4. dfs(0, 1) and dfs(2, 3)
+
+Q4: How are left and right subtrees combined for each root?
+1. By adding their counts together
+2. By taking the Cartesian product of all left and right tree combinations
+3. By selecting the optimal pair based on height
+4. By concatenating the arrays
+
+Q5: What is the purpose of memoization in this problem?
+1. To store the count of trees for each range
+2. To cache arrays of tree structures for each range to avoid recomputation
+3. To track which ranges have been processed
+4. To optimize memory usage for tree nodes
+
+Q6: When the range [start, end] has only one element, what happens?
+1. Returns [null]
+2. Returns an array with one TreeNode containing the single value
+3. Recursively calls with smaller ranges
+4. Returns an empty array
+
+Q7: How does the tree construction work for each valid root?
+1. Root value is always the middle of the range
+2. Left subtree gets values < root, right subtree gets values > root
+3. Left and right subtrees share values equally
+4. Trees are built randomly from the range

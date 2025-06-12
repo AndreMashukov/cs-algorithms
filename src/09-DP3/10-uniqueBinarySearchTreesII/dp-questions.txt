@@ -1,0 +1,43 @@
+Problem: Unique Binary Search Trees II (Dynamic Programming)
+
+Q1: What does dp[len] contain in the DP array?
+1. The count of unique BSTs with len nodes
+2. All unique BST structures that can be formed with len nodes
+3. The optimal BST with len nodes
+4. The height of BSTs with len nodes
+
+Q2: How is the cloneWithOffset function used in the DP approach?
+1. To copy left subtrees without modification
+2. To adjust node values in right subtrees to correct ranges
+3. To optimize memory usage
+4. To validate tree structures
+
+Q3: For dp[3] with root at position 2, what are the sizes of left and right subtrees?
+1. leftSize = 1, rightSize = 1
+2. leftSize = 2, rightSize = 0
+3. leftSize = 0, rightSize = 2
+4. leftSize = 1, rightSize = 2
+
+Q4: When building dp[3] with root = 1, what offset is applied to right subtrees?
+1. Offset of 0 (no change)
+2. Offset of 1 (root value)
+3. Offset of 2
+4. Offset of 3
+
+Q5: How are left and right subtrees combined in the DP approach?
+1. By concatenating their arrays
+2. By taking the Cartesian product of all left and right tree combinations
+3. By selecting the best pair based on balance
+4. By merging trees at the root level
+
+Q6: What is stored in dp[0] and why?
+1. An empty array, representing no trees
+2. [null], representing one way to have an empty subtree
+3. [TreeNode(0)], representing a zero-value node
+4. Undefined, as it's not used
+
+Q7: How does the DP solution ensure all node values are in the correct range?
+1. By using only values 1 to n in order
+2. By applying offsets when cloning right subtrees
+3. By sorting nodes after creation
+4. By using mathematical formulas for node values

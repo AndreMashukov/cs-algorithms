@@ -1,0 +1,54 @@
+Problem: Scramble String (Recursive with Memoization)
+
+Let's trace through isScramble_dfs("abc", "bca") step by step:
+
+Step 1: Initial call dfs("abc", "bca")
+- Create key "abc#bca"
+- Check memo: not found
+- s1 != s2, so continue
+- Lengths are equal (3), so continue
+- Check character frequencies:
+  - s1: {a:1, b:1, c:1}
+  - s2: {b:1, c:1, a:1}
+  - Frequencies match, so continue
+
+Step 2: Try split point i=1
+- left1 = "a", right1 = "bc"
+- left2 = "b", right2 = "ca"
+
+Step 3: No-swap case - dfs("a", "b") && dfs("bc", "ca")
+- Call dfs("a", "b"):
+  - s1 != s2, lengths equal
+  - Frequencies: {a:1} vs {b:1} - don't match
+  - Return false
+- Since first part is false, no-swap case fails
+
+Step 4: Swap case - dfs("a", "ca") && dfs("bc", "b")
+- Call dfs("a", "ca"):
+  - Lengths different (1 vs 2)
+  - Return false
+- Since first part is false, swap case fails
+
+Step 5: Try split point i=2
+- left1 = "ab", right1 = "c"
+- left2 = "bc", right2 = "a"
+
+Step 6: No-swap case - dfs("ab", "bc") && dfs("c", "a")
+- Call dfs("ab", "bc"):
+  - Lengths equal, frequencies: {a:1,b:1} vs {b:1,c:1} - don't match
+  - Return false
+- Since first part is false, no-swap case fails
+
+Step 7: Swap case - dfs("ab", "a") && dfs("c", "bc")
+- Call dfs("ab", "a"):
+  - Lengths different (2 vs 1)
+  - Return false
+- Since first part is false, swap case fails
+
+Step 8: All split points tried, return false
+- Store memo["abc#bca"] = false
+- Return false
+
+Final Result: false (s2="bca" is not a scrambled version of s1="abc")
+
+Note: If we had tried "abc" and "acb", we would find a valid scrambling at split point i=2 with the swap case.
