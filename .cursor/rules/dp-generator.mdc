@@ -200,10 +200,6 @@ Create a simple, step-by-step walkthrough of how the DP algorithm works:
 - **Semicolons**: Always use semicolons at the end of statements
 - **Quotes**: Use double quotes for strings
 
-### Rate Limiting:
-- When accessing LeetCode URLs, implement at least 5-second delays between requests
-- Use `await new Promise(resolve => setTimeout(resolve, 5000))` or equivalent
-
 ### Problem Research:
 1. Visit each LeetCode URL to get complete problem details
 2. Extract: title, description, examples, constraints, function signature
