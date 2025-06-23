@@ -140,7 +140,8 @@ Q2: {Question about base case or key logic}
 
 **Question Guidelines:**
 - Focus on algorithm understanding, NOT time/space complexity
-- Avoid generic options like "It's a bug", "It's a convention", "To prevent stack overflow"
+- Avoid generic options like "It's a bug", "It's a convention", "To prevent stack overflow", "To maintain consistency with mathematical conventions"
+- Avoid questions related to memoization or alogrithm's performance, because the answers are very easy
 - Ask about what gets calculated first/next, intermediate results, parameter meanings
 - Target the most difficult/confusing aspects of the solution
 
@@ -150,12 +151,19 @@ Q2: {Question about base case or key logic}
 Problem: {Problem Title} (DFS with Memoization)
 
 Q1: {Answer number}
+{Brief Explanation}
 Q2: {Answer number}
+{Brief Explanation}
 Q3: {Answer number}
+{Brief Explanation}
 Q4: {Answer number}
+{Brief Explanation}
 Q5: {Answer number}
+{Brief Explanation}
 Q6: {Answer number}
+{Brief Explanation}
 Q7: {Answer number}
+{Brief Explanation}
 ```
 
 **Answer Guidelines:**

@@ -99,6 +99,8 @@ function isScramble_dfs(s1, s2) {
       // and right part of s1 matches left part of s2
       const left2_swapped = s2.substring(s2.length - i);
       const right2_swapped = s2.substring(0, s2.length - i);
+       // s2 = "rgeat", i = 2, s2.length = 5
+       // left2_swapped = "at", right2_swapped = "rge"
       
       if (dfs(left1, left2_swapped) && dfs(right1, right2_swapped)) {
         memo.set(key, true);

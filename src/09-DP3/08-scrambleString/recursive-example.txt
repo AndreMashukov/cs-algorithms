@@ -1,3 +1,89 @@
+I'll explain the split mechanism for the scramble string problem 
+with a simple example. 
+Let me first look at the implementation to understand the exact logic.
+Now let me explain the split mechanism with a simple example.
+I'll use a clear, step-by-step illustration:
+
+## Scramble String: Split Mechanism Explained
+
+The key insight is that when we scramble a string, we can either **keep the order**
+ or **swap the parts** after splitting.
+
+### Simple Example: `s1 = "abc"`, `s2 = "bac"`
+
+Let's see how we try different split points and check both cases:
+
+#### **Split at position 1** (i=1):
+```
+s1 = "abc" → left1="a", right1="bc"
+s2 = "bac" → left2="b", right2="ac"
+```
+
+**Case 1 - No Swap:** Check if structure matches without swapping
+- Does `"a" == "b"`? No ❌
+- Does `"bc" == "ac"`? No ❌
+- **Result:** No swap case fails
+
+**Case 2 - With Swap:** Check if left1 matches 
+the "swapped right part" of s2
+- `left2_swapped = s2.substring(s2.length - i) = "bac".substring(2) = "c"`
+- `right2_swapped = s2.substring(0, s2.length - i) = "bac".substring(0,2) = "ba"`
+- Does `"a" == "c"`? No ❌
+- Does `"bc" == "ba"`? No ❌  
+- **Result:** Swap case fails
+
+#### **Split at position 2** (i=2):
+```
+s1 = "abc" → left1="ab", right1="c"  
+s2 = "bac" → left2="ba", right2="c"
+```
+
+**Case 1 - No Swap:**
+- Does `"ab" == "ba"`? No ❌
+- Does `"c" == "c"`? Yes ✅
+- **Result:** No swap case fails (both must be true)
+
+**Case 2 - With Swap:**
+- `left2_swapped = "bac".substring(3-2) = "bac".substring(1) = "ac"`
+- `right2_swapped = "bac".substring(0,1) = "b"`
+- Does `"ab"` scramble to `"ac"`? No ❌
+- Does `"c" == "b"`? No ❌
+- **Result:** Swap case fails
+
+### Visual Representation of the Swap Logic:
+
+```
+Original split (No Swap):
+s1: [left1] [right1]
+s2: [left2] [right2]
+Check: left1 ↔ left2  AND  right1 ↔ right2
+
+Swapped split (With Swap):  
+s1: [left1] [right1]
+s2: [right2_swapped] [left2_swapped]
+Check: left1 ↔ left2_swapped  AND  right1 ↔ right2_swapped
+
+Where:
+- left2_swapped = last i characters of s2
+- right2_swapped = first (length-i) characters of s2
+```
+
+### Why This Works:
+
+When scrambling creates a string, it can either:
+1. **Keep order**: `"ab" + "c"` stays as `"abc"`
+2. **Swap parts**: `"ab" + "c"` becomes `"c" + "ab"` = `"cab"`
+
+So when checking if `s2` could come from scrambling `s1`, 
+we need to test both possibilities at every split point.
+
+The algorithm tries all possible split points and for each split,
+ checks both the "no swap" and "swap" scenarios
+  recursively until it either finds a valid scrambling 
+  path or exhausts all possibilities.
+
+
+
 Problem: Scramble String (Recursive with Memoization)
 
 Let's trace through isScramble_dfs("abc", "bca") step by step:
