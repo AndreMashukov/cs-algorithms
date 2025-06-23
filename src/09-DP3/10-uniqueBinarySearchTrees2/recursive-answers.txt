@@ -1,9 +1,22 @@
 Problem: Unique Binary Search Trees II (DFS with Memoization)
 
-Q1: 2
-Q2: 2
-Q3: 1
-Q4: 2
-Q5: 2
-Q6: 2
-Q7: 2
+Q1: 1
+Explanation: The memo Map caches the actual array of tree structures for each range [start, end] to avoid recomputing the same subtrees multiple times, which significantly improves performance.
+
+Q2: 2  
+Explanation: When start > end (invalid range), the code explicitly returns [null] to represent an empty subtree. This null value is used when constructing trees where one side has no valid nodes.
+
+Q3: 3
+Explanation: For BST property, all values in left subtree must be less than root, and all values in right subtree must be greater than root. This is achieved by using ranges [start, root-1] and [root+1, end].
+
+Q4: 4
+Explanation: The DFS function returns an array of TreeNode objects representing all possible unique BST root nodes. Looking at the code, the function builds and returns actual tree structures, not counts or heights.
+
+Q5: 4
+Explanation: When start === end, the code returns an array containing a single TreeNode with that value. This represents a leaf node in the BST structure.
+
+Q6: 4
+Explanation: The nested loops create every possible combination of left and right subtrees - this is the Cartesian product. Each left tree is paired with each right tree to create all unique BST structures.
+
+Q7: 1
+Explanation: For range [2, 4] with root = 3, the left subtree gets values < 3 (so dfs(2, 2)), and the right subtree gets values > 3 (so dfs(4, 4)). This follows the BST property.
