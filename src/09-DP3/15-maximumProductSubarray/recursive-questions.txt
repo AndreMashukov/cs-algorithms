@@ -1,0 +1,43 @@
+Maximum Product Subarray - Recursive Approach Questions
+
+1. Why do we need to track both maximum and minimum products in the recursive solution?
+   a) To save memory space
+   b) Because negative numbers can turn minimum products into maximum products
+   c) To handle division operations
+   d) To make the algorithm run faster
+
+2. What is the base case in the recursive solution?
+   a) When the array is empty
+   b) When we find a negative number
+   c) When start equals end (single element subarray)
+   d) When the product becomes zero
+
+3. In the memoization cache, what does the key represent?
+   a) The maximum product found so far
+   b) The start and end indices of a subarray
+   c) The current element being processed
+   d) The minimum product at each position
+
+4. What is the main challenge that makes Maximum Product Subarray different from Maximum Sum Subarray?
+   a) Negative numbers can make minimum products become maximum when multiplied
+   b) The array can contain zeros
+   c) Products grow much larger than sums
+   d) Subarrays must be contiguous
+
+5. In the Kadane-style recursive approach, what three options do we consider at each position?
+   a) Current element, previous max, previous min
+   b) Current element, current * prev_max, current * prev_min  
+   c) Left subarray, right subarray, current element
+   d) Maximum so far, minimum so far, current product
+
+6. What is the time complexity of the recursive solution with memoization?
+   a) O(n)
+   b) O(n log n)
+   c) O(n^2)
+   d) O(2^n)
+
+7. How does the recursive solution handle zeros in the array?
+   a) It skips zeros completely
+   b) It treats zero as 1 for multiplication
+   c) Zero naturally resets the product and is handled in the normal flow
+   d) It throws an error when encountering zero

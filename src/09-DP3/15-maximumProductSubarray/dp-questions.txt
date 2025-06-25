@@ -1,0 +1,43 @@
+Maximum Product Subarray - Dynamic Programming Approach Questions
+
+1. In the DP solution, what do dp_max[i] and dp_min[i] represent?
+   a) Maximum and minimum values in the array up to index i
+   b) Maximum and minimum products of all subarrays ending at index i
+   c) Maximum and minimum products of all subarrays starting at index i
+   d) Maximum and minimum products of subarrays of length i
+
+2. What is the space complexity of the optimized DP solution?
+   a) O(n^2)
+   b) O(n)
+   c) O(log n)
+   d) O(1)
+
+3. In the recurrence relation, what three options are considered for dp_max[i]?
+   a) nums[i], dp_max[i-1], dp_min[i-1]
+   b) nums[i], nums[i] * dp_max[i-1], nums[i] * dp_min[i-1]
+   c) dp_max[i-1], dp_min[i-1], 0
+   d) nums[i] + dp_max[i-1], nums[i] * dp_max[i-1], nums[i]
+
+4. Why does the bidirectional DP approach scan the array from both left-to-right and right-to-left?
+   a) To improve time complexity
+   b) To handle arrays with odd number of negative elements correctly
+   c) To reduce space complexity
+   d) To find both maximum and minimum products
+
+5. How does the DP solution handle zeros in the array?
+   a) It skips positions with zeros
+   b) It replaces zeros with ones
+   c) Zeros naturally create new starting points for subarrays
+   d) It stops processing when it encounters a zero
+
+6. What is the key insight for the space optimization in the DP solution?
+   a) We only need the current and previous row of the DP table
+   b) We only need to track maximum products, not minimum
+   c) We only need the previous position's max and min values
+   d) We can use bit manipulation to reduce space
+
+7. In what scenario might the bidirectional approach give a different result than the standard DP approach?
+   a) When the array contains only positive numbers
+   b) When there's an odd number of negative numbers
+   c) They always give the same result for valid inputs
+   d) When the array contains zeros

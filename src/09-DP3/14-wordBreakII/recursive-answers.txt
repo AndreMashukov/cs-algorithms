@@ -1,0 +1,29 @@
+Word Break II - Recursive Approach Answers
+
+1. Answer: b) Word Break I returns boolean, Word Break II returns all possible sentences
+
+Explanation: Word Break I only needs to determine if the string can be segmented into dictionary words (returns true/false). Word Break II needs to find all possible ways to segment the string and return all valid sentences. This requires generating and storing multiple combinations, making it significantly more complex.
+
+2. Answer: c) Arrays of all possible sentences for each starting position
+
+Explanation: The memoization cache (Map) stores key-value pairs where the key is the starting index in the string, and the value is an array containing all possible sentences that can be formed from that starting position to the end of the string. This avoids recomputing the same subproblems multiple times.
+
+3. Answer: b) When we reach the end of the string (startIndex == s.length)
+
+Explanation: The base case occurs when we've successfully processed the entire string (startIndex equals the string length). At this point, we return an array containing one empty string [""], which represents a valid endpoint for sentence construction. This empty string is used in the combination logic to properly form sentences.
+
+4. Answer: c) To enable O(1) lookup time instead of O(n)
+
+Explanation: Converting the wordDict array to a Set allows constant-time O(1) lookups when checking if a substring exists in the dictionary, instead of O(n) linear search through an array. Since we perform many dictionary lookups during recursion, this optimization significantly improves performance.
+
+5. Answer: d) O(2^n * n)
+
+Explanation: In the worst case, there can be 2^n possible ways to break the string (each position can be a break point or not). For each combination, we need O(n) time to construct the sentence string. The memoization helps avoid redundant calculations, but the fundamental complexity remains O(2^n * n) due to the exponential number of possible sentence combinations.
+
+6. Answer: b) When the remaining sentence is empty ("")
+
+Explanation: When combining the current word with sentences from the remaining string, if the remaining sentence is empty (""), it means we've reached the end of the string. In this case, we just add the current word without a space prefix. Otherwise, we concatenate the current word with a space followed by the remaining sentence.
+
+7. Answer: c) It returns an empty array []
+
+Explanation: If no valid word break is possible, the recursive function naturally returns an empty array. This happens because the loops will find no valid words in the dictionary, so no sentences are added to the result array. The empty array correctly represents that there are zero ways to break the string into valid sentences.

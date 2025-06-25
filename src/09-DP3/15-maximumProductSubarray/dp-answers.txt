@@ -1,0 +1,29 @@
+Maximum Product Subarray - Dynamic Programming Approach Answers
+
+1. Answer: b) Maximum and minimum products of all subarrays ending at index i
+
+Explanation: dp_max[i] stores the maximum product among all contiguous subarrays that end at position i, while dp_min[i] stores the minimum product among all contiguous subarrays that end at position i. This follows the classic DP pattern where we build solutions by considering what happens when we extend previous solutions by one element. The key word is "ending at" - these values represent the best and worst products when the subarray must include the element at position i as its last element.
+
+2. Answer: d) O(1)
+
+Explanation: The optimized DP solution only needs to keep track of the maximum and minimum products ending at the current position, plus the maximum product seen so far. We don't need to store entire arrays - just three variables (maxEndingHere, minEndingHere, maxSoFar) that get updated as we iterate through the array. This reduces space complexity from O(n) to O(1) while maintaining the same O(n) time complexity.
+
+3. Answer: b) nums[i], nums[i] * dp_max[i-1], nums[i] * dp_min[i-1]
+
+Explanation: At each position i, we have three choices for the maximum product ending at i: (1) start a new subarray with just nums[i], (2) extend the maximum product subarray from the previous position by multiplying with nums[i], or (3) extend the minimum product subarray from the previous position by multiplying with nums[i] (this could become maximum if both nums[i] and dp_min[i-1] are negative). We take the maximum of these three options.
+
+4. Answer: b) To handle arrays with odd number of negative elements correctly
+
+Explanation: When there's an odd number of negative numbers in the array, the optimal subarray might exclude either the first or the last negative number to make the total count of negatives even (resulting in a positive product). Scanning left-to-right naturally excludes the last negative, while scanning right-to-left naturally excludes the first negative. By taking the maximum of both scans, we ensure we find the optimal solution regardless of which negative number should be excluded.
+
+5. Answer: c) Zeros naturally create new starting points for subarrays
+
+Explanation: When the DP algorithm encounters a zero, multiplying by zero gives a product of zero. In the recurrence relation, this means we're essentially choosing between zero and starting fresh with the next element. Zero acts as a natural "reset" point that breaks the array into segments. Any optimal subarray cannot span across a zero (since including zero would make the product zero), so zeros effectively create natural boundaries for considering subarrays.
+
+6. Answer: c) We only need the previous position's max and min values
+
+Explanation: The key insight is that dp[i] only depends on dp[i-1], not on any earlier values. Since we process the array from left to right and only need the immediately previous values, we can replace the entire dp_max and dp_min arrays with just two variables that store the max and min products ending at the previous position. This optimization reduces space from O(n) to O(1) without affecting the correctness of the algorithm.
+
+7. Answer: c) They always give the same result for valid inputs
+
+Explanation: Both the standard DP approach and the bidirectional approach will always produce the same correct result for any valid input. The bidirectional approach is actually a different algorithm that achieves the same goal - it's not just an optimization of the standard DP approach, but an alternative method. Both correctly handle all cases including odd numbers of negatives, zeros, and any other valid input. The bidirectional approach exists as an alternative implementation that some find more intuitive, but both are equally correct.

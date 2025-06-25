@@ -1,0 +1,107 @@
+Word Break II - Recursive Approach Example Walkthrough
+
+Problem: Given string s = "catsand" and wordDict = ["cat", "cats", "and", "sand"]
+Goal: Find all possible sentences
+
+Input:
+- s = "catsand"
+- wordDict = ["cat", "cats", "and", "sand"]
+- wordSet = {"cat", "cats", "and", "sand"}
+
+Step-by-step execution of dfs(startIndex):
+
+=== Call dfs(0) ===
+startIndex = 0, remaining = "catsand"
+memo.has(0) = false
+result = []
+
+Try endIndex = 1: word = "c" ❌ (not in wordSet)
+Try endIndex = 2: word = "ca" ❌ (not in wordSet)
+Try endIndex = 3: word = "cat" ✅ (in wordSet)
+  → Call dfs(3) to process remaining "sand"
+
+=== Call dfs(3) ===
+startIndex = 3, remaining = "sand"
+memo.has(3) = false
+result = []
+
+Try endIndex = 4: word = "s" ❌ (not in wordSet)
+Try endIndex = 5: word = "sa" ❌ (not in wordSet)
+Try endIndex = 6: word = "san" ❌ (not in wordSet)
+Try endIndex = 7: word = "sand" ✅ (in wordSet)
+  → Call dfs(7) to process remaining ""
+
+=== Call dfs(7) ===
+startIndex = 7, remaining = ""
+Base case: startIndex == s.length
+Return [""]
+
+=== Back to dfs(3) ===
+remainingSentences = [""]
+For sentence = "":
+  sentence === "" → result.push("sand")
+result = ["sand"]
+memo.set(3, ["sand"])
+Return ["sand"]
+
+=== Back to dfs(0) ===
+remainingSentences = ["sand"]
+For sentence = "sand":
+  sentence !== "" → result.push("cat" + " " + "sand") = "cat sand"
+result = ["cat sand"]
+
+Continue with endIndex = 4: word = "cats" ✅ (in wordSet)
+  → Call dfs(4) to process remaining "and"
+
+=== Call dfs(4) ===
+startIndex = 4, remaining = "and"
+memo.has(4) = false
+result = []
+
+Try endIndex = 5: word = "a" ❌ (not in wordSet)
+Try endIndex = 6: word = "an" ❌ (not in wordSet)
+Try endIndex = 7: word = "and" ✅ (in wordSet)
+  → Call dfs(7) to process remaining ""
+
+=== Call dfs(7) ===
+startIndex = 7, remaining = ""
+Base case: startIndex == s.length
+Return [""] (already memoized)
+
+=== Back to dfs(4) ===
+remainingSentences = [""]
+For sentence = "":
+  sentence === "" → result.push("and")
+result = ["and"]
+memo.set(4, ["and"])
+Return ["and"]
+
+=== Back to dfs(0) ===
+remainingSentences = ["and"]
+For sentence = "and":
+  sentence !== "" → result.push("cats" + " " + "and") = "cats and"
+result = ["cat sand", "cats and"]
+
+Continue with remaining endIndex values (5, 6, 7):
+Try endIndex = 5: word = "catsa" ❌ (not in wordSet)
+Try endIndex = 6: word = "catsan" ❌ (not in wordSet)
+Try endIndex = 7: word = "catsand" ❌ (not in wordSet)
+
+memo.set(0, ["cat sand", "cats and"])
+Return ["cat sand", "cats and"]
+
+=== Final Result ===
+All possible sentences: ["cat sand", "cats and"]
+
+Memoization Cache Final State:
+- memo[0] = ["cat sand", "cats and"]
+- memo[3] = ["sand"]
+- memo[4] = ["and"]
+- memo[7] = [""]
+
+Key Observations:
+1. Base case (dfs(7)) returns [""] for empty remaining string
+2. Memoization prevents recomputation of dfs(7)
+3. Sentence construction: current_word + " " + remaining_sentence
+4. When remaining sentence is empty, only current word is added
+5. All valid word combinations are explored and combined

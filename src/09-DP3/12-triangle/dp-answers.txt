@@ -1,0 +1,22 @@
+Problem: Triangle (Dynamic Programming)
+
+Q1: 2
+DP table is initialized to Infinity, and each dp[i][j] represents the minimum path sum from top to position (i,j).
+
+Q2: 3
+Base case sets dp[0][0] = triangle[0][0], establishing the starting point at triangle's top.
+
+Q3: 3
+We can arrive at dp[i][j] from either dp[i-1][j-1] (diagonal) or dp[i-1][j] (direct down).
+
+Q4: 1
+The check prevents array index out of bounds when accessing dp[i-1][j-1] for leftmost positions.
+
+Q5: 2
+Final answer is the minimum among all dp[n-1][j] values in the last row of the DP table.
+
+Q6: 1
+DP optimizes from exponential O(2ⁿ) naive recursion to polynomial O(n²) time complexity.
+
+Q7: 2
+Adding triangle[i][j] accumulates the current position's contribution to the total path sum.

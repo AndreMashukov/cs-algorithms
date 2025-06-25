@@ -1,0 +1,29 @@
+Word Break II - Dynamic Programming Approach Answers
+
+1. Answer: b) All possible sentences that can be formed from substring s[i:]
+
+Explanation: In the DP approach, dp[i] stores an array of all possible sentences that can be formed from the substring starting at position i to the end of the string (s[i:]). This bottom-up approach builds solutions for longer substrings using solutions for shorter substrings. Each dp[i] contains all valid sentence combinations for the remaining portion of the string.
+
+2. Answer: b) dp[n] = [""]
+
+Explanation: The DP array is initialized with dp[n] = [""] where n is the length of the string. This represents the base case: an empty substring (beyond the end of the string) can form exactly one empty sentence. This empty string serves as the foundation for building actual sentences by combining with valid words during the backward iteration.
+
+3. Answer: b) Right to left (backward)
+
+Explanation: The DP solution iterates from right to left (i = n-1 down to 0) because we need to know the solutions for dp[j] (where j > i) before we can compute dp[i]. Since dp[i] depends on the results of positions after i, we must build the solution backwards from the end of the string to the beginning.
+
+4. Answer: c) It can early terminate if no word break is possible
+
+Explanation: The two-pass approach first checks if any word break is possible using a simple boolean DP. If the first pass determines that no valid word break exists, the algorithm can immediately return an empty array without attempting to generate all possible sentences. This optimization can save significant time when the input string cannot be broken into dictionary words.
+
+5. Answer: b) Whether the remaining sentence is empty or not
+
+Explanation: When combining a current word with sentences from dp[j], we check if the remaining sentence is empty (""). If it's empty, we add just the current word. If it's not empty, we add the current word followed by a space and then the remaining sentence. This logic ensures proper sentence formatting without leading or trailing spaces.
+
+6. Answer: d) O(2^n * n)
+
+Explanation: The space complexity is O(2^n * n) because in the worst case, there can be an exponential number of ways to break the string (2^n possible combinations), and each sentence can be up to length n. The DP array needs to store all these possible sentences across all positions, leading to exponential space requirements in terms of both the number of sentences and their lengths.
+
+7. Answer: c) It explores all valid words and combines their results
+
+Explanation: The DP approach uses nested loops where the inner loop tries all possible ending positions j from the current position i. This means if multiple dictionary words can start at position i (like "cat" and "cats"), the algorithm explores both options and combines the results from their respective remaining substrings. All valid combinations are preserved and added to dp[i].

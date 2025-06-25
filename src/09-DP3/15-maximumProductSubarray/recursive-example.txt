@@ -1,0 +1,127 @@
+Maximum Product Subarray - Recursive Approach Example Walkthrough
+
+Problem: Given array nums = [2, -5, -2, 4]
+Goal: Find the maximum product of any contiguous subarray
+
+Input: nums = [2, -5, -2, 4]
+Expected: Maximum product should be 20 (subarray [-5, -2, 4] = 40 or [2, -5, -2] = 20)
+
+Using Kadane-style recursive approach that tracks max/min ending at each position:
+
+=== Call dfs(0) ===
+Position 0, element = 2
+Base case: i == 0
+Return { max: 2, min: 2 }
+memo[0] = { max: 2, min: 2 }
+
+=== Call dfs(1) ===
+Position 1, element = -5
+memo.has(1) = false
+
+Get previous result: dfs(0) = { max: 2, min: 2 }
+
+Calculate candidates:
+- option1 = nums[1] = -5
+- option2 = prev.max * nums[1] = 2 * (-5) = -10
+- option3 = prev.min * nums[1] = 2 * (-5) = -10
+
+result = {
+  max: Math.max(-5, -10, -10) = -5,
+  min: Math.min(-5, -10, -10) = -10
+}
+
+memo[1] = { max: -5, min: -10 }
+Return { max: -5, min: -10 }
+
+=== Call dfs(2) ===
+Position 2, element = -2
+memo.has(2) = false
+
+Get previous result: dfs(1) = { max: -5, min: -10 }
+
+Calculate candidates:
+- option1 = nums[2] = -2
+- option2 = prev.max * nums[2] = (-5) * (-2) = 10
+- option3 = prev.min * nums[2] = (-10) * (-2) = 20
+
+result = {
+  max: Math.max(-2, 10, 20) = 20,
+  min: Math.min(-2, 10, 20) = -2
+}
+
+memo[2] = { max: 20, min: -2 }
+Return { max: 20, min: -2 }
+
+=== Call dfs(3) ===
+Position 3, element = 4
+memo.has(3) = false
+
+Get previous result: dfs(2) = { max: 20, min: -2 }
+
+Calculate candidates:
+- option1 = nums[3] = 4
+- option2 = prev.max * nums[3] = 20 * 4 = 80
+- option3 = prev.min * nums[3] = (-2) * 4 = -8
+
+result = {
+  max: Math.max(4, 80, -8) = 80,
+  min: Math.min(4, 80, -8) = -8
+}
+
+memo[3] = { max: 80, min: -8 }
+Return { max: 80, min: -8 }
+
+=== Main Function Execution ===
+maxProduct = nums[0] = 2
+
+For i = 0: dfs(0) = { max: 2, min: 2 }
+maxProduct = Math.max(2, 2) = 2
+
+For i = 1: dfs(1) = { max: -5, min: -10 }
+maxProduct = Math.max(2, -5) = 2
+
+For i = 2: dfs(2) = { max: 20, min: -2 }
+maxProduct = Math.max(2, 20) = 20
+
+For i = 3: dfs(3) = { max: 80, min: -8 }
+maxProduct = Math.max(20, 80) = 80
+
+=== Final Result ===
+Maximum Product = 80
+
+=== Analysis of Key Steps ===
+
+Step 1 (i=0): Single element [2]
+- max = min = 2
+
+Step 2 (i=1): Subarrays ending at position 1
+- [2, -5]: product = -10
+- [-5]: product = -5
+- Best max ending here = -5, best min ending here = -10
+
+Step 3 (i=2): Subarrays ending at position 2  
+- [2, -5, -2]: product = 20
+- [-5, -2]: product = 10
+- [-2]: product = -2
+- Best max ending here = 20 (from [2, -5, -2])
+- Best min ending here = -2
+
+Step 4 (i=3): Subarrays ending at position 3
+- [2, -5, -2, 4]: product = 80
+- [-5, -2, 4]: product = 40
+- [-2, 4]: product = -8
+- [4]: product = 4
+- Best max ending here = 80 (from [2, -5, -2, 4])
+
+=== Memoization Cache Final State ===
+memo[0] = { max: 2, min: 2 }     // Products ending at position 0
+memo[1] = { max: -5, min: -10 }  // Products ending at position 1
+memo[2] = { max: 20, min: -2 }   // Products ending at position 2
+memo[3] = { max: 80, min: -8 }   // Products ending at position 3
+
+=== Key Observations ===
+1. Negative * Negative = Positive: (-5) * (-2) = 10
+2. Min product can become max: -10 * (-2) = 20 (min becomes max)
+3. Each position depends only on the previous position
+4. We track both max and min because of sign changes with negative numbers
+5. The global maximum is found by checking max values ending at each position
