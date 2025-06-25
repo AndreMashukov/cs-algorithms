@@ -1,0 +1,34 @@
+Problem: Triangle (DFS with Memoization)
+Input: triangle = [[2],[3,4]]
+
+Step-by-Step Execution:
+
+1. Initial Call: dfs(0, 0)
+   - Current position: triangle[0][0] = 2
+   - Not at last row, so make recursive calls
+   - Call dfs(1, 0) and dfs(1, 1)
+
+2. First Recursive Call: dfs(1, 0)
+   - Current position: triangle[1][0] = 3
+   - At last row (row 1), so return triangle[1][0] = 3
+   - Cache result: memo["1-0"] = 3
+
+3. Second Recursive Call: dfs(1, 1)
+   - Current position: triangle[1][1] = 4
+   - At last row (row 1), so return triangle[1][1] = 4
+   - Cache result: memo["1-1"] = 4
+
+4. Back to dfs(0, 0):
+   - moveDown = dfs(1, 0) = 3
+   - moveDiagonal = dfs(1, 1) = 4
+   - result = triangle[0][0] + min(3, 4) = 2 + 3 = 5
+   - Cache result: memo["0-0"] = 5
+
+5. Final Result: 5
+
+The minimum path is 2 → 3 = 5, which represents the path from top (2) to bottom left (3).
+
+Memoization Map after completion:
+- memo["0-0"] = 5 (minimum path from (0,0) to bottom)
+- memo["1-0"] = 3 (base case value)
+- memo["1-1"] = 4 (base case value)

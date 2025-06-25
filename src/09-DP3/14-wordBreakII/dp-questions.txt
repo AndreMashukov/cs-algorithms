@@ -1,0 +1,43 @@
+Word Break II - Dynamic Programming Approach Questions
+
+1. In the DP approach, what does dp[i] represent?
+   a) Whether substring s[0:i] can be broken into dictionary words
+   b) All possible sentences that can be formed from substring s[i:]
+   c) The minimum number of words needed to form s[0:i]
+   d) The maximum number of sentences possible from position i
+
+2. What is the correct initialization for the DP array?
+   a) dp[0] = [""]
+   b) dp[n] = [""]
+   c) All dp[i] = []
+   d) dp[0] = [s]
+
+3. In which direction does the DP solution iterate through the string?
+   a) Left to right (forward)
+   b) Right to left (backward)
+   c) Both directions simultaneously
+   d) Random order
+
+4. What is the advantage of the two-pass DP approach?
+   a) It uses less memory
+   b) It's faster in all cases
+   c) It can early terminate if no word break is possible
+   d) It handles edge cases better
+
+5. When combining words with remaining sentences in DP, what determines whether to add a space?
+   a) The length of the current word
+   b) Whether the remaining sentence is empty or not
+   c) The position in the string
+   d) The number of words already used
+
+6. What is the space complexity of the DP solution?
+   a) O(n)
+   b) O(n^2)
+   c) O(2^n)
+   d) O(2^n * n)
+
+7. How does the DP approach handle the case where multiple words can start at the same position?
+   a) It picks the longest word first
+   b) It picks the shortest word first
+   c) It explores all valid words and combines their results
+   d) It only considers the first valid word found

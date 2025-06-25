@@ -1,0 +1,22 @@
+Problem: Triangle (DFS with Memoization)
+
+Q1: 2
+We can move to the same column (row+1, col) or the next column (row+1, col+1) in the next row.
+
+Q2: 3
+The key uniquely identifies a position (row, col) in the triangle for memoization lookup.
+
+Q3: 4
+At the last row, we return the triangle value at current position since no further moves are possible.
+
+Q4: 1
+We add the current position's value to accumulate the total path sum from top to bottom.
+
+Q5: 2
+Starting from the top of triangle, we begin the recursive computation to find minimum path to bottom.
+
+Q6: 2
+Due to recursion, we go deep first, so the last row values (4,5,6) are computed before backtracking.
+
+Q7: 2
+After memoization, it stores the minimum path sum from position (2,1) to reach the bottom of triangle.

@@ -1,0 +1,43 @@
+Word Break II - Recursive Approach Questions
+
+1. What is the main difference between Word Break I and Word Break II?
+   a) Word Break I uses DP while Word Break II uses recursion
+   b) Word Break I returns boolean, Word Break II returns all possible sentences
+   c) Word Break I is easier than Word Break II
+   d) Word Break I handles longer strings
+
+2. In the recursive approach, what does the memoization cache store?
+   a) Boolean values indicating if a substring can be broken
+   b) The minimum number of words needed
+   c) Arrays of all possible sentences for each starting position
+   d) The dictionary words that have been used
+
+3. What is the base case in the recursive solution?
+   a) When we find a word in the dictionary
+   b) When we reach the end of the string (startIndex == s.length)
+   c) When the memoization cache is full
+   d) When no valid words are found
+
+4. Why do we convert the wordDict array to a Set?
+   a) To save memory space
+   b) To maintain order of words
+   c) To enable O(1) lookup time instead of O(n)
+   d) To prevent duplicate words
+
+5. What is the time complexity of the recursive solution with memoization?
+   a) O(n^2)
+   b) O(n^3)
+   c) O(2^n)
+   d) O(2^n * n)
+
+6. In the sentence construction logic, when do we just add the current word without a space?
+   a) When it's the first word in the sentence
+   b) When the remaining sentence is empty ("")
+   c) When the current word is the longest
+   d) When there's only one possible combination
+
+7. What happens if no valid word break is possible for the input string?
+   a) The function throws an error
+   b) It returns null
+   c) It returns an empty array []
+   d) It returns [""]

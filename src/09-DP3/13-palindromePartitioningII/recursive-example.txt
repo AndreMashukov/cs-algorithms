@@ -1,0 +1,57 @@
+Problem: Palindrome Partitioning II (DFS with Memoization)
+Input: s = "aab"
+
+Step-by-Step Execution:
+
+1. Initial Call: dfs(0)
+   - Processing substring from index 0: "aab"
+   - Try all possible endings: end = 0, 1, 2
+
+2. Try end = 0: substring "a"
+   - isPalindrome(0, 0) = true (single character)
+   - remainingCuts = dfs(1) (process "ab")
+   - totalCuts = 1 + remainingCuts (need cut after "a")
+
+3. Recursive Call: dfs(1)  
+   - Processing substring from index 1: "ab"
+   - Try endings: end = 1, 2
+   
+   3a. Try end = 1: substring "a"
+       - isPalindrome(1, 1) = true
+       - remainingCuts = dfs(2) (process "b")
+       - totalCuts = 1 + remainingCuts
+   
+   3b. Call dfs(2): Processing "b"
+       - end = 2: substring "b"
+       - isPalindrome(2, 2) = true
+       - remainingCuts = dfs(3) = 0 (base case)
+       - totalCuts = 0 (last substring, no cut needed)
+       - Cache: memo[2] = 0
+   
+   3c. Back to dfs(1), end = 1:
+       - totalCuts = 1 + 0 = 1
+       - minCuts = 1
+   
+   3d. Try end = 2: substring "ab"
+       - isPalindrome(1, 2) = false (a ≠ b)
+       - Skip this option
+   
+   - Cache: memo[1] = 1
+
+4. Back to dfs(0), end = 0:
+   - totalCuts = 1 + memo[1] = 1 + 1 = 2
+   - minCuts = 2
+
+5. Try end = 1: substring "aa"
+   - isPalindrome(0, 1) = true (a = a)
+   - remainingCuts = dfs(2) = memo[2] = 0
+   - totalCuts = 1 + 0 = 1
+   - minCuts = min(2, 1) = 1
+
+6. Try end = 2: substring "aab"
+   - isPalindrome(0, 2) = false (a ≠ b)
+   - Skip this option
+
+7. Final Result: memo[0] = 1
+
+The optimal solution uses 1 cut: "aa" | "b"

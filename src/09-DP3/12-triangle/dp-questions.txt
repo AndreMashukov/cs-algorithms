@@ -1,0 +1,43 @@
+Problem: Triangle (Dynamic Programming)
+
+Q1: How is the DP table dp[i][j] initialized and what does each entry represent?
+1. Initialized to 0, represents number of paths to position (i,j)
+2. Initialized to Infinity, represents minimum path sum from top to position (i,j)
+3. Initialized to triangle values, represents original triangle structure
+4. Initialized to -1, represents unvisited positions
+
+Q2: What is the base case setup for the DP solution?
+1. dp[n-1][j] = triangle[n-1][j] for all j in last row
+2. dp[i][0] = triangle[i][0] for all i in first column
+3. dp[0][0] = triangle[0][0], the top element of triangle
+4. All dp values set to the corresponding triangle values
+
+Q3: When filling dp[i][j], from which previous positions can we arrive?
+1. Only from dp[i-1][j] (direct move down)
+2. Only from dp[i-1][j-1] (diagonal move)
+3. From dp[i-1][j-1] and dp[i-1][j] (both diagonal and direct moves)
+4. From dp[i][j-1] and dp[i-1][j] (horizontal and vertical moves)
+
+Q4: Why do we check "j > 0" when considering dp[i-1][j-1]?
+1. To avoid negative array indices and ensure valid diagonal move
+2. To skip the first column optimization
+3. To handle edge cases in triangle structure
+4. To prevent duplicate path calculations
+
+Q5: How do we find the final answer after filling the DP table?
+1. Return dp[0][0] as it contains the final result
+2. Return the minimum value among all dp[n-1][j] in the last row
+3. Sum all values in the last row of dp table
+4. Return the maximum value in the entire dp table
+
+Q6: What's the time complexity difference between the DP approach and naive recursion?
+1. DP is O(n²) vs naive recursion O(2ⁿ)
+2. Both have the same O(n²) complexity
+3. DP is O(n) vs naive recursion O(n²)  
+4. DP is O(n³) vs naive recursion O(n²)
+
+Q7: In the transition formula dp[i][j] = min(dp[i-1][j-1], dp[i-1][j]) + triangle[i][j], why do we add triangle[i][j]?
+1. To maintain the original triangle structure
+2. To include current position's value in the accumulated path sum
+3. To normalize the path lengths across different routes
+4. To handle the constraint of adjacent moves only

@@ -1,0 +1,43 @@
+Problem: Palindrome Partitioning II (DFS with Memoization)
+
+Q1: In the recursive solution, what does the parameter 'start' represent in dfs(start)?
+1. The starting index of the current substring being processed
+2. The number of cuts made so far
+3. The length of the current palindrome
+4. The position of the last cut made
+
+Q2: Why do we check isPalindrome(start, end) before making a recursive call?
+1. To ensure we don't create empty substrings
+2. To verify that current substring can form a valid partition piece
+3. To optimize the palindrome checking process
+4. To maintain the original string structure
+
+Q3: In the recursive formula, when do we add 1 to the remainingCuts?
+1. When we find a palindrome substring
+2. When we reach the end of string
+3. When we need a cut to separate current palindrome from remaining string
+4. When the current substring is not a palindrome
+
+Q4: What is the base case condition in the DFS function?
+1. When we find a palindrome
+2. When start >= n (processed entire string)
+3. When minCuts becomes 0
+4. When we can't find any more palindromes
+
+Q5: How does the memoization help in this problem?
+1. Stores palindrome check results
+2. Caches minimum cuts needed for each starting position
+3. Remembers the best partition found so far
+4. Keeps track of all possible cuts
+
+Q6: For string "aab", what happens when dfs(0) tries end=1?
+1. Creates palindrome "aa" and calls dfs(2) for remaining "b"
+2. Skips this position as it's not palindrome
+3. Returns immediately with result 0
+4. Continues to check longer substrings
+
+Q7: What value gets stored in memo[1] when processing string "aab"?
+1. The character 'a' at position 1
+2. The minimum cuts needed for substring starting at position 1
+3. The length of palindrome starting at position 1
+4. The total number of palindromes from position 1
