@@ -1,0 +1,44 @@
+Problem: Pascal's Triangle (Dynamic Programming)
+
+Let's trace through generate_dp(4) step by step:
+
+Step 1: Initialize
+- numRows = 4
+- triangle = []
+
+Step 2: Generate row 0
+- currentRow = [1] (size 1)
+- currentRow[0] = 1
+- triangle = [[1]]
+
+Step 3: Generate row 1  
+- currentRow = [1, 1] (size 2)
+- currentRow[0] = 1
+- currentRow[1] = 1
+- triangle = [[1], [1,1]]
+
+Step 4: Generate row 2
+- currentRow = [1, ?, 1] (size 3)
+- currentRow[0] = 1, currentRow[2] = 1
+- For col=1: leftParent = triangle[1][0] = 1
+              rightParent = triangle[1][1] = 1
+- currentRow[1] = 1 + 1 = 2
+- triangle = [[1], [1,1], [1,2,1]]
+
+Step 5: Generate row 3
+- currentRow = [1, ?, ?, 1] (size 4)
+- currentRow[0] = 1, currentRow[3] = 1
+- For col=1: leftParent = triangle[2][0] = 1
+              rightParent = triangle[2][1] = 2
+- currentRow[1] = 1 + 2 = 3
+- For col=2: leftParent = triangle[2][1] = 2
+              rightParent = triangle[2][2] = 1
+- currentRow[2] = 2 + 1 = 3
+- triangle = [[1], [1,1], [1,2,1], [1,3,3,1]]
+
+Step 6: Return result
+- triangle = [[1], [1,1], [1,2,1], [1,3,3,1]]
+
+Final Result: [[1], [1,1], [1,2,1], [1,3,3,1]]
+
+The DP approach builds each row incrementally using the previous row, avoiding any recomputation.

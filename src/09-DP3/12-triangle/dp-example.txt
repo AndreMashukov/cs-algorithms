@@ -1,0 +1,38 @@
+Problem: Triangle (Dynamic Programming)
+Input: triangle = [[2],[3,4]]
+
+Step-by-Step DP Table Construction:
+
+Initial Setup:
+- triangle = [[2], [3,4]]
+- n = 2 (triangle height)
+- dp table initialized: [[Infinity, Infinity], [Infinity, Infinity]]
+
+Step 1: Base Case
+- Set dp[0][0] = triangle[0][0] = 2
+- DP table: [[2, Infinity], [Infinity, Infinity]]
+
+Step 2: Fill Row 1 (i=1)
+  
+  Position (1,0): j=0
+  - Can come from dp[0][0] (since j < triangle[0].length = 1)
+  - dp[1][0] = min(Infinity, dp[0][0] + triangle[1][0])
+  - dp[1][0] = min(Infinity, 2 + 3) = 5
+  - DP table: [[2, Infinity], [5, Infinity]]
+  
+  Position (1,1): j=1  
+  - Can come from dp[0][0] (diagonal, since j-1=0 >= 0)
+  - dp[1][1] = min(Infinity, dp[0][0] + triangle[1][1])
+  - dp[1][1] = min(Infinity, 2 + 4) = 6
+  - DP table: [[2, Infinity], [5, 6]]
+
+Step 3: Find Final Answer
+- Last row is row 1: dp[1] = [5, 6]
+- Minimum value in last row: min(5, 6) = 5
+
+Final Result: 5
+
+The DP table shows all possible minimum path sums:
+- dp[0][0] = 2: minimum sum to reach position (0,0)
+- dp[1][0] = 5: minimum sum to reach position (1,0) via path 2→3
+- dp[1][1] = 6: minimum sum to reach position (1,1) via path 2→4

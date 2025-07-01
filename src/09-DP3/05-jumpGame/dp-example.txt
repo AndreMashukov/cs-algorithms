@@ -1,0 +1,49 @@
+Problem: Jump Game (Dynamic Programming Example)
+
+Input: nums = [2, 1, 0]
+Goal: Determine if we can reach the last index using DP
+
+DP Array Approach - Step-by-Step:
+
+1. Initialization:
+   - dp = [true, false, false]
+   - dp[0] = true (starting position always reachable)
+
+2. Process position 0:
+   - nums[0] = 2, so maxJump = 2
+   - Can reach positions: 0+1=1 and 0+2=2
+   - Update: dp[1] = true, dp[2] = true
+   - dp = [true, true, true]
+   - Early termination: dp[2] is true, return true
+
+Final DP state: [true, true, true]
+Output: true
+
+Greedy Approach - Step-by-Step:
+
+1. Initialization:
+   - farthest = 0
+   - Array: [2, 1, 0]
+
+2. Process position 0:
+   - i = 0, nums[0] = 2
+   - farthest = max(0, 0 + 2) = 2
+   - Since farthest >= 2 (array length - 1), return true
+
+Output: true
+
+Alternative Example with Bottom-Up DP:
+Input: nums = [1, 0, 1]
+
+Bottom-Up Processing:
+1. lastGoodPosition = 2 (start from end)
+2. Check position 1: 1 + 0 = 1 < 2, cannot reach position 2
+3. Check position 0: 0 + 1 = 1 < 2, cannot reach position 2
+4. lastGoodPosition remains 2 ≠ 0
+5. Return false
+
+Key Comparisons:
+- DP tracks reachability of each position explicitly
+- Greedy only tracks the farthest reachable position
+- Bottom-up works backwards to find valid positions
+- All approaches correctly identify reachability
