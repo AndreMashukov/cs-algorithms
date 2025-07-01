@@ -1,0 +1,22 @@
+Problem: Maximum Subarray (Recursive with Memoization)
+
+A1: c) When left equals right (single element)
+Explanation: The base case occurs when the range contains only one element (left === right). At this point, the maximum subarray in that range is simply the single element itself, so we return nums[left].
+
+A2: c) The maximum subarray sum that spans across the middle point  
+Explanation: The crossingSum represents the maximum possible sum of a subarray that crosses the middle point. It combines the best leftward extension from the middle with the best rightward extension from middle+1.
+
+A3: c) Using the string format "left-right"
+Explanation: The memoization key is constructed as `${left}-${right}`, creating a unique string identifier for each range [left, right] to cache the computed maximum subarray sum for that specific range.
+
+A4: b) The maximum sum extending left from mid
+Explanation: The algorithm first computes maxLeftSum by starting at the middle element and extending leftward, finding the maximum sum ending at the middle point. Then it computes maxRightSum extending rightward from mid+1.
+
+A5: b) From middle to left boundary (right to left)
+Explanation: When finding maxLeftSum, the loop iterates from mid-1 down to the left boundary (for i = mid-1; i >= left; i--), moving in the rightward-to-leftward direction to build the maximum sum ending at mid.
+
+A6: c) The maximum of leftMax, rightMax, and crossingSum
+Explanation: The final result is determined by taking the maximum of three possible cases: the maximum subarray entirely in the left half, entirely in the right half, or crossing the middle point.
+
+A7: b) To avoid recomputing results for overlapping subranges
+Explanation: Memoization prevents redundant calculations when the same range [left, right] is encountered multiple times during the recursive calls, improving efficiency from exponential to polynomial time complexity.

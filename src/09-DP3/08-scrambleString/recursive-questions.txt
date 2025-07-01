@@ -1,0 +1,43 @@
+Problem: Scramble String (DFS with Memoization)
+
+Q1: When the DFS function encounters s1 = "ab" and s2 = "ba", what is the first split point it tries?
+1. Split at index 1, creating left="a", right="b"
+2. Split at index 2, creating left="ab", right=""
+3. Split at index 0, creating left="", right="ab"
+4. It doesn't split because the strings are too short
+
+Q2: In the character frequency optimization, what happens when s1 = "abc" and s2 = "def"?
+1. The function continues to try all split points
+2. The function immediately returns false without trying splits
+3. The function tries only the swap case
+4. The function tries only the no-swap case
+
+Q3: For s1 = "abc" and s2 = "bca", when trying split point i=1, what are the subproblems for the swap case?
+1. dfs("a", "b") and dfs("bc", "ca")
+2. dfs("a", "ca") and dfs("bc", "b")
+3. dfs("a", "a") and dfs("bc", "bc")
+4. dfs("ab", "bc") and dfs("c", "a")
+
+Q4: What is the purpose of the memoization key format s1 + "#" + s2?
+1. To separate the two strings clearly and avoid collisions
+2. To make the key shorter for better performance
+3. To indicate which string is the original
+4. To mark that this is a scramble operation
+
+Q5: When does the DFS function return true immediately without further computation?
+1. When both strings have the same length
+2. When both strings are identical
+3. When both strings have the same first character
+4. When both strings can be split evenly
+
+Q6: In the no-swap case for split point i, what substring pairs are compared?
+1. s1[0:i] with s2[0:i] and s1[i:] with s2[i:]
+2. s1[0:i] with s2[i:] and s1[i:] with s2[0:i]
+3. s1[0:i] with s2[n-i:] and s1[i:] with s2[0:n-i]
+4. The entire strings without splitting
+
+Q7: What happens when the DFS function tries all split points but none return true?
+1. It tries different character frequencies
+2. It returns false and stores this result in memo
+3. It starts over with swapped parameters
+4. It increases the recursion depth limit

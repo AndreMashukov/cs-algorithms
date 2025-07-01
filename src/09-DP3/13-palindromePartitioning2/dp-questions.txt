@@ -1,0 +1,43 @@
+Problem: Palindrome Partitioning II (Dynamic Programming)
+
+Q1: What is the purpose of the isPalin[i][j] table in the DP solution?
+1. To store the minimum cuts for each substring
+2. To precompute which substrings are palindromes for O(1) lookup
+3. To track the optimal partition points
+4. To count the number of palindromes in the string
+
+Q2: How do we fill the isPalin table for palindromes of length 3 and more?
+1. Check if first and last characters match and inner substring is palindrome
+2. Compare all characters one by one
+3. Use recursion to check smaller palindromes
+4. Apply the KMP algorithm for pattern matching
+
+Q3: What does dp[i] represent in the DP array?
+1. Whether s[0:i+1] is a palindrome
+2. The number of palindromes ending at position i
+3. The minimum cuts needed to partition s[0:i+1]
+4. The length of longest palindrome ending at i
+
+Q4: In the DP transition, when is dp[i] set to 0?
+1. When position i is the start of string
+2. When s[0:i+1] is already a complete palindrome
+3. When we can't find any valid cuts
+4. When i equals the string length
+
+Q5: In the inner loop where we try cuts at position j, what condition must be satisfied?
+1. j must be greater than i
+2. s[j+1:i+1] must be a palindrome
+3. dp[j] must be minimum so far
+4. j must be a multiple of 2
+
+Q6: What's the time complexity advantage of precomputing the palindrome table?
+1. Reduces overall complexity from O(n³) to O(n²)
+2. Eliminates the need for memoization
+3. Makes palindrome checks O(1) instead of O(n)
+4. Allows for parallel processing of subproblems
+
+Q7: For the transition dp[i] = min(dp[i], dp[j] + 1), why do we add 1 to dp[j]?
+1. To account for the palindrome at position j
+2. To represent the cut made after position j
+3. To handle 1-indexed array positions
+4. To ensure minimum value is always positive

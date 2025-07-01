@@ -1,0 +1,59 @@
+Problem: Maximum Subarray (Recursive Example)
+
+Input: nums = [4, -1, 2]
+Goal: Find maximum subarray sum
+
+Step-by-Step Execution:
+
+1. Initial Call: solve(0, 2)
+   - Range: [4, -1, 2] (left=0, right=2)
+   - Since left ≠ right, proceed with divide and conquer
+
+2. Divide Phase:
+   - mid = (0 + 2) / 2 = 1
+   - Split into two halves:
+     * Left half: solve(0, 1) → range [4, -1]
+     * Right half: solve(2, 2) → range [2]
+
+3. Solve Left Half: solve(0, 1)
+   - Range: [4, -1] (left=0, right=1)
+   - mid = (0 + 1) / 2 = 0
+   - Further split:
+     * solve(0, 0) → returns nums[0] = 4
+     * solve(1, 1) → returns nums[1] = -1
+   - Calculate crossing sum for range [4, -1]:
+     * maxLeftSum: start at nums[0] = 4
+     * maxRightSum: start at nums[1] = -1
+     * crossingSum = 4 + (-1) = 3
+   - Result: max(4, -1, 3) = 4
+
+4. Solve Right Half: solve(2, 2)
+   - Base case: left = right = 2
+   - Return nums[2] = 2
+
+5. Calculate Crossing Sum for solve(0, 2):
+   - Find maxLeftSum starting from mid=1:
+     * Start with nums[1] = -1
+     * Extend left: nums[1] + nums[0] = -1 + 4 = 3
+     * maxLeftSum = max(-1, 3) = 3
+   
+   - Find maxRightSum starting from mid+1=2:
+     * Only nums[2] = 2
+     * maxRightSum = 2
+   
+   - crossingSum = maxLeftSum + maxRightSum = 3 + 2 = 5
+
+6. Final Comparison:
+   - leftMax = 4 (from left half)
+   - rightMax = 2 (from right half)  
+   - crossingSum = 5 (crossing the middle)
+   - Result: max(4, 2, 5) = 5
+
+Output: 5
+
+The maximum subarray is [4, -1, 2] with sum = 5.
+
+Key Insights:
+- The recursive approach considers all possible subarrays by dividing the problem
+- The crossing sum calculation captures subarrays that span across the division point
+- Memoization would cache results like solve(0,1)=4 for reuse in future calls

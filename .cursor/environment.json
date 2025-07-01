@@ -1,0 +1,6 @@
+{
+  "snapshot": "snapshot-20250524-7cf6d627-dec0-4eb0-a4c6-bda670ab087c",
+  "install": "yarn install",
+  "start": "yarn test",
+  "terminals": []
+}

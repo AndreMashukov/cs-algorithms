@@ -1,0 +1,54 @@
+Problem: Palindrome Partitioning II (Dynamic Programming)
+Input: s = "aab"
+
+Step-by-Step DP Construction:
+
+Step 1: Build Palindrome Table
+Initial isPalin table (3x3):
+  0 1 2
+0 T F F
+1 F T F  
+2 F F T
+
+Length 1 (single characters): All True on diagonal
+Length 2: Check s[0]=s[1] → 'a'='a' → isPalin[0][1] = True
+Length 3: Check s[0]=s[2] → 'a'≠'b' → isPalin[0][2] = False
+
+Final isPalin table:
+  0 1 2
+0 T T F
+1 F T F
+2 F F T
+
+Step 2: Initialize DP Array
+dp = [Infinity, Infinity, Infinity]
+
+Step 3: Fill DP Array
+
+i = 0: Processing s[0:1] = "a"
+- isPalin[0][0] = True, so dp[0] = 0
+- DP: [0, Infinity, Infinity]
+
+i = 1: Processing s[0:2] = "aa"  
+- isPalin[0][1] = True, so dp[1] = 0
+- DP: [0, 0, Infinity]
+
+i = 2: Processing s[0:3] = "aab"
+- isPalin[0][2] = False, so try cuts:
+  
+  j = 0: Check if s[1:3] = "ab" is palindrome
+  - isPalin[1][2] = False, skip
+  
+  j = 1: Check if s[2:3] = "b" is palindrome  
+  - isPalin[2][2] = True
+  - dp[2] = min(Infinity, dp[1] + 1) = min(Infinity, 0 + 1) = 1
+  
+- DP: [0, 0, 1]
+
+Step 4: Final Result
+dp[2] = 1
+
+The DP solution shows:
+- dp[0] = 0: "a" needs 0 cuts (already palindrome)
+- dp[1] = 0: "aa" needs 0 cuts (already palindrome)  
+- dp[2] = 1: "aab" needs 1 cut (split as "aa" | "b")

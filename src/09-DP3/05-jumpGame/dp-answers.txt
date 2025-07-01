@@ -1,0 +1,22 @@
+Problem: Jump Game (Dynamic Programming)
+
+A1: b) Whether position i is reachable from the start
+Explanation: dp[i] is a boolean value indicating whether we can reach position i starting from index 0. It tracks reachability rather than distances or jump lengths.
+
+A2: b) Only dp[0] set to true, others false
+Explanation: We initialize dp[0] = true because the starting position is always reachable, and all other positions are set to false initially since we haven't determined their reachability yet.
+
+A3: c) The farthest position reachable so far
+Explanation: The 'farthest' variable maintains the maximum index that can be reached from any position processed so far, representing the boundary of our reachable zone.
+
+A4: b) When the current position is greater than farthest
+Explanation: If we encounter a position i where i > farthest, it means we cannot reach position i, so we're stuck and cannot proceed further to reach the end.
+
+A5: b) From end to start (right to left)
+Explanation: The bottom-up approach works backwards from the target position, determining which positions can reach the current "last good position" and updating it accordingly.
+
+A6: b) If lastGoodPosition equals 0
+Explanation: If after processing all positions backwards, the lastGoodPosition becomes 0 (the starting position), it means we can reach the end from the start.
+
+A7: b) We only need to track the maximum reachable position
+Explanation: The greedy insight is that we don't need to know all possible paths - just tracking the farthest reachable position at each step is sufficient to determine if the end is reachable.

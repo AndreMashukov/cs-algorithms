@@ -1,0 +1,57 @@
+Problem: Maximum Subarray (Dynamic Programming Example)
+
+Input: nums = [4, -1, 2]
+Goal: Find maximum subarray sum using Kadane's Algorithm
+
+Step-by-Step Execution:
+
+1. Initialization:
+   - maxEndingHere = nums[0] = 4
+   - maxSoFar = nums[0] = 4
+   - Array: [4, -1, 2]
+           ^
+   - Current position: index 0
+
+2. Process index 1 (element = -1):
+   - Decision: extend previous subarray OR start new subarray?
+   - Option 1: extend → maxEndingHere + nums[1] = 4 + (-1) = 3
+   - Option 2: start new → nums[1] = -1
+   - Choose: max(3, -1) = 3 (extend previous subarray)
+   - maxEndingHere = 3
+   - maxSoFar = max(4, 3) = 4 (no update)
+   - Current subarray: [4, -1] with sum = 3
+
+3. Process index 2 (element = 2):
+   - Decision: extend previous subarray OR start new subarray?
+   - Option 1: extend → maxEndingHere + nums[2] = 3 + 2 = 5
+   - Option 2: start new → nums[2] = 2
+   - Choose: max(5, 2) = 5 (extend previous subarray)
+   - maxEndingHere = 5
+   - maxSoFar = max(4, 5) = 5 (update global maximum)
+   - Current subarray: [4, -1, 2] with sum = 5
+
+4. Algorithm Complete:
+   - Final maxSoFar = 5
+
+DP Array Visualization (explicit version):
+Index: [0, 1, 2]
+nums:  [4, -1, 2]
+dp:    [4, 3, 5]
+
+Where dp[i] = maximum subarray sum ending at position i:
+- dp[0] = 4 (subarray: [4])
+- dp[1] = 3 (subarray: [4, -1])  
+- dp[2] = 5 (subarray: [4, -1, 2])
+
+Key Decision Points:
+- At index 1: 3 > -1, so extend [4] to [4, -1]
+- At index 2: 5 > 2, so extend [4, -1] to [4, -1, 2]
+
+Output: 5
+
+The maximum subarray is [4, -1, 2] with sum = 5.
+
+Key Insights:
+- The algorithm maintains the maximum sum ending at each position
+- At each step, it decides whether to "continue" or "restart" based on which gives a better sum
+- The global maximum tracks the best sum seen across all positions

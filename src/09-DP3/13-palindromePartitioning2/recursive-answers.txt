@@ -1,0 +1,22 @@
+Problem: Palindrome Partitioning II (DFS with Memoization)
+
+Q1: 1
+The 'start' parameter indicates the starting index of the current substring we're trying to partition.
+
+Q2: 2
+We only consider substrings that are palindromes as valid pieces for partitioning.
+
+Q3: 3
+We add 1 when we need to make a cut to separate the current palindrome from the remaining string.
+
+Q4: 2
+Base case occurs when start >= n, meaning we've successfully processed the entire string.
+
+Q5: 2
+Memoization stores the minimum cuts needed for each starting position to avoid recomputation.
+
+Q6: 1
+When end=1, we get palindrome "aa" and recursively solve for remaining substring "b" starting at position 2.
+
+Q7: 2
+memo[1] stores the minimum cuts needed to partition the substring starting from index 1 to the end.

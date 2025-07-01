@@ -1,0 +1,36 @@
+Problem: Jump Game (Recursive with Memoization)
+
+A1: b) When the current position is greater than or equal to the target
+Explanation: The base case for success occurs when position >= target, 
+  meaning we've reached or overshot the last index. 
+  This indicates that the target is reachable 
+  from the starting position.
+
+A2: b) The function returns false immediately
+Explanation: When nums[position] equals 0, 
+  it means we cannot make any jump from this position, so we're stuck.
+  The function immediately caches and returns 
+  false since no further progress is possible.
+
+A3: b) By trying jumps from 1 up to maxJump
+Explanation: The recursive function uses a for loop (for jump = 1; jump <= maxJump; jump++) 
+  to systematically try every possible jump length 
+  from the current position, exploring 
+  all potential paths.
+
+A4: c) Whether the target is reachable from each position
+Explanation: The memoization cache stores boolean values indicating whether the target (last index) 
+  is reachable from each specific position, 
+  avoiding redundant calculations 
+  for the same position.
+
+A5: a) When any jump from that position leads to a reachable path
+Explanation: As soon as one successful path is found (any jump that eventually reaches the target), the function caches 'true' for that position and returns immediately, since we only need to know if it's possible, not all possible ways.
+
+A6: b) To represent the last index we want to reach
+Explanation: The 'target' variable stores nums.length - 1, which is the index of the last element in the array. This is the position we need to reach to solve the problem successfully.
+
+A7: b) By avoiding redundant computation of the same subproblems
+Explanation: Memoization stores results for each position, 
+so if the same position is encountered again during recursion (from different paths), 
+the cached result is returned instead of recomputing the entire subtree.
