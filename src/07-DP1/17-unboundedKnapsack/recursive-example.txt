@@ -1,0 +1,30 @@
+Example Walkthrough for Unbounded Knapsack (DFS with Memoization)
+
+Consider the input:
+Profit: [4, 4, 7, 1]
+Weight: [5, 2, 3, 1]
+Capacity: 8
+
+Step-by-step Execution:
+
+1. Start DFS from item 0 with full capacity 8:
+   - Try including item 0: Profit = 4 + DFS(item 0, capacity 3)
+   - Try excluding item 0: Profit = DFS(item 1, capacity 8)
+
+2. DFS(item 0, capacity 3):
+   - Try including item 0: Profit = 4 + DFS(item 0, capacity -2) (not possible)
+   - Try excluding item 0: Profit = DFS(item 1, capacity 3)
+
+3. Continue this process, caching results in the memoization map.
+
+4. Base case reached when all items are considered or capacity is zero, returning 0.
+
+5. Use cached results to avoid redundant calculations.
+
+6. Final result is the maximum profit calculated from the initial DFS call.
+
+Memoization Updates:
+- Cache results for each state to optimize recursive calls.
+- Example: memo['0-8'] = 18, memo['1-8'] = 14, etc.
+
+This approach efficiently calculates the maximum profit by exploring all possible item combinations and caching results to avoid redundant calculations. 

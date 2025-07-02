@@ -1,84 +1,43 @@
-// https://neetcode.io/problems/unboundedKnapsack
-// You are given a list of items,
-// each with a weight and a profit, along with a backpack
-// with a specified maximum capacity.
-//  Your goal is to calculate the maximum profit you can achieve
-//  without exceeding the backpack's capacity.
-// You must select items such that the total weight of the items
-// is less than or equal to the backpack's capacity.
-// Assume you can select each item up to an unlimited n
-// umber of times.
+// Problem: Unbounded Knapsack
+// LeetCode URL: https://neetcode.io/problems/unboundedKnapsack
+// Problem Description:
+// You are given a list of items, each with a weight and a profit, along with a backpack
+// with a specified maximum capacity. Your goal is to calculate the maximum profit you can achieve
+// without exceeding the backpack's capacity. You must select items such that the total weight of the items
+// is less than or equal to the backpack's capacity. Assume you can select each item up to an unlimited number of times.
 
-// Input:
-// profit = [4, 4, 7, 1]
-// weight = [5, 2, 3, 1]
-// capacity = 8
+/**
+ * @param {number[]} profit - Array of item profits
+ * @param {number[]} weight - Array of item weights
+ * @param {number} capacity - Max capacity of the knapsack
+ * @return {number} - Maximum profit achievable
+ */
+function unboundedKnapsack_dp(profit, weight, capacity) {
+  const n = profit.length; // Number of items
+  const dp = Array.from({ length: n }, () => Array(capacity + 1).fill(0)); // DP array to store max profit
 
-// Output:
-// 18
+  for (let c = 1; c <= capacity; c++) { // Initialize first row
+    dp[0][c] = weight[0] <= c ? profit[0] * Math.floor(c / weight[0]) : 0; // Max profit for item 0
+  }
 
-class Solution {
-  /**
-   * @param {<Array<number>} profit - Array of item profits
-   * @param {<Array<number>} weight - Array of item weights
-   * @param {number} capacity - Max capacity of the knapsack
-   * @returns {number} - Maximum profit achievable
-   */
-  maximumProfitDp (profit, weight, capacity) {
-    // Number of items
-    const n = profit.length
-    // Memo to store subproblem results: key -> 'index-capacity'
-    const dp = Array.from({ length: n }, () => Array(capacity + 1).fill(0))
-
-    // Initialize first row
-    // we will overwrite this row in the next loop
-    for (let c = 1; c <= capacity; c++) {
-      dp[0][c] = weight[0] <= c ? profit[0] * Math.floor(c / weight[0]) : 0;
-    }
-
-    // console.log(dp)
-    // [                | <- capacity = 5 = weight[0]
-    //  [0, 0, 0, 0, 0, 4, 4, 4, 4]
-    //  [0, 0, 0, 0, 0, 0, 0, 0, 0]
-    //  [0, 0, 0, 0, 0, 0, 0, 0, 0]
-    //  [0, 0, 0, 0, 0, 0, 0, 0, 0]
-    // ]
-    // first row is filled with the profit of the first item
-    // if the weight of the first item is less than the capacity,
-    // then the profit is the profit of the first item
-    // times the number of times the first item can fit in the capacity
-    // if the weight of the first item is greater than the capacity,
-    // then the profit is 0
-    
-
-    // Fill the dp table
-    for (let i = 1; i < n; i++) {
-      for (let c = 1; c <= capacity; c++) {
-        // If current item can fit, choose max of including or excluding
-        if (weight[i] <= c) {
-          dp[i][c] = Math.max(
-            profit[i] + dp[i][c - weight[i]],
-            dp[i - 1][c]
-          )
-        } else {
-          // Skip current item
-          dp[i][c] = dp[i - 1][c]
-        }
+  for (let i = 1; i < n; i++) { // Iterate over items
+    for (let c = 1; c <= capacity; c++) { // Iterate over capacities
+      if (weight[i] <= c) { // If current item can fit
+        dp[i][c] = Math.max(
+          profit[i] + dp[i][c - weight[i]], // Include current item
+          dp[i - 1][c] // Exclude current item
+        );
+      } else {
+        dp[i][c] = dp[i - 1][c]; // Skip current item
       }
     }
-
-    // Return the result
-    return dp[n - 1][capacity]
   }
+
+  return dp[n - 1][capacity]; // Return max profit for full capacity
 }
 
-const solution = new Solution()
-
-const profit = [4, 4, 7, 1]
-const weight = [5, 2, 3, 1]
-const capacity = 8
-
-console.log(solution.maximumProfitDp(profit, weight, capacity))
+// Example Usage:
+console.log(unboundedKnapsack_dp([4, 4, 7, 1], [5, 2, 3, 1], 8)); // Output: 18
 
 // weights = [1, 3, 4]
 // profits = [15, 50, 60]

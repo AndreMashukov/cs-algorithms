@@ -1,0 +1,30 @@
+Example Walkthrough for Unbounded Knapsack (DP Approach)
+
+Consider the input:
+Profit: [4, 4, 7, 1]
+Weight: [5, 2, 3, 1]
+Capacity: 8
+
+Step-by-step Execution:
+
+1. Initialize DP array with dimensions (number of items) x (capacity + 1), all values set to 0.
+
+2. Fill the first row for item 0:
+   - For each capacity, calculate the maximum profit by including item 0 as many times as it fits.
+   - Example: dp[0][5] = 4, dp[0][6] = 4, dp[0][7] = 4, dp[0][8] = 8
+
+3. Iterate over each item and capacity:
+   - For item 1 and capacity 5:
+     - Include item 1: Profit = 4 + dp[1][3] = 8
+     - Exclude item 1: Profit = dp[0][5] = 4
+     - Maximum profit: dp[1][5] = 8
+
+4. Continue this process for all items and capacities, updating the DP array.
+
+5. Final result is dp[lastItem][capacity], the maximum profit for the given capacity.
+
+DP Array Updates:
+- Visualize the DP array updates at each step.
+- Example: dp[1][5] = 8, dp[2][8] = 14, etc.
+
+This approach systematically calculates the maximum profit by iterating over each item and capacity, ensuring optimal profit calculation. 

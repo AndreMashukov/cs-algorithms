@@ -1,0 +1,43 @@
+Problem: Unbounded Knapsack (DP Approach)
+
+Q1: What does the DP array represent in this problem?
+1. The total number of items
+2. The maximum profit up to each capacity
+3. The number of times each item is used
+4. The minimum weight for each capacity
+
+Q2: How is the profit for a capacity calculated in the DP approach?
+1. It is set to zero
+2. It remains the same as the previous capacity
+3. It is calculated based on the current item and previous capacities
+4. It is doubled
+
+Q3: What is the purpose of the nested loops in the DP approach?
+1. To store the profits of items
+2. To iterate over items and capacities
+3. To calculate the total profit
+4. To store the weights of items
+
+Q4: How does the DP approach handle different items?
+1. By using a loop to try each item
+2. By selecting the most profitable item
+3. By ignoring heavier items
+4. By using only the first item
+
+Q5: What is the final result of the DP approach?
+1. The total number of items used
+2. The maximum profit for the given capacity
+3. The minimum weight for the last capacity
+4. The number of items considered
+
+Q6: How is the profit for including an item calculated?
+1. By adding the profit to the previous capacity's profit
+2. By adding the profit to the profit of the same capacity
+3. By subtracting the profit from the current capacity's profit
+4. By multiplying the profit by the number of items
+
+Q7: Why is the DP approach suitable for this problem?
+1. It is faster than DFS
+2. It allows for systematic profit calculation
+3. It uses less memory
+4. It avoids recursion 
