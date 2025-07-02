@@ -22,6 +22,19 @@
 // Input: days = [1,4,6,7,8,20], costs = [2,7,15]
 // Output: 11
 
+// Example 2:
+
+// Input: days = [1,2,3,4,5,6,7,8,9,10,30,31], costs = [2,7,15]
+// Output: 17
+
+// Constraints:
+
+// 1 <= days.length <= 365
+// 1 <= days[i] <= 365
+// days is in strictly increasing order.
+// costs.length == 3
+// 1 <= costs[i] <= 1000
+
 /**
  * Calculate the minimum cost of tickets required to travel on all specified days
  * using top-down dynamic programming (DFS + memoization)
@@ -30,9 +43,9 @@
  * @param {number[]} costs - The costs of 1-day, 7-day, and 30-day passes
  * @return {number} - The minimum cost to cover all travel days
  */
-const minCostTickets = (days, costs) => {
+function minCostTickets_dfs(days, costs) {
   // Memoization map to store already computed results
-  const map = new Map();
+  const memo = new Map();
 
   /**
    * DFS function to find minimum cost starting from a particular day index
@@ -46,8 +59,8 @@ const minCostTickets = (days, costs) => {
     }
     
     // Return cached result if available
-    if (map.has(i)) {
-      return map.get(i);
+    if (memo.has(i)) {
+      return memo.get(i);
     }
 
     // Initialize with infinity to find minimum
@@ -57,30 +70,31 @@ const minCostTickets = (days, costs) => {
 
     // Try each type of pass (1-day, 7-day, 30-day)
     for (let j = 0; j < costs.length; j++) {
-      let nextDay = i;
+      let nextDay = i; // Start from the current day index
       // Calculate the last day covered by this pass
       const expiry = days[i] + durations[j] - 1;
       
       // Find the next day that's not covered by this pass
       while (nextDay < days.length && days[nextDay] <= expiry) {
-        nextDay++;
+        nextDay++; // Move to the next day
       }
       
       // Current pass cost + minimum cost for remaining days
       res = Math.min(res, costs[j] + dfs(nextDay));
     }
 
-    // Cache the resulta
-    map.set(i, res);
-    return res;
+    // Cache the result
+    memo.set(i, res);
+    return res; // Return the minimum cost from this index
   };
 
   // Start DFS from the first day
   return dfs(0);
-};
+}
 
-console.log(minCostTickets([1,4,6,7,8,20], [2,7,15]));
-
+// Example Usage:
+console.log(minCostTickets_dfs([1,4,6,7,8,20], [2,7,15])); // Output: 11
+console.log(minCostTickets_dfs([1,2,3,4,5,6,7,8,9,10,30,31], [2,7,15])); // Output: 17
 
 // The nextDay variable is used to find the next day index 
 // that is NOT covered by the current pass we're considering purchasing. 
