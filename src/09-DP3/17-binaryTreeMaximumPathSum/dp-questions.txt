@@ -1,0 +1,43 @@
+Problem: Binary Tree Maximum Path Sum (Dynamic Programming)
+
+Q1: In the bottom-up DP approach, in what order are nodes processed?
+1. Level-order (breadth-first)
+2. Pre-order (root, left, right)
+3. Post-order (left, right, root)
+4. In-order (left, root, right)
+
+Q2: For a node with value 10 and children returning -5 and -3, what are leftContribution and rightContribution?
+1. -5 and -3 respectively
+2. 0 and 0 (both negative values ignored)
+3. 5 and 3 (absolute values)
+4. -5 and 0 (only right is ignored)
+
+Q3: What is the key difference between maxPathThroughNode and maxDownPath?
+1. maxPathThroughNode can include both children, maxDownPath can include only one
+2. They are always equal
+3. maxPathThroughNode is always larger
+4. maxDownPath includes parent nodes
+
+Q4: For the tree [5, 4, 8, 11, null, 13, 4, 7, 2], when processing node 11 with children 7 and 2, what is computed?
+1. maxPathThroughNode = 20, maxDownPath = 18
+2. maxPathThroughNode = 11, maxDownPath = 11
+3. maxPathThroughNode = 18, maxDownPath = 11
+4. maxPathThroughNode = 9, maxDownPath = 7
+
+Q5: Why is globalMax initialized to -Infinity instead of 0?
+1. To handle cases where all node values are negative
+2. To count the number of nodes
+3. It's a convention in JavaScript
+4. To optimize the algorithm
+
+Q6: When processing a leaf node with value -10, what does computeMaxPath return?
+1. 0 (ignore negative values)
+2. -10 (the node value itself)
+3. 10 (absolute value)
+4. -Infinity (initial value)
+
+Q7: For a node with value 1, if left child returns 2 and right child returns 3, what is the final globalMax after processing this node?
+1. 3 (the maximum child value)
+2. 5 (1 + max(2, 3))
+3. 6 (1 + 2 + 3)
+4. 4 (1 + 3)

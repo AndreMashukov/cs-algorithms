@@ -1,0 +1,22 @@
+Problem: Unbounded Knapsack (DFS with Memoization)
+
+Q1: 2
+The memoization map caches already computed results to avoid redundant calculations.
+
+Q2: 2
+The base case is when all items are considered or capacity is zero, meaning no more profit can be added.
+
+Q3: 2
+The remaining capacity is updated by subtracting the weight of the current item when it is included.
+
+Q4: 2
+The variable 'profit1' represents the profit including the current item in the calculation.
+
+Q5: 1
+The DFS function uses a loop to try each item and calculates the profit accordingly.
+
+Q6: 2
+If a result is already cached, the DFS function returns the cached result to save computation time.
+
+Q7: 2
+The DFS approach is suitable because it allows for easy memoization, which optimizes the recursive solution. 

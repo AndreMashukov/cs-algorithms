@@ -1,0 +1,162 @@
+Word Break II - Dynamic Programming Approach Example Walkthrough
+
+Problem: Given string s = "catsand" and wordDict = ["cat", "cats", "and", "sand"]
+Goal: Find all possible sentences using bottom-up DP
+
+Input:
+- s = "catsand" (length n = 7)
+- wordDict = ["cat", "cats", "and", "sand"]
+- wordSet = {"cat", "cats", "and", "sand"}
+
+DP Array Initialization:
+- dp = new Array(8) // indices 0 to 7
+- dp[7] = [""] // Base case: empty string after end
+
+Step-by-step DP computation (i from 6 down to 0):
+
+=== i = 6 ===
+Processing position 6, remaining substring = "d"
+dp[6] = []
+
+Try j = 7: word = s.substring(6, 7) = "d"
+  wordSet.has("d") = false ❌
+
+dp[6] = [] (no valid words)
+
+=== i = 5 ===
+Processing position 5, remaining substring = "nd" 
+dp[5] = []
+
+Try j = 6: word = s.substring(5, 6) = "n"
+  wordSet.has("n") = false ❌
+Try j = 7: word = s.substring(5, 7) = "nd"
+  wordSet.has("nd") = false ❌
+
+dp[5] = [] (no valid words)
+
+=== i = 4 ===
+Processing position 4, remaining substring = "and"
+dp[4] = []
+
+Try j = 5: word = s.substring(4, 5) = "a"
+  wordSet.has("a") = false ❌
+Try j = 6: word = s.substring(4, 6) = "an"
+  wordSet.has("an") = false ❌
+Try j = 7: word = s.substring(4, 7) = "and"
+  wordSet.has("and") = true ✅
+  dp[7].length > 0 = true ✅
+  
+  For each sentence in dp[7] = [""]:
+    sentence = ""
+    sentence === "" → dp[4].push("and")
+  
+dp[4] = ["and"]
+
+=== i = 3 ===
+Processing position 3, remaining substring = "sand"
+dp[3] = []
+
+Try j = 4: word = s.substring(3, 4) = "s"
+  wordSet.has("s") = false ❌
+Try j = 5: word = s.substring(3, 5) = "sa"
+  wordSet.has("sa") = false ❌
+Try j = 6: word = s.substring(3, 6) = "san"
+  wordSet.has("san") = false ❌
+Try j = 7: word = s.substring(3, 7) = "sand"
+  wordSet.has("sand") = true ✅
+  dp[7].length > 0 = true ✅
+  
+  For each sentence in dp[7] = [""]:
+    sentence = ""
+    sentence === "" → dp[3].push("sand")
+
+dp[3] = ["sand"]
+
+=== i = 2 ===
+Processing position 2, remaining substring = "tsand"
+dp[2] = []
+
+Try j = 3: word = s.substring(2, 3) = "t"
+  wordSet.has("t") = false ❌
+Try j = 4: word = s.substring(2, 4) = "ts"
+  wordSet.has("ts") = false ❌
+Try j = 5: word = s.substring(2, 5) = "tsa"
+  wordSet.has("tsa") = false ❌
+Try j = 6: word = s.substring(2, 6) = "tsan"
+  wordSet.has("tsan") = false ❌
+Try j = 7: word = s.substring(2, 7) = "tsand"
+  wordSet.has("tsand") = false ❌
+
+dp[2] = [] (no valid words)
+
+=== i = 1 ===
+Processing position 1, remaining substring = "atsand"
+dp[1] = []
+
+Try j = 2: word = s.substring(1, 2) = "a"
+  wordSet.has("a") = false ❌
+Try j = 3: word = s.substring(1, 3) = "at"
+  wordSet.has("at") = false ❌
+Try j = 4: word = s.substring(1, 4) = "ats"
+  wordSet.has("ats") = false ❌
+Try j = 5: word = s.substring(1, 5) = "atsa"
+  wordSet.has("atsa") = false ❌
+Try j = 6: word = s.substring(1, 6) = "atsan"
+  wordSet.has("atsan") = false ❌
+Try j = 7: word = s.substring(1, 7) = "atsand"
+  wordSet.has("atsand") = false ❌
+
+dp[1] = [] (no valid words)
+
+=== i = 0 ===
+Processing position 0, remaining substring = "catsand"
+dp[0] = []
+
+Try j = 1: word = s.substring(0, 1) = "c"
+  wordSet.has("c") = false ❌
+Try j = 2: word = s.substring(0, 2) = "ca"
+  wordSet.has("ca") = false ❌
+Try j = 3: word = s.substring(0, 3) = "cat"
+  wordSet.has("cat") = true ✅
+  dp[3].length > 0 = true ✅ (dp[3] = ["sand"])
+  
+  For each sentence in dp[3] = ["sand"]:
+    sentence = "sand"
+    sentence !== "" → dp[0].push("cat" + " " + "sand") = "cat sand"
+
+Try j = 4: word = s.substring(0, 4) = "cats"
+  wordSet.has("cats") = true ✅
+  dp[4].length > 0 = true ✅ (dp[4] = ["and"])
+  
+  For each sentence in dp[4] = ["and"]:
+    sentence = "and"
+    sentence !== "" → dp[0].push("cats" + " " + "and") = "cats and"
+
+Try j = 5: word = s.substring(0, 5) = "catsa"
+  wordSet.has("catsa") = false ❌
+Try j = 6: word = s.substring(0, 6) = "catsan"
+  wordSet.has("catsan") = false ❌
+Try j = 7: word = s.substring(0, 7) = "catsand"
+  wordSet.has("catsand") = false ❌
+
+dp[0] = ["cat sand", "cats and"]
+
+=== Final DP Array State ===
+dp[0] = ["cat sand", "cats and"]
+dp[1] = []
+dp[2] = []
+dp[3] = ["sand"]
+dp[4] = ["and"]
+dp[5] = []
+dp[6] = []
+dp[7] = [""]
+
+=== Final Result ===
+Return dp[0] = ["cat sand", "cats and"]
+
+Key Observations:
+1. DP builds solutions from right to left (end to beginning)
+2. dp[i] depends on dp[j] where j > i
+3. Base case dp[n] = [""] enables sentence construction
+4. Only positions that can form valid words have non-empty dp arrays
+5. Final answer is stored in dp[0] - all sentences from the beginning

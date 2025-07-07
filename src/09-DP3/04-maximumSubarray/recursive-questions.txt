@@ -1,0 +1,43 @@
+Problem: Maximum Subarray (Recursive with Memoization)
+
+Q1: What is the base case condition in the recursive solution?
+a) When the left pointer is greater than the right pointer
+b) When the array has negative numbers
+c) When left equals right (single element)
+d) When the memoization cache is full
+
+Q2: What does the crossingSum calculation represent in the divide and conquer approach?
+a) The sum of elements in the left half only
+b) The sum of elements in the right half only  
+c) The maximum subarray sum that spans across the middle point
+d) The minimum possible sum in the array
+
+Q3: How is the memoization key constructed in this solution?
+a) Using only the left boundary value
+b) Using only the right boundary value
+c) Using the string format "left-right" 
+d) Using the middle point value
+
+Q4: In the crossing sum calculation, what is computed first?
+a) The maximum sum extending right from mid+1
+b) The maximum sum extending left from mid
+c) The total array sum
+d) The middle element value
+
+Q5: When finding maxLeftSum, the algorithm iterates in which direction?
+a) From left boundary to middle (left to right)
+b) From middle to left boundary (right to left)
+c) From middle to right boundary
+d) Random order doesn't matter
+
+Q6: What determines the final result returned by the solve function?
+a) Always the crossing sum
+b) Always the left half maximum
+c) The maximum of leftMax, rightMax, and crossingSum
+d) The sum of all three values
+
+Q7: Why is memoization necessary in this recursive approach?
+a) To handle negative numbers correctly
+b) To avoid recomputing results for overlapping subranges
+c) To ensure the algorithm runs in linear time
+d) To store the original array values

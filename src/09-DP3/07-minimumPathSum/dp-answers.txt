@@ -1,0 +1,22 @@
+Problem: Minimum Path Sum (Dynamic Programming)
+
+A1: a) All cells set to infinity except dp[0][0] = grid[0][0]
+Explanation: Initialize DP array with zeros, then set dp[0][0] = grid[0][0] as the starting position. The first row and column are then properly initialized based on this starting value.
+
+A2: b) Accumulate sums from left: dp[0][j] = dp[0][j-1] + grid[0][j]
+Explanation: First row cells can only be reached from the left, so we accumulate the path sum: each cell equals the previous cell's sum plus its own value.
+
+A3: b) dp[i][j] = min(dp[i-1][j], dp[i][j-1]) + grid[i][j]
+Explanation: The minimum path sum to reach (i,j) equals the current cell value plus the minimum of the paths from above or from left.
+
+A4: b) A 1D array containing minimum path sums from the row above
+Explanation: The prev[] array stores the minimum path sums from the previous row, allowing us to compute the current row using O(n) space instead of O(m*n).
+
+A5: b) Accumulate sums from top: dp[i][0] = dp[i-1][0] + grid[i][0]
+Explanation: First column cells can only be reached from above, so we accumulate the path sum: each cell equals the cell above plus its own value.
+
+A6: c) O(1) excluding input space
+Explanation: In-place DP modifies the original grid directly without allocating additional data structures, achieving constant extra space complexity.
+
+A7: b) curr[j] = grid[i][j] + min(prev[j], curr[j-1])
+Explanation: Current cell equals its grid value plus the minimum of the path from above (prev[j]) or from left (curr[j-1]) in the current row.

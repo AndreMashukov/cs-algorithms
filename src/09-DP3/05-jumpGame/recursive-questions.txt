@@ -1,0 +1,43 @@
+Problem: Jump Game (Recursive with Memoization)
+
+Q1: What is the base case that indicates successful completion in the recursive solution?
+a) When the current position equals 0
+b) When the current position is greater than or equal to the target
+c) When the maximum jump value is 0
+d) When the memoization cache is full
+
+Q2: What happens when nums[position] equals 0 in the recursive function?
+a) The function continues to the next position
+b) The function returns false immediately
+c) The function tries a different approach
+d) The position is marked as visited
+
+Q3: How does the recursive function explore all possible paths from a position?
+a) By trying jumps from maxJump down to 1
+b) By trying jumps from 1 up to maxJump
+c) By jumping to random positions
+d) By always making the maximum jump
+
+Q4: What gets stored in the memoization cache?
+a) The jump lengths from each position
+b) The path taken to reach each position
+c) Whether the target is reachable from each position
+d) The maximum jump possible from each position
+
+Q5: When does the function cache a 'true' result for a position?
+a) When any jump from that position leads to a reachable path
+b) When all jumps from that position are explored
+c) When the position has a non-zero jump value
+d) When the position is within bounds
+
+Q6: What is the purpose of the 'target' variable in the recursive solution?
+a) To store the maximum jump length
+b) To represent the last index we want to reach
+c) To count the number of jumps made
+d) To track the current position
+
+Q7: How does memoization improve the efficiency of the recursive approach?
+a) By reducing the number of positions to check
+b) By avoiding redundant computation of the same subproblems
+c) By storing the optimal path
+d) By sorting the positions beforehand

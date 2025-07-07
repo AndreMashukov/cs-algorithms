@@ -1,0 +1,44 @@
+Problem: Jump Game II (DP approach)
+
+Q1: What does `dp[i]` represent in the `jumpGameII_dp` function?
+1. The maximum jump length from index i.
+2. Whether index i is reachable or not.
+3. The minimum number of jumps to reach index i from the starting position.
+4. The farthest index reachable from index i.
+
+Q2: Why is `dp[0]` initialized to 0?
+1. Because the first element is always 0.
+2. To prevent array out-of-bounds errors.
+3. Because no jumps are needed to reach the starting position (we're already there).
+4. Because we can't jump from the starting position.
+
+Q3: In the nested loops, what does the condition `if (dp[i] === Infinity) continue;` accomplish?
+1. It handles the case when nums[i] is 0.
+2. It optimizes memory usage.
+3. It prevents infinite loops.
+4. It skips positions that are unreachable from the starting position.
+
+Q4: What does the line `dp[nextIndex] = Math.min(dp[nextIndex], dp[i] + 1)` accomplish?
+1. It calculates the average jumps needed.
+2. It counts the total number of ways to reach nextIndex.
+3. It updates dp[nextIndex] with the minimum jumps needed: either the current value or dp[i] + 1 
+  (one more jump from position i).
+4. It finds the maximum jumps to reach nextIndex.
+
+Q5: Why do we iterate `for (let jump = 1; jump <= nums[i]; jump++)` instead of just considering the maximum jump?
+1. To validate that all jumps are legal.
+2. To calculate the sum of all possible jumps.
+3. Because sometimes a shorter jump leads to a better overall path with fewer total jumps.
+4. To find all possible paths, not just the longest jump.
+
+Q6: If `nums = [2,3,1,1,4]`, what will be the final values in the `dp` array?
+1. [0, 1, 1, 2, 2]
+2. [0, 2, 3, 1, 4]
+3. [2, 3, 1, 1, 4]
+4. [0, Infinity, Infinity, Infinity, Infinity]
+
+Q7: What is the time complexity of this DP approach?
+1. O(n log n) due to the sorting involved.
+2. O(1) constant time.
+3. O(n²) because for each position i, we might check up to n positions that can be reached.
+4. O(n) where n is the length of nums. 

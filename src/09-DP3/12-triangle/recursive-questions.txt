@@ -1,0 +1,43 @@
+Problem: Triangle (DFS with Memoization)
+
+Q1: In the DFS solution, when we're at position (row, col), what are the two possible moves we can make to continue down the triangle?
+1. Move to (row+1, col) and (row+1, col-1)
+2. Move to (row+1, col) and (row+1, col+1) 
+3. Move to (row-1, col) and (row-1, col+1)
+4. Move to (row+1, col-1) and (row+1, col+2)
+
+Q2: What does the memoization key represent in the recursive solution?
+1. The minimum path sum from that position to the bottom
+2. The current triangle value at that position
+3. The unique identifier for position (row, col)
+4. The number of paths from that position
+
+Q3: In the base case when we reach the last row, what value do we return?
+1. The minimum value in the entire last row
+2. The sum of all values in the current path
+3. Zero to indicate end of path
+4. The triangle value at the current position
+
+Q4: Why do we add triangle[row][col] to the minimum of the two recursive calls?
+1. To accumulate the path sum including current position's value
+2. To ensure we don't skip any triangle elements
+3. To maintain the triangle structure constraints
+4. To handle negative numbers in the triangle
+
+Q5: What happens when we call dfs(0, 0) at the start?
+1. We calculate the sum of the entire first row
+2. We begin computing minimum path from triangle's top to bottom
+3. We initialize the memoization for all positions
+4. We validate the triangle structure
+
+Q6: If triangle = [[1],[2,3],[4,5,6]], what values get computed first in the recursive calls?
+1. The values in the middle row (2,3)
+2. The values in the last row (4,5,6)
+3. The value at position (0,0) which is 1
+4. The minimum values across all rows
+
+Q7: In the memoization map, what does memo.get("2-1") represent after computation?
+1. The value 5 from triangle[2][1]
+2. The minimum path sum from position (2,1) to the bottom
+3. The number of ways to reach position (2,1)
+4. The maximum possible sum from position (2,1)
