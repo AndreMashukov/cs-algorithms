@@ -1,0 +1,22 @@
+Problem: Best Time to Buy and Sell Stock III (Dynamic Programming)
+
+Q1: 2
+dp[i][j][k] represents the maximum profit on day i with j transactions completed and k holding state (0=not holding, 1=holding).
+
+Q2: 2
+dp[0][0][1] = -prices[0] because if we're holding stock on day 0, we must have bought it, spending prices[0] money.
+
+Q3: 2
+dp[i-1][j-1][1] + prices[i] represents selling stock we held from day i-1 on day i, which completes transaction j.
+
+Q4: 4
+The condition "if (j > 0)" prevents accessing dp[i-1][j-1][1] when j=0, which would be dp[i-1][-1][1] (invalid index).
+
+Q5: 2
+'buy1' represents the maximum profit after buying the first stock (negative value since we spent money).
+
+Q6: 2
+We update in reverse order to avoid using values that were updated in the same iteration, ensuring we use previous day's values.
+
+Q7: 3
+We return the maximum of dp[n-1][0][0], dp[n-1][1][0], dp[n-1][2][0] to get the best profit among all possible transaction counts.

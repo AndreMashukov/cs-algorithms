@@ -1,0 +1,22 @@
+Problem: Best Time to Buy and Sell Stock III (DFS with Memoization)
+
+Q1: 2
+The 'transactions' parameter represents the number of completed buy-sell pairs, where each pair counts as one transaction.
+
+Q2: 1
+Day 2, holding stock (1), with 1 transaction completed would be represented as "2-1-1".
+
+Q3: 2
+We increment transactions by 1 when selling because selling stock completes a buy-sell transaction pair.
+
+Q4: 3
+When transactions >= 2, we return 0 because we've reached the maximum allowed transactions and no more profit is possible.
+
+Q5: 2
+With holding=0 and transactions=1, we can either buy at the current price (4) or skip this day.
+
+Q6: 1
+We don't increment transactions when buying because buying only starts a transaction - it's not completed until we sell.
+
+Q7: 1
+Each memoization key is unique and will only be computed once due to memoization, so there's only 1 recursive call per key.

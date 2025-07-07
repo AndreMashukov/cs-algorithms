@@ -1,0 +1,51 @@
+Problem: Binary Tree Maximum Path Sum (Recursive Example)
+
+Input: Tree [1, 2, 3]
+       1
+      / \
+     2   3
+
+Let's trace through the DFS starting from root:
+
+Step 1: dfs(root = 1)
+- Node value: 1
+- Call dfs(left child = 2)
+- Call dfs(right child = 3)
+- Need to calculate both recursive calls first
+
+Step 2: dfs(node = 2)
+- Node value: 2
+- Call dfs(left child = null) → returns 0
+- Call dfs(right child = null) → returns 0
+- leftMaxSum = max(0, 0) = 0
+- rightMaxSum = max(0, 0) = 0
+- currentPathSum = 2 + 0 + 0 = 2
+- globalMaxSum = max(-∞, 2) = 2
+- Return: 2 + max(0, 0) = 2
+
+Step 3: dfs(node = 3)
+- Node value: 3
+- Call dfs(left child = null) → returns 0
+- Call dfs(right child = null) → returns 0
+- leftMaxSum = max(0, 0) = 0
+- rightMaxSum = max(0, 0) = 0
+- currentPathSum = 3 + 0 + 0 = 3
+- globalMaxSum = max(2, 3) = 3
+- Return: 3 + max(0, 0) = 3
+
+Step 4: Back to dfs(root = 1)
+- Node value: 1
+- leftMaxSum = max(0, 2) = 2 (from left child)
+- rightMaxSum = max(0, 3) = 3 (from right child)
+- currentPathSum = 1 + 2 + 3 = 6 (path: 2 → 1 → 3)
+- globalMaxSum = max(3, 6) = 6
+- Return: 1 + max(2, 3) = 4
+
+Final Answer: 6
+
+The optimal path is 2 → 1 → 3 with sum 6.
+
+Key Points:
+- Each node considers paths through itself (including both children)
+- Each node returns the best single-direction path for its parent
+- The global maximum tracks the best path found anywhere in the tree

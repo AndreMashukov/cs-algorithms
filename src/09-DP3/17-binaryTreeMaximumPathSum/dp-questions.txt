@@ -1,0 +1,43 @@
+Problem: Binary Tree Maximum Path Sum (Dynamic Programming)
+
+Q1: What traversal method is used in the DP solution and why?
+1. Pre-order traversal to process parents before children
+2. In-order traversal to process nodes in sorted order
+3. Post-order traversal to process children before parents
+4. Level-order traversal to process nodes level by level
+
+Q2: What does the dpDown Map store for each node?
+1. The maximum path sum in the entire subtree rooted at that node
+2. The maximum path sum starting from that node going downward
+3. The number of nodes in the subtree rooted at that node
+4. The depth of the node in the tree
+
+Q3: In the explicit DP approach, what does maxThroughPath represent?
+1. The maximum path that goes through the node connecting both subtrees
+2. The maximum path that starts from the node and goes down
+3. The maximum path that ends at the node coming from above
+4. The maximum path that goes around the node
+
+Q4: Why do we need both maxDownPath and maxThroughPath in the explicit DP approach?
+1. maxDownPath is for parents to use, maxThroughPath is for global maximum
+2. maxDownPath is for left children, maxThroughPath is for right children
+3. maxDownPath is for positive sums, maxThroughPath is for negative sums
+4. maxDownPath is for internal nodes, maxThroughPath is for leaf nodes
+
+Q5: How does the DP approach handle negative path sums?
+1. It ignores all negative values completely
+2. It uses Math.max(0, sum) to avoid including negative contributions
+3. It converts negative values to positive
+4. It removes nodes with negative values from the tree
+
+Q6: What is the time complexity of the DP solution?
+1. O(n log n) where n is the number of nodes
+2. O(n²) where n is the number of nodes
+3. O(n) where n is the number of nodes
+4. O(h) where h is the height of the tree
+
+Q7: In the calculation "node.val + Math.max(0, leftState.maxDownPath) + Math.max(0, rightState.maxDownPath)", what constraint does this satisfy?
+1. It ensures the path sum is always positive
+2. It ensures we include both subtrees in the path
+3. It ensures we only include beneficial (non-negative) subtree contributions
+4. It ensures the path doesn't exceed a certain length

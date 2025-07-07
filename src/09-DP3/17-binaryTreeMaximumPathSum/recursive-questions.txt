@@ -1,0 +1,43 @@
+Problem: Binary Tree Maximum Path Sum (DFS with Memoization)
+
+Q1: What does the recursive function return, and how is it different from the global maximum?
+1. It returns the global maximum path sum in the entire tree
+2. It returns the maximum path sum starting from current node going down in one direction
+3. It returns the sum of all nodes in the current subtree
+4. It returns the maximum path sum passing through the current node
+
+Q2: Why do we use Math.max(0, dfs(node.left)) instead of just dfs(node.left)?
+1. To ensure we don't include negative path sums that would decrease our total
+2. To prevent null pointer exceptions
+3. To handle the case when left child doesn't exist
+4. To ensure the path sum is always positive
+
+Q3: In the calculation "node.val + leftMaxSum + rightMaxSum", what type of path does this represent?
+1. A path that goes down from current node to left subtree
+2. A path that goes down from current node to right subtree
+3. A path that passes through current node connecting left and right subtrees
+4. A path that goes up from current node to its parent
+
+Q4: Why can the function only return "node.val + Math.max(leftMaxSum, rightMaxSum)" and not "node.val + leftMaxSum + rightMaxSum"?
+1. Because we want to minimize the path sum
+2. Because a path can only go in one direction to be extended by parent nodes
+3. Because we can only choose one child at a time
+4. Because adding both would cause stack overflow
+
+Q5: When processing a node with value -5, left subtree max path 10, and right subtree max path 3, what gets returned to the parent?
+1. -5 + 10 + 3 = 8
+2. -5 + max(10, 3) = 5
+3. max(10, 3) = 10
+4. -5 + max(0, max(10, 3)) = 5
+
+Q6: What happens when we encounter a node where both left and right subtrees have negative maximum path sums?
+1. We return 0 to ignore this node completely
+2. We return the node's value only
+3. We return the less negative of the two subtree sums
+4. We return negative infinity
+
+Q7: In the tree [-1, -2, -3], what will be the final global maximum path sum?
+1. -1 (just the root)
+2. -2 (just the left child)
+3. -3 (just the right child)
+4. -6 (sum of all nodes)

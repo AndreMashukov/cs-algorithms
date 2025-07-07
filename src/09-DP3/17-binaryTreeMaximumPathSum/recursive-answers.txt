@@ -1,0 +1,22 @@
+Problem: Binary Tree Maximum Path Sum (DFS with Memoization)
+
+Q1: 2
+The recursive function returns the maximum path sum starting from current node going down in one direction, which can be used by parent nodes to form larger paths.
+
+Q2: 1
+Math.max(0, dfs(node.left)) ensures we don't include negative path sums that would decrease our total - we can choose not to include them.
+
+Q3: 3
+"node.val + leftMaxSum + rightMaxSum" represents a path that passes through the current node, connecting the left and right subtrees.
+
+Q4: 2
+We can only return one direction because a path must be linear - if we returned both directions, the parent couldn't extend it into a valid path.
+
+Q5: 2
+We return -5 + max(10, 3) = 5, choosing the better subtree to extend the path upward.
+
+Q6: 2
+When both subtrees have negative sums, we return just the node's value since including negative sums would only decrease the total.
+
+Q7: 1
+The global maximum will be -1 (just the root node), as it's the least negative single node value.

@@ -1,0 +1,53 @@
+Problem: Best Time to Buy and Sell Stock II (Recursive Example)
+
+Input: prices = [1, 2, 3]
+
+Let's trace through dfs(0, 0) - starting at day 0 without holding stock:
+
+Step 1: dfs(0, 0)
+- We're at day 0 with price 1, not holding stock
+- Options:
+  - Buy today: -1 + dfs(1, 1) 
+  - Skip today: dfs(1, 0)
+- We need to calculate both recursive calls
+
+Step 2: Calculate dfs(1, 1) - day 1, holding stock
+- We're at day 1 with price 2, holding stock
+- Options:
+  - Sell today: 2 + dfs(2, 0)
+  - Keep holding: dfs(2, 1)
+
+Step 3: Calculate dfs(2, 0) - day 2, not holding stock
+- We're at day 2 with price 3, not holding stock
+- Options:
+  - Buy today: -3 + dfs(3, 1)
+  - Skip today: dfs(3, 0)
+
+Step 4: Calculate dfs(3, 1) and dfs(3, 0)
+- Both return 0 (base case: day >= prices.length)
+- So dfs(2, 0) = max(-3 + 0, 0) = 0
+
+Step 5: Back to dfs(2, 1) - day 2, holding stock
+- Options:
+  - Sell today: 3 + dfs(3, 0) = 3 + 0 = 3
+  - Keep holding: dfs(3, 1) = 0
+- dfs(2, 1) = max(3, 0) = 3
+
+Step 6: Back to dfs(1, 1)
+- Sell today: 2 + dfs(2, 0) = 2 + 0 = 2
+- Keep holding: dfs(2, 1) = 3
+- dfs(1, 1) = max(2, 3) = 3
+
+Step 7: Calculate dfs(1, 0) - day 1, not holding stock
+- Buy today: -2 + dfs(2, 1) = -2 + 3 = 1
+- Skip today: dfs(2, 0) = 0
+- dfs(1, 0) = max(1, 0) = 1
+
+Step 8: Back to dfs(0, 0)
+- Buy today: -1 + dfs(1, 1) = -1 + 3 = 2
+- Skip today: dfs(1, 0) = 1
+- dfs(0, 0) = max(2, 1) = 2
+
+Final Answer: 2
+
+The optimal strategy is: Buy at price 1, sell at price 3 for profit of 2.

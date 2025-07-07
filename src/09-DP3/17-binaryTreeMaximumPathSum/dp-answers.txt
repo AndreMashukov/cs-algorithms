@@ -1,0 +1,22 @@
+Problem: Binary Tree Maximum Path Sum (Dynamic Programming)
+
+Q1: 3
+Post-order traversal is used because we need to calculate results for children before we can determine the optimal path for the parent.
+
+Q2: 2
+The dpDown Map stores the maximum path sum starting from each node going downward, which can be used by parent nodes.
+
+Q3: 1
+maxThroughPath represents the maximum path that goes through the node, potentially connecting both left and right subtrees.
+
+Q4: 1
+maxDownPath is used by parent nodes to extend paths upward, while maxThroughPath is used to update the global maximum.
+
+Q5: 2
+The DP approach uses Math.max(0, sum) to avoid including negative contributions that would decrease the total path sum.
+
+Q6: 3
+The time complexity is O(n) where n is the number of nodes, since we visit each node exactly once.
+
+Q7: 3
+This calculation ensures we only include beneficial (non-negative) subtree contributions to maximize the path sum.

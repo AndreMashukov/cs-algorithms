@@ -1,0 +1,43 @@
+Problem: Best Time to Buy and Sell Stock III (Dynamic Programming)
+
+Q1: What does dp[i][j][k] represent in the 3D DP table?
+1. Maximum profit on day i with j stocks held and k transactions
+2. Maximum profit on day i with j transactions completed and k holding state
+3. The price of stock on day i for j-th transaction and k-th attempt
+4. The decision to buy/sell on day i for j-th transaction
+
+Q2: Why is dp[0][0][1] initialized to -prices[0]?
+1. Because we lose money on the first day
+2. Because we bought stock on day 0, spending prices[0]
+3. Because we set it to negative to indicate holding
+4. Because it represents the minimum possible profit
+
+Q3: In the transition dp[i][j][0] = max(dp[i-1][j][0], dp[i-1][j-1][1] + prices[i]), what does dp[i-1][j-1][1] + prices[i] represent?
+1. Buying stock on day i-1 and selling on day i
+2. Completing a transaction by selling stock held from day i-1 on day i
+3. The profit from j-1 transactions plus today's price
+4. The cumulative profit from all previous transactions
+
+Q4: What is the purpose of the condition "if (j > 0)" when updating dp[i][j][0]?
+1. To ensure we don't go below zero transactions
+2. To prevent selling when we haven't completed any transactions
+3. To ensure we can't complete more transactions than we started
+4. To avoid accessing dp[i-1][j-1][1] when j=0
+
+Q5: In the optimized state machine solution, what does the variable 'buy1' represent?
+1. The price we paid for the first stock
+2. The maximum profit after buying the first stock
+3. Whether we should buy the first stock
+4. The day we bought the first stock
+
+Q6: Why do we update the state variables in reverse order (sell2, buy2, sell1, buy1) in the optimized solution?
+1. To process transactions in chronological order
+2. To avoid using updated values from the same iteration
+3. To ensure sell operations happen before buy operations
+4. To maintain the constraint of at most 2 transactions
+
+Q7: What is the final answer returned by the 3D DP solution?
+1. dp[n-1][2][0] only
+2. dp[n-1][2][1] only
+3. The maximum of dp[n-1][0][0], dp[n-1][1][0], dp[n-1][2][0]
+4. The sum of all dp[n-1][j][0] values

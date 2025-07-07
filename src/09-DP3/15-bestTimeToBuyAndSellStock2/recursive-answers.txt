@@ -1,0 +1,22 @@
+Problem: Best Time to Buy and Sell Stock II (DFS with Memoization)
+
+Q1: 2
+When holding equals 1, it means we currently own a share of stock that we can either sell or continue holding.
+
+Q2: 1
+At day 2 with holding=0, we don't currently own stock, so we can either buy at the current price (5) or skip this day.
+
+Q3: 2
+The negative sign represents spending money to buy stock, and dfs(day + 1, 1) continues the recursion assuming we now hold stock.
+
+Q4: 2
+Day 3 with holding stock would be represented as "3-1" in the memoization key format.
+
+Q5: 3
+On the last day while holding stock, we must sell it at the current price (4) since we cannot hold stock beyond the array bounds.
+
+Q6: 2
+The base case returns 0 because when we've gone beyond the array bounds, no more transactions are possible.
+
+Q7: 2
+Starting with dfs(0, 0) means we're at day 0 without holding stock, so we decide whether to buy at price 1 or skip day 0.

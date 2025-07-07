@@ -1,0 +1,53 @@
+Problem: Binary Tree Maximum Path Sum (DP Example)
+
+Input: Tree [1, 2, 3]
+       1
+      / \
+     2   3
+
+Let's trace through the DP solution using post-order traversal:
+
+Step 1: Process node 2 (left child)
+- Node value: 2
+- leftDownSum = postOrderTraversal(null) = 0
+- rightDownSum = postOrderTraversal(null) = 0
+- currentDownSum = 2 + max(0, max(0, 0)) = 2
+- dpDown.set(node2, 2)
+- currentThroughSum = 2 + max(0, 0) + max(0, 0) = 2
+- globalMaxSum = max(-∞, 2) = 2
+- Return: 2
+
+Step 2: Process node 3 (right child)
+- Node value: 3
+- leftDownSum = postOrderTraversal(null) = 0
+- rightDownSum = postOrderTraversal(null) = 0
+- currentDownSum = 3 + max(0, max(0, 0)) = 3
+- dpDown.set(node3, 3)
+- currentThroughSum = 3 + max(0, 0) + max(0, 0) = 3
+- globalMaxSum = max(2, 3) = 3
+- Return: 3
+
+Step 3: Process node 1 (root)
+- Node value: 1
+- leftDownSum = 2 (from Step 1)
+- rightDownSum = 3 (from Step 2)
+- currentDownSum = 1 + max(0, max(2, 3)) = 1 + 3 = 4
+- dpDown.set(node1, 4)
+- currentThroughSum = 1 + max(0, 2) + max(0, 3) = 1 + 2 + 3 = 6
+- globalMaxSum = max(3, 6) = 6
+- Return: 4
+
+Final DP Table:
+Node | dpDown Value | Meaning
+  2  |      2       | Max path down from node 2 is 2
+  3  |      3       | Max path down from node 3 is 3  
+  1  |      4       | Max path down from node 1 is 4 (1→3)
+
+Final Answer: 6
+
+The DP solution builds up the answer by:
+1. Computing optimal downward paths for each node
+2. Considering paths through each node (connecting both subtrees)
+3. Tracking the global maximum across all possible paths
+
+The optimal path 2 → 1 → 3 has sum 6.
