@@ -1,0 +1,43 @@
+Problem: Best Time to Buy and Sell Stock III (DFS with Memoization)
+
+Q1: In the recursive function dfs(day, transactions, holding), when does the 'transactions' parameter get incremented?
+1. When we buy stock
+2. When we sell stock
+3. When we skip a day
+4. When we hold stock for multiple days
+
+Q2: For prices = [3, 3, 5, 0, 0, 3, 1, 4], what happens when dfs(5, 2, false) is called?
+1. It explores buying at price 3
+2. It returns 0 immediately because we've already made 2 transactions
+3. It continues to explore more transactions
+4. It throws an error for exceeding transaction limit
+
+Q3: When holding = false and we choose to buy, why is the recursive call dfs(day + 1, transactions, true)?
+1. Buying completes a transaction
+2. Buying starts a transaction but doesn't complete it
+3. We need to track partial transactions
+4. The transaction count should be doubled
+
+Q4: For prices = [1, 4, 2], starting from dfs(0, 0, false), which path leads to the maximum profit?
+1. Skip day 0, skip day 1, skip day 2
+2. Buy day 0, sell day 1, skip day 2
+3. Skip day 0, buy day 1, sell day 2
+4. Buy day 0, hold day 1, sell day 2
+
+Q5: What is the significance of checking 'if (transactions === 2)' as a base case?
+1. It prevents us from making more than 2 complete buy-sell pairs
+2. It counts the number of days we've processed
+3. It limits the number of stocks we can hold
+4. It ensures we buy exactly 2 times
+
+Q6: For prices = [1, 2, 3, 4], when computing dfs(1, 0, true), what are the two options explored?
+1. Buy more stock or skip
+2. Sell at price 2 or continue holding
+3. Start a new transaction or wait
+4. Calculate profit or loss
+
+Q7: In the memoization key `${day},${transactions},${holding}`, why do we need all three components?
+1. To track the total profit at each state
+2. To ensure unique identification of each subproblem state
+3. To count the number of function calls
+4. To store the buying and selling prices

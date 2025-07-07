@@ -1,0 +1,47 @@
+Binary Tree Maximum Path Sum - Recursive Example
+
+Let's trace through the recursive solution with a simple example:
+       2
+      / \
+    -1   3
+
+Initial: globalMax = -Infinity
+
+Step 1: dfs(root: 2)
+- Need to compute dfs(left: -1) and dfs(right: 3) first
+
+Step 2: dfs(node: -1) [left child]
+- This is a leaf node (no children)
+- leftMax = Math.max(0, dfs(null)) = Math.max(0, 0) = 0
+- rightMax = Math.max(0, dfs(null)) = Math.max(0, 0) = 0
+- maxThroughNode = -1 + 0 + 0 = -1
+- Update globalMax = Math.max(-Infinity, -1) = -1
+- maxPathDown = -1 + Math.max(0, 0) = -1
+- Return: -1
+
+Step 3: dfs(node: 3) [right child]
+- This is a leaf node (no children)
+- leftMax = Math.max(0, dfs(null)) = 0
+- rightMax = Math.max(0, dfs(null)) = 0
+- maxThroughNode = 3 + 0 + 0 = 3
+- Update globalMax = Math.max(-1, 3) = 3
+- maxPathDown = 3 + Math.max(0, 0) = 3
+- Return: 3
+
+Step 4: Back to dfs(root: 2)
+- leftMax = Math.max(0, -1) = 0 (ignore negative contribution)
+- rightMax = Math.max(0, 3) = 3
+- maxThroughNode = 2 + 0 + 3 = 5
+- Update globalMax = Math.max(3, 5) = 5
+- maxPathDown = 2 + Math.max(0, 3) = 2 + 3 = 5
+- Return: 5
+
+Final Result: globalMax = 5
+
+The optimal path is: 2 → 3 (going from root to right child)
+
+Key Observations:
+1. The left child (-1) returns -1, but we ignore it (treat as 0) when calculating the parent's path
+2. The globalMax is updated at each node with the best path through that node
+3. The maximum path (value 5) includes the root, demonstrating why we need globalMax
+4. Memoization would store: {node(-1): -1, node(3): 3, node(2): 5}

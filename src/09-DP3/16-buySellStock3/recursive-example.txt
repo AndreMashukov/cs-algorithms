@@ -1,0 +1,66 @@
+Best Time to Buy and Sell Stock III - Recursive Example
+
+Let's trace through the recursive solution with a simple example: prices = [1, 4, 2]
+
+Initial call: dfs(0, 0, false)
+- Start at day 0, 0 transactions completed, not holding stock
+
+Step 1: dfs(0, 0, false)
+- At day 0, no transactions yet, not holding
+- Option 1: Buy → -1 + dfs(1, 0, true)
+- Option 2: Skip → dfs(1, 0, false)
+
+Step 2: Exploring buy path: dfs(1, 0, true)
+- At day 1, no complete transactions, holding stock
+- Option 1: Sell → 4 + dfs(2, 1, false) [completes 1st transaction]
+- Option 2: Hold → dfs(2, 0, true) [no transaction completed]
+
+Step 3: From selling at day 1: dfs(2, 1, false)
+- At day 2, 1 transaction done, not holding
+- Option 1: Buy → -2 + dfs(3, 1, true)
+- Option 2: Skip → dfs(3, 1, false)
+
+Step 4: Base cases when day >= 3:
+- dfs(3, 1, true) returns 0
+- dfs(3, 1, false) returns 0
+
+Backtracking from Step 3:
+- Buy: -2 + 0 = -2
+- Skip: 0
+- dfs(2, 1, false) = max(-2, 0) = 0
+
+Step 5: From holding at day 1: dfs(2, 0, true)
+- At day 2, no complete transactions, holding
+- Option 1: Sell → 2 + dfs(3, 1, false) = 2 + 0 = 2
+- Option 2: Hold → dfs(3, 0, true) = 0
+- dfs(2, 0, true) = max(2, 0) = 2
+
+Backtracking to Step 2:
+- Sell path: 4 + 0 = 4
+- Hold path: 2
+- dfs(1, 0, true) = max(4, 2) = 4
+
+Step 6: Exploring skip path from day 0: dfs(1, 0, false)
+- At day 1, no transactions, not holding
+- Option 1: Buy → -4 + dfs(2, 0, true) = -4 + 2 = -2
+- Option 2: Skip → dfs(2, 0, false)
+
+Step 7: dfs(2, 0, false)
+- At day 2, no transactions, not holding
+- Option 1: Buy → -2 + dfs(3, 0, true) = -2 + 0 = -2
+- Option 2: Skip → dfs(3, 0, false) = 0
+- dfs(2, 0, false) = max(-2, 0) = 0
+
+Back to Step 6:
+- dfs(1, 0, false) = max(-2, 0) = 0
+
+Final calculation:
+- Buy path from day 0: -1 + 4 = 3
+- Skip path from day 0: 0
+- dfs(0, 0, false) = max(3, 0) = 3
+
+Result: Maximum profit is 3
+Achieved by: Buy at day 0 (price 1), sell at day 1 (price 4)
+Only 1 transaction used (could use up to 2)
+
+Note: With at most 2 transactions allowed, the algorithm explores all possibilities but finds that using just 1 transaction gives the optimal result for this example.

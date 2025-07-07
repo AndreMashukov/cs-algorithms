@@ -1,0 +1,55 @@
+Binary Tree Maximum Path Sum - Dynamic Programming Example
+
+Let's trace through the DP solution with the same example:
+       2
+      / \
+    -1   3
+
+Initial: globalMax = -Infinity
+
+The bottom-up DP processes nodes in post-order: left, right, root
+
+Step 1: computeMaxPath(node: -1) [left child]
+- Process children first (both null)
+- leftMaxPath = computeMaxPath(null) = 0
+- rightMaxPath = computeMaxPath(null) = 0
+- leftContribution = Math.max(0, 0) = 0
+- rightContribution = Math.max(0, 0) = 0
+- maxPathThroughNode = -1 + 0 + 0 = -1
+- Update globalMax = Math.max(-Infinity, -1) = -1
+- maxDownPath = -1 + Math.max(0, 0) = -1
+- Return: -1
+
+Step 2: computeMaxPath(node: 3) [right child]
+- Process children first (both null)
+- leftMaxPath = computeMaxPath(null) = 0
+- rightMaxPath = computeMaxPath(null) = 0
+- leftContribution = Math.max(0, 0) = 0
+- rightContribution = Math.max(0, 0) = 0
+- maxPathThroughNode = 3 + 0 + 0 = 3
+- Update globalMax = Math.max(-1, 3) = 3
+- maxDownPath = 3 + Math.max(0, 0) = 3
+- Return: 3
+
+Step 3: computeMaxPath(root: 2)
+- Children already processed
+- leftMaxPath = -1 (from step 1)
+- rightMaxPath = 3 (from step 2)
+- leftContribution = Math.max(0, -1) = 0
+- rightContribution = Math.max(0, 3) = 3
+- maxPathThroughNode = 2 + 0 + 3 = 5
+- Update globalMax = Math.max(3, 5) = 5
+- maxDownPath = 2 + Math.max(0, 3) = 5
+- Return: 5
+
+Final Result: globalMax = 5
+
+Bottom-up DP Summary:
+1. Leaf nodes are processed first, establishing base values
+2. Parent nodes use already-computed child values
+3. Each node considers both:
+   - Complete path through it (for globalMax)
+   - Extensible path down (for parent's use)
+4. The optimal path (2 → 3) is identified when processing the root
+
+The DP approach ensures each subtree is fully processed before its parent, eliminating the need for explicit memoization as each node is visited exactly once.

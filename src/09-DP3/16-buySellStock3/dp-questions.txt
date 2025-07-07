@@ -1,0 +1,43 @@
+Problem: Best Time to Buy and Sell Stock III (Dynamic Programming)
+
+Q1: What does dp[3][1][0] represent in the context of this problem?
+1. The profit after 3 transactions on day 1
+2. The maximum profit on day 3 with at most 1 transaction completed, not holding stock
+3. The price on day 3 if we made 1 transaction
+4. Whether we can make a transaction on day 3
+
+Q2: For prices = [1, 3, 2, 4], what is the value of dp[1][1][0]?
+1. 0 (no transactions made)
+2. 2 (bought at 1, sold at 3)
+3. 3 (the price on day 1)
+4. -1 (cost of buying)
+
+Q3: When calculating dp[i][j][1], why do we use dp[i-1][j-1][0] - prices[i]?
+1. We're selling stock and completing transaction j
+2. We're buying stock, which will eventually become transaction j when sold
+3. We're canceling transaction j-1
+4. We're calculating the average price
+
+Q4: In the transition dp[i][j][0] = max(dp[i-1][j][0], dp[i-1][j][1] + prices[i]), what does the second term represent?
+1. Buying stock on day i
+2. Holding stock from yesterday
+3. Selling stock on day i
+4. Skipping day i entirely
+
+Q5: For prices = [3, 2, 1], why is dp[2][2][0] equal to 0?
+1. We made 2 profitable transactions
+2. No profitable transactions are possible with decreasing prices
+3. We're holding stock at the end
+4. The algorithm has a bug
+
+Q6: What is the initialization value of dp[0][2][1] and what does it mean?
+1. 0, meaning no stock owned
+2. -prices[0], meaning we bought stock on day 0
+3. prices[0], meaning the stock value
+4. 2, meaning two transactions allowed
+
+Q7: For prices = [1, 3, 0, 4], what sequence of actions produces dp[3][2][0] = 6?
+1. Buy at 1, sell at 3, buy at 0, sell at 4
+2. Skip day 0, buy at 3, sell at 0, buy at 4
+3. Buy at 1, sell at 4
+4. Buy at 0, sell at 4, buy at 1, sell at 3
