@@ -1,0 +1,22 @@
+Problem: Best Time to Buy and Sell Stock II (Dynamic Programming)
+
+Q1: 2
+dp[3][1] represents the maximum profit achievable by day 3 when we are currently holding stock. The second dimension [1] indicates the holding state.
+
+Q2: 2
+dp[1][0] = max(dp[0][0], dp[0][1] + prices[1]) = max(0, -1 + 2) = max(0, 1) = 1. This represents buying on day 0 at price 1 and selling on day 1 at price 2.
+
+Q3: 2
+This term represents buying stock on day i. We had no stock yesterday (dp[i-1][0]) and we spend prices[i] to buy stock today, transitioning to the holding state.
+
+Q4: 3
+dp[2][0] = max(dp[1][0], dp[1][1] + prices[2]) = max(0, -1 + 5) = max(0, 4) = 4. We achieve this by buying on day 1 (price 1) and selling on day 2 (price 5).
+
+Q5: 2
+dp[0][1] = -prices[0] because if we're holding stock on day 0, we must have bought it today, costing us prices[0]. The negative value represents the money spent.
+
+Q6: 1
+With decreasing prices [3, 2, 1], the optimal strategy is never to buy. dp[2][0] = 0 (no transactions). dp[2][1] = -1 (best case for holding is buying at the lowest price).
+
+Q7: 2
+We process each day sequentially from day 1 to n-1, and for each day, we compute both states: first dp[i][0] (not holding), then dp[i][1] (holding). This ensures we have all needed previous values.

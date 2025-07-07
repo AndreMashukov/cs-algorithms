@@ -1,0 +1,43 @@
+Problem: Pascal's Triangle (Dynamic Programming)
+
+Q1: In the DP approach, how are rows generated?
+1. All at once using a 2D array
+2. One by one, building each row using the previous row
+3. By computing individual elements randomly
+4. Using mathematical formulas for each element
+
+Q2: How are the first and last elements of each row handled?
+1. They are computed using the same formula as middle elements
+2. They are always set to 1
+3. They are copied from the previous row
+4. They are calculated using binomial coefficients
+
+Q3: For row 3, how is the element at position 1 computed?
+1. triangle[2][0] + triangle[2][1]
+2. triangle[1][0] + triangle[1][1]
+3. triangle[2][1] + triangle[2][2]
+4. Using a separate formula
+
+Q4: What is the space complexity of the DP approach?
+1. O(1) as we only store one row at a time
+2. O(n²) as we store the entire triangle
+3. O(n) as we only need the current row
+4. O(log n) due to the triangular structure
+
+Q5: How does the DP solution build each row?
+1. By copying the previous row and modifying it
+2. By creating a new row and filling positions sequentially
+3. By using matrix multiplication
+4. By applying a transformation to the previous row
+
+Q6: What is the relationship between adjacent elements in building new rows?
+1. Each element equals the element directly above it
+2. Each element equals the sum of the two elements above it
+3. Each element equals the product of adjacent elements
+4. Each element follows a fixed pattern
+
+Q7: How does the DP approach compare to the recursive approach?
+1. DP is slower but uses less memory
+2. DP avoids recomputation by building bottom-up
+3. DP and recursive have identical performance
+4. DP uses more complex logic but same time complexity

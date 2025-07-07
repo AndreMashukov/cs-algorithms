@@ -1,0 +1,9 @@
+Problem: Jump Game II (DFS with Memoization)
+
+Q1: 4
+Q2: 2
+Q3: 1
+Q4: 2
+Q5: 4
+Q6: 4
+Q7: 2 

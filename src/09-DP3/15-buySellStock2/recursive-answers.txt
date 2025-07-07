@@ -1,0 +1,22 @@
+Problem: Best Time to Buy and Sell Stock II (DFS with Memoization)
+
+Q1: 2
+The 'true' parameter indicates we are currently holding stock on day 3. The boolean parameter tracks our stock holding status at each day.
+
+Q2: 4
+From dfs(0, false), the algorithm explores both possibilities: buying stock (leading to dfs(1, true)) and skipping (leading to dfs(1, false)). Both branches are evaluated to find the maximum profit.
+
+Q3: 2
+When selling stock, prices[day] represents the money we receive from the sale. After selling, we transition to the state where we're not holding stock (false), so we continue with dfs(day + 1, false).
+
+Q4: 2
+Since all prices are decreasing, there's no opportunity to buy low and sell high for a profit. The optimal strategy is to never buy, resulting in 0 profit.
+
+Q5: 3
+At day 2 without stock, we have two choices: buy stock at price 5 (costing -5) and transition to holding stock, or skip buying and remain without stock. Both options are evaluated and the maximum is chosen.
+
+Q6: 2
+The key uniquely identifies each possible state in our recursion: which day we're on and whether we're holding stock. This prevents redundant calculations of the same subproblem.
+
+Q7: 2
+The path is: dfs(0, false) decides to buy → dfs(1, true) decides to hold → dfs(2, true). This represents buying on day 0 and still holding the stock on day 2.

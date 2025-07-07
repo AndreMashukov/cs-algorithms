@@ -1,0 +1,22 @@
+Problem: Palindrome Partitioning II (Dynamic Programming)
+
+Q1: 2
+The isPalin table precomputes palindrome information allowing O(1) palindrome checks during DP computation.
+
+Q2: 1
+For length 3+, we check if outer characters match and the inner substring is already confirmed palindrome.
+
+Q3: 3
+dp[i] represents the minimum number of cuts needed to partition the substring s[0:i+1] into palindromes.
+
+Q4: 2
+dp[i] = 0 when the entire substring s[0:i+1] is already a palindrome, requiring no cuts.
+
+Q5: 2
+We require that s[j+1:i+1] is a palindrome so we can make a valid cut after position j.
+
+Q6: 3
+Precomputation makes each palindrome check O(1) rather than O(n), significantly improving efficiency.
+
+Q7: 2
+Adding 1 represents the cut we make after position j to separate the palindrome s[j+1:i+1] from the prefix.

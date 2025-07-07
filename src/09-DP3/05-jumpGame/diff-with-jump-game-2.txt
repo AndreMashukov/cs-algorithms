@@ -1,0 +1,61 @@
+1. **Problem Objectives**:
+   - **Jump Game I** (Problem 55):
+     - Goal: Determine if you can reach the last index
+     - Returns: boolean (true/false)
+     - Question: "Can I reach the end?"
+
+   - **Jump Game II** (Problem 45):
+     - Goal: Find the minimum number of jumps to reach the last index
+     - Returns: number (minimum jumps)
+     - Question: "What's the shortest path to the end?"
+     - Guarantees that you can always reach the end
+
+2. **Key Constraints**:
+   - **Jump Game I**:
+     - Array length: 1 ≤ nums.length ≤ 10^4
+     - Jump values: 0 ≤ nums[i] ≤ 10^5
+     - May be impossible to reach the end (can return false)
+
+   - **Jump Game II**:
+     - Array length: 1 ≤ nums.length ≤ 10^4
+     - Jump values: 0 ≤ nums[i] ≤ 1000
+     - Guarantees that reaching the end is always possible
+     - Must find optimal (minimum) number of jumps
+
+3. **Solution Approach Differences**:
+   - **Jump Game I**:
+     - Uses DFS to find ANY valid path to the end
+     - Can stop as soon as any valid path is found
+     - Handles the case of being stuck (nums[i] = 0)
+     - Memoizes boolean results (can/cannot reach from position)
+
+   - **Jump Game II**:
+     - Uses DFS to find the SHORTEST path to the end
+     - Must explore all possible paths to find minimum
+     - Memoizes numerical results (minimum jumps from position)
+     - Initializes with Infinity and finds minimum
+
+4. **Example Illustration**:
+   For array `[2,3,1,1,4]`:
+   - **Jump Game I** asks: "Can I reach index 4?" → true
+   - **Jump Game II** asks: "What's the minimum jumps to reach index 4?" → 2 jumps
+
+5. **Base Cases**:
+   - **Jump Game I**:
+     ```javascript
+     if (position >= target) {
+         return true;
+     }
+     ```
+   - **Jump Game II**:
+     ```javascript
+     if (i >= n - 1) {
+         return 0;  // 0 additional jumps needed
+     }
+     ```
+
+The fundamental difference is that Jump Game I is a reachability problem 
+(existence of a path), 
+while Jump Game II is an optimization problem (finding the shortest path). 
+This leads to different return types, different base cases, 
+and different ways of handling the recursion and memoization.

@@ -1,0 +1,22 @@
+Problem: Binary Tree Maximum Path Sum (DFS with Memoization)
+
+Q1: 2
+The dfs function returns the maximum path sum that starts from the node and goes down (either through left, right, or just the node itself). This value can be used by parent nodes to extend the path upward.
+
+Q2: 1
+We use Math.max(0, dfs(node.left)) to ensure we only include positive contributions. If a subtree's maximum path sum is negative, we're better off not including it in our path at all.
+
+Q3: 3
+maxThroughNode = node.val + leftMax + rightMax = 5 + 3 + 7 = 15. This represents the complete path that goes through this node as the highest point, including both children.
+
+Q4: 2
+For [1, -2, 3], the root returns max(1 + 0, 1 + 3) = 4. The left child contributes 0 (since -2 is negative), and the right child contributes 3.
+
+Q5: 1
+The maximum path sum in the tree might be a path that doesn't include the root at all (e.g., a path entirely within a subtree). The globalMax tracks the best path found anywhere in the tree.
+
+Q6: 1
+A path is a sequence of connected nodes. When extending a path upward to a parent, we can only go in one direction - we cannot include both left and right paths as that would create a branching path, not a valid single path.
+
+Q7: 2
+The function returns node.val + Math.max(leftMax, rightMax) = -5 + Math.max(10, 8) = -5 + 10 = 5. This is the best path going down from this node for potential extension by parents.

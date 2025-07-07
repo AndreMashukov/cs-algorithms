@@ -1,0 +1,43 @@
+Problem: Minimum Cost For Tickets (DP Approach)
+
+Q1: What does the DP array represent in this problem?
+1. The total number of days
+2. The minimum cost up to each day
+3. The number of passes used
+4. The maximum cost for each day
+
+Q2: How is the cost for a non-travel day determined?
+1. It is set to zero
+2. It remains the same as the previous day
+3. It is calculated based on the next travel day
+4. It is doubled
+
+Q3: What is the purpose of the travelDays set?
+1. To store the costs of passes
+2. To keep track of travel days for quick lookup
+3. To calculate the total cost
+4. To store the durations of passes
+
+Q4: How does the DP approach handle different pass durations?
+1. By using a loop to try each pass
+2. By selecting the cheapest pass
+3. By ignoring longer passes
+4. By using only 1-day passes
+
+Q5: What is the final result of the DP approach?
+1. The total number of passes used
+2. The minimum cost to cover all travel days
+3. The maximum cost for the last day
+4. The number of travel days
+
+Q6: How is the cost for a 7-day pass calculated?
+1. By adding the cost to the previous day's cost
+2. By adding the cost to the cost 7 days before
+3. By subtracting the cost from the current day's cost
+4. By multiplying the cost by 7
+
+Q7: Why is the DP approach suitable for this problem?
+1. It is faster than DFS
+2. It allows for systematic cost calculation
+3. It uses less memory
+4. It avoids recursion 

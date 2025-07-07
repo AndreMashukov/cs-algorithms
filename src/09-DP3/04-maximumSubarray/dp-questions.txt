@@ -1,0 +1,43 @@
+Problem: Maximum Subarray (Dynamic Programming - Kadane's Algorithm)
+
+Q1: What does the variable maxEndingHere represent in Kadane's algorithm?
+a) The maximum sum found in the entire array so far
+b) The maximum sum of subarray ending at the current position
+c) The sum of all elements from start to current position
+d) The current element's value
+
+Q2: What decision is made at each step of the DP iteration?
+a) Whether to include the current element in any subarray
+b) Whether to extend the previous subarray or start a new one
+c) Whether to continue or terminate the algorithm
+d) Whether to update the global maximum
+
+Q3: In the DP state transition, when do we start a fresh subarray?
+a) When the current element is positive
+b) When maxEndingHere becomes negative
+c) When extending the previous subarray yields a smaller sum than starting fresh
+d) When we reach the middle of the array
+
+Q4: What is the relationship between maxEndingHere and maxSoFar?
+a) They are always equal
+b) maxEndingHere is always greater than maxSoFar
+c) maxSoFar tracks the best maxEndingHere value seen so far
+d) They represent completely different concepts
+
+Q5: In the explicit DP array version, what does dp[i] store?
+a) The sum of elements from index 0 to i
+b) The maximum subarray sum in the range [0, i]
+c) The maximum subarray sum ending exactly at position i
+d) The value of nums[i]
+
+Q6: How is the space complexity optimized in the space-efficient version?
+a) By using recursion instead of iteration
+b) By only keeping track of the previous dp value instead of the entire array
+c) By processing elements in reverse order
+d) By using mathematical formulas instead of computation
+
+Q7: What is the key insight that makes Kadane's algorithm work?
+a) Divide and conquer splits the problem optimally
+b) Negative prefixes should be discarded when building subarrays
+c) The maximum subarray always includes the middle element
+d) Sorting the array first simplifies the problem

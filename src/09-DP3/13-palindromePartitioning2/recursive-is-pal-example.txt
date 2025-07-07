@@ -1,0 +1,147 @@
+I'll explain the palindrome precomputation using the example `s = "ababa"` 
+to show how both for-loops work step by step.
+
+## Initial Setup
+
+```javascript
+s = "ababa"
+//   01234 (indices)
+
+// Step 1: Initialize isPal table and mark single characters
+isPal = [
+  [ true, false, false, false, false ],  // Row 0
+  [ false, true, false, false, false ],  // Row 1
+  [ false, false, true, false, false ],  // Row 2
+  [ false, false, false, true, false ],  // Row 3
+  [ false, false, false, false, true ]   // Row 4
+]
+```
+
+## Loop 1: Check for palindromes of length 2
+
+```javascript
+for (let i = 0; i < n - 1; i++) {
+  if (s[i] === s[i + 1]) {
+    isPal[i][i + 1] = true;
+  }
+}
+```
+
+**Step by step execution:**
+
+**i = 0:** Compare s[0] and s[1]
+- `s[0] = 'a'`, `s[1] = 'b'` 
+- `'a' !== 'b'` → No change
+
+**i = 1:** Compare s[1] and s[2]
+- `s[1] = 'b'`, `s[2] = 'a'`
+- `'b' !== 'a'` → No change
+
+**i = 2:** Compare s[2] and s[3]
+- `s[2] = 'a'`, `s[3] = 'b'`
+- `'a' !== 'b'` → No change
+
+**i = 3:** Compare s[3] and s[4]
+- `s[3] = 'b'`, `s[4] = 'a'`
+- `'b' !== 'a'` → No change
+
+**Result after Loop 1:**
+```javascript
+isPal = [
+  [ true, false, false, false, false ],
+  [ false, true, false, false, false ],
+  [ false, false, true, false, false ],
+  [ false, false, false, true, false ],
+  [ false, false, false, false, true ]
+]
+// No length-2 palindromes found in "ababa"
+```
+
+## Loop 2: Check for palindromes of length 3 and more
+
+```javascript
+for (let len = 3; len <= n; len++) {
+  for (let i = 0; i <= n - len; i++) {
+    const j = i + len - 1;
+    if (s[i] === s[j] && isPal[i + 1][j - 1]) {
+      isPal[i][j] = true;
+    }
+  }
+}
+```
+
+### **len = 3:** Check all 3-character substrings
+
+**i = 0:** Check substring "aba" (indices 0 to 2)
+- `j = 0 + 3 - 1 = 2`
+- `s[0] = 'a'`, `s[2] = 'a'` → `s[0] === s[2]` ✅
+- `isPal[0+1][2-1] = isPal[1][1] = true` ✅ (single char 'b')
+- **Set `isPal[0][2] = true`** ✅
+
+**i = 1:** Check substring "bab" (indices 1 to 3)
+- `j = 1 + 3 - 1 = 3`
+- `s[1] = 'b'`, `s[3] = 'b'` → `s[1] === s[3]` ✅
+- `isPal[1+1][3-1] = isPal[2][2] = true` ✅ (single char 'a')
+- **Set `isPal[1][3] = true`** ✅
+
+**i = 2:** Check substring "aba" (indices 2 to 4)
+- `j = 2 + 3 - 1 = 4`
+- `s[2] = 'a'`, `s[4] = 'a'` → `s[2] === s[4]` ✅
+- `isPal[2+1][4-1] = isPal[3][3] = true` ✅ (single char 'b')
+- **Set `isPal[2][4] = true`** ✅
+
+**Result after len = 3:**
+```javascript
+isPal = [
+  [ true, false, true, false, false ],   // "aba" found at [0][2]
+  [ false, true, false, true, false ],   // "bab" found at [1][3]
+  [ false, false, true, false, true ],   // "aba" found at [2][4]
+  [ false, false, false, true, false ],
+  [ false, false, false, false, true ]
+]
+```
+
+### **len = 4:** Check all 4-character substrings
+
+**i = 0:** Check substring "abab" (indices 0 to 3)
+- `j = 0 + 4 - 1 = 3`
+- `s[0] = 'a'`, `s[3] = 'b'` → `s[0] !== s[3]` ❌
+- Skip
+
+**i = 1:** Check substring "baba" (indices 1 to 4)
+- `j = 1 + 4 - 1 = 4`
+- `s[1] = 'b'`, `s[4] = 'a'` → `s[1] !== s[4]` ❌
+- Skip
+
+**Result after len = 4:** No changes
+
+### **len = 5:** Check the entire string
+
+**i = 0:** Check substring "ababa" (indices 0 to 4)
+- `j = 0 + 5 - 1 = 4`
+- `s[0] = 'a'`, `s[4] = 'a'` → `s[0] === s[4]` ✅
+- `isPal[0+1][4-1] = isPal[1][3] = true` ✅ (we found "bab" is palindrome)
+- **Set `isPal[0][4] = true`** ✅
+
+## Final Result
+
+```javascript
+isPal = [
+  [ true, false, true, false, true ],    // [0][0]="a", [0][2]="aba", [0][4]="ababa"
+  [ false, true, false, true, false ],   // [1][1]="b", [1][3]="bab"
+  [ false, false, true, false, true ],   // [2][2]="a", [2][4]="aba"
+  [ false, false, false, true, false ],  // [3][3]="b"
+  [ false, false, false, false, true ]   // [4][4]="a"
+]
+```
+
+## Key Insights
+
+1. **Building from smaller to larger:** We use previously computed palindromes to check larger ones
+2. **The condition:** `s[i] === s[j] && isPal[i + 1][j - 1]`
+   - First/last characters must match
+   - The substring between them must already be a palindrome
+3. **Dynamic programming:** Each computation builds on previous results
+4. **Efficiency:** We compute each palindrome check exactly once in O(n²) total time
+
+This precomputation eliminates the need for repeated O(n) palindrome checks during the main DFS algorithm!

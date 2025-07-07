@@ -1,0 +1,43 @@
+Problem: Minimum Cost For Tickets (DFS with Memoization)
+
+Q1: What is the purpose of the memoization map in the DFS approach?
+1. To store the days of travel
+2. To cache already computed results
+3. To keep track of costs
+4. To store the durations of passes
+
+Q2: What is the base case in the DFS function?
+1. When the cost is minimized
+2. When all days are covered
+3. When the memoization map is full
+4. When the pass duration is zero
+
+Q3: How is the next day index determined in the DFS approach?
+1. By incrementing the current index
+2. By finding the next uncovered day
+3. By checking the memoization map
+4. By calculating the cost
+
+Q4: What does the variable 'res' represent in the DFS function?
+1. The maximum cost
+2. The minimum cost
+3. The total number of days
+4. The number of passes used
+
+Q5: How does the DFS function handle different pass durations?
+1. By using a loop to try each pass
+2. By selecting the cheapest pass
+3. By ignoring longer passes
+4. By using only 1-day passes
+
+Q6: What happens if a result is already cached in the memoization map?
+1. The DFS function recalculates it
+2. The cached result is returned
+3. The function terminates
+4. The result is ignored
+
+Q7: Why is the DFS approach suitable for this problem?
+1. It is faster than DP
+2. It allows for easy memoization
+3. It uses less memory
+4. It avoids recursion 
