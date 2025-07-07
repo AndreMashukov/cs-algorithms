@@ -1,0 +1,43 @@
+Problem: Best Time to Buy and Sell Stock II (DFS with Memoization)
+
+Q1: When the recursive function dfs(3, true) is called for prices = [7, 1, 5, 3, 6, 4], what does the 'true' parameter represent?
+1. We have already made a profit on day 3
+2. We are currently holding stock on day 3
+3. We can buy stock on day 3
+4. The price on day 3 is higher than day 2
+
+Q2: For prices = [1, 2, 3, 4, 5], what is the first recursive call made from dfs(0, false)?
+1. dfs(1, true) to explore buying on day 0
+2. dfs(0, true) to check if we should buy
+3. dfs(1, false) to skip buying on day 0
+4. Both dfs(1, true) and dfs(1, false) are explored
+
+Q3: In the recursive solution, when holding = true, why do we calculate 'prices[day] + dfs(day + 1, false)' for the sell option?
+1. We subtract the buying price from the selling price
+2. prices[day] is the profit from selling, and we continue without stock
+3. We need to pay prices[day] to sell the stock
+4. It represents the total cost of all transactions
+
+Q4: For prices = [7, 6, 4, 3, 1], what value does dfs(0, false) ultimately return?
+1. -7 (the minimum loss)
+2. 0 (no profitable trades possible)
+3. 1 (smallest price in the array)
+4. 4 (best single transaction profit)
+
+Q5: When computing dfs(2, false) for prices = [7, 1, 5, 3, 6, 4], which calculations are performed?
+1. Only -5 + dfs(3, true) for buying
+2. Only dfs(3, false) for skipping
+3. Both -5 + dfs(3, true) and dfs(3, false), then take maximum
+4. 5 + dfs(3, false) for selling
+
+Q6: What is the purpose of the key `${day},${holding}` in the memoization map?
+1. To store the price and whether we made a profit
+2. To uniquely identify each state (day and stock holding status)
+3. To track which days we bought and sold stock
+4. To count the number of transactions made
+
+Q7: For prices = [1, 2, 3], when does dfs(2, true) get called first in the recursion tree?
+1. After dfs(0, false) → dfs(1, false) → dfs(2, false)
+2. After dfs(0, false) → dfs(1, true)
+3. It never gets called since we can't buy on the last day
+4. After dfs(0, false) → dfs(0, true) → dfs(1, true)

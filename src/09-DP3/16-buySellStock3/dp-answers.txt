@@ -1,0 +1,22 @@
+Problem: Best Time to Buy and Sell Stock III (Dynamic Programming)
+
+Q1: 2
+dp[3][1][0] represents the maximum profit achievable by day 3 with at most 1 transaction completed and not currently holding any stock.
+
+Q2: 2
+dp[1][1][0] = max(dp[0][1][0], dp[0][1][1] + prices[1]) = max(0, -1 + 3) = 2. This represents buying on day 0 and selling on day 1.
+
+Q3: 2
+This term represents buying stock on day i using one of our j transaction slots. The j-1 indicates we had j-1 transactions completed before buying, and this purchase will eventually become our jth transaction when we sell.
+
+Q4: 3
+The term dp[i-1][j][1] + prices[i] represents selling stock on day i. We had stock yesterday (state [1]) and sell it today at prices[i], transitioning to not holding stock.
+
+Q5: 2
+With continuously decreasing prices [3, 2, 1], there's no opportunity to buy low and sell high. The optimal strategy is to make no transactions, resulting in 0 profit.
+
+Q6: 2
+dp[0][2][1] = -prices[0] because if we're holding stock on day 0, we must have bought it today. The value represents our net position after spending prices[0] to buy the stock.
+
+Q7: 1
+First transaction: buy at price 1 (day 0), sell at price 3 (day 1), profit = 2. Second transaction: buy at price 0 (day 2), sell at price 4 (day 3), profit = 4. Total profit = 6.

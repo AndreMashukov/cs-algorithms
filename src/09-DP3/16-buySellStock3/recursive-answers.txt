@@ -1,0 +1,22 @@
+Problem: Best Time to Buy and Sell Stock III (DFS with Memoization)
+
+Q1: 2
+The transactions parameter is incremented when we sell stock. A complete transaction consists of buying and then selling, and it's only counted as complete when we sell.
+
+Q2: 2
+When transactions equals 2, we've already completed the maximum allowed transactions. The function immediately returns 0 without exploring further options.
+
+Q3: 2
+Buying stock starts a new transaction but doesn't complete it. The transaction is only completed when we sell the stock, which is why transactions remains unchanged when buying.
+
+Q4: 2
+Buy on day 0 at price 1, sell on day 1 at price 4, giving profit of 3. This uses only one transaction and achieves the maximum possible profit.
+
+Q5: 1
+This check ensures we don't exceed the limit of 2 complete buy-sell transactions. Once we've completed 2 transactions, no further trading is allowed.
+
+Q6: 2
+When holding stock (true) at day 1, we can either sell the stock at price 2 or continue holding it to potentially sell at a better price later.
+
+Q7: 2
+Each combination of (day, transactions completed, holding status) represents a unique state in our decision tree. All three values are needed to uniquely identify and memoize each subproblem.
