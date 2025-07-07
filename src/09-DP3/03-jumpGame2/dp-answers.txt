@@ -1,0 +1,9 @@
+Problem: Jump Game II (DP approach)
+
+Q1: 3
+Q2: 3
+Q3: 4
+Q4: 3
+Q5: 3
+Q6: 1
+Q7: 3 

@@ -1,0 +1,28 @@
+Problem: Longest Valid Parentheses (DP approach, advanced case)
+
+Q1: 2
+Explanation: 
+The condition checks if the character before the previous valid segment 
+is an opening parenthesis that can pair with the current closing parenthesis, 
+allowing us to extend the valid substring.
+
+Q2: 2
+Explanation: We add `dp[i - dp[i - 1] - 2]` to include the length of any 
+valid substring that appears before the current matching pair, 
+ensuring all consecutive valid substrings are counted.
+
+Q3: 2
+Explanation: `dp[i - 1]` represents the length of the longest 
+valid substring ending at the previous character, 
+which helps determine how far back to look 
+for a matching opening parenthesis.
+
+Q4: 1
+Explanation: We add 2 to account for the newly matched pair of parentheses: 
+the opening parenthesis at `s[i - dp[i - 1] - 1]` 
+and the current closing parenthesis at `s[i]`.
+
+Q5: 2
+Explanation: If `i - dp[i - 1] < 2`, there are no valid parentheses 
+before the current matching pair, so we do not add any previous 
+dp value and only count the current pair. 

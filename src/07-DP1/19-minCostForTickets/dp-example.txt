@@ -1,0 +1,34 @@
+Example Walkthrough for Minimum Cost For Tickets (DP Approach)
+
+Consider the input:
+Days: [1, 4, 6, 7, 8, 20]
+Costs: [2, 7, 15]
+
+Step-by-step Execution:
+
+1. Initialize DP array with size 21 (last day + 1), all values set to 0.
+
+2. Iterate over each day from 1 to 20:
+   - Day 1: Travel day, calculate cost for 1-day, 7-day, 30-day passes.
+     - 1-day pass: dp[1] = dp[0] + 2 = 2
+     - 7-day pass: dp[1] = dp[0] + 7 = 7
+     - 30-day pass: dp[1] = dp[0] + 15 = 15
+     - Minimum cost: dp[1] = 2
+
+   - Day 2-3: Not travel days, dp[2] = dp[1], dp[3] = dp[2]
+
+   - Day 4: Travel day, calculate cost for passes.
+     - 1-day pass: dp[4] = dp[3] + 2 = 4
+     - 7-day pass: dp[4] = dp[0] + 7 = 7
+     - 30-day pass: dp[4] = dp[0] + 15 = 15
+     - Minimum cost: dp[4] = 4
+
+3. Continue this process for all days, updating the DP array.
+
+4. Final result is dp[20], the minimum cost to cover all travel days.
+
+DP Array Updates:
+- Visualize the DP array updates at each step.
+- Example: dp[1] = 2, dp[4] = 4, dp[6] = 6, etc.
+
+This approach systematically calculates the minimum cost by iterating over each day and considering all pass options, ensuring optimal cost calculation. 

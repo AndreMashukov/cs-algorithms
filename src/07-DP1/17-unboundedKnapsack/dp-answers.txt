@@ -1,0 +1,22 @@
+Problem: Unbounded Knapsack (DP Approach)
+
+Q1: 2
+The DP array represents the maximum profit up to each capacity, allowing us to build the solution incrementally.
+
+Q2: 3
+The profit for a capacity is calculated based on the current item and previous capacities, considering all options.
+
+Q3: 2
+The nested loops iterate over items and capacities to fill the DP table with maximum profits.
+
+Q4: 1
+The DP approach uses a loop to try each item and calculates the profit accordingly.
+
+Q5: 2
+The final result of the DP approach is the maximum profit for the given capacity, found at the last index of the DP array.
+
+Q6: 1
+The profit for including an item is calculated by adding the item's profit to the profit of the remaining capacity after including the item.
+
+Q7: 2
+The DP approach is suitable because it allows for systematic profit calculation, efficiently handling overlapping subproblems. 

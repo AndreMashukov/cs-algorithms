@@ -1,0 +1,22 @@
+Problem: Binary Tree Maximum Path Sum (Dynamic Programming)
+
+Q1: 3
+The algorithm processes nodes in post-order (left, right, root) to ensure that child values are computed before parent values, which is essential for bottom-up dynamic programming.
+
+Q2: 2
+leftContribution = Math.max(0, -5) = 0 and rightContribution = Math.max(0, -3) = 0. Negative contributions are ignored by taking the maximum with 0.
+
+Q3: 1
+maxPathThroughNode represents a complete path using the node as the highest point (can include both children). maxDownPath represents a path that can be extended upward (can only go in one direction).
+
+Q4: 1
+maxPathThroughNode = 11 + 7 + 2 = 20 (complete path through node 11). maxDownPath = 11 + max(7, 2) = 11 + 7 = 18 (best path going down for parent to use).
+
+Q5: 1
+If all nodes in the tree have negative values, the maximum path sum would be negative. Initializing to -Infinity ensures we correctly identify the least negative value as the maximum.
+
+Q6: 2
+A leaf node returns its own value (-10) since there are no children. The decision to ignore negative values happens at the parent level when calculating contributions.
+
+Q7: 3
+leftContribution = max(0, 2) = 2, rightContribution = max(0, 3) = 3. maxPathThroughNode = 1 + 2 + 3 = 6. This updates globalMax to 6.

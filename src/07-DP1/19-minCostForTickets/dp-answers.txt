@@ -1,0 +1,23 @@
+Problem: Minimum Cost For Tickets (DP Approach)
+
+Q1: 2
+The DP array represents the minimum cost up to each day, allowing us to build the solution incrementally.
+
+Q2: 2
+For a non-travel day, the cost remains the same as the previous day since no additional pass is needed.
+
+Q3: 2
+The travelDays set is used to keep track of travel days for quick lookup, ensuring we only calculate costs for those days.
+
+Q4: 1
+The DP approach uses a loop to try each pass duration and calculates the cost accordingly.
+
+Q5: 2
+The final result of the DP approach is the minimum cost to cover all travel days, found at the last index of the DP array.
+
+Q6: 2
+The cost for a 7-day pass is calculated by adding the pass cost to the cost 7 days before, covering the travel period.
+
+Q7: 2
+The DP approach is suitable because it allows for systematic cost calculation, 
+efficiently handling overlapping subproblems. 

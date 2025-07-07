@@ -1,0 +1,43 @@
+Problem: Unbounded Knapsack (DFS with Memoization)
+
+Q1: What is the purpose of the memoization map in the DFS approach?
+1. To store the weights of items
+2. To cache already computed results
+3. To keep track of profits
+4. To store the capacities
+
+Q2: What is the base case in the DFS function?
+1. When the profit is maximized
+2. When all items are considered or capacity is zero
+3. When the memoization map is full
+4. When the weight is zero
+
+Q3: How is the remaining capacity updated in the DFS approach?
+1. By incrementing the current capacity
+2. By subtracting the weight of the current item
+3. By checking the memoization map
+4. By calculating the profit
+
+Q4: What does the variable 'profit1' represent in the DFS function?
+1. The maximum profit
+2. The profit including the current item
+3. The total number of items
+4. The number of times an item is selected
+
+Q5: How does the DFS function handle different items?
+1. By using a loop to try each item
+2. By selecting the most profitable item
+3. By ignoring heavier items
+4. By using only the first item
+
+Q6: What happens if a result is already cached in the memoization map?
+1. The DFS function recalculates it
+2. The cached result is returned
+3. The function terminates
+4. The result is ignored
+
+Q7: Why is the DFS approach suitable for this problem?
+1. It is faster than DP
+2. It allows for easy memoization
+3. It uses less memory
+4. It avoids recursion 

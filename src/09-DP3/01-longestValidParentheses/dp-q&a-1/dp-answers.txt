@@ -1,0 +1,45 @@
+Problem: Longest Valid Parentheses (DP approach)
+
+Q1: 3
+Explanation: dp[i] represents the length of the longest 
+valid parentheses substring ending at index i. 
+This is the standard DP definition for this problem, 
+as it allows us to build up the solution by considering 
+how each character can extend a valid substring 
+ending at the previous index.
+
+Q2: 2
+Explanation: When s[i] === ')' and s[i-1] === '(', we have found a pair '()'. 
+The length of the valid substring ending at i is 2 plus 
+the length of the valid substring ending at i-2 
+(if i >= 2). So, dp[i] = (i >= 2 ? dp[i-2] : 0) + 2.
+
+Q3: 3
+Explanation: When s[i] === ')' and s[i-1] === ')', 
+we check if there is a matching '(' for the current ')'. 
+The code checks s[i - dp[i-1] - 1] === '(', 
+which looks for an opening parenthesis 
+that could match the current closing parenthesis, 
+located before the valid segment ending at i-1.
+
+Q4: 1
+Explanation: For s = "()(())" at i = 5, dp[4] is 2, and s[2] is '('.
+So, dp[5] = dp[4] + 2 + dp[1] (if i - dp[i-1] >= 2), 
+which is 2 + 2 + 2 = 6. 
+The intermediate values used are dp[4], 2, and dp[1].
+
+Q5: 2
+Explanation: The longest valid parentheses substring 
+might not end at the last character,
+ so we need to track the maximum value in the dp array as we go, 
+ not just return dp[s.length - 1].
+
+Q6: 1
+Explanation: For s = "(((", there are no valid pairs, 
+so the dp array remains [0,0,0] and maxLength is 0.
+
+Q7: 2
+Explanation: The condition i - dp[i-1] > 0 ensures 
+that the index i - dp[i-1] - 1 is valid (non-negative) 
+before accessing s[i - dp[i-1] - 1], 
+preventing out-of-bounds errors. 
