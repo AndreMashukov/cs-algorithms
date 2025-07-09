@@ -6,7 +6,8 @@ Q1: In the recursive solution, what does the dfs function return for a given nod
 3. The total sum of all nodes in the subtree
 4. The maximum value found in the subtree
 
-Q2: For a tree with root value -10, left child 9, and right child 20, why do we use Math.max(0, dfs(node.left))?
+Q2: For a tree with root value -10, left child 9, and right child 20, 
+why do we use Math.max(0, dfs(node.left))?
 1. To ensure we don't include negative path sums that would decrease our total
 2. To count the number of positive nodes
 3. To prevent null pointer exceptions
@@ -30,13 +31,15 @@ Q5: Why do we maintain a separate globalMax variable instead of just returning t
 3. To store intermediate calculations
 4. To avoid recalculating child values
 
-Q6: When computing maxPathDown, why do we use Math.max(leftMax, rightMax) instead of leftMax + rightMax?
+Q6: When computing maxPathDown, why do we use Math.max(leftMax, rightMax) 
+instead of leftMax + rightMax?
 1. We can only extend the path in one direction when connecting to parent
 2. We want to find the single maximum value
 3. Adding both would create a cycle
 4. It's an optimization for negative values
 
-Q7: For a node with value -5, left contribution 10, and right contribution 8, what value is returned by dfs?
+Q7: For a node with value -5, left contribution 10, and right contribution 8, 
+what value is returned by dfs?
 1. 13 (-5 + 10 + 8)
 2. 5 (-5 + 10)
 3. 3 (-5 + 8)
