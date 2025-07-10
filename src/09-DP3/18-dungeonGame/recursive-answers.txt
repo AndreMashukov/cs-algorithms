@@ -1,0 +1,22 @@
+Problem: Dungeon Game (DFS with Memoization)
+
+Q1: 2
+The first base case computed is at position (2,2) which returns Math.max(1, 1 - (-5)) = 6
+
+Q2: 1
+This ensures the knight has at least 1 health after dealing with the current room's effect and has enough health for the rest of the path
+
+Q3: 2
+Starting at (0,0), it tries down first (returns Infinity as out of bounds), then tries right to (0,1) which is the base case
+
+Q4: 1
+A positive room value reduces the minimum health needed because it provides a health boost, effectively subtracting from the required health
+
+Q5: 2
+Memoization stores the result after first computation, so subsequent calls return the cached value immediately
+
+Q6: 3
+For a single room, we need Math.max(1, 1 - x) to ensure at least 1 health after the room's effect
+
+Q7: 3
+currentMinHealth = Math.max(1, 10 - (-3)) = Math.max(1, 13) = 13

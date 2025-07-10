@@ -1,0 +1,43 @@
+Problem: Number of Digit One (Dynamic Programming)
+
+Q1: For n=1234 and factor=100, what are the values of higher, cur, and lower?
+1. higher=12, cur=3, lower=34
+2. higher=1, cur=2, lower=34
+3. higher=12, cur=2, lower=34
+4. higher=1, cur=3, lower=4
+
+Q2: When processing the tens position (factor=10) for n=213, why do we add exactly 'factor' to the count?
+1. Because cur=1, so we add lower+1 = 3+1 = 4
+2. Because cur>1, so we add the full cycle of 10 ones
+3. Because there are 10 digits (0-9)
+4. Because higher=21 and we multiply by 10
+
+Q3: For n=1015, when factor=10 (tens position), what is added to the count for the current digit contribution?
+1. 0
+2. 6
+3. 10
+4. 15
+
+Q4: In the formula count += higher * factor, what does this represent?
+1. The number of 1s at the current position from all complete cycles of higher digits
+2. The total value contributed by higher digits
+3. The number of times we've seen the digit 1 so far
+4. The maximum possible 1s at this position
+
+Q5: For n=111, how many times does the loop iterate, and what are the factor values?
+1. 3 times: 1, 10, 100
+2. 4 times: 1, 10, 100, 1000
+3. 3 times: 1, 11, 111
+4. 2 times: 1, 10
+
+Q6: When cur === 1, why do we add (lower + 1) instead of just lower?
+1. To include the current number itself when it has 1 at the current position
+2. To handle the edge case of n=0
+3. To compensate for 0-indexing
+4. To count the digit 1 twice
+
+Q7: For n=99, what is the total contribution from the tens position (factor=10)?
+1. 9
+2. 10
+3. 18
+4. 19

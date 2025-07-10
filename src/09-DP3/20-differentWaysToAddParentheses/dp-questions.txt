@@ -1,0 +1,43 @@
+Problem: Different Ways to Add Parentheses (Dynamic Programming)
+
+Q1: For expression "2-1-1", after parsing, what are the contents of the numbers and operators arrays?
+1. numbers = [2, 1, 1], operators = ['-', '-']
+2. numbers = [2, -1, -1], operators = []
+3. numbers = [2, 1], operators = ['-', '1', '-', '1']
+4. numbers = ['2', '1', '1'], operators = ['-', '-']
+
+Q2: In the DP table, what does dp[0][2] represent for expression "2-1-1"?
+1. All possible results for the substring "2-1"
+2. All possible results for the entire expression "2-1-1"
+3. The result of computing 2-1-1 left to right
+4. The number of ways to parenthesize "2-1-1"
+
+Q3: When filling dp[i][j] for length=2, which previously computed values are used?
+1. dp[i][i] and dp[j][j]
+2. dp[i][i] and dp[i+1][i+1]
+3. dp[i-1][j-1] and dp[i+1][j+1]
+4. dp[0][i] and dp[j][n-1]
+
+Q4: For expression "2*3-4", when computing dp[0][2], what is the value of k when splitting at the '-' operator?
+1. 0
+2. 1
+3. 2
+4. 3
+
+Q5: In the triple nested loop structure, what does the variable 'length' represent?
+1. The length of the entire expression string
+2. The number of operators in the subexpression
+3. The number of numbers in the subexpression
+4. The index difference between i and j
+
+Q6: For a single number like "11", why is dp[0][0] = [11]?
+1. Because it's the base case where a single number evaluates to itself
+2. Because 11 is a two-digit number
+3. Because there are no operators to process
+4. Both 1 and 3 are correct
+
+Q7: When does the algorithm access operators[k] in the DP solution?
+1. When k equals j
+2. When determining the operator between dp[i][k] and dp[k+1][j]
+3. Only in the base case
+4. When k equals i
