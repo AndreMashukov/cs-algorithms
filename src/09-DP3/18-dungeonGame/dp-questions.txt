@@ -1,0 +1,43 @@
+Problem: Dungeon Game (Dynamic Programming)
+
+Q1: In the DP solution for dungeon [[−2,−3,3],[−5,−10,1],[10,30,−5]], what is the value of dp[2][2] after initialization?
+1. 5
+2. 6
+3. 1
+4. -4
+
+Q2: When filling the last row of the DP table, in what order are the cells computed?
+1. Left to right (increasing column indices)
+2. Right to left (decreasing column indices)
+3. Random order based on values
+4. All cells simultaneously
+
+Q3: For position dp[1][1] in a 3x3 grid, which previously computed dp values does it depend on?
+1. dp[0][0] and dp[1][0]
+2. dp[2][1] and dp[1][2]
+3. dp[0][1] and dp[1][0]
+4. dp[1][2] and dp[2][1]
+
+Q4: If dp[i+1][j] = 15 and dp[i][j+1] = 10, and dungeon[i][j] = 4, what is dp[i][j]?
+1. 6
+2. 10
+3. 11
+4. 14
+
+Q5: Why does the DP solution fill the table from bottom-right to top-left?
+1. Because we need to know the minimum health required for future positions before calculating current position
+2. To minimize memory usage
+3. Because the knight starts at the bottom-right
+4. To match the recursive call order
+
+Q6: In the DP approach, what does dp[0][0] represent after the algorithm completes?
+1. The health remaining at the start
+2. The minimum initial health needed to rescue the princess
+3. The total damage taken on the optimal path
+4. The number of steps to reach the princess
+
+Q7: For a dungeon with all positive values, what will be the value of every cell in the dp table?
+1. 0
+2. 1
+3. The sum of all dungeon values
+4. Depends on the specific values

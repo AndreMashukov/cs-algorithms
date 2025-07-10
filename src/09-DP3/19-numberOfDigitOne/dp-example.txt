@@ -1,0 +1,52 @@
+Number of Digit One - Dynamic Programming Solution Example
+
+Let's trace through n = 13 using the mathematical DP approach.
+
+Goal: Count digit 1 at each position (ones, tens, etc.) separately.
+
+Initial Setup:
+- n = 13
+- count = 0
+
+Step 1: Process ones position (factor = 1)
+- divider = 1 * 10 = 10
+- higher = floor(13/10) = 1
+- cur = floor(13/1) % 10 = 3
+- lower = 13 % 1 = 0
+
+Count from higher cycles: 1 * 1 = 1
+(Numbers 0-9 have one 1 at ones position)
+
+Count from current digit (cur = 3 > 1): 1
+(Numbers 10-13 include 11 with 1 at ones position)
+
+Total added: 1 + 1 = 2
+Running count: 2
+
+Step 2: Process tens position (factor = 10)
+- divider = 10 * 10 = 100
+- higher = floor(13/100) = 0
+- cur = floor(13/10) % 10 = 1
+- lower = 13 % 10 = 3
+
+Count from higher cycles: 0 * 10 = 0
+(No complete hundreds)
+
+Count from current digit (cur = 1): lower + 1 = 3 + 1 = 4
+(Numbers 10, 11, 12, 13 all have 1 at tens position)
+
+Total added: 0 + 4 = 4
+Running count: 2 + 4 = 6
+
+Step 3: Check next position (factor = 100)
+- factor = 100 > n = 13, so loop ends
+
+Final count: 6
+
+Verification:
+- 1: one 1 (at ones position)
+- 10: one 1 (at tens position)
+- 11: two 1s (at both positions)
+- 12: one 1 (at tens position)
+- 13: one 1 (at tens position)
+Total: 1 + 1 + 2 + 1 + 1 = 6 ✓

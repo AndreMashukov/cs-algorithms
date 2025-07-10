@@ -1,0 +1,43 @@
+Problem: Dungeon Game (DFS with Memoization)
+
+Q1: When solving the dungeon [[−2,−3,3],[−5,−10,1],[10,30,−5]], what is the first base case value that gets computed and cached in the memoization map?
+1. 7 for position (0,0)
+2. 6 for position (2,2)
+3. 1 for position (2,1)
+4. 4 for position (1,2)
+
+Q2: In the recursive solution, why do we calculate currentMinHealth as Math.max(1, minHealthNeeded - dungeon[i][j])?
+1. To ensure the knight always has positive health after accounting for the current room's effect
+2. To maximize the health gained from magic orbs
+3. To minimize the path length to the princess
+4. To avoid negative array indices
+
+Q3: For dungeon [[−3,5]], starting at position (0,0), what sequence of calculations occurs in the DFS traversal?
+1. dfs(0,0) → dfs(0,1) → dfs(0,2) returns Infinity → base case at (0,1)
+2. dfs(0,0) → dfs(1,0) returns Infinity → dfs(0,1) → base case
+3. dfs(0,0) → dfs(0,1) → base case → calculate health for (0,0)
+4. dfs(0,0) → calculate health directly without recursion
+
+Q4: When the algorithm encounters a room with value 30 (like position (2,1) in the first example), how does this affect the minimum health calculation?
+1. It reduces the minimum health needed from that position by 30
+2. It sets the minimum health to exactly 30
+3. It adds 30 to the total path cost
+4. It guarantees the knight survives with exactly 1 health
+
+Q5: In the memoization approach, if we call dfs(1,1) multiple times during execution, what happens after the first call?
+1. The function recalculates the entire subtree from (1,1)
+2. It immediately returns the cached value without further recursion
+3. It updates the cached value with a new calculation
+4. It checks if the path has changed since last computation
+
+Q6: For a 1x1 dungeon [[x]], what is the formula for the minimum initial health needed?
+1. Math.max(1, x)
+2. Math.max(1, -x)
+3. Math.max(1, 1 - x)
+4. Math.max(1, x + 1)
+
+Q7: When computing dfs(i,j), if both rightHealth and downHealth equal 10, and dungeon[i][j] = -3, what is currentMinHealth?
+1. 7
+2. 10
+3. 13
+4. 14

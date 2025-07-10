@@ -1,0 +1,22 @@
+Problem: Different Ways to Add Parentheses (DFS with Memoization)
+
+Q1: 2
+When splitting at the first '-', we get dfs("2") and dfs("1-1"), which eventually calls dfs("1") twice
+
+Q2: 2
+The base case for a pure number returns an array containing just that number: [11]
+
+Q3: 2
+When splitting at position 1 (the '*'), leftExpr = substring(0,1) = "2" and rightExpr = substring(2) = "3-4"
+
+Q4: 2
+dfs("1") is called when processing "1-1" (splits into two "1"s) but results are memoized
+
+Q5: 2
+The algorithm explores all possible parenthesizations: (2+3)*4 = 5*4 = 20 and 2+(3*4) = 2+12 = 14
+
+Q6: 1
+Each left result must be combined with each right result using the operator, creating all possible outcomes
+
+Q7: 3
+The expression has 3 operators at positions for '*', '-', and '*', each causing a top-level split

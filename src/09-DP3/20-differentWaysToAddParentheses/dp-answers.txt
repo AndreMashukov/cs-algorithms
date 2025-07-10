@@ -1,0 +1,22 @@
+Problem: Different Ways to Add Parentheses (Dynamic Programming)
+
+Q1: 1
+The parser extracts numbers as integers [2, 1, 1] and operators as characters ['-', '-']
+
+Q2: 2
+dp[0][2] contains all possible results for numbers[0] through numbers[2], which is the entire expression
+
+Q3: 2
+For length=2 and starting at i, we use dp[i][i] and dp[i+1][i+1] (e.g., dp[0][0] and dp[1][1])
+
+Q4: 2
+k ranges from i to j-1, so k=1 corresponds to the position after the '*' operator, which is where '-' is located
+
+Q5: 3
+'length' represents how many numbers are included in the current subexpression being computed
+
+Q6: 4
+Both reasons are correct: single numbers are base cases that evaluate to themselves, and there are no operators to process
+
+Q7: 2
+operators[k] gives the operator between the left part (ending at k) and right part (starting at k+1)

@@ -1,0 +1,82 @@
+Different Ways to Add Parentheses - Dynamic Programming Solution Example
+
+Let's trace through expression "2-1-1" using the bottom-up DP approach.
+
+Step 1: Parse the expression
+- numbers = [2, 1, 1]
+- operators = ['-', '-']
+- n = 3 (three numbers)
+
+Step 2: Initialize DP table (3x3)
+dp = [
+  [[], [], []],
+  [[], [], []],
+  [[], [], []]
+]
+
+Step 3: Fill base cases (length = 1)
+- dp[0][0] = [2]
+- dp[1][1] = [1] 
+- dp[2][2] = [1]
+
+dp = [
+  [[2], [], []],
+  [[], [1], []],
+  [[], [], [1]]
+]
+
+Step 4: Fill for length = 2
+
+For i=0, j=1 (numbers 2 and 1):
+- k can only be 0
+- leftResults = dp[0][0] = [2]
+- rightResults = dp[1][1] = [1]
+- operator = operators[0] = '-'
+- Result: 2 - 1 = 1
+- dp[0][1] = [1]
+
+For i=1, j=2 (numbers 1 and 1):
+- k can only be 1
+- leftResults = dp[1][1] = [1]
+- rightResults = dp[2][2] = [1]
+- operator = operators[1] = '-'
+- Result: 1 - 1 = 0
+- dp[1][2] = [0]
+
+dp = [
+  [[2], [1], []],
+  [[], [1], [0]],
+  [[], [], [1]]
+]
+
+Step 5: Fill for length = 3
+
+For i=0, j=2 (entire expression):
+- k can be 0 or 1
+
+When k=0:
+- leftResults = dp[0][0] = [2]
+- rightResults = dp[1][2] = [0]
+- operator = operators[0] = '-'
+- Result: 2 - 0 = 2
+
+When k=1:
+- leftResults = dp[0][1] = [1]
+- rightResults = dp[2][2] = [1]
+- operator = operators[1] = '-'
+- Result: 1 - 1 = 0
+
+dp[0][2] = [2, 0]
+
+Final DP table:
+dp = [
+  [[2], [1], [2, 0]],
+  [[], [1], [0]],
+  [[], [], [1]]
+]
+
+Answer: dp[0][2] = [2, 0]
+
+This represents:
+- k=0 split: (2)-(1-1) = 2-0 = 2
+- k=1 split: (2-1)-(1) = 1-1 = 0
