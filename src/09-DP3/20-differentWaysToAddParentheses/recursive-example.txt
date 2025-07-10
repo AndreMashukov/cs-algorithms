@@ -1,0 +1,57 @@
+Different Ways to Add Parentheses - Recursive Solution Example
+
+Let's trace through expression "2-1-1" step by step.
+
+Goal: Find all possible results by adding parentheses in different ways.
+
+Step 1: Call dfs("2-1-1")
+- Not in memo, not a pure number
+- Find operators at positions 1 and 3
+
+Step 2: Split at first '-' (position 1)
+- leftExpr = "2", rightExpr = "1-1"
+- Need to compute dfs("2") and dfs("1-1")
+
+Step 3: Compute dfs("2")
+- It's a pure number, return [2]
+- Memo["2"] = [2]
+
+Step 4: Compute dfs("1-1")
+- Not a pure number, has operator at position 1
+- Split: leftExpr = "1", rightExpr = "1"
+
+Step 5: Compute dfs("1") for both sides
+- It's a pure number, return [1]
+- Memo["1"] = [1]
+
+Step 6: Back in dfs("1-1")
+- leftResults = [1], rightResults = [1]
+- Operator is '-', so: 1 - 1 = 0
+- Return [0], Memo["1-1"] = [0]
+
+Step 7: Back in dfs("2-1-1") first split
+- leftResults = [2], rightResults = [0]
+- Operator is '-', so: 2 - 0 = 2
+- Current results = [2]
+
+Step 8: Split at second '-' (position 3)
+- leftExpr = "2-1", rightExpr = "1"
+- Need dfs("2-1") and dfs("1")
+
+Step 9: Compute dfs("2-1")
+- Split at position 1
+- leftResults = [2] (already memoized)
+- rightResults = [1] (already memoized)
+- Operator is '-', so: 2 - 1 = 1
+- Return [1], Memo["2-1"] = [1]
+
+Step 10: Back in dfs("2-1-1") second split
+- leftResults = [1], rightResults = [1]
+- Operator is '-', so: 1 - 1 = 0
+- Add to results: [2, 0]
+
+Final result: [2, 0]
+
+This corresponds to:
+- (2-(1-1)) = 2-0 = 2
+- ((2-1)-1) = 1-1 = 0

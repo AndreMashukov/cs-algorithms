@@ -1,0 +1,42 @@
+Number of Digit One - Recursive Solution Example
+
+Let's trace through n = 13 using digit DP approach.
+
+Goal: Count total occurrences of digit 1 in all numbers from 0 to 13.
+
+Initial Setup:
+- str = "13", len = 2
+- Start with dfs(0, true, 0)
+
+Step-by-Step Execution:
+
+1. dfs(0, true, 0) - Position 0, tight, no 1s yet
+   - maxDigit = 1 (because tight and str[0] = '1')
+   - Try digit 0: dfs(1, false, 0)
+   - Try digit 1: dfs(1, true, 1)
+
+2. First branch: dfs(1, false, 0) - Position 1, not tight, no 1s
+   - maxDigit = 9 (not tight anymore)
+   - Try digits 0-9:
+     - digit 0: dfs(2, false, 0) → base case, return 0
+     - digit 1: dfs(2, false, 1) → base case, return 1
+     - digit 2: dfs(2, false, 0) → base case, return 0
+     - ... (similar for digits 3-9)
+   - Total from this branch: 0+1+0+0+0+0+0+0+0+0 = 1
+
+3. Second branch: dfs(1, true, 1) - Position 1, tight, one 1
+   - maxDigit = 3 (tight and str[1] = '3')
+   - Try digits 0-3:
+     - digit 0: dfs(2, false, 1) → base case, return 1
+     - digit 1: dfs(2, false, 2) → base case, return 2
+     - digit 2: dfs(2, false, 1) → base case, return 1
+     - digit 3: dfs(2, true, 1) → base case, return 1
+   - Total from this branch: 1+2+1+1 = 5
+
+4. Back to dfs(0, true, 0):
+   - Result = 1 (from digit 0) + 5 (from digit 1) = 6
+
+Numbers with digit 1: 1, 10, 11, 12, 13
+Count of 1s: 1(one 1) + 1(one 1) + 2(two 1s) + 1(one 1) + 1(one 1) = 6
+
+Answer: 6

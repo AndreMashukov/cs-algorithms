@@ -1,0 +1,22 @@
+Problem: Dungeon Game (Dynamic Programming)
+
+Q1: 2
+dp[2][2] = Math.max(1, 1 - dungeon[2][2]) = Math.max(1, 1 - (-5)) = 6
+
+Q2: 2
+The last row is filled from right to left (n-2 to 0) to ensure each cell can use the already computed value to its right
+
+Q3: 4
+dp[1][1] depends on dp[1][2] (right) and dp[2][1] (down) as we can only move right or down
+
+Q4: 1
+dp[i][j] = Math.max(1, Math.min(15, 10) - 4) = Math.max(1, 10 - 4) = Math.max(1, 6) = 6
+
+Q5: 1
+We work backwards from the destination because each position needs to know the minimum health required for all possible future paths
+
+Q6: 2
+dp[0][0] contains the minimum initial health the knight needs to start with to successfully rescue the princess
+
+Q7: 2
+With all positive values, the knight gains health in every room, so he only needs 1 health to survive

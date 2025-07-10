@@ -1,0 +1,22 @@
+Problem: Number of Digit One (DFS with Memoization)
+
+Q1: 2
+Choosing 2 > 1 (the max digit at position 0 for n=13) makes tight=false, allowing any digit 0-9 in subsequent positions
+
+Q2: 2
+The count parameter tracks the number of 1s accumulated in the current number being constructed during the recursion
+
+Q3: 2
+Since we're at position 1 with tight=true and n=213, the maximum digit is str[1] = '1', so we can choose 0 or 1
+
+Q4: 1
+The count parameter accumulates all 1s found while building the current number, and at the base case, it represents the total for that number
+
+Q5: 3
+This state can be reached through multiple paths when different combinations of previous digits lead to the same position with tight=false and one 1 already counted
+
+Q6: 1
+newTight remains true only when we were already under tight constraint AND we chose the maximum allowed digit
+
+Q7: 3
+For n=11 (2 digits), we explore various combinations of (pos, tight, count), but due to the small number, there are less than 20 unique states
