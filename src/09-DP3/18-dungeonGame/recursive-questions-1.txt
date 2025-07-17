@@ -1,0 +1,22 @@
+### Question 1:
+In the base case of the `dfs` function (when the knight is at the princess's location), \
+the minimum health is calculated as `Math.max(1, 1 - dungeon[i][j])`. 
+What does this expression represent, and why is the `Math.max(1, ...)` part essential for correctness?
+
+### Question 2:
+The core recursive step calculates the health needed for the current cell 
+\`(i, j)` as `Math.max(1, minHealthNeeded - dungeon[i][j])`, where `minHealthNeeded` 
+is the result from the optimal next step (right or down). Explain the role of both `- dungeon[i][j]`
+ and `Math.max(1, ...)` in this formula. What scenario does the `Math.max` guard against?
+
+### Question 3:
+What, precisely, does the return value of a call to `dfs(i, j)` signify? 
+Does it represent the knight's health *after* surviving the cell, or the health required 
+*upon entering* the cell? Clarify why this distinction 
+is critical to how the algorithm works.
+
+### Question 4:
+When the `dfs` function is called for an out-of-bounds position (e.g., `i >= m`), 
+it returns `Infinity`. How does this value influence the calculation 
+`const minHealthNeeded = Math.min(rightHealth, downHealth);`,
+ and what is its purpose in guiding the algorithm to a valid solution?

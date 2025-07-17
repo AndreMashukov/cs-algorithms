@@ -13,7 +13,8 @@ Q4: 1
 The count parameter accumulates all 1s found while building the current number, and at the base case, it represents the total for that number
 
 Q5: 3
-This state can be reached through multiple paths when different combinations of previous digits lead to the same position with tight=false and one 1 already counted
+This state can be reached through multiple paths when different combinations of previous digits lead 
+to the same position with tight=false and one 1 already counted
 
 Q6: 1
 newTight remains true only when we were already under tight constraint AND we chose the maximum allowed digit

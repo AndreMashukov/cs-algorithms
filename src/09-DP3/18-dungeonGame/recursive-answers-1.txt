@@ -1,0 +1,41 @@
+### Answer 1:
+This expression calculates the minimum health the knight must have *upon entering* the princess's room to survive.
+ The `1 - dungeon[i][j]` part determines the health needed to have exactly 1 health point 
+ *after* the encounter in the room. 
+ For instance, if the room has a demon (`-5`), you'd need `1 - (-5) = 6` health. 
+ The `Math.max(1, ...)` is crucial because the knight's health can never be 0 or less. 
+ If the room has a large power-up (e.g., `100`), `1 - 100` would be negative. 
+ `Math.max` ensures that even in this case, 
+ the knight must enter with a minimum of 1 health, 
+ upholding the rule that he must be alive at every moment.
+
+### Answer 2:
+The expression calculates the required health upon entering cell `(i, j)`. 
+The `- dungeon[i][j]` part is the "cost" of the current cell; 
+it reverses the effect of the cell to determine the necessary starting health. 
+For example, to have `minHealthNeeded` for the next step after losing health to a demon, 
+you must enter with `minHealthNeeded + demon_damage`. 
+The `Math.max(1, ...)` guards against scenarios where a cell offers a large power-up. 
+If the next path requires 5 health (`minHealthNeeded`) and the current cell gives 20 health, 
+`5 - 20 = -15`. This suggests you could arrive with negative health, which is impossible. 
+`Math.max` enforces the rule that the knight must have at least 1 health upon entering *any* cell,
+ regardless of its benefit.
+
+### Answer 3:
+The return value of `dfs(i, j)` represents the minimum health the knight must have
+ *upon entering* cell `(i, j)` to guarantee a successful path to the princess. 
+ It is the prerequisite health for that position. 
+ This distinction is the cornerstone of the algorithm's backward-calculation logic. 
+ The health required for a cell `(i, j)` is computed based on the prerequisite health of the *next* cell 
+ (`i+1, j` or `i, j+1`). If the value represented health 
+ *after* survival, the formula for the previous cell would be incorrect.
+
+### Answer 4:
+Returning `Infinity` for an out-of-bounds call serves as a signal 
+that this path is invalid and impossible to take. 
+When the algorithm chooses the optimal next step with `Math.min(rightHealth, downHealth)`, 
+the `Infinity` value from an invalid path will always be rejected 
+in favor of the finite health value from a valid path. 
+This effectively forces the knight to stay on the board and only move towards 
+the goal from positions where a valid path exists (i.e., 
+from the right and bottom edges of the dungeon).
