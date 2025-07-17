@@ -1,0 +1,52 @@
+Problem: Number of Digit One (Digit Dynamic Programming)
+
+Q1: What is the primary purpose of the 'tight' parameter in digit dynamic programming?
+1. To optimize memory usage
+2. To track how many digits we've processed
+3. To ensure we don't generate numbers exceeding the input number
+4. To calculate the count of digit '1' in the current state
+
+Q2: In the following code snippet, when does 'newTight' become false?
+```javascript
+const maxDigit = tight ? parseInt(str[pos]) : 9;
+// ...
+const newTight = tight && (digit === maxDigit);
+```
+1. When 'tight' is initially false
+2. When we choose any digit less than the current digit in the input number
+3. When we choose a digit greater than the maximum allowed digit
+4. When we reach the last position in the number
+
+Q3: For the input number 23, which of the following sets of numbers 
+will be generated when processing position 0 with digit=1?
+1. Only 1, 11, 12, 13
+2. 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
+3. 1, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
+4. 10, 11, 12, 13 only
+
+Q4: What happens to the 'tight' constraint when we choose a digit 
+that is exactly equal to the corresponding digit in the input number?
+1. It always becomes false
+2. It remains unchanged from its previous value
+3. It toggles to the opposite of its previous value
+4. It remains true only if it was true before
+
+Q5: When counting the occurrence of digit '1' for n=13, why is it important 
+to maintain the 'tight' parameter?
+1. To reduce the time complexity of the algorithm
+2. To prevent double-counting of numbers with multiple 1's
+3. To ensure we only count valid numbers less than or equal to 13
+4. To track which positions already have the digit 1
+
+Q6: In the memoization key `${pos},${tight},${count}`, 
+why is it necessary to include the 'tight' parameter?
+1. It's not necessary, it's just an optimization
+2. Because the result may differ depending on whether we're bounded by the original number
+3. To track the total number of digits we've processed
+4. To distinguish between different recursive paths in the call stack
+
+Q7: For the digit DP approach with 'tight' parameter, which of the following statements is true?
+1. When tight=false, we can only use digits 0 and 1
+2. The algorithm always starts with tight=false to explore all possibilities
+3. When tight=true, we must stay within the bounds of the original number
+4. The 'tight' parameter is only relevant for the first digit position

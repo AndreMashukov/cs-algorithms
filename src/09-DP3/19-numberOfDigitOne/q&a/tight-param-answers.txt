@@ -1,0 +1,30 @@
+Answers for "Number of Digit One (Digit Dynamic Programming)":
+
+Q1: 3
+The tight parameter ensures we don't generate numbers exceeding 
+the input number by constraining digit choices when necessary.
+
+Q2: 2
+newTight becomes false when we choose any digit 
+less than the maximum allowed digit (maxDigit) at the current position, 
+which gives us freedom in subsequent positions.
+
+Q3: 2
+When we choose digit 1 at position 0 (making 1_), 
+tight becomes false as 1<2, allowing us to use any digit (0-9) at position 1, 
+resulting in numbers 10-19.
+
+Q4: 4
+The tight parameter remains true only if it was already true AND 
+we choose exactly the maximum allowed digit (tight && digit === maxDigit).
+
+Q5: 3
+The tight parameter ensures we only count valid numbers 
+≤13 by preventing us from counting invalid numbers 
+like 14-19 that exceed the input.
+
+Q6: 2
+Including tight in the memoization key is necessary because the result differs depending on whether we're still bounded by the original number's constraints.
+
+Q7: 3
+When tight=true, our digit choices are constrained to ensure we stay within the bounds of the original number; otherwise, we could generate invalid numbers.

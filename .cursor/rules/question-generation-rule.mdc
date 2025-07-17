@@ -1,0 +1,47 @@
+# Question Generation Rule
+
+## Format Requirements
+1. Each algorithm problem should have 5-7 multiple-choice questions
+2. Questions should be numbered (Q1, Q2, etc.)
+3. Each question must have exactly 4 answer options, numbered 1-4
+4. Questions should test deep understanding of algorithm mechanics, not just syntax
+5. Include a mix of question types:
+   - Base case identification
+   - Calculation steps and sequences
+   - Algorithm design decisions
+   - Time/space complexity reasoning
+   - Edge case handling
+
+## Content Guidelines
+1. Questions should progress from fundamental concepts to advanced understanding
+2. Include at least one question about the base case
+3. Include at least one question about a specific calculation example
+4. Include at least one question about algorithm design decisions
+5. Include at least one question about edge cases or corner cases
+
+## Answer Format
+1. Create a separate answer file with the same name pattern
+2. For each question, provide:
+   - The correct answer number
+   - A brief explanation (1-2 sentences) justifying why this answer is correct
+3. Explanations should be clear and concise, highlighting the key insight
+
+## Example Structure
+```
+Problem: [Algorithm Name] ([Technique])
+
+Q1: [Question about fundamental concept]
+1. [Option 1]
+2. [Option 2]
+3. [Option 3]
+4. [Option 4]
+
+Q2: [Question about calculation]
+...
+
+Answers:
+Q1: [Correct option number]
+[Brief explanation]
+```
+
+This rule helps ensure consistent, high-quality algorithm quiz questions that test both theoretical understanding and practical application of algorithms.
