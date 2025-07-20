@@ -1,6 +1,7 @@
 Problem: Number of Digit One (DFS with Memoization)
 
-Q1: When processing n=13 with digit DP, what happens when we're at position 0 (leftmost digit) and choose digit 2?
+Q1: When processing n=13 with digit DP, what happens when we're at position 0 (leftmost digit) 
+and choose digit 2?
 1. The recursion immediately returns 0
 2. The tight constraint becomes false for all subsequent positions
 3. The count is incremented by 2
@@ -12,7 +13,8 @@ Q2: In the memoization key "pos,tight,count", what does the 'count' parameter re
 3. Maximum number of 1s possible from this state
 4. Number of recursive calls made
 
-Q3: For n=213, when at position 1 with tight=true and we've chosen 2 for position 0, what is the maximum digit we can choose?
+Q3: For n=213, when at position 1 with tight=true and we've chosen 2 for position 0, 
+what is the maximum digit we can choose?
 1. 9
 2. 1
 3. 2
@@ -36,7 +38,8 @@ Q6: What determines whether newTight becomes true or false in the recursion?
 3. newTight = !tight && (digit > 0)
 4. newTight = (digit === 1)
 
-Q7: For n=11, what is the total number of unique states (different parameter combinations) explored by the DFS?
+Q7: For n=11, what is the total number of unique states (different parameter combinations) 
+explored by the DFS?
 1. 4
 2. 11
 3. Less than 20
