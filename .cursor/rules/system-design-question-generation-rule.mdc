@@ -1,0 +1,101 @@
+# System Design Question Generation Rule
+
+## Format Requirements
+1. Each system design problem should have 20 multiple-choice questions
+2. Questions should be numbered (Q1, Q2, etc.)
+3. Each question must have exactly 4 answer options, numbered 1-4
+4. Questions should test deep understanding of the system design solutions proposed in the description
+5. Include a mix of question types:
+   - Architectural considerations
+   - Scalability concepts and trade-offs
+   - Component interaction and data flow
+   - Performance optimization techniques
+   - Failure handling and resilience strategies
+   - Database schema and access patterns
+   - Caching strategies and use cases
+
+## Content Guidelines
+1. Questions should progress from fundamental concepts to advanced understanding
+2. Include at least one question about the system's core requirements
+3. Include at least one question about capacity estimation or specific calculations
+4. Include at least one question about architectural design decisions and trade-offs
+5. Include at least one question about scaling strategies
+6. Include at least one question about database design choices
+7. Include at least one question about caching implementation
+8. Include at least one question about handling edge cases or system failures
+9. Avoid generic options for questions like "It depends", "It's a best practice", "Because it's more efficient", "To follow industry standards" without specific reasoning
+
+## Answer Format
+1. Create a separate answer file with the same name pattern
+2. For each question, provide:
+   - The correct answer number
+   - A brief explanation (2-3 sentences) justifying why this answer is correct
+   - Reference to the specific part of the system design that supports this answer
+3. Explanations should be clear and concise, highlighting the key system design principle or trade-off
+
+## Example Structure
+```
+Problem: [System Design Name] (e.g., URL Shortener)
+
+Q1: [Question about core architectural decision]
+1. [Option 1]
+2. [Option 2]
+3. [Option 3]
+4. [Option 4]
+
+Q2: [Question about capacity estimation]
+...
+
+Q3: [Question about architectural design decision]
+...
+
+Q4: [Question about scaling strategy]
+...
+
+Answers:
+Q1: [Correct option number]
+[Brief explanation of why this architectural approach is correct]
+
+Q2: [Correct option number]
+[Brief explanation of the calculation or estimation reasoning]
+```
+
+## Example Q&A Types for System Design
+
+### Requirement Analysis Questions
+- What is the primary goal of this system design?
+- Which functional requirement is most critical for this system?
+- Which non-functional requirement most impacts the architectural decisions?
+- What is the estimated scale that the system needs to handle?
+
+### Architectural Questions
+- Why was a microservice architecture chosen over a monolithic approach?
+- Which communication pattern is most appropriate between components X and Y?
+- What are the trade-offs of using event-driven architecture in this system?
+- Why does component X communicate synchronously/asynchronously with component Y?
+
+### Database Questions
+- Why was NoSQL chosen over a relational database for this component?
+- What is the appropriate sharding key for this dataset?
+- Which consistency model best serves this system's requirements?
+- How does the chosen database schema support the query patterns?
+
+### Caching Questions
+- Which caching strategy best meets the system requirements?
+- Where should the cache be placed in the architecture?
+- What is an appropriate cache eviction policy for this use case?
+- How does the system maintain consistency between the cache and database?
+
+### Scaling Questions
+- What is the bottleneck when the system scales to X million users?
+- Which component requires horizontal scaling versus vertical scaling?
+- How does the system handle load balancing between instances?
+- What is the impact of scaling component X on component Y?
+
+### Reliability and Resilience Questions
+- How does the system handle the failure of component X?
+- Which fault tolerance mechanism is appropriate for this system?
+- What happens when the database becomes unavailable?
+- How does the system recover from data inconsistency?
+
+This rule helps ensure consistent, high-quality system design quiz questions that test both theoretical understanding and practical application of system design principles and patterns.
