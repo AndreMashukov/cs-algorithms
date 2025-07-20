@@ -36,7 +36,7 @@ Create exactly 8 files for each problem:
  * @param {type[]} paramName
  * @return {returnType}
  */
-function {functionName}_dfs(params) {
+function {functionName}Dfs(params) {
   // Add comprehensive line-by-line comments explaining:
   // - What each variable represents
   // - The purpose of each operation
@@ -82,7 +82,7 @@ function {functionName}_dfs(params) {
  * @param {type[]} paramName
  * @return {returnType}
  */
-function {functionName}_dp(params) {
+function {functionName}Dp(params) {
   // Add comprehensive line-by-line comments explaining:
   // - DP array/table initialization and meaning
   // - Transition formula and logic
@@ -112,7 +112,7 @@ function {functionName}_dp(params) {
 ```
 
 ### 3. recursive-questions.txt
-Create exactly 7 multiple-choice questions focusing on:
+Create exactly 8 multiple-choice questions focusing on:
 - Algorithm flow and execution order
 - Intermediate calculations and states
 - Parameter meanings and transformations
@@ -140,7 +140,7 @@ Q2: {Question about base case or key logic}
 
 **Question Guidelines:**
 - Focus on algorithm understanding, NOT time/space complexity
-- Avoid generic options like "It's a bug", "It's a convention", "To prevent stack overflow", "To maintain consistency with mathematical conventions", " The algorithm has a bug"
+- Avoid generic options like "It's a bug", "It's a convention", "To prevent stack overflow", "To maintain consistency with mathematical conventions", " The algorithm has a bug", "Because the algorithm has an error", etc...
 - Avoid questions related to memoization or alogrithm's performance, because the answers are very easy
 - Ask about what gets calculated first/next, intermediate results, parameter meanings
 - Target the most difficult/confusing aspects of the solution
