@@ -191,9 +191,14 @@ Create a simple, step-by-step walkthrough of how the recursive algorithm works:
 ### 8. dp-example.txt
 Create a simple, step-by-step walkthrough of how the DP algorithm works:
 - Use the same simple input as recursive example
+- Start by clearly explaining the structure of the DP array/table:
+  - What each dimension represents
+  - What the values in each cell mean
+  - How the indices correspond to the problem state
 - Show how the DP table/array gets filled step by step
 - Explain the state transitions and why each value is calculated
-- Visualize the DP array updates at each step
+- Visualize the DP array updates at each step with clear formatting
+- Include diagrams of the array state at key steps with proper alignment
 - Keep explanations clear and beginner-friendly
 
 ## Implementation Guidelines

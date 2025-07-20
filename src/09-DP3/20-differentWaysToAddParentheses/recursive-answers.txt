@@ -1,13 +1,15 @@
 Problem: Different Ways to Add Parentheses (DFS with Memoization)
 
 Q1: 2
-When splitting at the first '-', we get dfs("2") and dfs("1-1"), which eventually calls dfs("1") twice
+When splitting at the first '-', we get dfs("2") and dfs("1-1"), 
+which eventually calls dfs("1") twice
 
 Q2: 2
 The base case for a pure number returns an array containing just that number: [11]
 
 Q3: 2
-When splitting at position 1 (the '*'), leftExpr = substring(0,1) = "2" and rightExpr = substring(2) = "3-4"
+When splitting at position 1 (the '*'), leftExpr = substring(0,1) = "2" 
+and rightExpr = substring(2) = "3-4"
 
 Q4: 2
 dfs("1") is called when processing "1-1" (splits into two "1"s) but results are memoized

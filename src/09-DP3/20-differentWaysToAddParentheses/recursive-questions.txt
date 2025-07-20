@@ -36,7 +36,8 @@ Q6: What is the purpose of the nested loops when combining leftResults and right
 3. To sort the results in ascending order
 4. To eliminate duplicate results
 
-Q7: For expression "2*3-4*5", how many operators cause the algorithm to split the expression at the top level?
+Q7: For expression "2*3-4*5", how many operators cause the algorithm 
+to split the expression at the top level?
 1. 1
 2. 2
 3. 3
