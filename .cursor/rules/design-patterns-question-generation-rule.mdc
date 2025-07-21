@@ -1,0 +1,435 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Design Pattern Example Generator
+
+You are an AI assistant specialized in creating comprehensive, real-world design pattern implementations in TypeScript. When given a design pattern name, create advanced, enterprise-level examples with complete documentation and educational materials.
+
+## Directory Structure
+For each design pattern, create a directory in `src/AB-DesignPatterns/` with naming pattern: `{number}-{patternName}/`
+- Use sequential numbering (01-, 02-, etc.)
+- Use camelCase for pattern names (e.g., `factory`, `singleton`, `observer`)
+
+Each pattern directory should contain exactly 3 real-world examples, each in its own subdirectory:
+```
+src/AB-DesignPatterns/
+├── 01-factory/
+│   ├── 01-DatabaseConnection/
+│   ├── 02-UiComponentFactory/
+│   └── 03-ApiClientFactory/
+├── 02-singleton/
+│   ├── 01-ConfigurationManager/
+│   ├── 02-LoggerService/
+│   └── 03-CacheManager/
+└── ...
+```
+
+## Required Files per Example
+Create exactly 4 files for each real-world example:
+
+### 1. implementation.ts
+**Structure:**
+```typescript
+// Design Pattern: {Pattern Name}
+// Real-World Use Case: {Use Case Title}
+// Description: {Detailed description of the real-world scenario}
+//
+// Problem Statement:
+// {Explanation of the problem this pattern solves in this context}
+//
+// Solution Overview:
+// {How this pattern addresses the problem}
+
+// Interfaces and Types
+interface {InterfaceName} {
+  // Define comprehensive interfaces with proper TypeScript types
+  // Include all necessary methods and properties
+  // Use generics where applicable
+}
+
+type {TypeName}<T = any> = {
+  // Define complex types with generics
+  // Include union types, mapped types, etc.
+};
+
+// Enums for better type safety
+enum {EnumName} {
+  // Define relevant enums
+}
+
+// Abstract classes or base classes
+abstract class {AbstractClassName} {
+  protected readonly {propertyName}: {Type};
+  
+  constructor(protected {paramName}: {Type}) {
+    // Implementation with proper access modifiers
+  }
+  
+  abstract {methodName}(): {ReturnType};
+  
+  protected {helperMethod}(): {ReturnType} {
+    // Implementation
+  }
+}
+
+// Concrete implementations
+class {ConcreteClassName} extends {AbstractClassName} implements {InterfaceName} {
+  private static instance: {ConcreteClassName} | null = null;
+  private readonly {privateField}: {Type};
+  
+  private constructor(
+    {param1}: {Type1},
+    {param2}: {Type2}
+  ) {
+    super({param1});
+    // Comprehensive implementation with proper encapsulation
+  }
+  
+  public static getInstance({params}): {ConcreteClassName} {
+    // Pattern-specific implementation
+  }
+  
+  public {publicMethod}<T extends {Constraint}>({params}): Promise<T> {
+    // Advanced implementation with generics, async/await
+    // Include error handling, validation, logging
+  }
+  
+  private {privateMethod}(): {ReturnType} {
+    // Internal implementation details
+  }
+}
+
+// Additional supporting classes
+class {SupportingClassName} {
+  // Include decorators where applicable
+  @{DecoratorName}
+  public {method}(): {ReturnType} {
+    // Implementation
+  }
+}
+
+// Factory functions or utility classes
+class {UtilityClassName} {
+  public static create{Something}<T>({params}): {ReturnType}<T> {
+    // Factory method implementation
+  }
+}
+
+// Usage Examples
+// Example 1: Basic Usage
+const example1 = async () => {
+  try {
+    // Demonstrate basic pattern usage
+    const instance = {ClassName}.getInstance();
+    const result = await instance.{method}();
+    console.log('Basic usage result:', result);
+  } catch (error) {
+    console.error('Error in basic usage:', error);
+  }
+};
+
+// Example 2: Advanced Usage
+const example2 = async () => {
+  try {
+    // Demonstrate advanced features, generics, complex scenarios
+    const factory = new {FactoryClassName}();
+    const product = factory.create{Product}<{GenericType}>({complexParams});
+    const result = await product.{advancedMethod}();
+    console.log('Advanced usage result:', result);
+  } catch (error) {
+    console.error('Error in advanced usage:', error);
+  }
+};
+
+// Example 3: Edge Cases and Error Handling
+const example3 = async () => {
+  try {
+    // Demonstrate error handling, edge cases, cleanup
+    const manager = {ClassName}.getInstance();
+    
+    // Test edge cases
+    const edgeCaseResult = await manager.{methodWithEdgeCases}();
+    
+    // Cleanup operations
+    await manager.cleanup();
+    
+    console.log('Edge case handling result:', edgeCaseResult);
+  } catch (error) {
+    console.error('Error in edge case handling:', error);
+  }
+};
+
+// Export for module usage
+export {
+  {InterfaceName},
+  {TypeName},
+  {EnumName},
+  {ConcreteClassName},
+  {UtilityClassName}
+};
+
+// Run examples
+if (require.main === module) {
+  (async () => {
+    await example1();
+    await example2();
+    await example3();
+  })();
+}
+```
+
+### 2. questions.md
+Create exactly 20 multiple-choice questions focusing on:
+- Pattern structure and implementation details
+- When/why to use this pattern vs alternatives
+- Real-world application scenarios
+- Code behavior and execution flow
+- TypeScript-specific features (generics, interfaces, decorators)
+- Advanced concepts (async/await, error handling, performance)
+
+**Format:**
+```markdown
+# {Pattern Name} Pattern - {Use Case Title} Questions
+
+## Q1: {Question about pattern structure/implementation}
+1. {Option 1}
+2. {Option 2}
+3. {Option 3}
+4. {Option 4}
+
+## Q2: {Question about when/why to use this pattern}
+1. {Option 1}
+2. {Option 2}
+3. {Option 3}
+4. {Option 4}
+
+## Q3: {Question about real-world application}
+1. {Option 1}
+2. {Option 2}
+3. {Option 3}
+4. {Option 4}
+
+## Q4: {Question about code behavior/execution flow}
+1. {Option 1}
+2. {Option 2}
+3. {Option 3}
+4. {Option 4}
+
+## Q5: {Question about TypeScript features}
+1. {Option 1}
+2. {Option 2}
+3. {Option 3}
+4. {Option 4}
+
+## Q6: {Question about generics/interfaces}
+1. {Option 1}
+2. {Option 2}
+3. {Option 3}
+4. {Option 4}
+
+## Q7: {Question about error handling/edge cases}
+1. {Option 1}
+2. {Option 2}
+3. {Option 3}
+4. {Option 4}
+
+## Q8: {Question about performance/optimization}
+1. {Option 1}
+2. {Option 2}
+3. {Option 3}
+4. {Option 4}
+
+## Q9: {Question about pattern alternatives/trade-offs}
+1. {Option 1}
+2. {Option 2}
+3. {Option 3}
+4. {Option 4}
+
+## Q10: {Question about advanced implementation details}
+1. {Option 1}
+2. {Option 2}
+3. {Option 3}
+4. {Option 4}
+```
+
+**Question Guidelines:**
+- Focus on deep understanding of pattern mechanics and real-world application
+- Include questions about TypeScript-specific features and modern development practices
+- Avoid generic options or oversimplified answers
+- Target advanced developers with enterprise-level complexity
+- Include scenario-based questions that test practical application
+
+### 3. answers.md
+**Format:**
+```markdown
+# {Pattern Name} Pattern - {Use Case Title} Answers
+
+## Q1: {Answer number}
+{Comprehensive explanation of why this answer is correct, including references to specific code sections and pattern principles}
+
+## Q2: {Answer number}
+{Detailed explanation covering the reasoning behind the correct choice and how it relates to the real-world use case}
+
+## Q3: {Answer number}
+{Explanation that connects the answer to practical application scenarios and industry best practices}
+
+## Q4: {Answer number}
+{Technical explanation covering execution flow, method calls, and state changes}
+
+## Q5: {Answer number}
+{Explanation of TypeScript features, type safety, and modern language constructs}
+
+## Q6: {Answer number}
+{Detailed coverage of generics, interfaces, and type relationships}
+
+## Q7: {Answer number}
+{Explanation of error handling strategies, edge cases, and defensive programming}
+
+## Q8: {Answer number}
+{Performance considerations, optimization strategies, and scalability aspects}
+
+## Q9: {Answer number}
+{Comparison with alternative patterns, trade-offs, and decision criteria}
+
+## Q10: {Answer number}
+{Advanced implementation details, architectural considerations, and expert-level insights}
+```
+
+### 4. example.md
+Create a comprehensive, step-by-step walkthrough:
+
+**Format:**
+```markdown
+# {Pattern Name} Pattern - {Use Case Title} Example
+
+## Overview
+{Brief description of what this example demonstrates}
+
+## Scenario
+{Detailed real-world scenario that motivated this implementation}
+
+## Step-by-Step Implementation
+
+### Step 1: Interface Design
+```typescript
+// Show the interface code
+```
+**Explanation:** {Why these interfaces are designed this way, what problems they solve}
+
+### Step 2: Abstract Base Class
+```typescript
+// Show the abstract class code
+```
+**Explanation:** {Role of the abstract class, inheritance strategy}
+
+### Step 3: Concrete Implementation
+```typescript
+// Show the concrete class code
+```
+**Explanation:** {How the pattern is implemented, key design decisions}
+
+### Step 4: Pattern-Specific Logic
+```typescript
+// Show pattern-specific code (factory methods, singleton logic, etc.)
+```
+**Explanation:** {Core pattern implementation details}
+
+### Step 5: Advanced Features
+```typescript
+// Show generics, decorators, async/await usage
+```
+**Explanation:** {How modern TypeScript features enhance the pattern}
+
+## Execution Flow
+
+### Scenario 1: Basic Usage
+1. {Step-by-step execution flow}
+2. {Method calls and state changes}
+3. {Return values and side effects}
+
+**Code Flow:**
+```typescript
+// Show execution example with comments
+```
+
+### Scenario 2: Advanced Usage
+1. {Complex scenario execution}
+2. {Error handling and edge cases}
+3. {Performance considerations}
+
+**Code Flow:**
+```typescript
+// Show advanced execution example
+```
+
+## Benefits in This Use Case
+- {Specific benefit 1 with explanation}
+- {Specific benefit 2 with explanation}
+- {Specific benefit 3 with explanation}
+
+## Common Pitfalls and Solutions
+- **Pitfall:** {Common mistake}
+  **Solution:** {How to avoid it}
+
+## Performance Considerations
+{Discussion of performance implications, memory usage, and optimization strategies}
+
+## Testing Strategy
+```typescript
+// Show example unit tests
+```
+
+## Integration with Other Patterns
+{How this pattern works with other design patterns in enterprise applications}
+```
+
+## Implementation Guidelines
+
+### Code Quality Requirements:
+- **Advanced TypeScript**: Use modern TS features (generics, decorators, mapped types, conditional types)
+- **Enterprise Patterns**: Include dependency injection, error handling, logging, monitoring
+- **Async/Await**: Use Promise-based APIs where appropriate
+- **Type Safety**: Comprehensive type definitions with proper constraints
+- **Documentation**: JSDoc comments for public APIs
+- **Testing**: Include comprehensive examples that could be easily tested
+- **Real-World Complexity**: Enterprise-level scenarios with multiple interacting components
+
+### TypeScript Features to Include:
+- Generics with constraints
+- Union and intersection types
+- Mapped types and conditional types
+- Decorators (when applicable)
+- Access modifiers (private, protected, public, readonly)
+- Abstract classes and interfaces
+- Enums and const assertions
+- Module system (import/export)
+
+### Web Development Focus Areas:
+- API integration and HTTP clients
+- Database connection management
+- UI component factories
+- Authentication and authorization
+- Caching strategies
+- Configuration management
+- Logging and monitoring
+- Event handling and state management
+
+### Question Creation Strategy:
+- Focus on practical application in web development
+- Include TypeScript-specific concepts
+- Test understanding of pattern trade-offs
+- Cover error handling and edge cases
+- Include performance and scalability considerations
+- Test knowledge of when NOT to use the pattern
+
+## Real-World Example Categories
+
+### For Each Pattern, Include These 3 Categories:
+
+1. **Infrastructure/Backend** (e.g., DatabaseConnection, ApiClient, ConfigManager)
+2. **Frontend/UI** (e.g., ComponentFactory, StateManager, ThemeProvider)
+3. **Integration/Services** (e.g., EventBus, CacheManager, AuthenticationService)
+
+When given a design pattern name, create the complete directory structure with all 3 real-world examples, each containing the 4 required files following this comprehensive template.
