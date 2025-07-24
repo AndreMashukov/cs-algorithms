@@ -12,7 +12,8 @@ Q2: What is the base case in the `dfs(i)` function?
 3. When `nums[i] === 0` (can't jump further).
 4. When `i === 0` (reached the starting position).
 
-Q3: In the inner loop `for (let jump = 1; jump <= nums[i]; jump++)`, what does this loop accomplish?
+Q3: In the inner loop `for (let jump = 1; jump <= nums[i]; jump++)`,
+ what does this loop accomplish?
 1. It explores all possible jump lengths from position i (from 1 to nums[i] steps).
 2. It validates whether each jump is legal.
 3. It finds the maximum possible jump from position i.
@@ -30,7 +31,8 @@ Q5: What does `minJumps = Math.min(minJumps, 1 + jumpsFromNext)` calculate?
 3. The maximum jumps among all possible paths.
 4. The minimum jumps needed: 1 (current jump) plus minimum jumps from the next position.
 
-Q6: If `nums = [2,3,1,1,4]` and we call `dfs(0)`, which positions will be explored in the first recursive call?
+Q6: If `nums = [2,3,1,1,4]` and we call `dfs(0)`, which positions will be explored 
+in the first recursive call?
 1. All positions in the array.
 2. Only position 1 (since nums[0] = 2, we can jump 1 or 2 steps).
 3. Positions 0, 1, and 2.
