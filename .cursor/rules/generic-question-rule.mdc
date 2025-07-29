@@ -1,0 +1,74 @@
+# Generic Feature Q&A Generation Rule
+
+## Format Requirements
+1. Each feature should have 6-8 multiple-choice questions
+2. Questions should be numbered (Q1, Q2, etc.)
+3. Each question must have exactly 4 answer options, numbered 1-4
+4. Questions should test comprehensive understanding of feature implementation, not just surface knowledge
+5. Include a mix of question types:
+   - Core functionality and purpose
+   - Implementation details and mechanics
+   - Design decisions and trade-offs
+   - Integration and dependencies
+
+## Content Guidelines
+1. Questions should progress from basic concepts to advanced implementation details
+2. Include at least one question about the feature's primary purpose or problem it solves
+3. Include at least one question about specific implementation mechanics
+4. Include at least one question about design decisions or architectural choices
+7. Avoid vague or generic options like "It's broken", "It's standard practice", "For better performance", "To follow conventions", etc.
+8. Focus on specific, technical understanding rather than memorization
+
+## Answer Format
+1. Create a separate answer file with the same name pattern
+2. For each question, provide:
+   - The correct answer number
+   - A brief explanation (1-2 sentences) justifying why this answer is correct
+3. Explanations should highlight the key technical insight or reasoning
+4. Make sure correct answers aren't always assigned same number (e.g. option 2 for every qustion)
+
+## Example Structure
+```
+Feature: [Feature Name] ([Technology/Framework])
+
+Q1: [Question about core purpose/problem solved]
+1. [Specific option 1]
+2. [Specific option 2]
+3. [Specific option 3]
+4. [Specific option 4]
+
+Q2: [Question about implementation mechanics]
+...
+
+Q6: [Question about performance/trade-offs]
+...
+
+Answers:
+Q1: [Correct option number]
+[Technical explanation of why this is correct]
+```
+
+## Question Categories by Feature Type
+
+### For UI Features
+- User interaction flow
+- State management
+- Rendering logic
+- Event handling
+- Accessibility considerations
+
+### For Backend Features
+- Data processing logic
+- API design decisions
+- Database interactions
+- Security considerations
+- Scalability patterns
+
+### For System Features
+- Architecture patterns
+- Configuration management
+- Monitoring and logging
+- Resource management
+- Integration points
+
+This rule ensures comprehensive understanding testing for any feature implementation across different domains
