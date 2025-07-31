@@ -1,5 +1,6 @@
 // 96. Unique Binary Search Trees
 // https://leetcode.com/problems/unique-binary-search-trees/description/?envType=problem-list-v2&envId=dynamic-programming
+// https://www.youtube.com/watch?v=Ox0TenN3Zpg
 // Problem Description:
 // Given an integer n, return the number of structurally unique BST's (binary search trees) 
 // which has exactly n nodes of unique values from 1 to n.
