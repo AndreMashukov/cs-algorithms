@@ -20,3 +20,9 @@ Explanation: The first column cells (j=0) can only be reached by moving downward
 
 A7: b) O(m * n)
 Explanation: Despite using O(n) space, we still need to process each cell in the grid once, requiring m*n operations for an m×n grid.
+
+A8: b) To prevent an out-of-bounds array access for `dp[j-1]` when processing the first column (j=0).
+Explanation: When j is 0, `dp[j-1]` would attempt to access `dp[-1]`, which is an invalid index. The condition ensures that the logic for adding paths from the left is only applied to columns other than the very first one.
+
+A9: b) `dp[j]` is the path count from the cell above, and `dp[j-1]` is the path count from the cell to the left.
+Explanation: The 1D `dp` array carries over the values from the previous row. So, at the start of the `j` loop for a given `i`, `dp[j]` holds the path count from `(i-1, j)`. `dp[j-1]` has already been updated in the current `i` iteration to reflect the path count for `(i, j-1)`.

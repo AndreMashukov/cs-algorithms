@@ -41,3 +41,15 @@ a) O(m + n)
 b) O(m * n)
 c) O(n)
 d) O(1)
+
+Q8: Why is the `else if (j > 0)` condition crucial in the inner loop of `uniquePathsWithObstaclesOptimized`?
+a) To ensure the first row is processed correctly.
+b) To prevent an out-of-bounds array access for `dp[j-1]` when processing the first column (j=0).
+c) To skip processing for cells that contain obstacles.
+d) To handle the final cell at the bottom-right corner differently.
+
+Q9: Inside the `else if (j > 0)` block, what do `dp[j]` and `dp[j-1]` represent right before the line `dp[j] = dp[j] + dp[j-1]` is executed?
+a) `dp[j]` is 0 and `dp[j-1]` is 1.
+b) `dp[j]` is the path count from the cell above, and `dp[j-1]` is the path count from the cell to the left.
+c) `dp[j]` is the path count from the cell to the left, and `dp[j-1]` is the path count from the cell above.
+d) Both represent the path counts from the previous row.
