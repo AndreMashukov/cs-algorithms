@@ -118,6 +118,8 @@ Create exactly 8 multiple-choice questions focusing on:
 - Parameter meanings and transformations
 - Base cases and recursive logic
 - Most challenging/confusing parts of the algorithm
+- If there are multiple solutions in recursive.js file 
+  then create Q&A only for the most optimized part
 
 **Format:**
 ```
@@ -176,6 +178,8 @@ Same format as recursive-questions.txt but focused on:
 - State transitions and dependencies
 - Order of computation in DP approach
 - Relationship between current and previous states
+- If there are multiple solutions in dp.js file 
+  then create Q&A only for the most optimized part
 
 ### 6. dp-answers.txt
 Same format as recursive-answers.txt for DP questions.
