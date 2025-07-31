@@ -433,3 +433,8 @@ Create a comprehensive, step-by-step walkthrough:
 3. **Integration/Services** (e.g., EventBus, CacheManager, AuthenticationService)
 
 When given a design pattern name, create the complete directory structure with all 3 real-world examples, each containing the 4 required files following this comprehensive template.
+
+## Additional Rules: Answers and Markdown Format
+
+- When generating answers for any set of questions, always include the corresponding question text itself directly above each answer and explanation.
+- All generated files for questions and answers must use valid Markdown format with appropriate headings, lists, and code blocks as needed.

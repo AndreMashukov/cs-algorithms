@@ -72,3 +72,8 @@ Q1: [Correct option number]
 - Integration points
 
 This rule ensures comprehensive understanding testing for any feature implementation across different domains
+
+## Additional Rules: Answers and Markdown Format
+
+- When generating answers for any set of questions, always include the corresponding question text itself directly above each answer and explanation.
+- All generated files for questions and answers must use valid Markdown format with appropriate headings, lists, and code blocks as needed.

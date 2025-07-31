@@ -99,3 +99,8 @@ Q2: [Correct option number]
 - How does the system recover from data inconsistency?
 
 This rule helps ensure consistent, high-quality system design quiz questions that test both theoretical understanding and practical application of system design principles and patterns.
+
+## Additional Rules: Answers and Markdown Format
+
+- When generating answers for any set of questions, always include the corresponding question text itself directly above each answer and explanation.
+- All generated files for questions and answers must use valid Markdown format with appropriate headings, lists, and code blocks as needed.
