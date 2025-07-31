@@ -1,0 +1,11 @@
+# Problem: Scramble String (DFS with Memoization)
+
+| Question | Answer |
+|----------|--------|
+| Q1       | 1      |
+| Q2       | 2      |
+| Q3       | 2      |
+| Q4       | 1      |
+| Q5       | 2      |
+| Q6       | 1      |
+| Q7       | 2      |

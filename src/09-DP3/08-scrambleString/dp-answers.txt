@@ -1,9 +1,0 @@
-Problem: Scramble String (Dynamic Programming)
-
-Q1: 2
-Q2: 2
-Q3: 1
-Q4: 1
-Q5: 1
-Q6: 2
-Q7: 3

@@ -1,0 +1,132 @@
+# Scramble String: Split Mechanism Explained
+
+I'll explain the split mechanism for the scramble string problem with a simple example.
+
+Let me first look at the implementation to understand the exact logic. Now let me explain the split mechanism with a simple example. I'll use a clear, step-by-step illustration:
+
+## Key Insight
+
+When we scramble a string, we can either **keep the order** or **swap the parts** after splitting.
+
+### Simple Example: `s1 = "abc"`, `s2 = "bac"`
+
+Let's see how we try different split points and check both cases:
+
+#### Split at position 1 (i=1):
+```text
+s1 = "abc" → left1="a", right1="bc"
+s2 = "bac" → left2="b", right2="ac"
+```
+**Case 1 - No Swap:**
+- Does `"a" == "b"`? No ❌
+- Does `"bc" == "ac"`? No ❌
+- **Result:** No swap case fails
+
+**Case 2 - With Swap:**
+- `left2_swapped = s2.substring(s2.length - i) = "c"`
+- `right2_swapped = s2.substring(0, s2.length - i) = "ba"`
+- Does `"a" == "c"`? No ❌
+- Does `"bc" == "ba"`? No ❌
+- **Result:** Swap case fails
+
+#### Split at position 2 (i=2):
+```text
+s1 = "abc" → left1="ab", right1="c"
+s2 = "bac" → left2="ba", right2="c"
+```
+**Case 1 - No Swap:**
+- Does `"ab" == "ba"`? No ❌
+- Does `"c" == "c"`? Yes ✅
+- **Result:** No swap case fails (both must be true)
+
+**Case 2 - With Swap:**
+- `left2_swapped = "ac"`
+- `right2_swapped = "b"`
+- Does `"ab"` scramble to `"ac"`? No ❌
+- Does `"c" == "b"`? No ❌
+- **Result:** Swap case fails
+
+### Visual Representation of the Swap Logic
+
+```text
+Original split (No Swap):
+s1: [left1] [right1]
+s2: [left2] [right2]
+Check: left1 ↔ left2  AND  right1 ↔ right2
+
+Swapped split (With Swap):
+s1: [left1] [right1]
+s2: [right2_swapped] [left2_swapped]
+Check: left1 ↔ left2_swapped  AND  right1 ↔ right2_swapped
+
+Where:
+- left2_swapped = last i characters of s2
+- right2_swapped = first (length-i) characters of s2
+```
+
+### Why This Works
+
+When scrambling creates a string, it can either:
+1. **Keep order**: `"ab" + "c"` stays as `"abc"`
+2. **Swap parts**: `"ab" + "c"` becomes `"c" + "ab"` = `"cab"`
+
+So when checking if `s2` could come from scrambling `s1`, we need to test both possibilities at every split point.
+
+The algorithm tries all possible split points and for each split, checks both the "no swap" and "swap" scenarios recursively until it either finds a valid scrambling path or exhausts all possibilities.
+
+---
+
+# Problem: Scramble String (Recursive with Memoization)
+
+Let's trace through `isScramble_dfs("abc", "bca")` step by step:
+
+**Step 1:** Initial call `dfs("abc", "bca")`
+- Create key `"abc#bca"`
+- Check memo: not found
+- s1 != s2, so continue
+- Lengths are equal (3), so continue
+- Check character frequencies:
+  - s1: {a:1, b:1, c:1}
+  - s2: {b:1, c:1, a:1}
+  - Frequencies match, so continue
+
+**Step 2:** Try split point i=1
+- left1 = "a", right1 = "bc"
+- left2 = "b", right2 = "ca"
+
+**Step 3:** No-swap case - `dfs("a", "b") && dfs("bc", "ca")`
+- Call `dfs("a", "b")`:
+  - s1 != s2, lengths equal
+  - Frequencies: {a:1} vs {b:1} - don't match
+  - Return false
+- Since first part is false, no-swap case fails
+
+**Step 4:** Swap case - `dfs("a", "ca") && dfs("bc", "b")`
+- Call `dfs("a", "ca")`:
+  - Lengths different (1 vs 2)
+  - Return false
+- Since first part is false, swap case fails
+
+**Step 5:** Try split point i=2
+- left1 = "ab", right1 = "c"
+- left2 = "bc", right2 = "a"
+
+**Step 6:** No-swap case - `dfs("ab", "bc") && dfs("c", "a")`
+- Call `dfs("ab", "bc")`:
+  - Lengths equal, frequencies: {a:1,b:1} vs {b:1,c:1} - don't match
+  - Return false
+- Since first part is false, no-swap case fails
+
+**Step 7:** Swap case - `dfs("ab", "a") && dfs("c", "bc")`
+- Call `dfs("ab", "a")`:
+  - Lengths different (2 vs 1)
+  - Return false
+- Since first part is false, swap case fails
+
+**Step 8:** All split points tried, return false
+- Store `memo["abc#bca"] = false`
+- Return false
+
+**Final Result:** false (`s2="bca"` is not a scrambled version of `s1="abc"`)
+
+> Note: If we had tried `"abc"` and `"acb"`, we would find a valid scrambling at split point i=2 with the swap case.
