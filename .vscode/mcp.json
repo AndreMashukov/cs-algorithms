@@ -8,10 +8,6 @@
     }
   ],
   "servers": {
-    "fetch": {
-      "command": "/Users/andreymashukov/Desktop/projects/cs-algorithms/.venv/bin/python",
-      "args": ["-m", "mcp_server_fetch"]
-    },
     "sequential-thinking": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
