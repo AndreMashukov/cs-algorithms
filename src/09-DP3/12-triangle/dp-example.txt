@@ -36,3 +36,59 @@ The DP table shows all possible minimum path sums:
 - dp[0][0] = 2: minimum sum to reach position (0,0)
 - dp[1][0] = 5: minimum sum to reach position (1,0) via path 2→3
 - dp[1][1] = 6: minimum sum to reach position (1,1) via path 2→4
+
+    4
+    5 Original Triangle:
+    6       [2]
+    7      [3, 4]
+    8     [6, 5, 7]
+    9        ^
+   10        |
+   11    Target Cell (i=2, j=1)
+   12
+   13
+   14 DP Table (`dp[i][j]`) after filling the first two rows:
+   15       [2]
+   16      [5, 6]      <-- dp[i-1] or `triangle[1]` after calculation
+   17     [?, ?, ?]
+   18
+   19
+   20 Calculating `dp[2][1]` (the path to the '5'):
+   21
+   22 A cell `dp[i][j]` can be reached from two places in the row above:
+   23 1.  The cell directly above: `dp[i-1][j]`
+   24 2.  The cell diagonally to the upper-left: `dp[i-1][j-1]`
+   25
+   26 Visualization:
+   27
+   28       DP Table (Previous Row, i=1)
+   29       +---+---+
+   30       | 5 | 6 |
+   31       +---+---+
+   32         |   |
+   33         |  /
+   34         | /
+   35         |/
+   36       +---+
+   37       | ? |  <-- DP Table (Current Cell, i=2, j=1)
+   38       +---+
+   39
+   40 The calculation for `dp[2][1]` is:
+   41 Value of current cell + Minimum of the two possible parent paths
+   42
+   43 dp[2][1] = triangle[2][1] + min(dp[1][0], dp[1][1])
+   44 dp[2][1] =       5         + min(   5,      6    )
+   45 dp[2][1] =       5         +      5
+   46 dp[2][1] = 10
+   47
+   48
+   49 Why this is tricky:
+   50
+   51 1.  **Middle Elements vs. Edges:** The logic `min(dp[i-1][j-1], dp[i-1][j])` only works for middle elements.
+   52     *   The **left edge** (`j=0`) can only be reached from `dp[i-1][j]`.
+   53     *   The **right edge** (`j=triangle[i].length-1`) can only be reached from `dp[i-1][j-1]`.
+   54     The `if (j > 0)` and `if (j < triangle[i-1].length)` checks in the code handle these crucial edge cases.
+   55
+   56 2.  **Conceptual Shift:** You are not just adding numbers; you are building up the *minimum possible path sum* to reach each
+      cell, which is a core DP concept. The value `dp[2][1] = 10` means the cheapest way to get from the top of the triangle to the '
+      5' costs 10 (path: 2 -> 4 -> 5).

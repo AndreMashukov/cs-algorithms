@@ -1,0 +1,30 @@
+/**
+ * @param {number[][]} triangle
+ * @return {number}
+ */
+var minimumTotal = function(triangle) {
+  const n = triangle.length;
+  const dp = Array(n).fill(null).map((val, i) => Array(triangle[i].length).fill(Infinity))
+  // console.log(dp)
+  dp[0][0] = triangle[0][0]
+  for (let i = 1; i < n; i++) {
+    for (let j = 0; j < triangle[i].length; j++) {
+
+      if (j > 0 && dp[i - 1][j - 1] !== Infinity) {
+        dp[i][j] = Math.min(dp[i - 1][j - 1], dp[i][j]) + triangle[i][j]
+      }
+
+      if (j < triangle[i - 1].length && dp[i - 1][j] !== Infinity) {
+        dp[i][j] = Math.min(dp[i][j], dp[i - 1][j]) + triangle[i][j]
+      }
+    }
+  }
+
+  // console.log(dp)
+  let result = Infinity
+  for (let j = 0; j < triangle[n - 1].length; j++) {
+    result = Math.min(result, dp[n - 1][j])
+  }
+
+  return result
+};

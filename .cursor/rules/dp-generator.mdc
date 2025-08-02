@@ -111,33 +111,34 @@ function {functionName}Dp(params) {
 // Include same test cases as recursive.js
 ```
 
-### 3. recursive-questions.txt
-Create exactly 8 multiple-choice questions focusing on:
-- Algorithm flow and execution order
-- Intermediate calculations and states
-- Parameter meanings and transformations
-- Base cases and recursive logic
-- Most challenging/confusing parts of the algorithm
+### 3. recursive-questions.md
+Create exactly 10 multiple-choice questions focusing on:
+- Algorithm flow and execution order (2 questions)
+- Intermediate calculations and states (2 questions)
+- Parameter meanings and transformations (2 questions)
+- Base cases and recursive logic (2 questions)
+- Most challenging/confusing parts of the algorithm (2 questions)
+- Example-based questions (4 questions) - Generate these AFTER creating the recursive-example.md
 - If there are multiple solutions in recursive.js file 
   then create Q&A only for the most optimized part
 
 **Format:**
-```
-Problem: {Problem Title} (DFS with Memoization)
+```markdown
+# Problem: {Problem Title} (DFS with Memoization)
 
-Q1: {Question about algorithm structure/flow}
+## Q1: {Question about algorithm structure/flow}
 1. {Option 1}
 2. {Option 2}
 3. {Option 3}
 4. {Option 4}
 
-Q2: {Question about base case or key logic}
+## Q2: {Question about base case or key logic}
 1. {Option 1}
 2. {Option 2}
 3. {Option 3}
 4. {Option 4}
 
-[Continue for Q3-Q7...]
+[Continue for Q3-Q10...]
 ```
 
 **Question Guidelines:**
@@ -146,53 +147,108 @@ Q2: {Question about base case or key logic}
 - Avoid questions related to memoization or alogrithm's performance, because the answers are very easy
 - Ask about what gets calculated first/next, intermediate results, parameter meanings
 - Target the most difficult/confusing aspects of the solution
+- For example-based questions (Q7-Q10): Use the walkthrough from recursive-example.md to create questions about specific steps, calculations, or states shown in the example
 
-### 4. recursive-answers.txt
+### 4. recursive-answers.md
 **Format:**
-```
-Problem: {Problem Title} (DFS with Memoization)
+```markdown
+# Problem: {Problem Title} (DFS with Memoization)
 
-Q1: {Answer number}
+## Q1: {Question text from recursive-questions.md}
+**Answer: {Answer number}**
 {Brief Explanation}
-Q2: {Answer number}
+
+## Q2: {Question text from recursive-questions.md}
+**Answer: {Answer number}**
 {Brief Explanation}
-Q3: {Answer number}
+
+## Q3: {Question text from recursive-questions.md}
+**Answer: {Answer number}**
 {Brief Explanation}
-Q4: {Answer number}
+
+## Q4: {Question text from recursive-questions.md}
+**Answer: {Answer number}**
 {Brief Explanation}
-Q5: {Answer number}
+
+## Q5: {Question text from recursive-questions.md}
+**Answer: {Answer number}**
 {Brief Explanation}
-Q6: {Answer number}
+
+## Q6: {Question text from recursive-questions.md}
+**Answer: {Answer number}**
 {Brief Explanation}
-Q7: {Answer number}
+
+## Q7: {Question text from recursive-questions.md}
+**Answer: {Answer number}**
+{Brief Explanation}
+
+## Q8: {Question text from recursive-questions.md}
+**Answer: {Answer number}**
+{Brief Explanation}
+
+## Q9: {Question text from recursive-questions.md}
+**Answer: {Answer number}**
+{Brief Explanation}
+
+## Q10: {Question text from recursive-questions.md}
+**Answer: {Answer number}**
 {Brief Explanation}
 ```
 
 **Answer Guidelines:**
+- Always include the full question text from recursive-questions.md before each answer
 - Vary answer numbers (don't use same number repeatedly)
 - Make sure answers correspond to correct options from questions
 
-### 5. dp-questions.txt
-Same format as recursive-questions.txt but focused on:
-- DP table/array initialization and updates
-- State transitions and dependencies
-- Order of computation in DP approach
-- Relationship between current and previous states
+### 5. dp-questions.md
+Same format as recursive-questions.md but focused on:
+- DP table/array initialization and updates (2 questions)
+- State transitions and dependencies (2 questions)
+- Order of computation in DP approach (2 questions)
+- Relationship between current and previous states (2 questions)
+- Most challenging/confusing parts of the DP algorithm (2 questions)
+- Example-based questions (4 questions) - Generate these AFTER creating the dp-example.md
 - If there are multiple solutions in dp.js file 
   then create Q&A only for the most optimized part
 
-### 6. dp-answers.txt
-Same format as recursive-answers.txt for DP questions.
+### 6. dp-answers.md
+Same format as recursive-answers.md for DP questions (10 answers total).
 
-### 7. recursive-example.txt
+**Format:**
+```markdown
+# Problem: {Problem Title} (DP Approach)
+
+## Q1: {Question text from dp-questions.md}
+**Answer: {Answer number}**
+{Brief Explanation}
+
+## Q2: {Question text from dp-questions.md}
+**Answer: {Answer number}**
+{Brief Explanation}
+
+[Continue for Q3-Q10 with full questions from dp-questions.md]
+```
+
+**Answer Guidelines:**
+- Always include the full question text from dp-questions.md before each answer
+- Vary answer numbers (don't use same number repeatedly)
+- Make sure answers correspond to correct options from questions
+
+### 7. recursive-example.md
 Create a simple, step-by-step walkthrough of how the recursive algorithm works:
 - Use the simplest possible input example
 - Show the execution flow step by step
 - Explain what gets calculated at each recursive call
 - Include memoization updates if applicable
 - Keep explanations clear and beginner-friendly
+- Include a detailed text diagram visualizing the trickiest part of the algorithm:
+  - Show the recursion tree or call stack for a key example
+  - Visualize parameter values and return values at each step
+  - Use ASCII art with arrows to show the flow of execution
+  - Highlight the most challenging concept with annotations
+  - Explain why this particular aspect is difficult to understand
 
-### 8. dp-example.txt
+### 8. dp-example.md
 Create a simple, step-by-step walkthrough of how the DP algorithm works:
 - Use the same simple input as recursive example
 - Start by clearly explaining the structure of the DP array/table:
@@ -204,6 +260,12 @@ Create a simple, step-by-step walkthrough of how the DP algorithm works:
 - Visualize the DP array updates at each step with clear formatting
 - Include diagrams of the array state at key steps with proper alignment
 - Keep explanations clear and beginner-friendly
+- Include a detailed text diagram visualizing the trickiest part of the algorithm:
+  - Show the state of the DP table at a critical calculation step
+  - Use ASCII art (with +--+, |, /, etc.) to create visual representations
+  - Add arrows to show dependencies between states
+  - Include a concrete calculation example with the actual numbers
+  - Explain why this particular aspect is tricky with numbered points
 
 ## Implementation Guidelines
 
@@ -228,6 +290,8 @@ Create a simple, step-by-step walkthrough of how the DP algorithm works:
 - Focus on "what happens when..." and "what does this represent..." type questions
 - Avoid surface-level questions about complexity or general programming concepts
 - Target the most intellectually challenging aspects of each solution
+- **Generate example-based questions ONLY after completing the respective example files**
+- Example-based questions should reference specific steps, calculations, or states from the walkthrough examples
 
 ## Example Directory Structure:
 ```
@@ -235,12 +299,12 @@ src/09-DP3/
 ├── 04-maximumSubarray/
 │   ├── recursive.js
 │   ├── dp.js
-│   ├── recursive-questions.txt
-│   ├── recursive-answers.txt
-│   ├── dp-questions.txt
-│   ├── dp-answers.txt
-│   ├── recursive-example.txt
-│   └── dp-example.txt
+│   ├── recursive-questions.md
+│   ├── recursive-answers.md
+│   ├── dp-questions.md
+│   ├── dp-answers.md
+│   ├── recursive-example.md
+│   └── dp-example.md
 ├── 05-jumpGame/
 │   └── [same 8 files]
 └── ...
@@ -250,5 +314,7 @@ When given LeetCode URLs, process them sequentially with proper delays and creat
 
 ## Additional Rules: Answers and Markdown Format
 
-- When generating answers for any set of questions, always include the corresponding question text itself directly above each answer and explanation.
+- Each answer MUST include the full corresponding question text directly above the answer and explanation.
+- Questions should be copied exactly as they appear in the question files.
+- All options (1-4) should be included with the question text.
 - All generated files for questions and answers must use valid Markdown format with appropriate headings, lists, and code blocks as needed.

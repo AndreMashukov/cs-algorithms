@@ -1,3 +1,61 @@
+### Text Diagram: Building the `isPal` Table
+
+The `isPal[i][j]` table is filled in a bottom-up manner, starting with small substrings and using their results to solve larger ones. The key is that we fill the table **diagonally**.
+
+Let's visualize this with `s = "ababa"`:
+
+**The Dependency Rule:**
+The value of `isPal[i][j]` depends on the value of `isPal[i+1][j-1]`. This creates a diagonal dependency.
+
+```
+      j=0  j=1  j=2  j=3  j=4
+    +--------------------------+
+i=0 | T  |    |  T |    |  T |
+    |    |  ^ | /  |  ^ | /  |
+i=1 |    | T  |    | T  |    |
+    |    |    |  ^ | /  |    |
+i=2 |    |    | T  |    |  T |
+    |    |    |    |  ^ | /  |
+i=3 |    |    |    | T  |    |
+    |    |    |    |    |    |
+i=4 |    |    |    |    | T  |
+    +--------------------------+
+      ^    ^    ^    ^    ^
+      |    |    |    |    |
+      i=j  i+1=j i+2=j ... len=n
+```
+
+**How the Table is Filled:**
+
+1.  **Length 1 (Main Diagonal):**
+    *   All single characters are palindromes.
+    *   `isPal[0][0]`, `isPal[1][1]`, `isPal[2][2]`, etc., are all set to `true`.
+
+2.  **Length 2 (First off-diagonal):**
+    *   We check pairs of characters: `s[i] === s[i+1]`.
+    *   `isPal[0][1]` ("ab") -> false
+    *   `isPal[1][2]` ("ba") -> false
+    *   ...and so on.
+
+3.  **Length 3 (Second off-diagonal):**
+    *   To calculate `isPal[0][2]` ("aba"):
+        *   Check `s[0] === s[2]` (a === a) -> `true`.
+        *   Check the inner palindrome: `isPal[1][1]` -> `true`.
+        *   Since both are true, `isPal[0][2]` becomes `true`.
+        *   This shows the dependency: `isPal[1][1]` is used to calculate `isPal[0][2]`.
+
+4.  **Length 4 and more:**
+    *   The process continues, moving out diagonally.
+    *   To calculate `isPal[0][4]` ("ababa"):
+        *   Check `s[0] === s[4]` (a === a) -> `true`.
+        *   Check the inner palindrome: `isPal[1][3]` ("bab").
+        *   We would have already calculated `isPal[1][3]` in a previous step and found it to be `true`.
+        *   Therefore, `isPal[0][4]` becomes `true`.
+
+By filling the table in order of increasing substring length, we guarantee that when we need to check an inner palindrome's status, the result has already been computed.
+
+***
+
 I'll explain the palindrome precomputation using the example `s = "ababa"` 
 to show how both for-loops work step by step.
 
