@@ -1,0 +1,50 @@
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {number} n
+ * @return {TreeNode[]}
+ */
+var generateTrees = function(n) {
+  const map = new Map();
+
+  const dfs = (start, end) => {
+    const key = `${start},${end}`;
+    if (map.has(key)) {
+      return map.get(key)
+    }
+
+    if (start > end) {
+      return [null]
+    }
+
+    if (start === end) {
+      return [new TreeNode(start)]
+    }
+
+    const allTrees = [];
+    for (let root = start; root <= end; root++) {
+      left = dfs(start + 1, root)
+      right = dfs(root + 1, end);
+
+      for (let l of left) {
+        for (r of right) {
+          const rootNode = new TreeNode(root);
+          root.left = l;
+          root.right = r;
+          allTrees.push(root)
+        }
+      }
+    }
+
+    map.set(key, allTrees)
+    return allTrees
+  }
+
+  return dfs(0, n)
+};

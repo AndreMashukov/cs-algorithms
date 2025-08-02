@@ -1,0 +1,43 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Rule: Algorithm Solution Mistake - Socratic Follow-Up
+
+## When to Trigger
+- After an attempt to reproduce a solution to an algorithm problem (e.g., greedy, dynamic programming) results in errors or incorrect logic.
+
+## Steps
+
+### Step 3: Conceptual Probe
+- Prompt the AI to diagnose the root of the misunderstanding.
+- Use this prompt:
+  > Based on the error in my logic in my_solution.js, what fundamental concept of [greedy algorithms/dynamic programming] do you think I'm missing? Please ask me one or two targeted questions to test my understanding of that concept.
+
+- The AI should:
+  - Identify the likely conceptual gap.
+  - Ask 1-2 Socratic questions to probe the user's understanding of that concept.
+
+#### Example AI Response
+> Your solution shows you're thinking about all possible paths, which is common for DFS. The core misunderstanding seems to be in identifying the greedy choice.
+>
+> - Question 1: For Jump Game II, at any given position, what is the most important piece of information you need to decide your next jump to guarantee a minimum number of total jumps? Is it the length of the next jump, or the potential reach from that next jump?
+> - Question 2: Why is it safe to not explore every possible jump from the current position? What makes the 'farthest' reachable point a "safe" greedy choice?
+
+---
+
+### Step 4: "What If" Scenario
+- Prompt the AI to create a new, small problem to test the refined understanding.
+- Use this prompt:
+  > That makes sense. I understand now that I should focus on the farthest reach. Can you give me a new, small array for "Jump Game II" where a shorter jump from the start actually leads to a better overall path than the longest jump? Let me try to solve it.
+
+- The AI should:
+  - Create a small, custom test case that highlights the key concept.
+  - Invite the user to solve it, reinforcing the corrected understanding.
+
+---
+
+## Enforcement
+- Always follow up a failed solution attempt with these two steps before moving on to new problems or explanations.
+- For each follow-up, create a separate markdown file documenting the Socratic dialogue and the "what if" scenario. Name the file using the convention: `followup-[problem-name].md` (e.g., `followup-jump-game-ii.md`).
