@@ -160,4 +160,4 @@ Each system design problem should include 2-3 visual text diagrams to illustrate
 - When generating answers for any set of questions, always include the corresponding question text itself directly above each answer and explanation.
 - All generated files for questions and answers must use valid Markdown format with appropriate headings, lists, and code blocks as needed.
 - Visual diagrams must be enclosed in code blocks with no language specification to maintain formatting.
-- Place visual diagrams into a separate file digrams.md
+- Place visual diagrams into a separate file diqgrams.md
