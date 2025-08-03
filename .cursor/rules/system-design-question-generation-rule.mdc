@@ -100,7 +100,64 @@ Q2: [Correct option number]
 
 This rule helps ensure consistent, high-quality system design quiz questions that test both theoretical understanding and practical application of system design principles and patterns.
 
+## Visual Text Diagrams Requirements
+
+Each system design problem should include 2-3 visual text diagrams to illustrate key architectural concepts:
+
+### Diagram Types Required
+1. **High-Level Architecture Diagram** (Required)
+   - Show main components and their relationships
+   - Include external users/clients, load balancers, application servers, databases
+   - Use ASCII art or simple text-based representation
+   - Indicate data flow directions with arrows (→, ←, ↑, ↓)
+
+2. **Database Schema Diagram** (Required if applicable)
+   - Show table structures with key fields
+   - Indicate relationships between tables
+   - Include indexes and foreign key relationships
+   - Show sharding or partitioning strategy if relevant
+
+3. **Data Flow Diagram** (Optional but recommended)
+   - Illustrate how data moves through the system for key operations
+   - Show caching layers and their interaction points
+   - Include message queues, event streams if applicable
+   - Highlight critical paths and bottlenecks
+
+### Diagram Format Guidelines
+- Use plain text/ASCII characters for maximum compatibility
+- Keep diagrams simple and focused on key concepts
+- Include clear labels for all components
+- Use consistent symbols throughout all diagrams
+- Add brief explanations below each diagram
+- Ensure diagrams fit within 80-character width when possible
+
+### Example Diagram Symbols
+```
+┌─────────┐     Rectangular boxes for components
+│Component│
+└─────────┘
+
+[Database]      Square brackets for databases
+(Cache)         Parentheses for caching layers
+<Queue>         Angle brackets for message queues
+
+→ ← ↑ ↓         Arrows for data flow
+═══════════     Double lines for main connections
+───────────     Single lines for secondary connections
+```
+
+### Sample High-Level Architecture Diagram
+```
+[User] → [Load Balancer] → [API Gateway] → [App Servers]
+                                              ↓
+                              [Cache] ← → [Database]
+                                              ↓
+                                         [File Storage]
+```
+
 ## Additional Rules: Answers and Markdown Format
 
 - When generating answers for any set of questions, always include the corresponding question text itself directly above each answer and explanation.
 - All generated files for questions and answers must use valid Markdown format with appropriate headings, lists, and code blocks as needed.
+- Visual diagrams must be enclosed in code blocks with no language specification to maintain formatting.
+- Place visual diagrams into a separate file digrams.md

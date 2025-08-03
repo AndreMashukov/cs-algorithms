@@ -30,7 +30,8 @@ Word Break II - Recursive Approach Questions
    c) O(2^n)
    d) O(2^n * n)
 
-6. In the sentence construction logic, when do we just add the current word without a space?
+6. In the sentence construction logic, when do we just 
+   add the current word without a space?
    a) When it's the first word in the sentence
    b) When the remaining sentence is empty ("")
    c) When the current word is the longest

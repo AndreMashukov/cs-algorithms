@@ -105,3 +105,74 @@ Key Observations:
 3. Sentence construction: current_word + " " + remaining_sentence
 4. When remaining sentence is empty, only current word is added
 5. All valid word combinations are explored and combined
+
+========================================================
+                  VISUAL DIAGRAM
+            RECURSION TREE FOR "catsand"
+========================================================
+
+                    dfs(0)
+                 /"catsand"\
+                /           \
+          "cat" ✓           "cats" ✓
+              /                 \
+         dfs(3)                 dfs(4)
+        /"sand"\               /"and"\
+       /        \             /      \
+  "sand" ✓       ❌          "and" ✓   ❌
+     /                        /
+  dfs(7)                   dfs(7)
+    ""                       ""
+  (BASE)                   (BASE)
+     |                        |
+ Returns [""]            Returns [""]
+     |                        |
+     v                        v
+  ["sand"]                 ["and"]
+     |                        |
+     v                        v
+["cat sand"]            ["cats and"]
+     \                      /
+      \                    /
+       v                  v
+    ["cat sand", "cats and"]
+
+========================================================
+                 CALL STACK DIAGRAM
+========================================================
+
+Step 1:              Step 2:              Step 3:
++-------------+     +-------------+     +-------------+
+| dfs(0)      |     | dfs(0)      |     | dfs(0)      |
++-------------+     +-------------+     +-------------+
+                    | dfs(3)      |     | dfs(3)      |
+                    +-------------+     +-------------+
+                                        | dfs(7)      |
+                                        +-------------+
+
+Step 4:              Step 5:              Step 6:
++-------------+     +-------------+     +-------------+
+| dfs(0)      |     | dfs(0)      |     | dfs(0)      |
++-------------+     +-------------+     +-------------+
+| dfs(3)      |                         | dfs(4)      |
++-------------+                         +-------------+
+
+Step 7:              Step 8:
++-------------+     +-------------+
+| dfs(0)      |     | dfs(0)      |
++-------------+     +-------------+
+| dfs(4)      |     
++-------------+     
+| dfs(7)      |     
++-------------+     
+
+The most challenging concept: Understanding how partial results combine
+
+This recursion is complex because:
+1. Each valid word found creates a branch in the recursion tree
+2. Results from deeper recursive calls need to be combined with the current word
+3. The base case (empty string) returns [""] which might seem counterintuitive
+4. The algorithm needs to handle both:
+   a) Direct addition when sentence is empty
+   b) Word + space + sentence concatenation when sentence isn't empty
+5. Memoization stores complete sentence fragments for each starting position
