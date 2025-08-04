@@ -130,6 +130,7 @@ Each system design problem should include 2-3 visual text diagrams to illustrate
 - Use consistent symbols throughout all diagrams
 - Add brief explanations below each diagram
 - Ensure diagrams fit within 80-character width when possible
+- Add description to each diagram
 
 ### Example Diagram Symbols
 ```

@@ -30,7 +30,7 @@ alwaysApply: false
 ### Step 4: "What If" Scenario
 - Prompt the AI to create a new, small problem to test the refined understanding.
 - Use this prompt:
-  > That makes sense. I understand now that I should focus on the farthest reach. Can you give me a new, small array for "Jump Game II" where a shorter jump from the start actually leads to a better overall path than the longest jump? Let me try to solve it.
+  > That makes sense. I understand now that I should focus on the farthest reach. Can you give me a new, small input for {current problem} Let me try to solve it.
 
 - The AI should:
   - Create a small, custom test case that highlights the key concept.

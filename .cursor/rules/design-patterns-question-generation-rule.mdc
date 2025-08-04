@@ -27,7 +27,7 @@ src/AB-DesignPatterns/
 ```
 
 ## Required Files per Example
-Create exactly 4 files for each real-world example:
+Create exactly 5 files for each real-world example:
 
 ### 1. implementation.ts
 **Structure:**
@@ -266,34 +266,54 @@ Create exactly 20 multiple-choice questions focusing on:
 ```markdown
 # {Pattern Name} Pattern - {Use Case Title} Answers
 
-## Q1: {Answer number}
+## Q1: {Question text repeated here}
+**Answer:** {Answer number}
+
 {Comprehensive explanation of why this answer is correct, including references to specific code sections and pattern principles}
 
-## Q2: {Answer number}
+## Q2: {Question text repeated here}
+**Answer:** {Answer number}
+
 {Detailed explanation covering the reasoning behind the correct choice and how it relates to the real-world use case}
 
-## Q3: {Answer number}
+## Q3: {Question text repeated here}
+**Answer:** {Answer number}
+
 {Explanation that connects the answer to practical application scenarios and industry best practices}
 
-## Q4: {Answer number}
+## Q4: {Question text repeated here}
+**Answer:** {Answer number}
+
 {Technical explanation covering execution flow, method calls, and state changes}
 
-## Q5: {Answer number}
+## Q5: {Question text repeated here}
+**Answer:** {Answer number}
+
 {Explanation of TypeScript features, type safety, and modern language constructs}
 
-## Q6: {Answer number}
+## Q6: {Question text repeated here}
+**Answer:** {Answer number}
+
 {Detailed coverage of generics, interfaces, and type relationships}
 
-## Q7: {Answer number}
+## Q7: {Question text repeated here}
+**Answer:** {Answer number}
+
 {Explanation of error handling strategies, edge cases, and defensive programming}
 
-## Q8: {Answer number}
+## Q8: {Question text repeated here}
+**Answer:** {Answer number}
+
 {Performance considerations, optimization strategies, and scalability aspects}
 
-## Q9: {Answer number}
+## Q9: {Question text repeated here}
+**Answer:** {Answer number}
+
 {Comparison with alternative patterns, trade-offs, and decision criteria}
 
-## Q10: {Answer number}
+## Q10: {Question text repeated here}
+**Answer:** {Answer number}
+
 {Advanced implementation details, architectural considerations, and expert-level insights}
 ```
 
@@ -385,6 +405,170 @@ Create a comprehensive, step-by-step walkthrough:
 {How this pattern works with other design patterns in enterprise applications}
 ```
 
+### 5. diagram.md
+Create a comprehensive visual text diagram that illustrates the pattern structure, relationships, and flow:
+
+**Format:**
+```markdown
+# {Pattern Name} Pattern - {Use Case Title} Diagram
+
+## Pattern Structure Diagram
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    {Pattern Name} Pattern Structure             │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ┌─────────────────┐    ┌─────────────────┐                    │
+│  │   <<interface>>  │    │   <<abstract>>  │                    │
+│  │  {InterfaceName} │    │ {AbstractClass} │                    │
+│  │                 │    │                 │                    │
+│  │ + method1()     │    │ # property      │                    │
+│  │ + method2()     │    │ + method()      │                    │
+│  └─────────────────┘    │ # helper()      │                    │
+│           △              └─────────────────┘                    │
+│           │                       △                            │
+│           │                       │                            │
+│           └───────────┬───────────┘                            │
+│                       │                                        │
+│               ┌─────────────────┐                              │
+│               │ {ConcreteClass} │                              │
+│               │                 │                              │
+│               │ - instance      │                              │
+│               │ + getInstance() │                              │
+│               │ + method1()     │                              │
+│               │ + method2()     │                              │
+│               └─────────────────┘                              │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+## Class Relationships
+
+```
+Client ──→ {ConcreteClass}
+   │              │
+   │              ▼
+   └──────→ {InterfaceName}
+                  △
+                  │
+           {ConcreteClass}
+```
+
+## Execution Flow Diagram
+
+```
+┌─────────┐    ┌─────────────────┐    ┌─────────────────┐    ┌─────────────┐
+│ Client  │───▶│ Pattern Entry   │───▶│ Pattern Logic   │───▶│ Result      │
+│ Request │    │ Point           │    │ Processing      │    │ Delivery    │
+└─────────┘    └─────────────────┘    └─────────────────┘    └─────────────┘
+                        │                       │                     │
+                        ▼                       ▼                     ▼
+                ┌─────────────────┐    ┌─────────────────┐    ┌─────────────┐
+                │ Input           │    │ State           │    │ Output      │
+                │ Validation      │    │ Management      │    │ Formatting  │
+                └─────────────────┘    └─────────────────┘    └─────────────┘
+```
+
+## Component Interaction Map
+
+```
+                    ┌──────────────────────────────────────────────────────┐
+                    │                 System Boundary                      │
+                    │                                                      │
+┌─────────────┐    │  ┌─────────────┐    ┌─────────────┐    ┌──────────┐  │
+│   External  │────┼─▶│   Pattern   │───▶│  Business   │───▶│ Data     │  │
+│   Client    │    │  │   Facade    │    │   Logic     │    │ Layer    │  │
+└─────────────┘    │  └─────────────┘    └─────────────┘    └──────────┘  │
+                    │         │                   │              │        │
+                    │         ▼                   ▼              ▼        │
+                    │  ┌─────────────┐    ┌─────────────┐    ┌──────────┐  │
+                    │  │   Helper    │    │   State     │    │ Cache/   │  │
+                    │  │  Services   │    │  Manager    │    │ Storage  │  │
+                    │  └─────────────┘    └─────────────┘    └──────────┘  │
+                    └──────────────────────────────────────────────────────┘
+```
+
+## State Transition Diagram (if applicable)
+
+```
+    ┌─────────────┐    create()    ┌─────────────┐    initialize()    ┌─────────────┐
+    │  Initial    │──────────────▶│  Created    │───────────────────▶│  Ready      │
+    │  State      │               │  State      │                    │  State      │
+    └─────────────┘               └─────────────┘                    └─────────────┘
+                                         │                                  │
+                                         │ destroy()                        │ process()
+                                         ▼                                  ▼
+    ┌─────────────┐               ┌─────────────┐                    ┌─────────────┐
+    │ Destroyed   │◀──────────────│  Error      │◀───────────────────│ Processing  │
+    │ State       │    cleanup()  │  State      │      error()       │ State       │
+    └─────────────┘               └─────────────┘                    └─────────────┘
+```
+
+## Memory Layout (for complex patterns)
+
+```
+Stack Memory:                    Heap Memory:
+┌─────────────┐                 ┌─────────────────────────────────────┐
+│ Client Code │                 │ Pattern Instance Pool               │
+├─────────────┤                 ├─────────────────────────────────────┤
+│ method()    │ ──────────────▶ │ ┌─────────────┐ ┌─────────────┐     │
+├─────────────┤                 │ │ Instance 1  │ │ Instance 2  │     │
+│ variables   │                 │ │             │ │             │     │
+└─────────────┘                 │ │ - state     │ │ - state     │     │
+                                │ │ - methods   │ │ - methods   │     │
+                                │ └─────────────┘ └─────────────┘     │
+                                │                                     │
+                                │ Shared Resources:                   │
+                                │ ┌─────────────────────────────────┐ │
+                                │ │ Configuration, Cache, etc.      │ │
+                                │ └─────────────────────────────────┘ │
+                                └─────────────────────────────────────┘
+```
+
+## Pattern Benefits Visualization
+
+```
+┌────────────────────────────────────────────────────────────────────┐
+│                        Pattern Benefits                            │
+├────────────────────────────────────────────────────────────────────┤
+│                                                                    │
+│  Maintainability ████████████████░░  80%                          │
+│                                                                    │
+│  Reusability     ██████████████████  90%                          │
+│                                                                    │
+│  Testability     ███████████████░░░  75%                          │
+│                                                                    │
+│  Performance     ████████░░░░░░░░░░  40%                          │
+│                                                                    │
+│  Complexity      ░░░░░░████████████  60% (Lower is Better)        │
+│                                                                    │
+└────────────────────────────────────────────────────────────────────┘
+```
+
+## Integration Points
+
+```
+    External Systems            Pattern Layer           Internal Systems
+┌─────────────────────┐    ┌─────────────────────┐    ┌─────────────────────┐
+│                     │    │                     │    │                     │
+│  ┌─────────────┐    │    │  ┌─────────────┐    │    │  ┌─────────────┐    │
+│  │ REST APIs   │────┼────┼─▶│ Adapters    │────┼────┼─▶│ Database    │    │
+│  └─────────────┘    │    │  └─────────────┘    │    │  └─────────────┘    │
+│                     │    │                     │    │                     │
+│  ┌─────────────┐    │    │  ┌─────────────┐    │    │  ┌─────────────┐    │
+│  │ Message     │────┼────┼─▶│ Pattern     │────┼────┼─▶│ File System │    │
+│  │ Queues      │    │    │  │ Core        │    │    │  └─────────────┘    │
+│  └─────────────┘    │    │  └─────────────┘    │    │                     │
+│                     │    │                     │    │  ┌─────────────┐    │
+│  ┌─────────────┐    │    │  ┌─────────────┐    │    │  │ External    │    │
+│  │ WebSockets  │────┼────┼─▶│ Observers   │────┼────┼─▶│ Services    │    │
+│  └─────────────┘    │    │  └─────────────┘    │    │  └─────────────┘    │
+│                     │    │                     │    │                     │
+└─────────────────────┘    └─────────────────────┘    └─────────────────────┘
+```
+```
+
 ## Implementation Guidelines
 
 ### Code Quality Requirements:
@@ -438,3 +622,16 @@ When given a design pattern name, create the complete directory structure with a
 
 - When generating answers for any set of questions, always include the corresponding question text itself directly above each answer and explanation.
 - All generated files for questions and answers must use valid Markdown format with appropriate headings, lists, and code blocks as needed.
+- Each pattern example must include a comprehensive visual text diagram in a separate `diagram.md` file that illustrates the pattern structure, relationships, execution flow, and component interactions using ASCII art.
+
+## Visual Diagram Requirements
+
+- **Pattern Structure**: Show class relationships, inheritance hierarchies, and interfaces using ASCII UML-style diagrams
+- **Execution Flow**: Illustrate the step-by-step process flow using flowcharts and sequence diagrams
+- **Component Interaction**: Map out how different components communicate and interact within the system
+- **State Transitions**: For stateful patterns, show state transition diagrams
+- **Memory Layout**: For complex patterns, visualize memory allocation and object relationships
+- **Integration Points**: Show how the pattern integrates with external systems and other patterns
+- **Benefits Visualization**: Include charts or graphs showing pattern benefits and trade-offs
+
+All diagrams should be created using ASCII art and text characters to ensure they display correctly in any text editor or markdown viewer.
