@@ -40,3 +40,21 @@ Numbers with digit 1: 1, 10, 11, 12, 13
 Count of 1s: 1(one 1) + 1(one 1) + 2(two 1s) + 1(one 1) + 1(one 1) = 6
 
 Answer: 6
+
+Visual Diagram:
+-----------------
+
+                      dfs(pos=0, tight=true, count=0)
+                     /                                 \
+       [d=0, tight=false]                     [d=1, tight=true]
+                   /                                     \
+      dfs(pos=1, tight=false, count=0)        dfs(pos=1, tight=true, count=1)
+      /      |      |           |      \        /      |      |      \
+[d=0-9] [d=0] [d=1] ... [d=9]         [d=0-3] [d=0]  [d=1]  [d=2]  [d=3]
+    |      |      |           |             |      |      |      |
+  (returns 1) (ret 0)(ret 1) ... (ret 0)   (returns 5) (ret 1)(ret 2)(ret 1)(ret 1)
+                   \
+                    \
+                     +---------------------------------
+                                     |
+                                Total = 1 + 5 = 6

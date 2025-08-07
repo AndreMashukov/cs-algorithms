@@ -75,3 +75,17 @@ The key points:
 4. When tight is true, we must respect the original number's digits
 
 This mechanism ensures we only count numbers that are truly less than or equal to our input number.
+
+Visual Diagram for n=23:
+-------------------------
+
+              dfs(pos=0, tight=true)
+             /          |           \
+         [d=0]        [d=1]        [d=2]
+  (newTight=false) (newTight=false) (newTight=true)
+           |                |                      |
+dfs(pos=1, tight=false)  dfs(pos=1, tight=false) dfs(pos=1, tight=true)
+           |                |                      |
+        [d=0-9]          [d=0-9]                [d=0-3]
+           |                |                      |
+        (00-09)          (10-19)                (20-23)
