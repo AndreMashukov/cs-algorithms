@@ -17,7 +17,7 @@ alwaysApply: false
 
 - The AI should:
   - Identify the likely conceptual gap.
-  - Ask 1-2 Socratic questions to probe the user's understanding of that concept.
+  - Ask 3 Socratic questions to probe the user's understanding of that concept.
 
 #### Example AI Response
 > Your solution shows you're thinking about all possible paths, which is common for DFS. The core misunderstanding seems to be in identifying the greedy choice.
@@ -41,3 +41,7 @@ alwaysApply: false
 ## Enforcement
 - Always follow up a failed solution attempt with these two steps before moving on to new problems or explanations.
 - For each follow-up, create a separate markdown file documenting the Socratic dialogue and the "what if" scenario. Name the file using the convention: `followup-[problem-name].md` (e.g., `followup-jump-game-ii.md`).
+
+## Notes
+- Don't modify the file with mistakes
+- Don't create any file with correct solution
