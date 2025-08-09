@@ -1,3 +1,5 @@
+// LeetCode 207 - Course Schedule
+// https://leetcode.com/problems/course-schedule/description/
 // You are given an array prerequisites where prerequisites[i] = [a, b] indicates
 // that you must take course b first if you want to take course a.
 
@@ -8,6 +10,8 @@
 
 // Return true if it is possible to finish all courses,
 // otherwise return false.
+
+// Visual explanation moved to `course-schedule-diagram.md` in this directory.
 
 class Solution {
   /**
@@ -48,7 +52,18 @@ class Solution {
           return false
         }
       }
-      // Unmark the course as being visited
+      // Unmark the course as being visited (backtracking)
+      // Diagram (state change in `visiting`):
+      //   Before leaving `crs`: { ..., crs }
+      //   After  leaving `crs`: { ... }
+      //
+      // Recursion stack view:
+      //   dfs(parent)
+      //     -> dfs(crs)   add `crs` to visiting
+      //         -> dfs(pre1) ... done
+      //         -> dfs(pre2) ... done
+      //     backtrack from `crs`: remove from visiting so upper frames
+      //     won't report a false cycle when they see `crs` again later
       visiting.delete(crs)
       // Mark the course's prerequisites as processed
       preMap.set(crs, [])
