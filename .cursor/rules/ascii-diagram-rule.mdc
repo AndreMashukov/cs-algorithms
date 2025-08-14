@@ -1,0 +1,257 @@
+---
+description: Rules for creating comprehensive ASCII diagrams and visual explanations for algorithm solutions
+globs: ["**/*.md", "**/*.txt", "**/*.js"]
+alwaysApply: false
+---
+
+# Algorithm Diagram Creation Rules
+
+## Core Principles
+
+1. **Always supplement code with visual explanations** when solving algorithm problems
+2. **Use step-by-step walkthroughs** with concrete examples
+3. **Show state transitions** and data structure changes
+4. **Include both high-level flow and detailed execution traces**
+
+## File Organization
+
+**MANDATORY: Create diagrams in separate markdown files**
+
+- **Naming convention:** Use the format `algorithmName.diagram.md` for consistency and discoverability
+- **Location:** Place diagram files in the same directory as the main solution file
+- **Purpose:** Keep diagrams separate from code to maintain clean code files and allow for extensive visual documentation
+- **Cross-referencing:** Reference diagram files from code comments when helpful
+
+**Examples of correct diagram file names:**
+- `src/01-Arrays/06-encodeDecode/encodeDecode.diagram.md` - Main algorithm visualization
+- `src/09-DP3/14-wordBreak2/wordBreak2.diagram.md` - Recursive approach walkthrough  
+- `src/09-DP3/13-palindromePartitioning2/palindromePartitioning2.diagram.md` - Detailed algorithm explanation
+- `src/03-TwoPointers/01-twoSum2/twoSum2.diagram.md` - Two pointers visualization
+
+**Benefits:**
+- Keeps source code clean and focused
+- Allows for extensive diagram documentation without cluttering code
+- Makes diagrams easily discoverable and referenceable
+- Enables collaborative diagram editing without touching implementation code
+
+## Diagram Types and Patterns
+
+### 1. Step-by-Step Algorithm Walkthrough
+
+**Use for:** Array operations, string processing, iterative algorithms
+
+**Format:**
+```
+=== Step N ===
+State: [description of current state]
+Variables: var1=value, var2=value
+Action: [what happens in this step]
+Result: [new state after action]
+```
+
+**Example structure:**
+- Show initial state
+- Number each step clearly
+- Display variable values at each step
+- Use arrows (→, ↓, ↑) to show movement/direction
+- Mark important transitions with ✅/❌
+
+### 2. Table/Matrix Building Visualization
+
+**Use for:** Dynamic programming, 2D array problems
+
+**Format:**
+```
+      j=0  j=1  j=2  j=3
+    +-------------------+
+i=0 | T  |  F |  T |  F |
+    |    | ↗  | ↗  | ↗  |
+i=1 |    | T  |  F | T  |
+    |    |    | ↗  | ↗  |
+i=2 |    |    | T  |  F |
+    +-------------------+
+```
+
+**Guidelines:**
+- Show dependency arrows (↗, ↑, ←) between cells
+- Use different lengths for different iterations
+- Mark computed vs. base cases
+- Include row/column headers with meaningful labels
+- Show the filling order with numbered steps
+
+### 3. Recursion Trees and Call Stacks
+
+**Use for:** Recursive algorithms, backtracking, tree traversal
+
+**Tree Format:**
+```
+                dfs(0)
+            /"substring"\
+           /              \
+      "word1" ✓          "word2" ✓
+         /                    \
+     dfs(5)                dfs(6)
+    /"rest"\              /"rest2"\
+   /        \             /        \
+```
+
+**Call Stack Format:**
+```
+Step 1:          Step 2:          Step 3:
++-----------+    +-----------+    +-----------+
+| dfs(0)    |    | dfs(0)    |    | dfs(0)    |
++-----------+    +-----------+    +-----------+
+                 | dfs(3)    |    | dfs(3)    |
+                 +-----------+    +-----------+
+                                 | dfs(7)    |
+                                 +-----------+
+```
+
+**Guidelines:**
+- Show both tree structure and linear call stack
+- Mark base cases clearly
+- Include parameter values in function calls
+- Use ✓/❌ to show valid/invalid paths
+- Show return values flowing back up
+
+### 4. Flow Diagrams for Processes
+
+**Use for:** Encoding/decoding, parsing, state machines
+
+**Format:**
+```
+Input: [initial_data]
+  |
+  | Process Step 1
+  v
+Intermediate: [transformed_data]
+  |
+  | Process Step 2  
+  v
+Output: [final_result]
+```
+
+**Guidelines:**
+- Use boxes for states/data
+- Use arrows with labels for transitions
+- Show concrete examples alongside general form
+- Include edge cases and special conditions
+
+### 5. Index and Pointer Visualization
+
+**Use for:** Two pointers, sliding window, array manipulation
+
+**Format:**
+```
+Array:    [a, b, c, d, e, f]
+Indexes:   0  1  2  3  4  5
+           ^     ^
+           i     j
+```
+
+**Guidelines:**
+- Always show both data and indices
+- Use ^ or ↑ to mark pointer positions
+- Show pointer movement across iterations
+- Include range markers for subarrays [i...j]
+
+### 6. Constraint Propagation
+
+**Use for:** Digit DP, constrained search, backtracking with pruning
+
+**Format:**
+```
+Position 0 (tight=true):
+├─ digit=0 → tight=false (freedom for rest)
+├─ digit=1 → tight=false (freedom for rest)  
+└─ digit=2 → tight=true  (constrained)
+             │
+             Position 1 (tight=true):
+             ├─ digit=0,1,2,3 only
+             └─ digit>3 invalid ❌
+```
+
+## Anti-Patterns to Avoid
+
+- ❌ Diagrams without concrete examples
+- ❌ Missing intermediate steps in complex algorithms  
+- ❌ Inconsistent notation or symbols
+- ❌ Diagrams that don't match the actual code implementation
+- ❌ Over-complicated visuals that obscure rather than clarify
+- ❌ Missing explanations of why each step works
+
+## When to Create Diagrams
+
+**Always create diagrams for:**
+- Recursive algorithms (show call tree + execution trace)
+- Dynamic programming (show table building process)
+- Graph algorithms (show traversal and state changes)
+- Complex data structure operations
+- Algorithms with non-obvious state transitions
+
+**Consider diagrams for:**
+- Optimization problems with multiple approaches
+- Algorithms with intricate loop logic
+- Problems involving coordinate systems or 2D grids
+- Parsing and string manipulation algorithms
+
+Remember: The goal is to make complex algorithms accessible and understandable. A good diagram should enable someone to implement the algorithm just from the visual explanation.
+
+## Formatting Standards
+
+### Typography
+- Use `monospace` for code elements and variable names
+- Use **bold** for important concepts
+- Use *italics* for explanations and notes
+- Use → ↑ ↓ ← for directional flow
+- Use ✅ ❌ for valid/invalid states
+- Use ╔═╗ ║ ╚═╝ for emphasis boxes when needed
+
+### Structure
+- Always start with problem statement and example
+- Include both algorithmic overview and detailed trace
+- End with key insights and complexity analysis
+- Use horizontal rules (===) to separate major sections
+- Number steps consistently (1, 2, 3... or Step A, Step B...)
+
+### Code Integration
+- Reference specific line numbers when explaining code
+- Show variable states alongside code execution
+- Include memoization cache states for DP problems
+- Highlight the relationship between code and diagram
+
+## Required Sections for Complex Algorithms
+
+1. **Problem Setup:** Input, output, constraints
+2. **Algorithm Overview:** High-level approach diagram
+3. **Detailed Walkthrough:** Step-by-step with concrete example
+4. **State Visualization:** Data structure changes over time
+5. **Edge Cases:** Special conditions and boundary handling
+6. **Key Insights:** What makes the algorithm work
+7. **Complexity Analysis:** Time/space with justification
+
+## Examples of Good Diagram Comments
+
+```javascript
+// Visual representation of the encoding process:
+// Input: ["hello", "world"]
+// Step 1: "hello" → "5#hello"  
+// Step 2: "world" → "5#world"
+// Result: "5#hello5#world"
+```
+
+```javascript
+// Recursion tree for dfs(startIndex):
+//       dfs(0)
+//      /      \
+//   "cat"    "cats"  
+//    |         |
+//  dfs(3)    dfs(4)
+//    |         |
+//  "sand"    "and"
+```
+
+description:
+globs:
+alwaysApply: false
+---

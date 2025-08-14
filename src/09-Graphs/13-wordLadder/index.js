@@ -1,4 +1,6 @@
-// You are given two words, beginWord and endWord, and also a list of words wordList. All of the given words are of the same length, consisting of lowercase English letters, and are all distinct.
+// You are given two words, beginWord and endWord, and also a list of words wordList. 
+// All of the given words are of the same length, consisting of lowercase English letters, 
+// and are all distinct.
 
 // Your goal is to transform beginWord into endWord by following the rules:
 
