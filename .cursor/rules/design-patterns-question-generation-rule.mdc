@@ -260,6 +260,8 @@ Create exactly 20 multiple-choice questions focusing on:
 - Avoid generic options or oversimplified answers
 - Target advanced developers with enterprise-level complexity
 - Include scenario-based questions that test practical application
+- **Answer Distribution**: Ensure correct answers are evenly distributed across all four options (1, 2, 3, 4). Avoid clustering answers on specific options - aim for roughly 5 questions per option across the 20 questions to prevent patterns like having option 2 appear 10+ times while option 4 never appears
+- **Equal Option Length**: All four answer options for each question should have approximately equal text length (similar word count and detail level). Avoid making correct answers obviously longer/more detailed than incorrect ones, or having one option be noticeably shorter than others, as this creates unintentional bias toward longer options
 
 ### 3. answers.md
 **Format:**

@@ -1,0 +1,321 @@
+Generic Q&A Followup Generation Rule
+
+Rules for creating detailed followup explanations for incorrect Q&A answers with ASCII diagrams
+
+# Q&A Followup Generation Rules
+
+## Purpose
+
+This rule provides a framework for generating comprehensive followup explanations when learners answer Q&A questions incorrectly. The goal is to create educational content that helps learners understand **why** their answer was wrong and **how** to arrive at the correct understanding through visual explanations and detailed analysis.
+
+## Input Format
+
+**Expected input format:**
+```
+[question_number]-[user_answer]
+[question_number]-[user_answer]
+...
+```
+
+**Example:**
+```
+1-2
+5-3
+13-1
+```
+
+This means:
+- Question 1: User answered option 2 (incorrect)
+- Question 5: User answered option 3 (incorrect)  
+- Question 13: User answered option 1 (incorrect)
+
+## Output Structure
+
+For each incorrect answer, generate a followup explanation with this structure:
+
+### 1. Question Analysis Header
+```markdown
+## ❌ Question [N]: [Brief topic/concept]
+
+**Your Answer:** Option [X] - [brief description of chosen answer]
+**Correct Answer:** Option [Y] - [brief description of correct answer]
+**Concept:** [Core concept being tested]
+```
+
+### 2. Why Your Answer Was Wrong
+```markdown
+### 🚫 Why Option [X] is Incorrect
+
+[Detailed explanation of why the user's choice is wrong, including:]
+- Specific misconceptions addressed
+- Common pitfalls that lead to this choice
+- What the user might have been thinking
+```
+
+### 3. Detailed Explanation with Diagrams
+```markdown
+### ✅ Understanding the Correct Approach
+
+[Comprehensive explanation followed by 2 ASCII diagrams]
+
+#### Diagram 1: [Conceptual Overview/High-Level View]
+[First ASCII diagram showing conceptual understanding]
+
+#### Diagram 2: [Detailed Process/Step-by-Step/Implementation]
+[Second ASCII diagram showing detailed process or implementation]
+```
+
+### 4. Key Takeaways
+```markdown
+### 🎯 Key Takeaways
+
+1. **Core Principle:** [Main learning point]
+2. **Common Mistake:** [What to avoid]
+3. **Memory Aid:** [Mnemonic or rule of thumb]
+```
+
+## ASCII Diagram Requirements
+
+### Mandatory: Two Diagrams Per Question
+
+**Diagram 1: Conceptual/High-Level**
+- Shows the overall concept, architecture, or approach
+- Provides context and big-picture understanding
+- Uses boxes, arrows, and relationships
+- Focuses on "what" and "why"
+
+**Diagram 2: Detailed/Process**
+- Shows step-by-step process, algorithm flow, or implementation details
+- Breaks down complex processes into manageable steps
+- Uses flowcharts, timelines, or state transitions
+- Focuses on "how"
+
+### Formatting Standards
+
+**Typography:**
+- Use `monospace` for code elements, variable names, and technical terms
+- Use **bold** for important concepts and headers
+- Use *italics* for explanations and clarifications
+- Use ═══ for major section separators
+- Use --- for minor separators
+
+**Symbols and Arrows:**
+- → ↑ ↓ ← for directional flow
+- ✅ for correct states/paths
+- ❌ for incorrect states/paths  
+- ⚠️ for warnings or important notes
+- 🔄 for cycles or loops
+- ⭐ for key insights
+- 📊 for data/metrics
+- 🏗️ for architecture/structure
+
+**Box Drawing:**
+```
+╔═══════════════╗
+║ Important Box ║
+╚═══════════════╝
+
+┌─────────────┐
+│ Regular Box │
+└─────────────┘
+
++-------------+
+| Simple Box  |
++-------------+
+```
+
+**Flow Elements:**
+```
+Process A ──→ Process B ──→ Result
+    │              ↑
+    └──→ Alt Path ──┘
+```
+
+## Domain-Specific Adaptations
+
+### For Algorithm Questions
+
+**Diagram 1: Algorithm Overview**
+```
+Input: [sample data]
+    │
+    ▼
+┌─────────────────┐
+│ Algorithm Core  │  ← Key insight
+│ [main approach] │
+└─────────────────┘
+    │
+    ▼
+Output: [expected result]
+```
+
+**Diagram 2: Step-by-Step Execution**
+```
+Step 1: [action] ──→ State: [data state]
+Step 2: [action] ──→ State: [data state]
+Step 3: [action] ──→ State: [final state]
+
+Variables: var1=X, var2=Y
+Complexity: O(n) time, O(1) space
+```
+
+### For System Design Questions
+
+**Diagram 1: Architecture Overview**
+```
+┌─────────┐    ┌──────────────┐    ┌──────────┐
+│ Client  │◄──►│ Service Core │◄──►│ Database │
+└─────────┘    └──────────────┘    └──────────┘
+                      │
+                      ▼
+                ┌────────────┐
+                │ Cache/Queue│
+                └────────────┘
+```
+
+**Diagram 2: Request Flow/Process**
+```
+1. Request  ──→ Load Balancer ──→ Service
+2. Process  ──→ Database Query ──→ Result  
+3. Response ◄── Cache Update  ◄── Transform
+4. Client   ◄── Final Response ◄── Validate
+```
+
+### For Conceptual/Theory Questions
+
+**Diagram 1: Concept Map**
+```
+     Central Concept
+    ╱               ╲
+Aspect A          Aspect B
+   │                 │
+Detail 1         Detail 2
+   │                 │
+Example          Example
+```
+
+**Diagram 2: Comparison/Contrast**
+```
+Approach A          vs          Approach B
+─────────                      ─────────
+✅ Advantage 1                 ❌ Disadvantage 1
+✅ Advantage 2                 ✅ Advantage 1
+❌ Disadvantage 1              ❌ Disadvantage 2
+
+Best for: [use case]           Best for: [use case]
+```
+
+## Content Guidelines
+
+### Educational Principles
+
+1. **Start with empathy:** Acknowledge why the wrong answer might seem reasonable
+2. **Build understanding incrementally:** Don't jump to complex explanations
+3. **Use concrete examples:** Abstract concepts need real-world illustrations
+4. **Connect to prior knowledge:** Link to concepts the learner already knows
+5. **Provide actionable insights:** Give practical rules for future similar questions
+
+### Common Mistake Categories
+
+**For Algorithm Questions:**
+- Time/space complexity misunderstanding
+- Edge case handling
+- Algorithm choice (greedy vs DP vs brute force)
+- Data structure selection
+
+**For System Design Questions:**
+- Scalability assumptions
+- Consistency vs availability tradeoffs
+- Service boundary decisions
+- Technology choice rationale
+
+**For Conceptual Questions:**
+- Definition confusion
+- Scope misunderstanding
+- Exception vs rule confusion
+- Context dependency
+
+### Writing Style
+
+**DO:**
+- Use active voice and direct language
+- Include specific examples and counterexamples
+- Explain the reasoning process, not just the answer
+- Connect concepts to practical applications
+- Use progressive disclosure (simple → complex)
+
+**AVOID:**
+- Condescending language
+- Overwhelming technical jargon without explanation
+- Pure memorization without understanding
+- Generic explanations that could apply to any question
+
+## Template Structure
+
+```markdown
+## ❌ Question [N]: [Topic]
+
+**Your Answer:** Option [X] - [description]
+**Correct Answer:** Option [Y] - [description]  
+**Concept:** [core concept]
+
+### 🚫 Why Option [X] is Incorrect
+
+[Explanation of the specific misconception]
+
+### ✅ Understanding the Correct Approach
+
+[Comprehensive explanation]
+
+#### Diagram 1: [Conceptual Overview]
+```
+[ASCII diagram showing high-level concept]
+```
+
+[Explanation of diagram 1]
+
+#### Diagram 2: [Detailed Process]
+```
+[ASCII diagram showing step-by-step process]
+```
+
+[Explanation of diagram 2]
+
+### 🎯 Key Takeaways
+
+1. **Core Principle:** [main learning]
+2. **Common Mistake:** [what to avoid]  
+3. **Memory Aid:** [helpful mnemonic]
+
+═══════════════════════════════════════════════════════════
+```
+
+## Quality Checklist
+
+Before publishing a followup explanation, verify:
+
+- [ ] Addresses the specific misconception that led to the wrong answer
+- [ ] Includes exactly 2 ASCII diagrams with clear purposes
+- [ ] Uses appropriate symbols and formatting consistently
+- [ ] Provides actionable learning that prevents future similar mistakes
+- [ ] Explains the reasoning process, not just the final answer
+- [ ] Uses concrete examples relevant to the domain
+- [ ] Maintains encouraging and educational tone
+- [ ] Follows the domain-specific adaptation guidelines
+- [ ] Includes practical memory aids or rules of thumb
+
+## File Organization
+
+**Naming Convention:** `[topic]-qa-followup.md`
+
+**Examples:**
+- `google-docs-system-design-qa-followup.md`
+- `dynamic-programming-algorithms-qa-followup.md`
+- `data-structures-concepts-qa-followup.md`
+
+**Location:** Place in the same directory as the original Q&A files for easy reference and maintenance.
+
+description: Rules for generating comprehensive Q&A followup explanations with ASCII diagrams for incorrect answers
+globs:
+alwaysApply: false
+---

@@ -18,6 +18,8 @@
 4. Include at least one question about design decisions or architectural choices
 7. Avoid vague or generic options like "It's broken", "It's standard practice", "For better performance", "To follow conventions", etc.
 8. Focus on specific, technical understanding rather than memorization
+9. **Answer Distribution**: When creating questions, consciously vary which option (1, 2, 3, or 4) is correct to ensure balanced distribution across all answer choices
+10. **Equal Option Length**: All four answer options should have approximately equal text length and detail level. Avoid making the correct answer obviously longer/more comprehensive or having one option be noticeably shorter than others, as this creates bias where longer, more detailed options appear more credible
 
 ## Answer Format
 1. Create a separate answer file with the same name pattern
@@ -25,7 +27,7 @@
    - The correct answer number
    - A brief explanation (1-2 sentences) justifying why this answer is correct
 3. Explanations should highlight the key technical insight or reasoning
-4. Make sure correct answers aren't always assigned same number (e.g. option 2 for every qustion)
+4. **Answer Distribution**: Ensure correct answers are evenly distributed across all four options (1, 2, 3, 4). For 6-8 questions, aim for roughly 1-2 questions per option to prevent clustering where certain options (like option 2) appear too frequently while others (like option 4) never appear as correct answers
 
 ## Example Structure
 ```

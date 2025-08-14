@@ -20,6 +20,8 @@
 4. Include at least one question about algorithm design decisions
 5. Include at least one question about edge cases or corner cases
 6. Avoid generic options for questions like "It's a bug", "It's a convention", "To prevent stack overflow", "To maintain consistency with mathematical conventions", " The algorithm has a bug", "Because the algorithm has an error", etc...
+7. **Answer Distribution**: Ensure correct answers are evenly distributed across all four options (1, 2, 3, 4). For the 8 questions, aim for 2 questions per option to prevent clustering where some options never appear as correct answers
+8. **Equal Option Length**: All four answer options should have approximately equal text length and complexity. Avoid having one option be notably shorter/simpler or longer/more detailed than others, as this creates unintentional bias where longer options appear more likely to be correct
 
 ## Answer Format
 1. Create a separate answer file with the same name pattern
@@ -27,6 +29,7 @@
    - The correct answer number
    - A brief explanation (1-2 sentences) justifying why this answer is correct
 3. Explanations should be clear and concise, highlighting the key insight
+4. Distribute correct answers evenly across all four options (1, 2, 3, 4) - avoid repeatedly using the same option number
 
 ## Example Structure
 ```

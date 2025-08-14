@@ -24,6 +24,8 @@
 7. Include at least one question about caching implementation
 8. Include at least one question about handling edge cases or system failures
 9. Avoid generic options for questions like "It depends", "It's a best practice", "Because it's more efficient", "To follow industry standards" without specific reasoning
+10. **Answer Distribution**: Ensure correct answers are evenly distributed across all four options (1, 2, 3, 4). For the 20 questions, aim for roughly 5 questions per option to prevent clustering where certain options (like option 2) appear too frequently while others (like option 4) never appear as correct answers
+11. **Equal Option Length**: All four answer options for each question should have approximately equal text length and detail level. Avoid making the correct answer obviously longer/more comprehensive or having one option be noticeably shorter than others, as this creates bias where longer, more detailed options appear more credible
 
 ## Answer Format
 1. Create a separate answer file with the same name pattern
@@ -32,6 +34,7 @@
    - A brief explanation (2-3 sentences) justifying why this answer is correct
    - Reference to the specific part of the system design that supports this answer
 3. Explanations should be clear and concise, highlighting the key system design principle or trade-off
+4. **Answer Distribution Enforcement**: Distribute correct answers evenly across options 1, 2, 3, and 4 - avoid repeatedly using the same option number for multiple questions
 
 ## Example Structure
 ```

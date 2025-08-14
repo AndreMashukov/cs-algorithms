@@ -148,6 +148,8 @@ Create exactly 10 multiple-choice questions focusing on:
 - Ask about what gets calculated first/next, intermediate results, parameter meanings
 - Target the most difficult/confusing aspects of the solution
 - For example-based questions (Q7-Q10): Use the walkthrough from recursive-example.md to create questions about specific steps, calculations, or states shown in the example
+- **Answer Distribution**: Ensure correct answers are evenly distributed across all four options (1, 2, 3, 4). For the 10 questions, aim for roughly 2-3 questions per option to prevent clustering and ensure no option is completely unused
+- **Equal Option Length**: All four answer options for each question should have approximately equal text length and detail level. Avoid making the correct answer noticeably longer or shorter than incorrect options, as this creates bias where test-takers gravitate toward longer, more detailed answers
 
 ### 4. recursive-answers.md
 **Format:**
@@ -197,7 +199,7 @@ Create exactly 10 multiple-choice questions focusing on:
 
 **Answer Guidelines:**
 - Always include the full question text from recursive-questions.md before each answer
-- Vary answer numbers (don't use same number repeatedly)
+- Vary answer numbers (don't use same number repeatedly) - distribute answers evenly across options 1, 2, 3, and 4
 - Make sure answers correspond to correct options from questions
 
 ### 5. dp-questions.md
@@ -210,6 +212,8 @@ Same format as recursive-questions.md but focused on:
 - Example-based questions (4 questions) - Generate these AFTER creating the dp-example.md
 - If there are multiple solutions in dp.js file 
   then create Q&A only for the most optimized part
+- **Answer Distribution**: Ensure correct answers are evenly distributed across all four options (1, 2, 3, 4). For the 10 questions, aim for roughly 2-3 questions per option to prevent clustering and ensure no option is completely unused
+- **Equal Option Length**: All four answer options for each question should have approximately equal text length and detail level. Avoid making the correct answer noticeably longer or shorter than incorrect options, as this creates bias where test-takers gravitate toward longer, more detailed answers
 
 ### 6. dp-answers.md
 Same format as recursive-answers.md for DP questions (10 answers total).
@@ -231,7 +235,7 @@ Same format as recursive-answers.md for DP questions (10 answers total).
 
 **Answer Guidelines:**
 - Always include the full question text from dp-questions.md before each answer
-- Vary answer numbers (don't use same number repeatedly)
+- Vary answer numbers (don't use same number repeatedly) - distribute answers evenly across options 1, 2, 3, and 4
 - Make sure answers correspond to correct options from questions
 
 ### 7. recursive-example.md
