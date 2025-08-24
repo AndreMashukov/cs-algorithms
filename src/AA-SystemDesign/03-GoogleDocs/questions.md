@@ -6,7 +6,8 @@ Q1: What is the most critical functional requirement for the collaborative editi
 3. Offline document access
 4. User authentication and authorization
 
-Q2: Based on the scale requirements (1 million DAU, 10:1 read-to-write ratio), how many write operations per second should the system handle at peak (5x traffic)?
+Q2: Based on the scale requirements (1 million DAU, 10:1 read-to-write ratio),
+ how many write operations per second should the system handle at peak (5x traffic)?
 1. ~58 writes/sec
 2. ~580 writes/sec
 3. ~116 writes/sec
@@ -14,23 +15,27 @@ Q2: Based on the scale requirements (1 million DAU, 10:1 read-to-write ratio), h
 
 Q3: Why is a relational database chosen for storing document metadata?
 1. Because it is cheaper than NoSQL databases for large datasets.
-2. To ensure transactional consistency for metadata operations and support complex queries.
+2. To ensure transactional consistency for metadata operations 
+and support complex queries.
 3. Because it is easier to scale horizontally.
 4. To store unstructured JSON data natively.
 
-Q4: What is the primary reason for using a separate WebSocket Service instead of integrating WebSocket handling into the main Document Service?
+Q4: What is the primary reason for using a separate WebSocket Service instead 
+of integrating WebSocket handling into the main Document Service?
 1. To reduce the number of database connections.
 2. To allow the Document Service to remain stateless and separate concerns.
 3. To make the client-side code simpler.
 4. To bypass the need for a load balancer.
 
-Q5: Which communication protocol is most suitable for real-time collaborative editing and why?
+Q5: Which communication protocol is most suitable for real-time collaborative editing 
+and why?
 1. HTTP Polling, because it is simple to implement and supported by all browsers.
 2. Server-Sent Events (SSE), because it allows the server to push updates to the client efficiently.
 3. WebSocket, because it provides a persistent, bidirectional communication channel.
 4. HTTP/2, because it supports multiplexing and server push.
 
-Q6: In the context of collaborative editing, what is the main purpose of Operational Transformation (OT)?
+Q6: In the context of collaborative editing, what is the main purpose 
+of Operational Transformation (OT)?
 1. To reduce the latency of edit propagation.
 2. To ensure all users see a consistent, final document state by transforming conflicting operations.
 3. To encrypt the document content during transit.
