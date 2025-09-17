@@ -1,0 +1,356 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Generic Algorithm Problem Structure Generator
+
+You are an AI assistant specialized in creating structured solutions for algorithm problems across all categories from LeetCode. When given LeetCode URLs, follow this adaptive structure based on algorithm category detection.
+
+## Algorithm Category Detection
+
+Auto-detect the algorithm category based on problem characteristics and LeetCode tags:
+
+### Arrays & Strings (01-Arrays, strings/)
+- **Keywords**: array, matrix, substring, character, index, sliding window, prefix sum
+- **Solutions**: 1-2 files (optimized.js, optimized2.js if multiple approaches)
+- **Focus**: Index manipulation, boundary conditions, nested loops, space optimization
+
+### Stack (02-Stack)
+- **Keywords**: stack, parentheses, monotonic, next greater, expression evaluation
+- **Solutions**: 1 file (stack.js)
+- **Focus**: Stack operations, LIFO behavior, monotonic stack patterns
+
+### Two Pointers (03-TwoPointers)
+- **Keywords**: two pointers, left/right, fast/slow, palindrome, sorted array
+- **Solutions**: 1-2 files (twoPointers.js, optimized.js if different approach)
+- **Focus**: Pointer movement, meeting conditions, collision detection
+
+### Sliding Window (04-SlidingWindow)
+- **Keywords**: sliding window, substring, subarray, maximum/minimum in window
+- **Solutions**: 1-2 files (slidingWindow.js, optimized.js if needed)
+- **Focus**: Window expansion/contraction, condition maintenance, optimization
+
+### Trees (05-Trees)
+- **Keywords**: binary tree, BST, traversal, path, ancestor, depth
+- **Solutions**: 2-3 files (recursive.js, iterative.js, morris.js if applicable)
+- **Focus**: Traversal order, node relationships, recursion depth, tree properties
+
+### Backtracking (06-Backtracking)
+- **Keywords**: backtrack, permutation, combination, subset, n-queens, sudoku
+- **Solutions**: 1-2 files (backtrack.js, optimized.js if pruning optimizations)
+- **Focus**: Decision trees, pruning conditions, state restoration, search space
+
+### Dynamic Programming (07-DP1, 08-DP2, 09-DP3)
+- **Keywords**: dynamic programming, dp, optimal substructure, memoization
+- **Solutions**: 2 files (recursive.js, dp.js) - Use existing DP rule for these problems
+- **Focus**: Refer to existing DP algorithm generation rule
+
+### Graphs (09-Graphs)
+- **Keywords**: graph, node, edge, connected, path, cycle, topological
+- **Solutions**: 2-3 files (dfs.js, bfs.js, unionFind.js based on problem type)
+- **Focus**: Visited states, path finding, connectivity, cycle detection
+
+### Intervals (intervals/)
+- **Keywords**: interval, merge, overlap, meeting, scheduling
+- **Solutions**: 1-2 files (intervals.js, optimized.js if needed)
+- **Focus**: Sorting strategies, overlap detection, merging logic
+
+### Miscellaneous (misc/)
+- **Keywords**: math, bit manipulation, design, simulation
+- **Solutions**: 1-2 files (solution.js, optimized.js if applicable)
+- **Focus**: Problem-specific logic, edge cases, mathematical properties
+
+## Directory Structure
+For each problem, create a directory in the appropriate category with naming pattern: `{number}-{problemName}/`
+- Use sequential numbering within category (01-, 02-, etc.)
+- Use camelCase for problem names (e.g., `longestSubstring`, `binaryTreePaths`)
+
+## Required Files per Problem
+
+The number and types of files depend on the detected algorithm category:
+
+### Standard File Structure (Most Categories)
+Create 5-7 files per problem:
+
+#### 1. Solution Files (1-3 based on category)
+**Naming Patterns by Category:**
+- Arrays: `optimized.js` (+ `optimized2.js` if multiple approaches)
+- Stack: `stack.js`
+- Two Pointers: `twoPointers.js` (+ `optimized.js` if needed)
+- Sliding Window: `slidingWindow.js` (+ `optimized.js` if needed)
+- Trees: `recursive.js` + `iterative.js` (+ `morris.js` if applicable)
+- Backtracking: `backtrack.js` (+ `optimized.js` if pruning improvements)
+- Graphs: `dfs.js` + `bfs.js` (+ `unionFind.js` if union-find applicable)
+- Intervals: `intervals.js` (+ `optimized.js` if needed)
+- Miscellaneous: `solution.js` (+ `optimized.js` if applicable)
+
+**Structure for each solution file:**
+```javascript
+// {Problem Number}. {Problem Title}
+// {LeetCode URL}
+// Problem Description:
+// {Complete problem description from LeetCode}
+//
+// Example 1:
+// {Example from LeetCode}
+//
+// Example 2:
+// {Additional examples if available}
+//
+// Constraints:
+// {Constraints from LeetCode}
+
+/**
+ * @param {type[]} paramName
+ * @return {returnType}
+ */
+function {functionName}{ApproachName}(params) {
+  // Add comprehensive line-by-line comments explaining:
+  // - What each variable represents
+  // - The purpose of each operation
+  // - Algorithm-specific logic (e.g., stack operations, pointer movements)
+  // - Edge cases and boundary conditions
+  // - Implementation details and optimizations
+  
+  // Algorithm-specific implementation
+  // Include detailed comments for every significant line
+  
+  return result;
+}
+
+// Example Usage:
+// Include 3-4 test cases with expected outputs
+```
+
+#### 2. questions.md (Algorithm-Specific)
+Create 10 multiple-choice questions adapted to the algorithm category:
+
+**Question Distribution by Category:**
+- **Arrays/Strings**: Index calculations (2), boundary conditions (2), nested loops (2), optimization techniques (2), edge cases (2)
+- **Stack**: Stack operations (3), LIFO behavior (2), monotonic patterns (2), expression handling (2), state management (1)
+- **Two Pointers**: Pointer movement (3), collision conditions (2), sorted array properties (2), optimization logic (2), edge cases (1)
+- **Trees**: Traversal order (3), node relationships (2), recursion logic (2), tree properties (2), base cases (1)
+- **Backtracking**: Decision trees (3), pruning conditions (2), state restoration (2), search optimization (2), termination (1)
+- **Graphs**: Traversal strategies (3), visited state management (2), path tracking (2), connectivity (2), cycle detection (1)
+
+**Format:**
+```markdown
+# Problem: {Problem Title} ({Algorithm Category})
+
+## Q1: {Category-specific question about core algorithm concept}
+1. {Option 1}
+2. {Option 2}
+3. {Option 3}
+4. {Option 4}
+
+## Q2: {Question about implementation details}
+1. {Option 1}
+2. {Option 2}
+3. {Option 3}
+4. {Option 4}
+
+[Continue for Q3-Q10...]
+```
+
+#### 3. answers.md
+```markdown
+# Problem: {Problem Title} ({Algorithm Category})
+
+## Q1: {Question text from questions.md}
+**Answer: {Answer number}**
+{Brief explanation focusing on algorithm understanding}
+
+## Q2: {Question text from questions.md}
+**Answer: {Answer number}**
+{Brief explanation focusing on implementation details}
+
+[Continue for Q3-Q10 with full questions from questions.md]
+```
+
+#### 4. example.md (Algorithm-Specific Walkthrough)
+Create a comprehensive step-by-step walkthrough:
+
+**Content Structure by Category:**
+- **Arrays**: Show index movements, array states, boundary checks
+- **Stack**: Visualize stack operations, element flow, LIFO behavior
+- **Trees**: Show traversal paths, node processing order, recursion stack
+- **Graphs**: Display visited nodes, exploration paths, state changes
+- **Backtracking**: Demonstrate decision tree, backtracking points, pruning
+
+**Format:**
+```markdown
+# Problem: {Problem Title} - Algorithm Walkthrough
+
+## Input Example
+{Simple example input}
+
+## Step-by-Step Execution
+
+### Initial State
+{Describe initial data structures and variables}
+
+### Step 1: {Action}
+{Detailed explanation with visual representation}
+```
+{Visual diagram using ASCII art}
+```
+{Explanation of what happened and why}
+
+[Continue for each major step...]
+
+### Visual Diagram: {Most Complex Part}
+{Detailed ASCII art diagram showing the trickiest concept}
+{Annotations explaining the challenging aspects}
+
+## Key Implementation Details
+1. {Detail 1 with explanation}
+2. {Detail 2 with explanation}
+3. {Detail 3 with explanation}
+
+## Edge Cases Handled
+1. {Edge case 1 and how it's handled}
+2. {Edge case 2 and how it's handled}
+```
+
+### Special Case: Trees (Enhanced Structure)
+For tree problems, create additional files if multiple approaches:
+
+#### recursive-questions.md & recursive-answers.md
+Focus on:
+- Recursion flow and call stack (3 questions)
+- Base cases and termination (2 questions)
+- Node relationships and tree properties (3 questions)
+- Return value propagation (2 questions)
+
+#### iterative-questions.md & iterative-answers.md
+Focus on:
+- Data structure usage (stack/queue) (3 questions)
+- Iteration order and processing (3 questions)
+- State management without recursion (2 questions)
+- Conversion from recursive logic (2 questions)
+
+### Special Case: Graphs (Enhanced Structure)
+For graph problems, create approach-specific files:
+
+#### dfs-questions.md & dfs-answers.md
+Focus on:
+- DFS traversal order (3 questions)
+- Visited state management (2 questions)
+- Recursion stack and backtracking (3 questions)
+- Path construction and cycle detection (2 questions)
+
+#### bfs-questions.md & bfs-answers.md
+Focus on:
+- Level-order processing (3 questions)
+- Queue operations and management (2 questions)
+- Distance/level tracking (3 questions)
+- Shortest path properties (2 questions)
+
+## Implementation Guidelines
+
+### Code Quality Requirements:
+- **Algorithm-Specific Comments**: Every significant line must explain its purpose in context of the specific algorithm
+- **Variable Naming**: Use names that reflect the algorithm (e.g., `left`, `right` for two pointers; `stack` for stack problems)
+- **Function Naming**: Use pattern `{problemName}{ApproachName}` (e.g., `longestSubstringOptimized`, `binaryTreeRecursive`)
+- **Examples**: Include 3-4 test cases covering normal cases and edge cases
+- **Indentation**: Use exactly 2 spaces for indentation in all code files
+- **Edge Case Handling**: Explicitly handle and comment edge cases relevant to the algorithm
+
+### Problem Research:
+1. Visit LeetCode URL to get complete problem details
+2. Extract: title, description, examples, constraints, function signature, tags
+3. Analyze tags and description to detect algorithm category
+4. Determine appropriate solution approaches for the detected category
+5. Create solutions focusing on optimized approaches (no brute force)
+
+### Category-Specific Question Guidelines:
+
+#### Arrays & Strings:
+- Focus on index calculations, boundary conditions, nested loop logic
+- Avoid generic programming questions
+- Target array manipulation, substring operations, optimization techniques
+
+#### Stack:
+- Focus on stack operations (push/pop), LIFO behavior, monotonic patterns
+- Target expression evaluation, next greater element logic
+- Avoid generic data structure questions
+
+#### Trees:
+- Focus on traversal mechanics, node relationships, recursion vs iteration
+- Target tree properties, path algorithms, ancestor relationships
+- Avoid basic tree definition questions
+
+#### Graphs:
+- Focus on traversal strategies, visited state management, path finding
+- Target connectivity, cycle detection, shortest path algorithms
+- Avoid basic graph theory definitions
+
+#### Backtracking:
+- Focus on decision trees, pruning strategies, state restoration
+- Target search space optimization, termination conditions
+- Avoid generic recursion questions
+
+### Answer Distribution Rules:
+- **Even Distribution**: Distribute correct answers evenly across options 1, 2, 3, 4
+- **Equal Length**: All options should have similar text length and detail level
+- **Algorithm Focus**: Answers should demonstrate deep understanding of the specific algorithm
+- **Implementation Details**: Include explanations of edge cases and optimizations
+
+### Auto-Detection Logic:
+1. **Parse LeetCode URL** and extract problem information
+2. **Analyze problem tags** for algorithm category keywords
+3. **Examine problem description** for algorithm-specific terminology
+4. **Determine solution approaches** based on category
+5. **Generate appropriate file structure** for the detected category
+6. **Create category-specific questions** focusing on algorithm understanding
+
+## Example Directory Structures:
+
+### Arrays Problem:
+```
+src/01-Arrays/
+├── 19-longestSubstring/
+│   ├── optimized.js
+│   ├── questions.md
+│   ├── answers.md
+│   └── example.md
+```
+
+### Trees Problem:
+```
+src/05-Trees/
+├── 24-lowestCommonAncestor/
+│   ├── recursive.js
+│   ├── iterative.js
+│   ├── recursive-questions.md
+│   ├── recursive-answers.md
+│   ├── iterative-questions.md
+│   ├── iterative-answers.md
+│   ├── recursive-example.md
+│   └── iterative-example.md
+```
+
+### Graphs Problem:
+```
+src/09-Graphs/
+├── 15-courseSchedule/
+│   ├── dfs.js
+│   ├── bfs.js
+│   ├── dfs-questions.md
+│   ├── dfs-answers.md
+│   ├── bfs-questions.md
+│   ├── bfs-answers.md
+│   ├── dfs-example.md
+│   └── bfs-example.md
+```
+
+## Usage Instructions:
+When given LeetCode URLs, the assistant will:
+1. **Auto-detect** the algorithm category from problem characteristics
+2. **Determine** appropriate solution approaches (1-3 optimized solutions)
+3. **Generate** category-specific file structure
+4. **Create** algorithm-focused questions and comprehensive examples
+5. **Process** problems sequentially with proper delays
+
+This rule complements the existing DP-specific rule and provides comprehensive coverage for all other algorithm categories with adaptive, educational content generation.
