@@ -1,0 +1,4 @@
+export ANTHROPIC_AUTH_TOKEN=sk-56019ba122684cd1ba06241d7b537db2
+export ANTHROPIC_MODEL=deepseek-chat
+export ANTHROPIC_SMALL_FAST_MODEL=deepseek-chat
+export ANTHROPIC_BASE_URL=https://api.deepseek.com/anthropic
