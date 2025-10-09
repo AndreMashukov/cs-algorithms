@@ -68,34 +68,6 @@ function deleteDuplicatesTwoPointers(head) {
   return dummy.next;
 }
 
-// Alternative approach using explicit duplicate detection
-function deleteDuplicatesAlternative(head) {
-  if (!head || !head.next) {
-    return head;
-  }
-  
-  let dummy = new ListNode(0);
-  dummy.next = head;
-  let prev = dummy;
-  
-  while (prev.next && prev.next.next) {
-    // If next two nodes have same value, we found duplicates
-    if (prev.next.val === prev.next.next.val) {
-      let duplicateVal = prev.next.val;
-      
-      // Skip all nodes with duplicate value
-      while (prev.next && prev.next.val === duplicateVal) {
-        prev.next = prev.next.next;
-      }
-    } else {
-      // No duplicates, move prev forward
-      prev = prev.next;
-    }
-  }
-  
-  return dummy.next;
-}
-
 // Helper function to create a linked list from array
 function createLinkedList(arr) {
   if (arr.length === 0) return null;
