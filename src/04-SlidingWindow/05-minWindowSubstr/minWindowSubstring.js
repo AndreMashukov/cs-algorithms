@@ -1,55 +1,72 @@
+// 76. Minimum Window Substring
+// https://leetcode.com/problems/minimum-window-substring/description/
+// https://www.youtube.com/watch?v=eS6PZLjoaq8
+
 // You have two strings, s and t. The string t contains only unique elements.
-//  Find and return the minimum consecutive substring of s
+// Find and return the minimum consecutive substring of s
 // that contains all of the elements from t.
 
 // It's guaranteed that the answer exists. If there are several answers,
 // return the one which starts from the smallest index.
 
-class Solution {
-  minWindow (s, t) {
-    const map = new Map()
+function solution (s, t) {
+  // If t is an empty string, return an empty string
+  if (t === '') return ''
 
-    // Populate the map with characters from t and their counts
-    for (const x of t) {
-      map.set(x, (map.get(x) || 0) + 1)
-    }
+  // Maps to store the frequency of characters in t and the current window in s
+  const countT = new Map()
+  const window = new Map()
 
-    let matched = 0
-    let start = 0
-    // Initialize the minimum length to be greater than the length of s
-    let minLen = s.length + 1
-    // Store the start position of the minimum substring
-    let subStr = 0
-    for (let endWindow = 0; endWindow < s.length; endWindow++) {
-      const right = s[endWindow]
-      // If the current character is in t, decrease its count in the map
-      if (map.has(right)) {
-        map.set(right, map.get(right) - 1)
-        // If the count becomes 0, it means we matched one character completely
-        if (map.get(right) === 0) matched++
-      }
-
-      // Shrink the window from the left if all characters are matched
-      while (matched === map.size) {
-        // Update the minimum length and start position if a smaller substring is found
-        if (minLen > endWindow - start + 1) {
-          minLen = endWindow - start + 1
-          subStr = start
-        }
-        // s[start++] is the character going to be removed from the window
-        const deleted = s[start++]
-        // If the character removed is in t, adjust its count and matched count
-        if (map.has(deleted)) {
-          // If the count is 0, it means we need to match one more character
-          if (map.get(deleted) === 0) matched--
-          // Increase the count as we are moving ahead
-          map.set(deleted, map.get(deleted) + 1)
-        }
-      }
-    }
-    // Return the minimum substring or an empty string if no such substring exists
-    return minLen > s.length ? '' : s.substring(subStr, subStr + minLen)
+  // Populate countT with the frequency of each character in t
+  for (const char of t) {
+    countT.set(char, (countT.get(char) || 0) + 1)
   }
+
+  // Variables to keep track of the number of characters matched and needed
+  let have = 0
+  const need = countT.size
+
+  // Variables to store the result substring and its length
+  let res = ''
+  let resLen = Infinity
+
+  // Two-pointer technique to expand and contract the window
+  for (let left = 0, right = 0; right < s.length; right++) {
+    const char = s[right]
+
+    // If the character is in t, update the window map
+    if (countT.has(char)) {
+      window.set(char, (window.get(char) || 0) + 1)
+      // If the frequency of the character in the window matches the frequency in t, increment have
+      if (window.get(char) === countT.get(char)) {
+        have++
+      }
+    }
+
+    // While the window contains all characters of t
+    while (have === need) {
+      // Update the result if the current window is smaller
+      if (right - left + 1 < resLen) {
+        resLen = right - left + 1
+        res = s.slice(left, right + 1)
+      }
+
+      // Try to contract the window from the left
+      const char = s[left]
+      if (countT.has(char)) {
+        window.set(char, window.get(char) - 1)
+        // If the frequency of the character in the window is less than in t, decrement have
+        if (window.get(char) < countT.get(char)) {
+          have--
+        }
+      }
+      left++
+    }
+  }
+
+  // Return the minimum window substring
+  return res
 }
 
-console.log(new Solution().minWindow('ADOBECODEBANC', 'ABC'))
+console.log(solution('ADOBECODEBANC', 'ABC')) // BANC
+console.log(solution('OUZODYXAZV', 'XYZ')) // YXAZ
