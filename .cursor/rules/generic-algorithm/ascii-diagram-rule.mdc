@@ -22,12 +22,6 @@ alwaysApply: false
 - **Purpose:** Keep diagrams separate from code to maintain clean code files and allow for extensive visual documentation
 - **Cross-referencing:** Reference diagram files from code comments when helpful
 
-**Examples of correct diagram file names:**
-- `src/01-Arrays/06-encodeDecode/encodeDecode.diagram.md` - Main algorithm visualization
-- `src/09-DP3/14-wordBreak2/wordBreak2.diagram.md` - Recursive approach walkthrough  
-- `src/09-DP3/13-palindromePartitioning2/palindromePartitioning2.diagram.md` - Detailed algorithm explanation
-- `src/03-TwoPointers/01-twoSum2/twoSum2.diagram.md` - Two pointers visualization
-
 **Benefits:**
 - Keeps source code clean and focused
 - Allows for extensive diagram documentation without cluttering code
@@ -173,12 +167,15 @@ Position 0 (tight=true):
 
 ## Anti-Patterns to Avoid
 
+- ❌ **Incomplete diagrams** that cut off mid-flow (CRITICAL: always show start to finish)
+- ❌ **Mixed box styles** (never mix double-line, single-line, or ASCII boxes in one diagram)
 - ❌ Diagrams without concrete examples
 - ❌ Missing intermediate steps in complex algorithms  
 - ❌ Inconsistent notation or symbols
 - ❌ Diagrams that don't match the actual code implementation
 - ❌ Over-complicated visuals that obscure rather than clarify
 - ❌ Missing explanations of why each step works
+- ❌ Poor alignment and spacing that makes diagrams hard to read
 
 ## When to Create Diagrams
 
@@ -219,6 +216,151 @@ Remember: The goal is to make complex algorithms accessible and understandable. 
 - Show variable states alongside code execution
 - Include memoization cache states for DP problems
 - Highlight the relationship between code and diagram
+
+### Consistency Requirements for Flow Diagrams
+
+**CRITICAL: Diagrams must be COMPLETE and CONSISTENT**
+
+#### 1. Completeness - Never Cut Off Mid-Flow
+- ❌ **NEVER create incomplete diagrams** that stop mid-process
+- ✅ **ALWAYS complete** the entire algorithm flow from start to finish
+- ✅ Show the full path: Start → All Steps → End
+- ✅ If showing a process, include ALL steps, not just the beginning
+- ✅ If simplifying, clearly mark it as "simplified" and show the complete flow
+
+#### 2. Consistent Box Formatting
+Choose ONE style and use it consistently throughout the entire diagram:
+
+**Option A: Double-line boxes (for emphasis)**
+```
+╔═══════════════════╗
+║   Box Content     ║
+╚═══════════════════╝
+```
+- Use `═` for horizontal lines
+- Use `║` for vertical lines  
+- Use `╔` `╗` `╚` `╝` for corners
+
+**Option B: Single-line boxes (simple and clean)**
+```
+┌───────────────────┐
+│   Box Content     │
+└───────────────────┘
+```
+- Use `─` for horizontal lines
+- Use `│` for vertical lines
+- Use `┌` `┐` `└` `┘` for corners
+
+**Option C: ASCII-only boxes (most compatible)**
+```
++-------------------+
+|   Box Content     |
++-------------------+
+```
+- Use `-` for horizontal lines
+- Use `|` for vertical lines
+- Use `+` for corners
+
+**CRITICAL RULE:** Never mix different box styles in the same diagram!
+
+#### 3. Complete Flow Structure
+Every flow diagram must have:
+- **Clear start point** (title/header box or labeled entry)
+- **Complete flow path** (all intermediate steps shown)
+- **Clear end point** (final result box or continuation indicator)
+- **Consistent arrow direction** (use → ↓ ↑ ← consistently)
+
+#### 4. Proper Alignment and Spacing
+- Maintain consistent indentation throughout
+- Align boxes vertically and horizontally
+- Use consistent spacing between elements (2-4 spaces)
+- Ensure arrows align properly with boxes
+- Use proper line breaks for readability
+
+#### 5. Example: Good vs Bad
+
+**❌ BAD (Incomplete, inconsistent):**
+```
+╔════════════════════════════════════╗
+║  Reconstruction Algorithm Overview ║
+╚═══════════════╦════════════════════╝
+                ↓
+        ┌───────────────────────┐
+        │  Get Root from Preorder  │
+        └───────────────┬───────┘
+                ↓
+```
+
+**Problems:**
+- Diagram cuts off mid-flow (no completion)
+- Mixed box styles (double-line header, single-line boxes)
+- No end point shown
+- Incomplete algorithm representation
+
+**✅ GOOD (Complete, consistent single-line style):**
+```
+┌────────────────────────────────────┐
+│ Reconstruction Algorithm Overview  │
+└───────────────┬────────────────────┘
+                ↓
+        ┌────────────────────────┐
+        │ Get Root from Preorder │
+        └───────────────┬────────┘
+                        ↓
+        ┌───────────────────────┐
+        │ Find Root in Inorder  │
+        └───────────────┬───────┘
+                        ↓
+        ┌────────────────────────┐
+        │ Split Arrays & Recurse │
+        └───────────────┬────────┘
+                        ↓
+        ┌───────────────────────┐
+        │   Return Root Node    │
+        └───────────────────────┘
+```
+
+**Why it's good:**
+- Complete flow from start to finish
+- Consistent box style (single-line throughout, including header)
+- All steps shown
+- Clear start and end points
+- Proper alignment: arrows centered, boxes aligned vertically
+- Consistent spacing and indentation
+
+**✅ ALTERNATIVE GOOD (Consistent double-line style):**
+```
+╔════════════════════════════════════╗
+║  Reconstruction Algorithm Overview ║
+╚═══════════════╦════════════════════╝
+                ↓
+        ╔════════════════════════╗
+        ║ Get Root from Preorder ║
+        ╚═══════════════╦════════╝
+                        ↓
+        ╔═══════════════════════╗
+        ║ Find Root in Inorder  ║
+        ╚═══════════════╦═══════╝
+                        ↓
+        ╔════════════════════════╗
+        ║ Split Arrays & Recurse ║
+        ╚═══════════════╦════════╝
+                        ↓
+        ╔═══════════════════════╗
+        ║   Return Root Node    ║
+        ╚═══════════════════════╝
+```
+
+#### 6. Quick Consistency Checklist
+Before finalizing any flow diagram, verify:
+- [ ] Diagram is complete (has clear start AND end)
+- [ ] Uses consistent box characters throughout (no mixing styles)
+- [ ] All steps in the process are shown
+- [ ] Properly aligned vertically and horizontally
+- [ ] Consistent spacing between elements
+- [ ] Arrows align properly with boxes
+- [ ] Readable and clear in plain text format
+- [ ] If simplified, clearly marked as such
 
 ## Required Sections for Complex Algorithms
 

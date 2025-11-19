@@ -3,45 +3,71 @@ description:
 globs:
 alwaysApply: false
 ---
-# Rule: Algorithm Solution Mistake - Socratic Follow-Up
+# Rule: Algorithm Solution Mistake - Playful Hint-Based Follow-Up
 
 ## When to Trigger
 - After an attempt to reproduce a solution to an algorithm problem (e.g., greedy, dynamic programming) results in errors or incorrect logic.
 
+## Core Philosophy: NO SPOILERS! 🎭
+**NEVER show the correct solution directly.** Instead, use playful hints, metaphors, and guided discovery to help the user find their own "aha!" moments.
+
 ## Steps
 
-### Step 3: Conceptual Probe
-- Prompt the AI to diagnose the root of the misunderstanding.
-- Use this prompt:
-  > Based on the error in my logic in my_solution.js, what fundamental concept of [greedy algorithms/dynamic programming] do you think I'm missing? Please ask me one or two targeted questions to test my understanding of that concept.
+### Step 1: Playful Mistake Detective 🕵️
+- Analyze the mistakes with humor and creativity
+- Use metaphors, analogies, or playful language to describe what went wrong
+- Give the mistake a "personality" or "character flaw"
 
-- The AI should:
-  - Identify the likely conceptual gap.
-  - Ask 3 Socratic questions to probe the user's understanding of that concept.
+#### Example Approaches:
+- "Your algorithm has commitment issues - it's updating the answer while still figuring out what it wants!"
+- "I see your code is doing the classic 'measure twice, cut once' backwards - it's cutting before measuring!"
+- "Your sliding window is like an eager photographer - taking pictures before the scene is properly set up!"
 
-#### Example AI Response
-> Your solution shows you're thinking about all possible paths, which is common for DFS. The core misunderstanding seems to be in identifying the greedy choice.
->
-> - Question 1: For Jump Game II, at any given position, what is the most important piece of information you need to decide your next jump to guarantee a minimum number of total jumps? Is it the length of the next jump, or the potential reach from that next jump?
-> - Question 2: Why is it safe to not explore every possible jump from the current position? What makes the 'farthest' reachable point a "safe" greedy choice?
+### Step 2: Breadcrumb Trail of Hints 🍞
+- Provide 2-3 escalating hints that guide toward the solution
+- Each hint should be more specific than the last
+- Use questions that make the user think about timing, order, or logic flow
+
+#### Hint Structure:
+1. **Gentle Nudge**: Point to the general area of the problem
+2. **Focused Hint**: Narrow down to the specific issue
+3. **Almost-There Hint**: Give just enough to spark the "aha!" moment
+
+### Step 3: "What's Wrong With This Picture?" Game 🎯
+- Present the mistake as a puzzle or game
+- Ask the user to spot the logical flaw
+- Use analogies from everyday life to make it relatable
+
+#### Example Questions:
+- "If you were a restaurant critic, at what point would you write your review - before or after tasting the food?"
+- "Your algorithm is like someone announcing the winner before the race is over. Can you spot where this happens?"
+
+### Step 4: Mini Challenge 🏆
+- Create a tiny test case that exposes the flaw
+- Let the user trace through their logic step by step
+- Encourage them to discover the issue themselves
 
 ---
 
-### Step 4: "What If" Scenario
-- Prompt the AI to create a new, small problem to test the refined understanding.
-- Use this prompt:
-  > That makes sense. I understand now that I should focus on the farthest reach. Can you give me a new, small input for {current problem} Let me try to solve it.
+## Enforcement Rules
+- **ABSOLUTELY NO direct code corrections** - only hints and guidance
+- **NO showing the correct implementation** - let them build it
+- **YES to creative metaphors** - make learning fun and memorable
+- **YES to step-by-step discovery** - guide them to their own insights
 
-- The AI should:
-  - Create a small, custom test case that highlights the key concept.
-  - Invite the user to solve it, reinforcing the corrected understanding.
+## Tone Guidelines
+- Be encouraging and playful, never condescending
+- Use emojis and fun language to keep it light
+- Celebrate small discoveries along the way
+- Make mistakes feel like puzzles to solve, not failures
 
----
-
-## Enforcement
-- Always follow up a failed solution attempt with these two steps before moving on to new problems or explanations.
-- For each follow-up, create a separate markdown file documenting the Socratic dialogue and the "what if" scenario. Name the file using the convention: `followup-[problem-name].md` (e.g., `followup-jump-game-ii.md`).
+## Documentation
+- Create followup files that capture the hint-giving process
+- Include the metaphors and analogies used
+- Document the user's discovery journey
+- Name files: `followup-[problem-name]-hints.md`
 
 ## Notes
-- Don't modify the file with mistakes
-- Don't create any file with correct solution
+- Don't modify the file with mistakes - it's evidence for the detective work!
+- Don't create any file with correct solution - that's cheating!
+- Focus on the journey of discovery, not the destination

@@ -1,0 +1,585 @@
+---
+description: Rules for creating comprehensive ASCII diagrams and visual explanations for tree algorithm solutions
+globs: ["**/*.md", "**/*.txt", "**/*.js"]
+alwaysApply: false
+---
+
+# Tree Algorithm Diagram Creation Rules
+
+## Core Principles
+
+1. **Always show tree structure clearly** with proper node relationships
+2. **Use consistent node representation** throughout the diagram
+3. **Show traversal order** and recursive call flow
+4. **Illustrate state changes** at each step of tree operations
+5. **Include both tree structure and execution trace** for recursive algorithms
+
+## File Organization
+
+**MANDATORY: Create diagrams in separate markdown files**
+
+- **Naming convention:** Use the format `algorithmName.diagram.md` for consistency
+- **Location:** Place diagram files in the same directory as the main solution file
+- **Cross-referencing:** Reference diagram files from code comments when helpful
+
+## Tree Node Representation Standards
+
+### Standard Node Format
+
+**Single Node:**
+```
+    [value]
+     /   \
+   left  right
+```
+
+**Node with Null Children:**
+```
+    [5]
+   /   \
+ null  null
+```
+
+**Or using explicit null markers:**
+```
+    [5]
+   /   \
+  ∅     ∅
+```
+
+### Node Value Display
+- Use `[value]` for single values
+- Use `[key:val]` for key-value pairs
+- Use `[val1,val2]` for multiple values
+- Keep values concise (max 3-4 characters when possible)
+
+## Binary Tree Structure Patterns
+
+### 1. Compact Horizontal Tree (Best for Small Trees)
+
+**Use for:** Small trees (≤7 nodes), examples, initial state
+
+**Format:**
+```
+         [10]
+        /    \
+     [5]      [15]
+    /   \    /    \
+  [3]   [7] [12]  [20]
+```
+
+**Guidelines:**
+- Root at top center
+- Left child goes left, right child goes right
+- Use consistent spacing (2-3 spaces per level)
+- Align nodes vertically by level
+
+### 2. Vertical Tree (Best for Tall Trees)
+
+**Use for:** Tall trees, showing depth, path visualization
+
+**Format:**
+```
+[10]
+ │
+ ├─[5]
+ │  │
+ │  ├─[3]
+ │  │
+ │  └─[7]
+ │
+ └─[15]
+    │
+    ├─[12]
+    │
+    └─[20]
+```
+
+**Guidelines:**
+- Root at top
+- Use `│` for vertical connections
+- Use `├─` for left child, `└─` for right child
+- Indent children consistently
+
+### 3. Inline Tree (Best for Code Comments)
+
+**Use for:** Brief explanations, simple trees in comments
+
+**Format:**
+```
+[10] -> [5] -> [3], [7]
+     -> [15] -> [12], [20]
+```
+
+**Guidelines:**
+- Single line or few lines
+- Use arrows to show relationships
+- Keep it compact
+
+### 4. Array Representation (Best for Heap/Level-order)
+
+**Use for:** Heaps, level-order traversal, array-based trees
+
+**Format:**
+```
+Array: [10, 5, 15, 3, 7, 12, 20]
+Index:  0  1   2  3  4   5   6
+
+Tree:
+         [10]
+        /    \
+     [5]      [15]
+    /   \    /    \
+  [3]   [7] [12]  [20]
+```
+
+## Tree Traversal Visualization
+
+### Preorder Traversal (Root → Left → Right)
+
+**Format:**
+```
+Traversal Order: [10] → [5] → [3] → [7] → [15] → [12] → [20]
+
+Tree with traversal path:
+         [10] ✓
+        /    \
+     [5] ✓    [15] ✓
+    /   \    /    \
+  [3]✓  [7]✓ [12]✓ [20]✓
+```
+
+**Guidelines:**
+- Mark visited nodes with ✓ or numbers (1, 2, 3...)
+- Show the order clearly
+- Include both tree structure and linear order
+
+### Inorder Traversal (Left → Root → Right)
+
+**Format:**
+```
+Traversal Order: [3] → [5] → [7] → [10] → [12] → [15] → [20]
+
+Tree with traversal path:
+         [10] ✓4
+        /    \
+     [5] ✓2  [15] ✓6
+    /   \    /    \
+  [3]✓1 [7]✓3 [12]✓5 [20]✓7
+```
+
+### Postorder Traversal (Left → Right → Root)
+
+**Format:**
+```
+Traversal Order: [3] → [7] → [5] → [12] → [20] → [15] → [10]
+
+Tree with traversal path:
+         [10] ✓7
+        /    \
+     [5] ✓3  [15] ✓6
+    /   \    /    \
+  [3]✓1 [7]✓2 [12]✓4 [20]✓5
+```
+
+### Level-Order Traversal (BFS)
+
+**Format:**
+```
+Level 0: [10]
+Level 1: [5] → [15]
+Level 2: [3] → [7] → [12] → [20]
+
+Tree:
+         [10] (L0)
+        /    \
+     [5]      [15] (L1)
+    /   \    /    \
+  [3]   [7] [12]  [20] (L2)
+```
+
+## Recursive Tree Operations
+
+### Recursive Call Tree
+
+**Use for:** Showing recursive function calls and their relationships
+
+**Format:**
+```
+Call Tree for dfs(root):
+                    dfs([10])
+                   /         \
+            dfs([5])          dfs([15])
+           /       \         /        \
+    dfs([3])   dfs([7])  dfs([12])  dfs([20])
+     |           |         |          |
+   return      return   return    return
+```
+
+**Guidelines:**
+- Show function name and parameters
+- Show call hierarchy
+- Mark base cases clearly
+- Show return values flowing up
+
+### Recursive Execution Trace
+
+**Use for:** Step-by-step recursive execution
+
+**Format:**
+```
+Step 1: dfs([10])
+  ├─ Step 2: dfs([5])
+  │   ├─ Step 3: dfs([3]) → return
+  │   └─ Step 4: dfs([7]) → return
+  └─ Step 5: dfs([15])
+      ├─ Step 6: dfs([12]) → return
+      └─ Step 7: dfs([20]) → return
+```
+
+### State Changes During Recursion
+
+**Use for:** Showing how tree state changes during recursive operations
+
+**Format:**
+```
+Initial State:
+         [10]
+        /    \
+     [5]      [15]
+
+After processing left subtree:
+         [10]
+        /    \
+     [5]✓     [15]
+    /   \
+  [3]✓  [7]✓
+
+After processing right subtree:
+         [10]✓
+        /    \
+     [5]✓     [15]✓
+    /   \    /    \
+  [3]✓  [7]✓ [12]✓ [20]✓
+```
+
+## Tree Construction Patterns
+
+### Building Tree from Array
+
+**Format:**
+```
+Input: [10, 5, 15, 3, 7, 12, 20]
+
+Step 1: Insert 10
+    [10]
+
+Step 2: Insert 5
+    [10]
+   /
+ [5]
+
+Step 3: Insert 15
+    [10]
+   /    \
+ [5]    [15]
+
+... (continue for all nodes)
+```
+
+### Building Tree from Traversals
+
+**Format:**
+```
+Preorder: [10, 5, 3, 7, 15, 12, 20]
+Inorder:  [3, 5, 7, 10, 12, 15, 20]
+
+Step 1: Root = 10 (from preorder)
+         [10]
+        /    \
+  [3,5,7]   [12,15,20]
+  (inorder)  (inorder)
+
+Step 2: Build left subtree
+         [10]
+        /    \
+     [5]      [12,15,20]
+    /   \
+  [3]   [7]
+
+... (continue recursively)
+```
+
+## Tree Modification Patterns
+
+### Node Insertion
+
+**Format:**
+```
+Before Insert(8):
+         [10]
+        /    \
+     [5]      [15]
+    /   \    /    \
+  [3]   [7] [12]  [20]
+
+Insert(8) → Find position → [7] has no right child
+
+After Insert(8):
+         [10]
+        /    \
+     [5]      [15]
+    /   \    /    \
+  [3]   [7] [12]  [20]
+          \
+          [8] ← NEW
+```
+
+### Node Deletion
+
+**Format:**
+```
+Before Delete(5):
+         [10]
+        /    \
+     [5]      [15]
+    /   \    /    \
+  [3]   [7] [12]  [20]
+
+Delete(5) → Case: Node has 2 children
+→ Find successor (7) → Replace [5] with [7]
+
+After Delete(5):
+         [10]
+        /    \
+     [7]      [15]
+    /        /    \
+  [3]      [12]  [20]
+```
+
+### Tree Rotation (AVL/RBT)
+
+**Format:**
+```
+Before Right Rotation:
+      [10]
+     /
+   [5]
+  /
+[3]
+
+After Right Rotation:
+   [5]
+  /   \
+[3]   [10]
+```
+
+## Tree Property Visualization
+
+### Height Calculation
+
+**Format:**
+```
+Tree with heights:
+         [10] (h=2)
+        /    \
+     [5](h=1) [15](h=1)
+    /   \    /    \
+  [3](h=0)[7](h=0)[12](h=0)[20](h=0)
+```
+
+### Balanced vs Unbalanced
+
+**Format:**
+```
+Balanced Tree:
+         [10]
+        /    \
+     [5]      [15]
+    /   \    /    \
+  [3]   [7] [12]  [20]
+
+Unbalanced Tree:
+         [10]
+        /
+     [5]
+    /
+  [3]
+ /
+[1]
+```
+
+## Consistency Requirements
+
+### Node Alignment
+- **Always align nodes** at the same level horizontally
+- **Use consistent spacing** between nodes (2-4 spaces)
+- **Maintain vertical alignment** for parent-child relationships
+
+### Arrow and Line Styles
+- Use `/` and `\` for diagonal connections
+- Use `│` for vertical connections
+- Use `─` for horizontal connections
+- Use `├─` and `└─` for tree branches
+- **Never mix** different connection styles in the same diagram
+
+### Value Formatting
+- Keep node values concise
+- Use consistent brackets: `[value]` or `(value)`
+- Mark visited/processed nodes consistently (✓, numbers, or colors)
+
+### Complete Diagrams
+- **Always show the complete tree** structure when relevant
+- **Include all nodes** in the current state
+- **Show null/empty nodes** explicitly when important
+- **Mark the current focus** (node being processed) clearly
+
+## Common Tree Algorithm Patterns
+
+### 1. Tree Traversal with State
+
+**Format:**
+```
+Traversing with accumulator:
+
+Initial: acc = []
+         [10]
+        /    \
+     [5]      [15]
+
+After left subtree: acc = [3, 5, 7]
+         [10]
+        /    \
+     [5]✓     [15]
+    /   \
+  [3]✓  [7]✓
+
+After right subtree: acc = [3, 5, 7, 12, 15, 20]
+         [10]✓
+        /    \
+     [5]✓     [15]✓
+    /   \    /    \
+  [3]✓  [7]✓ [12]✓ [20]✓
+```
+
+### 2. Tree Validation (BST Check)
+
+**Format:**
+```
+Validating BST property:
+
+         [10]
+        /    \
+     [5]      [15]
+    /   \    /    \
+  [3]   [7] [12]  [20]
+
+Check: [10] in range (-∞, +∞) ✓
+  ├─ Check: [5] in range (-∞, 10) ✓
+  │   ├─ Check: [3] in range (-∞, 5) ✓
+  │   └─ Check: [7] in range (5, 10) ✓
+  └─ Check: [15] in range (10, +∞) ✓
+      ├─ Check: [12] in range (10, 15) ✓
+      └─ Check: [20] in range (15, +∞) ✓
+
+Result: Valid BST ✓
+```
+
+### 3. Tree Path Finding
+
+**Format:**
+```
+Finding path to [7]:
+
+         [10]
+        /    \
+     [5]      [15]
+    /   \    /    \
+  [3]   [7] [12]  [20]
+
+Path: [10] → [5] → [7]
+       ↑      ↑      ↑
+     start   mid   target
+```
+
+### 4. Tree Construction from Sorted Array
+
+**Format:**
+```
+Array: [3, 5, 7, 10, 12, 15, 20]
+
+Step 1: Middle = 10 (index 3)
+         [10]
+        /    \
+  [3,5,7]   [12,15,20]
+
+Step 2: Build left subtree (middle = 5)
+         [10]
+        /    \
+     [5]      [12,15,20]
+    /   \
+  [3]   [7]
+
+Step 3: Build right subtree (middle = 15)
+         [10]
+        /    \
+     [5]      [15]
+    /   \    /    \
+  [3]   [7] [12]  [20]
+```
+
+## Anti-Patterns to Avoid
+
+- ❌ **Inconsistent node representation** (mixing `[value]`, `(value)`, `value`)
+- ❌ **Misaligned nodes** at the same level
+- ❌ **Incomplete trees** (missing nodes or connections)
+- ❌ **Unclear traversal order** (no markers or numbers)
+- ❌ **Mixed connection styles** (using `/` and `│` together inconsistently)
+- ❌ **Overly complex trees** that obscure the algorithm
+- ❌ **Missing null/empty markers** when they're important
+- ❌ **Unclear current focus** (which node is being processed)
+- ❌ **Inconsistent spacing** between levels
+
+## Quick Tree Diagram Checklist
+
+Before finalizing any tree diagram, verify:
+- [ ] All nodes are properly aligned at their level
+- [ ] Consistent node representation format throughout
+- [ ] All connections are clear and properly drawn
+- [ ] Traversal order is marked (if showing traversal)
+- [ ] Current focus/processing node is clearly indicated
+- [ ] Null/empty nodes are shown when relevant
+- [ ] Consistent spacing and indentation
+- [ ] Complete tree structure (or clearly marked as partial)
+- [ ] Readable and clear in plain text format
+
+## Examples of Good Tree Diagram Comments
+
+```javascript
+// Tree structure:
+//         [10]
+//        /    \
+//     [5]      [15]
+//    /   \    /    \
+//  [3]   [7] [12]  [20]
+```
+
+```javascript
+// Inorder traversal: [3] → [5] → [7] → [10] → [12] → [15] → [20]
+//         [10] ✓4
+//        /    \
+//     [5] ✓2  [15] ✓6
+//    /   \    /    \
+//  [3]✓1 [7]✓3 [12]✓5 [20]✓7
+```
+
+```javascript
+// Recursive call tree:
+//                    dfs([10])
+//                   /         \
+//            dfs([5])          dfs([15])
+//           /       \         /        \
+//    dfs([3])   dfs([7])  dfs([12])  dfs([20])
+```
+
+Remember: The goal is to make tree algorithms visually clear and traceable. A good tree diagram should enable someone to understand the structure, traversal, and operations just from the visual representation.
