@@ -1,4 +1,6 @@
 /**
+ * 122. Best Time to Buy and Sell Stock II
+ * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/description/
  * This function calculates the maximum profit that can be achieved from buying and selling stocks,
  * given an array of prices where prices[i] is the price of a given stock on the ith day.
  * You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times)
