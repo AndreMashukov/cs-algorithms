@@ -1,3 +1,5 @@
+// 115. Distinct Subsequences
+// https://leetcode.com/problems/distinct-subsequences/description/
 // You are given two strings s and t, both consisting of English letters.
 // Return the number of distinct subsequences of s which are equal to t.
 // Example 1:
