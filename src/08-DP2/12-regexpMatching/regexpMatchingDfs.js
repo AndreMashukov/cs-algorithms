@@ -1,3 +1,6 @@
+// Problem: 10. Regular Expression Matching
+// https://leetcode.com/problems/regular-expression-matching/description/
+// Problem Description:
 // You are given an input string s consisting of lowercase english letters,
 // and a pattern p consisting of lowercase english letters,
 // as well as '.', and '*' characters.
