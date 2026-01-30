@@ -46,17 +46,14 @@ function longestValidParentheses_dp(s) {
         // dp[i-2] gives the length of valid parentheses ending at index i-2.
         dp[i] = (i >= 2 ? dp[i - 2] : 0) + 2;
       } else if (i - dp[i - 1] > 0 && s[i - dp[i - 1] - 1] === '(') {
-        // Case 2: The previous character is also a closing parenthesis, like "...))".
-        // We look for a matching '(' for the current ')'.
-        // dp[i-1] is the length of the valid parentheses ending at s[i-1].
-        // So, s[i - dp[i-1] - 1] is the character before that valid segment.
-        // dp[i - dp[i-1] - 2] = dp[5 - 2 - 2] = dp[1] = 2
-        // If s[i - dp[i-1] - 1] is '(', it matches the current s[i] = ')'.
-        // The length is dp[i-1] (for the inner valid segment) + 2 (for the outer matching pair "())".
-        // Plus, if there were valid parentheses before this entire new segment, add their length.
-        // The character before this entire segment is at index i - dp[i-1] - 2.
-        dp[i] =
-          dp[i - 1] + (i - dp[i - 1] >= 2 ? dp[i - dp[i - 1] - 2] : 0) + 2;
+        // Calculate the index of the matching '('
+        // i - dp[i-1] is the start of the valid substring ending at i-1
+        // Subtract 1 more to find the char before that substring
+        const matchIdx = i - dp[i - 1] - 1;
+        
+        // Add current inner length + 2 + any valid length preceding the match
+        const prevValidLen = (matchIdx - 1 >= 0) ? dp[matchIdx - 1] : 0;
+        dp[i] = dp[i - 1] + prevValidLen + 2;
       }
       maxLength = Math.max(maxLength, dp[i]); // Update the overall maximum length found.
     }
