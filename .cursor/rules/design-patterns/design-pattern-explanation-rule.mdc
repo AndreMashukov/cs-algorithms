@@ -1,0 +1,212 @@
+# Design Pattern Explanation Generator
+
+Generate clear design pattern explanations with TypeScript examples and ASCII diagrams.
+
+## Output Structure
+
+```markdown
+# {Pattern Name} Design Pattern
+
+## Overview
+**Definition:** {2-3 sentence definition}
+**Intent:** {Problem it solves and primary purpose}
+**Motivation:** {Real-world scenario illustrating need}
+
+## Pattern Structure
+
+### UML Diagram
+```
+┌────────────────────────────────────────────┐
+│        {Pattern Name} Structure            │
+├────────────────────────────────────────────┤
+│  ┌──────────────┐     Participants:       │
+│  │ <<interface>>│     • {Component 1}     │
+│  │ {Interface}  │     • {Component 2}     │
+│  └──────────────┘                          │
+│        △                                   │
+│        │                                   │
+│  ┌─────┴──────┐                            │
+│  │ {Concrete} │                            │
+│  └────────────┘                            │
+└────────────────────────────────────────────┘
+```
+
+### Participants
+**{Component}:** {Role and responsibilities}
+
+## TypeScript Implementation
+
+### Basic Example
+```typescript
+interface {Interface} {
+  operation(): ReturnType;
+}
+
+class {Implementation} implements {Interface} {
+  public operation(): ReturnType {
+    // Implementation
+  }
+}
+```
+
+### Real-World Example
+```typescript
+// {Real-world use case description}
+class {RealWorldClass} {
+  async execute(input: InputType): Promise<OutputType> {
+    // Pattern implementation
+  }
+}
+```
+
+## Execution Flow
+
+### Sequence Diagram
+```
+Client → Pattern → Component
+  │       │         │
+  │──req─▶│         │
+  │       │──proc──▶│
+  │◀──res─│◀────────│
+```
+
+### Steps
+1. **Initialize:** {Description}
+2. **Process:** {Description}
+3. **Return:** {Description}
+
+## When to Use
+
+### ✅ Use When:
+- {Scenario 1}
+- {Scenario 2}
+
+### ❌ Avoid When:
+- {Scenario 1}
+- {Scenario 2}
+
+### Decision Chart
+```
+┌──────────────────────────────────────┐
+│  Criteria       Score  Status        │
+├──────────────────────────────────────┤
+│  Complexity     ███░░  Medium        │
+│  Performance    █████  High          │
+│  Maintainability████░  High          │
+└──────────────────────────────────────┘
+```
+
+## Benefits & Trade-offs
+
+**Benefits:**
+- {Benefit 1}: {Explanation}
+- {Benefit 2}: {Explanation}
+
+**Trade-offs:**
+- {Trade-off 1}: {Consideration}
+- {Trade-off 2}: {Consideration}
+
+### vs Alternatives
+```
+┌─────────────────────────────────────────┐
+│  Aspect      This     Alt1     Alt2    │
+├─────────────────────────────────────────┤
+│  Complexity  Medium   Low      High    │
+│  Flexibility High     Medium   High    │
+└─────────────────────────────────────────┘
+```
+
+## Common Pitfalls
+
+### Pitfall: {Name}
+**Problem:** {Description}
+```typescript
+// ❌ Wrong
+class Bad { /* issue */ }
+```
+**Solution:** {Fix}
+```typescript
+// ✅ Correct
+class Good { /* fixed */ }
+```
+
+## Testing Strategy
+
+```typescript
+describe('{Pattern}', () => {
+  it('should work correctly', () => {
+    const instance = new {Pattern}();
+    expect(instance.method()).toBe(expected);
+  });
+});
+```
+
+## Performance
+- **Time:** O({complexity})
+- **Space:** O({complexity})
+
+**Optimization:**
+```typescript
+class Optimized {
+  private cache = new Map();
+  // Optimization technique
+}
+```
+
+## Real-World Use Cases
+
+**1. {Industry}**
+- Scenario: {Problem}
+- Solution: {How pattern solves it}
+
+**2. {Industry}**
+- Scenario: {Problem}
+- Solution: {Implementation}
+
+## Summary
+
+**Key Takeaways:**
+- 🎯 Purpose: {One-liner}
+- ✅ Use: {When to use}
+- ❌ Avoid: {When not to use}
+
+### Quick Reference
+```
+┌────────────────────────────────────────┐
+│  {Pattern Name} at a Glance           │
+├────────────────────────────────────────┤
+│  Category:    {Type}                  │
+│  Complexity:  ⭐⭐⭐☆☆                 │
+│  Best For:    {Primary use case}      │
+└────────────────────────────────────────┘
+```
+
+**Related Patterns:** {Pattern 1}, {Pattern 2}
+```
+
+## Generation Guidelines
+
+**Pattern Categories:**
+- Creational: Singleton, Factory, Builder, Prototype
+- Structural: Adapter, Decorator, Facade, Proxy
+- Behavioral: Observer, Strategy, Command, State
+
+**Code Quality:**
+- Modern TypeScript (ES2020+)
+- Type safety with generics
+- Error handling
+- Async/await where appropriate
+
+**Diagrams (minimum 3):**
+1. Structure (UML-style)
+2. Sequence (execution flow)
+3. Comparison (metrics/alternatives)
+
+**Focus Areas:**
+- Web development
+- API design
+- State management
+- Real-world scenarios
+
+**File Naming:**
+`{pattern-name}-explanation.md` (kebab-case)
