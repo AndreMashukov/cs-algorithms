@@ -97,8 +97,8 @@ function isScramble_dfs(s1, s2) {
       
       // Case 2: With swap - check if left part of s1 matches right part of s2
       // and right part of s1 matches left part of s2
-      const left2_swapped = s2.substring(s2.length - i);
-      const right2_swapped = s2.substring(0, s2.length - i);
+      const left2_swapped = s2.substring(s2.length - i); // last i characters of s2
+      const right2_swapped = s2.substring(0, s2.length - i); // first (length-i) characters of s2
        // s2 = "rgeat", i = 2, s2.length = 5
        // left2_swapped = "at", right2_swapped = "rge"
       
