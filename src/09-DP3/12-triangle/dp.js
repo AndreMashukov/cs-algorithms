@@ -23,7 +23,7 @@ function minimumTotal_dp(triangle) {
   for (let i = 1; i < n; i++) {
     for (let j = 0; j < triangle[i].length; j++) {
       // For each position (i, j), we can come from two possible previous positions:
-      // 1. From (i-1, j-1) - diagonal move from previous row
+      // 1. From (i-1, sentj-1) - diagonal move from previous row
       // 2. From (i-1, j) - direct move down from previous row
       
       // Check if we can come from diagonal position (i-1, j-1)
