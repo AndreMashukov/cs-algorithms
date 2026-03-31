@@ -1,5 +1,4 @@
-// LeetCode 1091 - Shortest Path in Binary Matrix
-// https://leetcode.com/problems/shortest-path-in-binary-matrix/description/
+// NO LEETCODE VERSION
 // Matrix Breadth-First Search
 // You are given a binary matrix Grid where 0s represent land
 // and 1s represent rocks that can not be traversed.
