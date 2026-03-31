@@ -1,3 +1,5 @@
+// LeetCode 200 - Number of Islands
+// https://leetcode.com/problems/number-of-islands/description/
 // Given a 2D grid grid where '1' represents land
 // and '0' represents water,
 // count and return the number of islands.
@@ -8,6 +10,8 @@
 // (i.e., all the edges are water).
 
 const numIslands = (grid) => {
+  const ROWS = grid.length
+  const COLS = grid[0].length
   let count = 0
 
   // Define the dfs function inside numIslands to create a closure
@@ -16,8 +20,8 @@ const numIslands = (grid) => {
     if (
       i < 0 ||
       j < 0 ||
-      i >= grid.length ||
-      j >= grid[0].length ||
+      i >= ROWS ||
+      j >= COLS ||
       grid[i][j] === '0'
     ) {
       return
@@ -32,8 +36,8 @@ const numIslands = (grid) => {
   }
 
   // Iterate through each cell in the grid
-  for (let i = 0; i < grid.length; i++) {
-    for (let j = 0; j < grid[0].length; j++) {
+  for (let i = 0; i < ROWS; i++) {
+    for (let j = 0; j < COLS; j++) {
       // If the cell is land ('1'), perform a DFS to mark the entire island
       if (grid[i][j] === '1') {
         dfs(i, j)
