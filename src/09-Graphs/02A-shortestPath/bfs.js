@@ -1,4 +1,5 @@
-// https://neetcode.io/problems/matrixBFS
+// LeetCode 1091 - Shortest Path in Binary Matrix
+// https://leetcode.com/problems/shortest-path-in-binary-matrix/description/
 // Matrix Breadth-First Search
 // You are given a binary matrix Grid where 0s represent land
 // and 1s represent rocks that can not be traversed.
@@ -31,42 +32,30 @@ const shortestPath = (grid) => {
   const ROWS = grid.length
   const COLS = grid[0].length
   const visit = new Set()
-  const queue = []
-  queue.push([0, 0])
+  const queue = [[0, 0]]
   visit.add('0,0')
+
+  const enqueue = (nr, nc) => {
+    if (nr < 0 || nc < 0 || nr >= ROWS || nc >= COLS) return
+    const key = `${nr},${nc}`
+    if (visit.has(key) || grid[nr][nc] === 1) return
+    queue.push([nr, nc])
+    visit.add(key)
+  }
 
   let length = 0
   while (queue.length > 0) {
     const size = queue.length
     for (let i = 0; i < size; i++) {
-      const cell = queue.shift()
-      const r = cell[0]
-      const c = cell[1]
+      const [r, c] = queue.shift()
       if (r === ROWS - 1 && c === COLS - 1) {
         return length
       }
 
-      const neighbors = [
-        [0, 1],
-        [0, -1],
-        [1, 0],
-        [-1, 0]
-      ]
-      for (const nei of neighbors) {
-        const dr = nei[0]
-        const dc = nei[1]
-        if (
-          Math.min(r + dr, c + dc) < 0 ||
-          r + dr === ROWS ||
-          c + dc === COLS ||
-          visit.has(r + dr + ',' + (c + dc)) ||
-          grid[r + dr][c + dc] === 1
-        ) {
-          continue
-        }
-        queue.push([r + dr, c + dc])
-        visit.add(r + dr + ',' + (c + dc))
-      }
+      enqueue(r, c + 1)
+      enqueue(r, c - 1)
+      enqueue(r + 1, c)
+      enqueue(r - 1, c)
     }
     length++
   }
