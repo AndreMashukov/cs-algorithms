@@ -1,3 +1,12 @@
+// LeetCode 684 - Redundant Connection
+// https://leetcode.com/problems/redundant-connection/description/
+// You are given a list of edges representing a graph.
+// The graph is undirected and connected.
+// The edges are given as pairs of nodes.
+// Return the edge that can be removed to make the graph a tree.
+// If there are multiple edges that can be removed, return the one that appears last in the input.
+// If the graph is already a tree, return an empty array.
+
 class Solution {
   /**
    * @param {number} n
