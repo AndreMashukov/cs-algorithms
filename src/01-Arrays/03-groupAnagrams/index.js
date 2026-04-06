@@ -1,3 +1,5 @@
+// 49. Group Anagrams
+// https://leetcode.com/problems/group-anagrams/
 // Given an array of strings strs,
 //  group the anagrams together.
 // You can return the answer in any order.
@@ -6,22 +8,48 @@
 // the letters of a different word or phrase,
 // typically using all the original letters exactly once.
 
-const solution = (strs) => {
-  const map = new Map()
+class Solution {
+  /**
+   * @param {string[]} strs
+   * @return {string[][]}
+   */
+  groupAnagrams (strs) {
+    const ans = {}
 
-  for (const str of strs) {
-    const key = [...str].sort().join('')
+    for (const s of strs) {
+      const count = Array(26).fill(0)
+      for (const c of s) {
+        count[c.charCodeAt(0) - 'a'.charCodeAt(0)]++
+        // console.log(count)
+      }
 
-    if (!map.has(key)) {
-      map.set(key, [])
+      const key = count.join('#')
+      if (!ans[key]) {
+        ans[key] = []
+      }
+
+      // console.log(ans)
+
+      ans[key].push(s)
     }
-
-    // push the current string into the array of the current key
-    map.get(key).push(str)
+    return Object.values(ans)
   }
-
-  return Array.from(map.values())
 }
 
-// Input: strs = ["eat","tea","tan","ate","nat","bat"]
-// Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+console.log(
+  new Solution().groupAnagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat'])
+)
+
+// "eat" =>
+// [
+//   1, 0, 0, 0, 1, 0, 0, 0,
+//   0, 0, 0, 0, 0, 0, 0, 0,
+//   0, 0, 0, 1, 0, 0, 0, 0,
+//   0, 0
+// ]
+
+// {
+//   '1#0#0#0#1#0#0#0#0#0#0#0#0#0#0#0#0#0#0#1#0#0#0#0#0#0': [ 'eat', 'tea', 'ate' ],
+//   '1#0#0#0#0#0#0#0#0#0#0#0#0#1#0#0#0#0#0#1#0#0#0#0#0#0': [ 'tan', 'nat' ],
+//   '1#1#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#1#0#0#0#0#0#0': []
+// }
