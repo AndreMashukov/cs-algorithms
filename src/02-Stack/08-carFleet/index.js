@@ -1,3 +1,15 @@
+// 853. Car Fleet
+// https://leetcode.com/problems/car-fleet/
+// https://www.youtube.com/watch?v=Pr6T-3yB9RM
+// There are n cars going to the same destination along a one-lane road.
+// The destination is target miles away.
+// You are given two integer array position and speed,
+// where position[i] is the position of the ith car and speed[i] is the speed of the ith car (in miles per hour).
+// A car can never pass another car ahead of it, but it can catch up to it and drive bumper to bumper at the same speed.
+// The distance between these two cars is ignored (i.e., they are assumed to have the same position).
+// A car fleet is some non-empty set of cars driving at the same position and same speed.
+// Note that a single car is also a car fleet.
+
 class Solution {
   /**
    * @param {number} target
