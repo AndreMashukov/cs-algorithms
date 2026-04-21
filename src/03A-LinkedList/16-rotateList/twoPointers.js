@@ -21,64 +21,6 @@
 // - -100 <= Node.val <= 100
 // - 0 <= k <= 2 * 10^9
 
-// Definition for singly-linked list node
-function ListNode(val, next) {
-  this.val = (val === undefined ? 0 : val);
-  this.next = (next === undefined ? null : next);
-}
-
-/**
- * @param {ListNode} head
- * @param {number} k
- * @return {ListNode}
- */
-function rotateRightTwoPointers(head, k) {
-  // Handle edge cases: empty list or single node
-  if (!head || !head.next || k === 0) {
-    return head;
-  }
-  
-  // Step 1: Find the length of the linked list and get the tail
-  let length = 1;
-  let tail = head;
-  
-  // Traverse to find length and tail node
-  while (tail.next) {
-    tail = tail.next;
-    length++;
-  }
-  
-  // Step 2: Optimize k to handle cases where k > length
-  // If k is a multiple of length, no rotation is needed
-  k = k % length;
-  if (k === 0) {
-    return head;
-  }
-  
-  // Step 3: Find the new tail (at position length - k - 1)
-  // and the new head (at position length - k)
-  let newTail = head;
-  
-  // Move newTail to position (length - k - 1)
-  // This is the node that will become the last node after rotation
-  for (let i = 0; i < length - k - 1; i++) {
-    newTail = newTail.next;
-  }
-  
-  // The new head is the next node after new tail
-  let newHead = newTail.next;
-  
-  // Step 4: Perform the rotation by breaking and reconnecting links
-  // Break the connection: newTail becomes the actual tail
-  newTail.next = null;
-  
-  // Connect the old tail to the old head to complete the rotation
-  tail.next = head;
-  
-  // Return the new head of the rotated list
-  return newHead;
-}
-
 // Alternative approach using two pointers to find the break point
 function rotateRightTwoPointersAlternative(head, k) {
   if (!head || !head.next || k === 0) {
