@@ -1,3 +1,6 @@
+// 424. Longest Repeating Character Replacement
+// https://leetcode.com/problems/longest-repeating-character-replacement/description/?envType=problem-list-v2&envId=sliding-window — official statement
+// https://www.youtube.com/watch?v=gHRLe0YX98U — optional video walkthrough linked from the exercise notes
 // You are given a string s and an integer k.
 // You can choose any character of the string and change
 // it to any other uppercase English character.
