@@ -1,3 +1,6 @@
+// 3. Longest Substring Without Repeating Characters
+// https://leetcode.com/problems/longest-substring-without-repeating-characters/description/?envType=list&envId=sliding-window — official statement
+// https://www.youtube.com/watch?v=4i6-9IzQHwo — optional video walkthrough linked from the exercise notes
 // Given a string s, find the length of the longest
 // substring without repeating characters.
 
