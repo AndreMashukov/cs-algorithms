@@ -1,3 +1,5 @@
+// 230. Kth Smallest Element in a BST
+// https://leetcode.com/problems/kth-smallest-element-in-a-bst/
 // Given a binary search tree t, find the kth smallest element in it.
 
 function solution (t, k) {
@@ -14,7 +16,7 @@ function solution (t, k) {
       current = current.left
     }
 
-    console.log('stack:', stack)
+    // console.log('stack:', stack) 
 
     current = stack.pop()
     k--

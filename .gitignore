@@ -34,3 +34,4 @@ tsconfig.build.json
 coverage/
 !test/preprocessor.js
 mydb.sql
+.cursor/rules/artifact-gen/rule.mdc
