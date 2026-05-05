@@ -1,3 +1,5 @@
+// N-Queens, LeetCode 51
+// https://leetcode.com/problems/n-queens/description/
 // The n-queens puzzle is the problem of placing n queens on an n x n chessboard
 // so that no two queens can attack each other.
 
