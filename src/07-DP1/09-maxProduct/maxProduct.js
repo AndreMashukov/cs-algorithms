@@ -1,3 +1,6 @@
+// leetcode 152
+// Maximum Product Subarray
+// https://leetcode.com/problems/maximum-product-subarray/description/
 // Given an integer array nums, find a subarray
 // that has the largest product within the array and return it.
 
