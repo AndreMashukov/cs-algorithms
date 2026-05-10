@@ -1,10 +1,38 @@
 // Problem: Unbounded Knapsack
-// LeetCode URL: https://neetcode.io/problems/unboundedKnapsack
+// https://www.naukri.com/code360/problems/unbounded-knapsack_1215029
 // Problem Description:
 // You are given a list of items, each with a weight and a profit, along with a backpack
 // with a specified maximum capacity. Your goal is to calculate the maximum profit you can achieve
 // without exceeding the backpack's capacity. You must select items such that the total weight of the items
 // is less than or equal to the backpack's capacity. Assume you can select each item up to an unlimited number of times.
+
+/**
+ * OPTIMIZED APPROACH: 1D Space Optimization
+ * Calculates the maximum profit for the Unbounded Knapsack problem using 1D Space Optimization.
+ * 
+ * @param {number[]} profit - Array of item profits
+ * @param {number[]} weight - Array of item weights
+ * @param {number} capacity - Max capacity of the knapsack
+ * @return {number} - Maximum profit achievable
+ */
+function unboundedKnapsack_1D(profit, weight, capacity) {
+  // Initialize a 1D DP array of size (capacity + 1) with zeros
+  const dp = new Array(capacity + 1).fill(0);
+
+  // Iterate over each item
+  for (let i = 0; i < profit.length; i++) {
+    // Traverse capacities from left to right (allowing infinite reuse)
+    for (let c = weight[i]; c <= capacity; c++) {
+      // 🌟 Overwrite the 1D array in place
+      dp[c] = Math.max(dp[c], profit[i] + dp[c - weight[i]]);
+    }
+  }
+
+  return dp[capacity]; // The last element contains the optimal answer
+}
+
+console.log(unboundedKnapsack_1D([15, 50, 60], [1, 3, 4], 5)); // Output: 80
+
 
 /**
  * @param {number[]} profit - Array of item profits

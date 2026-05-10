@@ -22,35 +22,36 @@
  * @param {number[]} costs - The costs of 1-day, 7-day, and 30-day passes
  * @return {number} - The minimum cost to cover all travel days
  */
-function minCostTickets_dp(days, costs) {
-  // Create DP array to store minimum cost up to each day
-  const dp = new Array(days[days.length - 1] + 1).fill(0);
-  // Create a set of travel days for O(1) lookup
+function mincostTickets(days, costs) {
+  // Handle edge case of empty input
+  if (!days || days.length === 0) return 0;
+
   const travelDays = new Set(days);
-  // For each day up to the last travel day
-  for (let day = 1; day <= days[days.length - 1]; day++) {
-    // If it's not a travel day, cost remains same as previous day
-    if (!travelDays.has(day)) {
-      dp[day] = dp[day - 1];
-      continue;
-    }
-    // Consider all three pass options and take minimum
-    // 1-day pass
-    let oneDay = dp[day - 1] + costs[0];
-    // 7-day pass
-    let sevenDay = dp[Math.max(0, day - 7)] + costs[1];
-    // 30-day pass
-    let thirtyDay = dp[Math.max(0, day - 30)] + costs[2];
-    // Take minimum of all three options
-    dp[day] = Math.min(oneDay, sevenDay, thirtyDay);
+  const lastDay = days[days.length - 1];
+  
+  // dp[i] represents the minimum cost to travel up to day i
+  const dp = new Array(lastDay + 1).fill(0);
+
+  for (let i = 1; i <= lastDay; i++) {
+      if (!travelDays.has(i)) {
+          // If it's not a travel day, the cost remains the same as the previous day
+          dp[i] = dp[i - 1];
+      } else {
+          // Calculate the minimum cost by evaluating all three pass options
+          dp[i] = Math.min(
+              dp[i - 1] + costs[0],               // 1-day pass
+              dp[Math.max(0, i - 7)] + costs[1],  // 7-day pass
+              dp[Math.max(0, i - 30)] + costs[2]  // 30-day pass
+          );
+      }
   }
-  // Return minimum cost for all days
-  return dp[days[days.length - 1]];
+
+  return dp[lastDay];
 }
 
 // Example Usage:
-console.log(minCostTickets_dp([1,4,6,7,8,20], [2,7,15])); // Output: 11
-console.log(minCostTickets_dp([1,2,3,4,5,6,7,8,9,10,30,31], [2,7,15])); // Output: 17
+console.log(mincostTickets([1, 4, 6, 7, 8, 20], [2, 7, 15])); // Output: 11
+console.log(mincostTickets([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 30, 31], [2, 7, 15])); // Output: 17
 
 /*
 Explanation of the DP approach:
