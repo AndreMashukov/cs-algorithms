@@ -1,3 +1,40 @@
+/**
+ * Calculates the maximum profit from buying and selling stocks with a 1-day cooldown.
+ * 
+ * @param {number[]} prices
+ * @return {number}
+ */
+var maxProfit = function(prices) {
+  // Edge case: If there are fewer than 2 days, no transaction can be completed
+  if (!prices || prices.length <= 1) return 0;
+
+  // Initial states before the first day
+  let held = -Infinity; // Maximum profit if we end the day holding a stock
+  let sold = 0;         // Maximum profit if we end the day having just sold a stock
+  let rest = 0;         // Maximum profit if we end the day doing nothing (ready to buy)
+
+  for (let price of prices) {
+      // Keep track of yesterday's 'sold' state before we update it
+      let prevSold = sold;
+      
+      // Transition to 'sold': We must have been 'holding' yesterday, and we sell today
+      sold = held + price;
+      
+      // Transition to 'held': Either we keep holding from yesterday, 
+      // or we buy today (must transition from 'rest' state)
+      held = Math.max(held, rest - price);
+      
+      // Transition to 'rest': Either we keep resting from yesterday, 
+      // or we transition from yesterday's 'sold' state (cooldown fulfilled)
+      rest = Math.max(rest, prevSold);
+  }
+
+  // The maximum profit at the end will be either in the 'rest' state or 'sold' state.
+  // (It is never optimal to end the last day holding a stock).
+  return Math.max(rest, sold);
+};
+
+
 class Solution {
   /**
    * Problem: Best Time to Buy and Sell Stock with Cooldown
