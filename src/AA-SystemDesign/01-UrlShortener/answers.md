@@ -10,7 +10,7 @@ Q3: 3. 56 billion
 Explanation: The description explicitly calculates this: "A Base62 encoded string of length n has 62^n possible combinations. With n = 6, we have 62^6 ≈ 56 billion unique possibilities." This exceeds the system's requirement for handling URLs over five years.
 
 Q4: 4. Because NoSQL databases have higher write throughput, horizontal scalability, and fit the key-value model needed
-Explanation: The description states that "NoSQL is preferred for its high write throughput, horizontal scalability, and key-value storage model, which aligns well with the structure of URL mappings." This fits perfectly with the URL shortener's needs.
+Explanation: The description states that "NoSQL is preferred for its high write throughput, horizontal scalability, and key-value storage model, which aligns well with the structure of URL mappings." This fits perfectly with the URL shortener's needs. 
 
 Q5: 2. It lowers latency and offloads read requests from the database
 Explanation: The description explains that the caching layer is implemented "to reduce latency and offload read requests from the database" by storing frequently accessed URL mappings in memory, making retrieval almost instantaneous.
