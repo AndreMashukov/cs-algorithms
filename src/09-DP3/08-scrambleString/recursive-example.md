@@ -48,6 +48,16 @@ s2 = "bac" → left2="ba", right2="c"
 
 ### Visual Representation of the Swap Logic
 
+Example: `s1 = "abc"`, `s2 = "bca"`, `i = 1`, `n = 3`
+
+**Case 1 — No swap** (`slice(0, i)` and `slice(i)` on both strings):
+
+![Case 1: No swap — slice(0, i) and slice(i)](scramble-slice-case1-no-swap.png)
+
+**Case 2 — With swap** (`slice(0, i)` vs `slice(n-i)`, `slice(i)` vs `slice(0, n-i)`):
+
+![Case 2: With swap — cross-matched slices](scramble-slice-case2-swap.png)
+
 ```text
 Original split (No Swap):
 s1: [left1] [right1]
