@@ -23,53 +23,27 @@
  * @param {number[][]} dungeon
  * @return {number}
  */
-function calculateMinimumHP_dp(dungeon) {
-  // Get the dimensions of the dungeon
+/**
+ * @param {number[][]} dungeon
+ * @return {number}
+ */
+var calculateMinimumHP = function(dungeon) {
   const m = dungeon.length;
   const n = dungeon[0].length;
-  
-  // Initialize DP table where dp[i][j] represents the minimum health needed
-  // to reach the princess starting from position (i, j)
-  const dp = Array(m).fill(null).map(() => Array(n).fill(0));
-  
-  // Base case: Bottom-right corner (princess's room)
-  // We need at least 1 health after dealing with this room's effect
-  dp[m - 1][n - 1] = Math.max(1, 1 - dungeon[m - 1][n - 1]);
-  
-  // Fill the last row (can only move right)
-  for (let j = n - 2; j >= 0; j--) {
-    // To survive current room and have enough health for the next room
-    // We need: nextRoomHealth - currentRoomValue
-    // But we always need at least 1 health
-    dp[m - 1][j] = Math.max(1, dp[m - 1][j + 1] - dungeon[m - 1][j]);
-  }
-  
-  // Fill the last column (can only move down)
-  for (let i = m - 2; i >= 0; i--) {
-    // To survive current room and have enough health for the room below
-    // We need: belowRoomHealth - currentRoomValue
-    // But we always need at least 1 health
-    dp[i][n - 1] = Math.max(1, dp[i + 1][n - 1] - dungeon[i][n - 1]);
-  }
-  
-  // Fill the rest of the table from bottom-right to top-left
-  for (let i = m - 2; i >= 0; i--) {
-    for (let j = n - 2; j >= 0; j--) {
-      // We can either go right or down from current position
-      // Choose the path that requires minimum health
-      const minHealthRequired = Math.min(dp[i + 1][j], dp[i][j + 1]);
-      
-      // Calculate minimum health needed at current position
-      // We need enough health to:
-      // 1. Survive this room (if it has damage)
-      // 2. Have enough health for the chosen path
-      dp[i][j] = Math.max(1, minHealthRequired - dungeon[i][j]);
+  const dp = Array.from({length: m + 1}, () => Array(n + 1).fill(Infinity));
+  // console.log(dp)
+  dp[m][n - 1] = 1;
+  dp[m - 1][n] = 1;
+
+  for (let i = m - 1; i >=0; i--) {
+    for (let j = n - 1; j >= 0; j--) {
+      const minNext = Math.min(dp[i + 1][j], dp[i][j + 1])
+      dp[i][j] = Math.max(1, minNext - dungeon[i][j])
     }
   }
-  
-  // Return the minimum health needed at the starting position (0, 0)
-  return dp[0][0];
-}
+
+  return dp[0][0]
+};
 
 // Example Usage:
 console.log(calculateMinimumHP_dp([[-2,-3,3],[-5,-10,1],[10,30,-5]])); // Expected: 7
