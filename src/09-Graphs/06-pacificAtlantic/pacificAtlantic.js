@@ -15,66 +15,48 @@
 // where each element is a list [r, c] representing the row and column of the cell.
 // You may return the answer in any order.
 
-class Solution {
-  /**
-     * @param {number[][]} heights
-     * @return {number[][]}
-     */
-  pacificAtlantic (heights) {
-    const ROWS = heights.length
-    const COLS = heights[0].length
-    const pac = new Set() // Set to track cells that can flow to the Pacific Ocean
-    const atl = new Set() // Set to track cells that can flow to the Atlantic Ocean
+/**
+ * @param {number[][]} heights
+ * @return {number[][]}
+ */
+var pacificAtlantic = function (heights) {
+  const ROWS = heights.length;
+  const COLS = heights[0].length;
+  const pac = new Set();
+  const atl = new Set();
 
-    // Closure function for DFS
-    const dfs = (r, c, visit, prevHeight) => {
-      const coord = r * COLS + c
-      // Base case: if the cell is out of bounds, lower in height, or already visited, return
-      if (
-        r < 0 ||
-          c < 0 ||
-          r === ROWS ||
-          c === COLS ||
-          heights[r][c] < prevHeight ||
-          visit.has(coord)
-      ) {
-        return
-      }
-      // Mark the cell as visited
-      visit.add(coord)
-      // Recursively visit all four directions
-      dfs(r + 1, c, visit, heights[r][c]) // Down
-      dfs(r - 1, c, visit, heights[r][c]) // Up
-      dfs(r, c + 1, visit, heights[r][c]) // Right
-      dfs(r, c - 1, visit, heights[r][c]) // Left
-    }
+  const dfs = (r, c, prevHeight, visited) => {
+    const coord = `${r},${c}`;
 
-    // Perform DFS from all cells adjacent to the Pacific Ocean
-    for (let i = 0; i < ROWS; i++) {
-      dfs(i, 0, pac, heights[i][0]) // Left border (Pacific)
-      dfs(i, COLS - 1, atl, heights[i][COLS - 1]) // Right border (Atlantic)
-    }
+    if (r < 0 || r >= ROWS || c < 0 || c >= COLS || visited.has(coord) || heights[r][c] < prevHeight) return
 
-    // Perform DFS from all cells adjacent to the Atlantic Ocean
-    for (let j = 0; j < COLS; j++) {
-      dfs(0, j, pac, heights[0][j]) // Top border (Pacific)
-      dfs(ROWS - 1, j, atl, heights[ROWS - 1][j]) // Bottom border (Atlantic)
-    }
+    visited.add(coord);
 
-    const res = []
-    // Check all cells to see if they can flow to both oceans
-    for (let i = 0; i < ROWS; i++) {
-      for (let j = 0; j < COLS; j++) {
-        const coord = i * COLS + j
-        if (pac.has(coord) && atl.has(coord)) {
-          res.push([i, j])
-        }
-      }
-    }
-    return res
+    dfs(r + 1, c, heights[r][c], visited)
+    dfs(r - 1, c, heights[r][c], visited)
+    dfs(r, c + 1, heights[r][c], visited)
+    dfs(r, c - 1, heights[r][c], visited)
   }
-}
 
-// dfs each cell, keep track of visited, and track
-// which reach pac, atl; dfs on cells adjacent to pac, atl,
-// find overlap of cells that are visited by both pac and atl cells;
+  for (let i = 0; i < ROWS; i++) {
+    dfs(i, 0, heights[i][0], pac)
+    dfs(i, COLS - 1, heights[i][COLS - 1], atl)
+  }
+
+  for (let j = 0; j < COLS; j++) {
+    dfs(0, j, heights[0][j], pac)
+    dfs(ROWS - 1, j, heights[ROWS - 1][j], atl)
+  }
+
+  let res = []
+  for (let r = 0; r < ROWS; r++) {
+    for (let c = 0; c < COLS; c++) {
+      const coord = `${r},${c}`
+      if (pac.has(coord) && atl.has(coord)) {
+        res.push([r, c])
+      }
+    }
+  }
+
+  return res 
+};
