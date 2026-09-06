@@ -66,7 +66,8 @@ console.log(
   findMaxLength([0, 1, 0]), // 2
   findMaxLength([0, 1, 0, 1, 0, 1]), // 6
   findMaxLength([0, 1, 0, 1, 0, 1, 0, 1]), // 8
-  findMaxLength([0, 1, 0, 1, 0, 1, 0, 1, 0, 1]), // 10
+  
+  ([0, 1, 0, 1, 0, 1, 0, 1, 0, 1]), // 10
   findMaxLength([0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1]), // 12
   findMaxLength([
 )
